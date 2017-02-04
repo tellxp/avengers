@@ -1,0 +1,15 @@
+span {
+  display: inline-flex;
+  background-color: #cccccc;
+  padding: 0.5em;
+  -webkit-user-select: none;
+  border: outset;
+  border-width: 2px;
+}
+span:hover {
+  background-color: #000000;
+  color: #cccccc;
+}
+:host {
+  cursor: pointer;
+}

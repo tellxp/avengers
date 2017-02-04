@@ -1,0 +1,11 @@
+@import "../../variables";
+
+div {
+  background-color: $tabstrip-panel-background-color;
+  color: $tabstrip-panel-color;
+  height: 10em;
+  width: 100%;
+  border-bottom-color: #ffffff;
+  border-bottom-style: outset;
+  border-bottom-width: 3px;
+}

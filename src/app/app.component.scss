@@ -1,0 +1,25 @@
+.navbar {
+  width: 100%;
+  background-color: #1976D2;
+}
+
+.brand {
+  width: 24em;
+  height: 8em;
+  background-color: #313b3f;
+  img {
+    height:4em;
+  }
+  align-items: center;
+}
+.side-menu {
+  width: 24em;
+  background-color: #313b3f;
+  a {
+    color: white;
+  }
+}
+.content {
+  width: 100%;
+}
+

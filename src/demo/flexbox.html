@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlexBox Demo</title>
+</head>
+<style>
+  html body {
+    margin: 0;
+  }
+  .container {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    background-color: #f9cd0b;
+    height: 100vh;
+  }
+  .col {
+    display: flex;
+    flex-flow: column;
+    width: 20%;
+    background-color: #660000;
+    height: 50%;
+    margin: 10px;
+  }
+  .row {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    background-color: #006600;
+    height: 100%;
+    margin: 10px;
+
+  }
+</style>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+</div>
+</body>
+</html>
