@@ -1,1 +1,8 @@
-<ave-button>Avengers</ave-button>
+<h3>普通Button</h3>
+<ave-button #anchor (click)="onButtonClick($event)">Avengers</ave-button>
+<ave-popup *ngIf="showPopup" [anchor]="anchor">
+  <h1>sadfsadfdsaf</h1>
+</ave-popup>
+
+<h3>Split Button</h3>
+

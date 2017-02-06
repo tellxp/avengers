@@ -12,6 +12,7 @@ import {TabstripDemo} from  './demo/tabstrip/tabstrip-demo.component'
 import {TabstripModule} from "../components/tabstrip/tabstrip.module";
 import {ButtonModule} from "../components/button/button.module";
 import {ButtonDemo} from "./demo/button/button-demo.component";
+import {PopupModule} from "../components/popup/popup.module";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {ButtonDemo} from "./demo/button/button-demo.component";
     NavbarModule,
     SideMenuModule,
     TabstripModule,
-    ButtonModule
+    ButtonModule,
+    PopupModule
   ],
   providers: [],
   bootstrap: [AppComponent]

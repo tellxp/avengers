@@ -33,7 +33,6 @@ export class Tabstrip implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     this.initBar();
     this.initPanel();
-    this.matchTabAndPage();
   }
 
   constructor() {
@@ -47,12 +46,6 @@ export class Tabstrip implements OnInit, AfterContentInit {
   initPanel() {
     this.panel = this.contentPanel;
     this.panel.parentTabstrip = this;
-  }
-  matchTabAndPage() {
-    for(let page of this.panel.pages) {
-      page.matchedTab = this.findTabById(page.matchedTabUid);
-      page.matchedTab.page = page;
-    }
   }
 
   findTabById(id: string): TabstripTab {

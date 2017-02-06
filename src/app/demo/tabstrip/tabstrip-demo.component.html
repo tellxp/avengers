@@ -1,15 +1,15 @@
 <ave-tabstrip>
   <ave-tabstrip-bar>
-    <ave-tabstrip-tab [uid]="'1'"><button>sadfsadfsadfsadfadsaf</button></ave-tabstrip-tab>
-    <ave-tabstrip-tab [uid]="'2'">Two</ave-tabstrip-tab>
-    <ave-tabstrip-tab [uid]="'3'">Three</ave-tabstrip-tab>
+    <ave-tabstrip-tab #tab1><button>sadfsadfsadfsadfadsaf</button></ave-tabstrip-tab>
+    <ave-tabstrip-tab #tab2>Two</ave-tabstrip-tab>
+    <ave-tabstrip-tab #tab3>Three</ave-tabstrip-tab>
     <ave-tabstrip-addon><button>asdfdsafsasadfsad</button></ave-tabstrip-addon>
     <ave-tabstrip-toggle></ave-tabstrip-toggle>
 
   </ave-tabstrip-bar>
   <ave-tabstrip-panel>
-    <ave-tabstrip-page [active]="true" [matchedTabUid]="'1'">First Page</ave-tabstrip-page>
-    <ave-tabstrip-page [matchedTabUid]="'2'">Second Page</ave-tabstrip-page>
-    <ave-tabstrip-page [matchedTabUid]="'3'">Third Page</ave-tabstrip-page>
+    <ave-tabstrip-page [parentTab]="tab1" [active]="true" >First Page</ave-tabstrip-page>
+    <ave-tabstrip-page [parentTab]="tab2">Second Page</ave-tabstrip-page>
+    <ave-tabstrip-page [parentTab]="tab3">Third Page</ave-tabstrip-page>
   </ave-tabstrip-panel>
 </ave-tabstrip>

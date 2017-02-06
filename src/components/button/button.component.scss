@@ -1,4 +1,4 @@
-span {
+div {
   display: inline-flex;
   background-color: #cccccc;
   padding: 0.5em;
@@ -6,7 +6,7 @@ span {
   border: outset;
   border-width: 2px;
 }
-span:hover {
+div:hover {
   background-color: #000000;
   color: #cccccc;
 }

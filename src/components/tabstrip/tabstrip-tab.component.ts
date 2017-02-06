@@ -9,7 +9,6 @@ import {isNullOrUndefined} from "util";
 })
 export class TabstripTab implements OnInit, AfterContentInit {
 
-  @Input() uid: string;
 
   @Input() page?: TabstripPage;
 

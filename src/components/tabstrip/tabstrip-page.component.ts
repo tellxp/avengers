@@ -8,8 +8,7 @@ import {TabstripTab} from "./tabstrip-tab.component";
 })
 export class TabstripPage implements OnInit, AfterContentInit {
 
-  @Input() matchedTabUid: string;
-  @Input() matchedTab: TabstripTab;
+  @Input() parentTab: TabstripTab;
 
   parentPanel: TabstripPanel;
 
@@ -23,5 +22,6 @@ export class TabstripPage implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
+    this.parentTab.page = this;
   }
 }
