@@ -1,24 +1,23 @@
 import {NgModule} from '@angular/core';
 
 import {BrowserModule} from "@angular/platform-browser";
-import {Button} from "./button.component";
 import {Dropdown} from "../dropdown/dropdown.component";
 import {PopupModule} from "../popup/popup.module";
+import {ButtonModule} from "../button/button.module";
 
 @NgModule({
   imports: [
     BrowserModule,
-    PopupModule
+    PopupModule,
+    ButtonModule
   ],
   declarations: [
-    Button,
     Dropdown
   ],
   exports: [
-    Button,
     Dropdown
   ],
   providers: [],
 })
-export class ButtonModule {
+export class DropdownModule {
 }

@@ -13,13 +13,15 @@ import {TabstripModule} from "../components/tabstrip/tabstrip.module";
 import {ButtonModule} from "../components/button/button.module";
 import {ButtonDemo} from "./demo/button/button-demo.component";
 import {PopupModule} from "../components/popup/popup.module";
+import {PopupDemo} from "./demo/popup/popup-demo.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TabstripDemo,
-    ButtonDemo
+    ButtonDemo,
+    PopupDemo
   ],
   imports: [
     BrowserModule,

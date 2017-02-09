@@ -1,6 +1,5 @@
-div {
+:host {
   display: block;
-  position: fixed;
+  position: absolute;
   background-color: blue;
-  width: 100%;
 }

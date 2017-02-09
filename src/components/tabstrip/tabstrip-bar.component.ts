@@ -1,4 +1,7 @@
-import {Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit, ContentChild} from '@angular/core';
+import {
+  Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit, ContentChild,
+  HostBinding
+} from '@angular/core';
 import {TabstripTab} from "./tabstrip-tab.component";
 import {isNullOrUndefined} from "util";
 import {TabstripToggle} from "./tabstrip-toggle.component";
@@ -20,12 +23,10 @@ export class TabstripBar implements OnInit, AfterContentInit {
   tabs: TabstripTab[];
   toggle: TabstripToggle;
   parentTabstrip: Tabstrip;
-
   constructor() {
   }
 
   ngOnInit() {
-
   }
 
   ngAfterContentInit() {

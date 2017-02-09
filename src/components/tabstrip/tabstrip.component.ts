@@ -48,12 +48,12 @@ export class Tabstrip implements OnInit, AfterContentInit {
     this.panel.parentTabstrip = this;
   }
 
-  findTabById(id: string): TabstripTab {
-    for (let tab of this.bar.tabs) {
-      if (tab.uid == id) {
-        return tab;
-      }
-    }
-  }
+  // findTabById(id: string): TabstripTab {
+  //   for (let tab of this.bar.tabs) {
+  //     if (tab.uid == id) {
+  //       return tab;
+  //     }
+  //   }
+  // }
 }
 
