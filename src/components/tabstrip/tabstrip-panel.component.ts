@@ -18,7 +18,6 @@ export class TabstripPanel implements OnInit, AfterContentInit {
 
   @ContentChildren(TabstripPage) contentPages: QueryList<TabstripPage>;
   pages: TabstripPage[];
-  activePage: TabstripPage;
   constructor() {
     this.expanded = false;
   }
@@ -33,9 +32,9 @@ export class TabstripPanel implements OnInit, AfterContentInit {
     if (!isNullOrUndefined(this.pages)) {
       for (let i = 0; i < this.pages.length; i++) {
         this.pages[i].parentPanel = this;
-      }
-      if (!this.activePage) {
-        this.activePage = this.pages[0];
+        if (this.pages[i].parentTab.active == true) {
+          this.pages[i].active = true;
+        }
       }
     }
   }

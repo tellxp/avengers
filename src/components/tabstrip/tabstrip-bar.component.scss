@@ -1,17 +1,17 @@
 @import "../../variables";
 
 :host {
-  padding-top: 0.2em;
+  padding-top: 0;
   padding-bottom: 0;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
+  padding-left: 0em;
+  padding-right: 0em;
   margin: 0;
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
   align-items: flex-end;
-  background-color: $tabstrip-bar-background-color;
-  color: $tabstrip-bar-color;
+  background-color: $bar-background-color;
   height: 3em;
   width: 100%;
 }
+

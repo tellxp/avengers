@@ -21,35 +21,39 @@ export class TabstripTab implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-
   }
 
   constructor() {
   }
 
   deactivateTab(tab: TabstripTab) {
-    tab.active = false;
-    tab.parentBar.activeTab = null;
+    if (!isNullOrUndefined(tab)) {
+      tab.active = false;
+      tab.parentBar.activeTab = null;
+      this.deactivatePage(tab.page);
+    }
   }
 
   activateTab(tab: TabstripTab) {
     if (isNullOrUndefined(tab.parentBar.activeTab)) {
       this.active = true;
       this.parentBar.activeTab = this;
+      this.activatePage(tab.page);
     }
   }
 
   deactivatePage(page: TabstripPage) {
-    page.active = false;
-    page.parentPanel.activePage = null;
+    if (!isNullOrUndefined(page)) {
+      page.active = false;
+    }
   }
 
   activatePage(page: TabstripPage) {
-    if (isNullOrUndefined(page.parentPanel.activePage)) {
+    if (!isNullOrUndefined(page)) {
       page.active = true;
-      page.parentPanel.activePage = page;
     }
   }
+
   expandPanel() {
     let parentTabstrip = this.parentBar.parentTabstrip;
     let panel = parentTabstrip.panel;
@@ -57,18 +61,15 @@ export class TabstripTab implements OnInit, AfterContentInit {
       this.parentBar.parentTabstrip.panel.expand();
     }
   }
+
   onTabClick() {
     this.expandPanel();
     let currentActiveTab: TabstripTab = this.parentBar.activeTab;
     if (isNullOrUndefined(currentActiveTab)) {
       this.activateTab(this);
-      this.activatePage(this.page);
     } else {
       this.deactivateTab(currentActiveTab);
-      let currentActivePage: TabstripPage = currentActiveTab.page;
-      this.deactivatePage(currentActivePage);
       this.activateTab(this);
-      this.activatePage(this.page);
     }
   }
 }

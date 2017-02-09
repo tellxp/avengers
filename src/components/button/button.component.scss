@@ -1,19 +1,15 @@
+@import "../../variables";
 :host {
   display: inline-flex;
-  background-color: rgb(63, 81, 181);
+  background-color: $item-background-color;
   padding: 0.5em;
   -webkit-user-select: none;
   border: solid;
   border-width: 1px;
   border-color: rgb(63, 81, 181);
-  color: #ffffff;
+  color: $item-color;
   cursor: pointer;
-
-
 }
 :host:hover {
-  background-color: black;
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,.2), 0 2px 3px rgba(0,0,0,.05);
-
+  background-color: $item-hover-background-color;
 }
