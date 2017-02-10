@@ -1,8 +1,8 @@
-import {Component, ContentChildren, QueryList, OnInit, AfterContentInit} from '@angular/core';
-import { Input } from '@angular/core';
+import {Component,Input, ContentChildren, QueryList, OnInit, AfterContentInit} from '@angular/core';
 import {TabstripPage} from "./tabstrip-page.component";
 import {isNullOrUndefined} from "util";
 import {Tabstrip} from "./tabstrip.component";
+import {TabstripBar} from "./tabstrip-bar.component";
 
 
 @Component({
@@ -12,36 +12,62 @@ import {Tabstrip} from "./tabstrip.component";
 })
 export class TabstripPanel implements OnInit, AfterContentInit {
 
-  @Input() expanded: boolean;
+  @Input() private attachedBar: TabstripBar;
 
-  parentTabstrip: Tabstrip;
+  @Input() private expanded: boolean;
 
-  @ContentChildren(TabstripPage) contentPages: QueryList<TabstripPage>;
-  pages: TabstripPage[];
+  private parentTabstrip: Tabstrip;
+
+  @ContentChildren(TabstripPage) private contentPages: QueryList<TabstripPage>;
+
+  private pages: TabstripPage[];
+
+  private activePage: TabstripPage;
+
   constructor() {
     this.expanded = false;
+    this.activePage = null;
   }
   ngOnInit() {
 
   }
   ngAfterContentInit() {
-    this.initPages();
+    this.setPages();
+    this.attachToBar();
   }
-  initPages() {
+
+  private setPages() {
     this.pages = this.contentPages.toArray();
-    if (!isNullOrUndefined(this.pages)) {
+    if (isNullOrUndefined(this.pages)) {
+      throw new Error("pages is null or undefined");
+    } else {
       for (let i = 0; i < this.pages.length; i++) {
-        this.pages[i].parentPanel = this;
-        if (this.pages[i].parentTab.active == true) {
-          this.pages[i].active = true;
-        }
+        this.pages[i].setParent(this);
       }
     }
   }
-  expand() {
+  private attachToBar() {
+    this.attachedBar.setPanel(this);
+  }
+
+  public isExpanded() {
+    if (this.expanded) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public expand() {
     this.expanded = true;
   }
-  collapse() {
+
+  public collapse() {
     this.expanded = false;
   }
+
+  public setParent(tabstrip: Tabstrip) {
+    this.parentTabstrip = tabstrip;
+  }
+
 }

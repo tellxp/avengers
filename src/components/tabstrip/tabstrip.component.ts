@@ -18,36 +18,42 @@ import {TabstripToggle} from "./tabstrip-toggle.component";
 })
 export class Tabstrip implements OnInit, AfterContentInit {
 
-  @ContentChild(TabstripBar) contentBar: TabstripBar;
-  @ContentChild(TabstripPanel) contentPanel: TabstripPanel;
+  @ContentChild(TabstripBar) private contentBar: TabstripBar;
+  @ContentChild(TabstripPanel) private contentPanel: TabstripPanel;
 
-  bar:TabstripBar;
-  panel:TabstripPanel;
-  toggle: TabstripToggle;
-
+  private bar: TabstripBar;
+  private panel: TabstripPanel;
 
   ngOnInit() {
 
   }
 
   ngAfterContentInit() {
-    this.initBar();
-    this.initPanel();
+    this.init();
   }
 
   constructor() {
 
   }
 
-  initBar() {
-    this.bar = this.contentBar;
-    this.bar.parentTabstrip = this;
-  }
-  initPanel() {
-    this.panel = this.contentPanel;
-    this.panel.parentTabstrip = this;
+  private init() {
+    this.setBar();
+    this.setPanel();
   }
 
+  private setBar() {
+    this.bar = this.contentBar;
+    this.bar.setParent(this);
+  }
+
+  private setPanel() {
+    this.panel = this.contentPanel;
+    this.panel.setParent(this);
+  }
+
+  private setDefaultTab() {
+
+  }
   // findTabById(id: string): TabstripTab {
   //   for (let tab of this.bar.tabs) {
   //     if (tab.uid == id) {

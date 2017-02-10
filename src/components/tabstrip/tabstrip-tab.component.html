@@ -1,3 +1,3 @@
-<div (click)="onTabClick($event)" [ngClass]="{'tab-state-active': active && parentBar.parentTabstrip.panel.expanded}">
+<div (click)="onTabClick($event)" [ngClass]="{'tab-state-active': active && parentBar.isPanelExpanded()}">
   <ng-content></ng-content>
 </div>

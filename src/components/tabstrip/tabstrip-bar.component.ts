@@ -6,7 +6,7 @@ import {TabstripTab} from "./tabstrip-tab.component";
 import {isNullOrUndefined} from "util";
 import {TabstripToggle} from "./tabstrip-toggle.component";
 import {Tabstrip} from "./tabstrip.component";
-import has = Reflect.has;
+import {TabstripPanel} from "./tabstrip-panel.component";
 
 @Component({
   selector: 'ave-tabstrip-bar',
@@ -15,14 +15,22 @@ import has = Reflect.has;
 })
 export class TabstripBar implements OnInit, AfterContentInit {
 
-  activeTab: TabstripTab;
+  @ContentChildren(TabstripTab) private contentTabs: QueryList<TabstripTab>;
 
-  @ContentChildren(TabstripTab) contentTabs: QueryList<TabstripTab>;
-  @ContentChild(TabstripToggle) contentToggle: TabstripToggle;
+  @ContentChild(TabstripToggle) private contentToggle: TabstripToggle;
 
-  tabs: TabstripTab[];
-  toggle: TabstripToggle;
-  parentTabstrip: Tabstrip;
+
+  private _tabs: TabstripTab[];
+
+  private _toggle: TabstripToggle;
+
+  private _parentTabstrip: Tabstrip;
+
+  private _panel: TabstripPanel;
+
+  private _activeTab: TabstripTab;
+
+
   constructor() {
   }
 
@@ -30,46 +38,64 @@ export class TabstripBar implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.initTabs();
-    this.initToggle();
+    this.setTabs();
+    this.setDefaultTab();
+    this.setToggle();
   }
 
-  initTabs() {
-    let hasActiveTab: boolean = false;
-    this.tabs = this.contentTabs.toArray();
-    if (!isNullOrUndefined(this.tabs)) {
-      for (let i = 0; i < this.tabs.length; i ++) {
-        this.tabs[i].parentBar = this;
-        hasActiveTab = this.tabs[i].active || hasActiveTab;
-        if (this.tabs[i].active) {
-          this.activeTab = this.tabs[i];
+  private setTabs() {
+    this._tabs = this.contentTabs.toArray();
+    if (isNullOrUndefined(this._tabs)) {
+      throw new Error("tabs is null or undefined");
+    } else {
+      let length: number = this._tabs.length;
+      for (let i = 0; i < length; i++) {
+        this._tabs[i].setParent(this);
+        if (this._tabs[i].isActive()) {
+          this._activeTab = this._tabs[i];
         }
-      }
-      if (!hasActiveTab) {
-        this.tabs[0].active = true;
-        this.activeTab = this.tabs[0];
       }
     }
   }
 
-  initToggle() {
-    this.toggle = this.contentToggle;
-    this.toggle.parentBar = this;
-  }
-
-  hasTab(): boolean {
-    return !isNullOrUndefined(this.tabs);
-  }
-
-  hasTabAndPanel(): boolean {
-    let value: boolean = false;
-    if (this.hasTab()) {
-      for (let i = 0; i < this.tabs.length; i++) {
-        value = value || !isNullOrUndefined(this.tabs[i].page);
-      }
-      return value;
+  private hasActiveTab():boolean {
+    if (!isNullOrUndefined(this._activeTab)) {
+      return true;
     } else {
       return false;
     }
   }
+
+  private setToggle() {
+    this._toggle = this.contentToggle;
+    this._toggle.setParent(this);
+  }
+
+  public setParent(tabstrip: Tabstrip) {
+    this._parentTabstrip = tabstrip;
+  }
+
+  public setActiveTab(tab: TabstripTab) {
+    this._activeTab = tab;
+  }
+
+  public getActiveTab(): TabstripTab {
+    return this._activeTab;
+  }
+  public setPanel(panel: TabstripPanel) {
+    this._panel = panel;
+  }
+
+  public isPanelExpanded(): boolean {
+    return this._panel.isExpanded();
+  }
+
+  public expandPanel() {
+    this._panel.expand();
+  }
+
+  public collapsePanel() {
+    this._panel.collapse();
+  }
+
 }

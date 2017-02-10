@@ -8,20 +8,25 @@ import {TabstripTab} from "./tabstrip-tab.component";
 })
 export class TabstripPage implements OnInit, AfterContentInit {
 
-  @Input() parentTab: TabstripTab;
+  @Input() private attachedTab: TabstripTab;
 
-  parentPanel: TabstripPanel;
-
-  @Input() active: boolean;
+  private parentPanel: TabstripPanel;
 
   constructor() {
-    this.active = false;
   }
 
   ngOnInit() {
   }
 
   ngAfterContentInit() {
-    this.parentTab.page = this;
+    this.attchPageToTab();
+  }
+
+  private attchPageToTab() {
+    this.attachedTab.setPage(this);
+  }
+
+  public setParent(panel: TabstripPanel) {
+    this.parentPanel = panel;
   }
 }

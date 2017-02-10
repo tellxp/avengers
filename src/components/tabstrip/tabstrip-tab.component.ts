@@ -9,12 +9,11 @@ import {isNullOrUndefined} from "util";
 })
 export class TabstripTab implements OnInit, AfterContentInit {
 
+  private page: TabstripPage;
 
-  @Input() page?: TabstripPage;
+  @Input() private active: boolean;
 
-  @Input() active: boolean;
-
-  parentBar: TabstripBar;
+  private parentBar: TabstripBar;
 
   ngOnInit() {
 
@@ -26,50 +25,44 @@ export class TabstripTab implements OnInit, AfterContentInit {
   constructor() {
   }
 
-  deactivateTab(tab: TabstripTab) {
-    if (!isNullOrUndefined(tab)) {
-      tab.active = false;
-      tab.parentBar.activeTab = null;
-      this.deactivatePage(tab.page);
+  public setParent(bar: TabstripBar) {
+    this.parentBar = bar;
+  }
+
+  public setPage(page: TabstripPage) {
+    this.page = page;
+  }
+
+  public isActive(): boolean {
+    if (this.active) {
+      return true;
+    } else {
+      return false;
     }
   }
 
-  activateTab(tab: TabstripTab) {
-    if (isNullOrUndefined(tab.parentBar.activeTab)) {
-      this.active = true;
-      this.parentBar.activeTab = this;
-      this.activatePage(tab.page);
-    }
+  public deactivate() {
+    this.active = false;
+    this.parentBar.setActiveTab(null);
   }
 
-  deactivatePage(page: TabstripPage) {
-    if (!isNullOrUndefined(page)) {
-      page.active = false;
-    }
+  public activate() {
+    this.active = true;
+    this.parentBar.setActiveTab(this);
   }
 
-  activatePage(page: TabstripPage) {
-    if (!isNullOrUndefined(page)) {
-      page.active = true;
-    }
-  }
-
-  expandPanel() {
-    let parentTabstrip = this.parentBar.parentTabstrip;
-    let panel = parentTabstrip.panel;
-    if (!panel.expanded) {
-      this.parentBar.parentTabstrip.panel.expand();
-    }
+  private showPage() {
+    this.parentBar.expandPanel();
   }
 
   onTabClick() {
-    this.expandPanel();
-    let currentActiveTab: TabstripTab = this.parentBar.activeTab;
+    let currentActiveTab: TabstripTab = this.parentBar.getActiveTab();
     if (isNullOrUndefined(currentActiveTab)) {
-      this.activateTab(this);
+      this.activate();
     } else {
-      this.deactivateTab(currentActiveTab);
-      this.activateTab(this);
+      currentActiveTab.deactivate();
+      this.activate();
     }
+    this.showPage();
   }
 }

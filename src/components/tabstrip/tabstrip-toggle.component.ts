@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from "@angular/core";
 import {TabstripBar} from "./tabstrip-bar.component";
-import {TabstripPage} from "./tabstrip-page.component";
-import {isNullOrUndefined} from "util";
+
+
 @Component({
   selector: 'ave-tabstrip-toggle',
   templateUrl: './tabstrip-toggle.component.html',
@@ -10,25 +10,34 @@ import {isNullOrUndefined} from "util";
 export class TabstripToggle implements OnInit, AfterContentInit {
 
 
-  @Input() parentBar: TabstripBar;
+  private parentBar: TabstripBar;
+
+  private expanded: boolean;
 
   ngOnInit() {
 
   }
 
   ngAfterContentInit() {
+    this.expanded = false;
   }
 
   constructor() {
   }
 
-  togglePanel() {
-    let expanded = this.parentBar.parentTabstrip.panel.expanded;
-    if (expanded) {
-      this.parentBar.parentTabstrip.panel.collapse();
+  public setParent(bar: TabstripBar) {
+    this.parentBar = bar;
+  }
+  private togglePanel() {
+    this.expanded = this.parentBar.isPanelExpanded();
+    if (this.expanded) {
+      this.parentBar.collapsePanel();
+      this.expanded = false;
     } else {
-      this.parentBar.parentTabstrip.panel.expand();
+      this.parentBar.expandPanel();
+      this.expanded = true;
     }
+
   }
 
   onToggleClick() {

@@ -4,12 +4,12 @@
   background-color: $item-background-color;
   padding: 0.5em;
   -webkit-user-select: none;
-  border: solid;
-  border-width: 1px;
-  border-color: rgb(63, 81, 181);
   color: $item-color;
   cursor: pointer;
 }
 :host:hover {
   background-color: $item-hover-background-color;
+}
+:host:focus {
+  background-color: $item-active-background-color;
 }
