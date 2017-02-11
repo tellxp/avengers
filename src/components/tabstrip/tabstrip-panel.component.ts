@@ -12,7 +12,7 @@ import {TabstripBar} from "./tabstrip-bar.component";
 })
 export class TabstripPanel implements OnInit, AfterContentInit {
 
-  @Input() private attachedBar: TabstripBar;
+  private _pairedBar: TabstripBar;
 
   @Input() private expanded: boolean;
 
@@ -32,22 +32,26 @@ export class TabstripPanel implements OnInit, AfterContentInit {
 
   }
   ngAfterContentInit() {
-    this.setPages();
-    this.attachToBar();
+    this.loadPages();
   }
 
-  private setPages() {
+  private loadPages() {
     this.pages = this.contentPages.toArray();
     if (isNullOrUndefined(this.pages)) {
       throw new Error("pages is null or undefined");
     } else {
       for (let i = 0; i < this.pages.length; i++) {
-        this.pages[i].setParent(this);
+        this.pages[i].setParentPanel(this);
       }
     }
   }
-  private attachToBar() {
-    this.attachedBar.setPanel(this);
+
+  public setPairedBar(bar: TabstripBar) {
+    this._pairedBar = bar;
+  }
+
+  public attachToTabstrip(tabstrip: Tabstrip) {
+    this.parentTabstrip = tabstrip;
   }
 
   public isExpanded() {
@@ -66,8 +70,6 @@ export class TabstripPanel implements OnInit, AfterContentInit {
     this.expanded = false;
   }
 
-  public setParent(tabstrip: Tabstrip) {
-    this.parentTabstrip = tabstrip;
-  }
+
 
 }

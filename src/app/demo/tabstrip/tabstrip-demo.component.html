@@ -1,14 +1,14 @@
 <ave-tabstrip>
-  <ave-tabstrip-bar #bar>
+  <ave-tabstrip-bar>
     <ave-tabstrip-tab #tab1>One</ave-tabstrip-tab>
     <ave-tabstrip-tab #tab2>Two</ave-tabstrip-tab>
     <ave-tabstrip-tab #tab3>Three</ave-tabstrip-tab>
     <ave-tabstrip-addon><button>Addon</button></ave-tabstrip-addon>
     <ave-tabstrip-toggle></ave-tabstrip-toggle>
   </ave-tabstrip-bar>
-  <ave-tabstrip-panel [attachedBar]="bar">
-    <ave-tabstrip-page [attachedTab]="tab1">First Page</ave-tabstrip-page>
-    <ave-tabstrip-page [attachedTab]="tab2">Second Page</ave-tabstrip-page>
-    <ave-tabstrip-page [attachedTab]="tab3">Third Page</ave-tabstrip-page>
+  <ave-tabstrip-panel>
+    <ave-tabstrip-page [pairedTab]="tab1">First Page</ave-tabstrip-page>
+    <ave-tabstrip-page [pairedTab]="tab2">Second Page</ave-tabstrip-page>
+    <ave-tabstrip-page [pairedTab]="tab3">Third Page</ave-tabstrip-page>
   </ave-tabstrip-panel>
 </ave-tabstrip>

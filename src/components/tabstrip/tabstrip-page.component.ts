@@ -8,7 +8,7 @@ import {TabstripTab} from "./tabstrip-tab.component";
 })
 export class TabstripPage implements OnInit, AfterContentInit {
 
-  @Input() private attachedTab: TabstripTab;
+  @Input() private pairedTab: TabstripTab;
 
   private parentPanel: TabstripPanel;
 
@@ -19,14 +19,14 @@ export class TabstripPage implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.attchPageToTab();
+    this.setPairedTab();
   }
 
-  private attchPageToTab() {
-    this.attachedTab.setPage(this);
+  private setPairedTab() {
+    this.pairedTab.setPairedPage(this);
   }
 
-  public setParent(panel: TabstripPanel) {
+  public setParentPanel(panel: TabstripPanel) {
     this.parentPanel = panel;
   }
 }

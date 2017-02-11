@@ -37,29 +37,28 @@ export class Tabstrip implements OnInit, AfterContentInit {
   }
 
   private init() {
-    this.setBar();
-    this.setPanel();
+    this.loadBar();
+    this.loadPanel();
+    this.pairBarAndPanel();
   }
 
-  private setBar() {
+  private loadBar() {
     this.bar = this.contentBar;
-    this.bar.setParent(this);
+    this.bar.setParentTabstrip(this);
   }
 
-  private setPanel() {
+  private loadPanel() {
     this.panel = this.contentPanel;
-    this.panel.setParent(this);
+    this.panel.attachToTabstrip(this);
   }
 
-  private setDefaultTab() {
+  private pairBarAndPanel() {
+    this.bar.setPairedPanel(this.panel);
+    this.bar.pairTabAndPanel(this.panel);
+    this.bar.pairToggleAndPanel(this.panel);
 
+    this.panel.setPairedBar(this.bar);
   }
-  // findTabById(id: string): TabstripTab {
-  //   for (let tab of this.bar.tabs) {
-  //     if (tab.uid == id) {
-  //       return tab;
-  //     }
-  //   }
-  // }
+
 }
 

@@ -26,7 +26,7 @@ export class TabstripBar implements OnInit, AfterContentInit {
 
   private _parentTabstrip: Tabstrip;
 
-  private _panel: TabstripPanel;
+  private _pairedPanel: TabstripPanel;
 
   private _activeTab: TabstripTab;
 
@@ -38,12 +38,12 @@ export class TabstripBar implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.setTabs();
-    this.setDefaultTab();
-    this.setToggle();
+    this.loadTabs();
+    this.loadToggle();
+    this.setDefaultActiveTab();
   }
 
-  private setTabs() {
+  private loadTabs() {
     this._tabs = this.contentTabs.toArray();
     if (isNullOrUndefined(this._tabs)) {
       throw new Error("tabs is null or undefined");
@@ -58,6 +58,20 @@ export class TabstripBar implements OnInit, AfterContentInit {
     }
   }
 
+  public pairTabAndPanel(panel: TabstripPanel) {
+    if (isNullOrUndefined(this._tabs)) {
+      throw new Error("tabs is null or undefined");
+    } else {
+      let length: number = this._tabs.length;
+      for (let i = 0; i < length; i++) {
+        this._tabs[i].setPairPanel(panel);
+      }
+    }
+  }
+
+  public pairToggleAndPanel(panel: TabstripPanel) {
+    this._toggle.setPairedPanel(panel);
+  }
   private hasActiveTab():boolean {
     if (!isNullOrUndefined(this._activeTab)) {
       return true;
@@ -66,13 +80,23 @@ export class TabstripBar implements OnInit, AfterContentInit {
     }
   }
 
-  private setToggle() {
+  private setDefaultActiveTab() {
+    if (!this.hasActiveTab()) {
+      this._tabs[0].activate();
+    }
+  }
+
+  private loadToggle() {
     this._toggle = this.contentToggle;
     this._toggle.setParent(this);
   }
 
-  public setParent(tabstrip: Tabstrip) {
+  public setParentTabstrip(tabstrip: Tabstrip) {
     this._parentTabstrip = tabstrip;
+  }
+
+  public setPairedPanel(panel: TabstripPanel) {
+    this._pairedPanel = panel;
   }
 
   public setActiveTab(tab: TabstripTab) {
@@ -82,20 +106,4 @@ export class TabstripBar implements OnInit, AfterContentInit {
   public getActiveTab(): TabstripTab {
     return this._activeTab;
   }
-  public setPanel(panel: TabstripPanel) {
-    this._panel = panel;
-  }
-
-  public isPanelExpanded(): boolean {
-    return this._panel.isExpanded();
-  }
-
-  public expandPanel() {
-    this._panel.expand();
-  }
-
-  public collapsePanel() {
-    this._panel.collapse();
-  }
-
 }

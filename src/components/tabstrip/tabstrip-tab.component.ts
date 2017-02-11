@@ -2,12 +2,15 @@ import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from "
 import {TabstripBar} from "./tabstrip-bar.component";
 import {TabstripPage} from "./tabstrip-page.component";
 import {isNullOrUndefined} from "util";
+import {TabstripPanel} from "./tabstrip-panel.component";
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
   styleUrls: ['./tabstrip-tab.component.scss']
 })
 export class TabstripTab implements OnInit, AfterContentInit {
+
+  private pairedPanel: TabstripPanel;
 
   private page: TabstripPage;
 
@@ -29,7 +32,11 @@ export class TabstripTab implements OnInit, AfterContentInit {
     this.parentBar = bar;
   }
 
-  public setPage(page: TabstripPage) {
+  public setPairPanel(panel: TabstripPanel) {
+    this.pairedPanel = panel;
+  }
+
+  public setPairedPage(page: TabstripPage) {
     this.page = page;
   }
 
@@ -52,10 +59,10 @@ export class TabstripTab implements OnInit, AfterContentInit {
   }
 
   private showPage() {
-    this.parentBar.expandPanel();
+    this.pairedPanel.expand();
   }
 
-  onTabClick() {
+  onClick() {
     let currentActiveTab: TabstripTab = this.parentBar.getActiveTab();
     if (isNullOrUndefined(currentActiveTab)) {
       this.activate();
