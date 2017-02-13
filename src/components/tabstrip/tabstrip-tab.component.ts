@@ -12,7 +12,7 @@ export class TabstripTab implements OnInit, AfterContentInit {
 
   private pairedPanel: TabstripPanel;
 
-  private page: TabstripPage;
+  @Input() private page: TabstripPage;
 
   @Input() private active: boolean;
 
@@ -23,6 +23,7 @@ export class TabstripTab implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
+    this.setPage();
   }
 
   constructor() {
@@ -36,8 +37,8 @@ export class TabstripTab implements OnInit, AfterContentInit {
     this.pairedPanel = panel;
   }
 
-  public setPairedPage(page: TabstripPage) {
-    this.page = page;
+  public setPage() {
+    this.page.setParentTab(this);
   }
 
   public isActive(): boolean {
