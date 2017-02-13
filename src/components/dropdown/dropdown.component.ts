@@ -7,8 +7,11 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class Dropdown implements OnInit {
   @Input() title: string;
+  @Input() expanded: boolean;
     constructor() { }
 
     ngOnInit() { }
-
+    onClick() {
+      this.expanded = !this.expanded;
+    }
 }

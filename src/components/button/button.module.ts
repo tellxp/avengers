@@ -11,12 +11,10 @@ import {PopupModule} from "../popup/popup.module";
     PopupModule
   ],
   declarations: [
-    Button,
-    Dropdown
+    Button
   ],
   exports: [
-    Button,
-    Dropdown
+    Button
   ],
   providers: [],
 })

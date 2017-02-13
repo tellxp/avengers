@@ -1,7 +1,7 @@
 <h3>弹出层</h3>
-<ave-button #anchor (click)="onButtonClick($event)">弹出</ave-button>
-<ave-popup *ngIf="showPopup" [anchor]="anchor">
-  <h1>sadfsadfdsaf</h1>
+<ave-button #anchor (click)="onClick()">弹出</ave-button>
+<ave-popup [anchor]="anchor" *ngIf="showPopup">
+  <h1>这是一个弹出层</h1>
 </ave-popup>
 
 

@@ -1,3 +1,10 @@
 ave-button:last-of-type {
-  margin-left: -4px;
+  margin-left: -0.25em;
+}
+:host {
+  padding: 0;
+}
+
+ave-popup {
+  padding: 0;
 }

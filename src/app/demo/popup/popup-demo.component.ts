@@ -8,15 +8,13 @@ import {Popup} from "../../../components/popup/popup.component";
 export class PopupDemo implements OnInit {
   constructor() {
   }
-  @Input() showPopup: boolean;
-
+  private showPopup: boolean;
   @ContentChild(Popup) popup: Popup;
 
   ngOnInit() {
-    this.showPopup = false;
   }
 
-  onButtonClick(event) {
+  onClick() {
     this.showPopup = !this.showPopup;
   }
 }

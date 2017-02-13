@@ -14,6 +14,8 @@ import {ButtonModule} from "../components/button/button.module";
 import {ButtonDemo} from "./demo/button/button-demo.component";
 import {PopupModule} from "../components/popup/popup.module";
 import {PopupDemo} from "./demo/popup/popup-demo.component";
+import {DropdownModule} from "../components/dropdown/dropdown.module";
+import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {PopupDemo} from "./demo/popup/popup-demo.component";
     AppComponent,
     TabstripDemo,
     ButtonDemo,
-    PopupDemo
+    PopupDemo,
+    DropdownDemo
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {PopupDemo} from "./demo/popup/popup-demo.component";
     SideMenuModule,
     TabstripModule,
     ButtonModule,
-    PopupModule
+    PopupModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

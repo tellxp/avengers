@@ -1,7 +1,7 @@
 <ave-button #anchor>
-  dsfasd
+  {{title}}
 </ave-button>
-<ave-button><i class="fa fa-caret-down" aria-hidden="true"></i></ave-button>
-<ave-popup [anchor]="anchor">
-  sadfllllll
+<ave-button (click)="onClick()"><i class="fa fa-caret-down" aria-hidden="true"></i></ave-button>
+<ave-popup [anchor]="anchor" *ngIf="expanded">
+  <ng-content></ng-content>
 </ave-popup>

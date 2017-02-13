@@ -7,7 +7,6 @@ import {Popup} from "../../../components/popup/popup.component";
     styleUrls: ['./button-demo.component.scss']
 })
 export class ButtonDemo implements OnInit {
-  @ContentChildren(Button) buttons: QueryList<Button>;
 
     constructor() {
 
