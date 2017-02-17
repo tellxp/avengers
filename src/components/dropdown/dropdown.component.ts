@@ -1,17 +1,30 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import {Popup} from "../popup/popup.component";
+import {PositionService} from "../common/position.service";
 
 @Component({
-    selector: 'ave-dropdown',
-    templateUrl: './dropdown.component.html',
-    styleUrls: ['./dropdown.component.scss']
+  selector: 'ave-dropdown',
+  templateUrl: './dropdown.component.html',
+  styleUrls: ['./dropdown.component.scss']
 })
-export class Dropdown implements OnInit {
+export class Dropdown implements OnInit, AfterViewInit {
   @Input() title: string;
   @Input() expanded: boolean;
-    constructor() { }
+  @ViewChild(Popup) popup: Popup;
 
-    ngOnInit() { }
-    onClick() {
-      this.expanded = !this.expanded;
-    }
+  constructor(private el: ElementRef, private position: PositionService) {
+
+  }
+
+  ngOnInit() {
+  }
+
+  onClick() {
+    this.expanded = !this.expanded;
+  }
+
+  ngAfterViewInit() {
+    this.position.setAnchor(this.el);
+    console.log(this.position);
+  }
 }

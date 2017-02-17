@@ -1,5 +1,11 @@
+@import "../../variables";
+
 :host {
   display: flex;
   position: absolute;
-  background-color: blue;
+  background-color: $component-background-color;
+}
+
+div {
+  display: flex;
 }

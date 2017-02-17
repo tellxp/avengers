@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {Popup} from "./popup.component";
 import {BrowserModule} from "@angular/platform-browser";
+import {PositionService} from "../common/position.service";
 
 
 @NgModule({
@@ -13,6 +14,8 @@ import {BrowserModule} from "@angular/platform-browser";
     declarations: [
       Popup
     ],
-    providers: [],
+    providers: [
+      PositionService
+    ],
 })
 export class PopupModule { }

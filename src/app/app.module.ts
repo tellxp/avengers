@@ -16,6 +16,7 @@ import {PopupModule} from "../components/popup/popup.module";
 import {PopupDemo} from "./demo/popup/popup-demo.component";
 import {DropdownModule} from "../components/dropdown/dropdown.module";
 import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
+import {CommonModule} from "../components/common/common.module";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
     TabstripDemo,
     ButtonDemo,
     PopupDemo,
-    DropdownDemo
+    DropdownDemo,
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
     HttpModule,
     AppRoutingModule,
 
-    //Avengers lib
+    //Avengers Component
+    CommonModule,
     CellModule,
     NavbarModule,
     SideMenuModule,
@@ -40,6 +43,7 @@ import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
     ButtonModule,
     PopupModule,
     DropdownModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,15 +12,14 @@ export class Button implements OnInit, AfterViewInit, AfterContentInit {
   height: number;
   width: number;
 
-  constructor(private el: ElementRef) {
-
+  constructor() {
   }
 
   ngAfterViewInit() {
-    this.top = this.el.nativeElement.offsetTop;
-    this.left = this.el.nativeElement.offsetLeft;
-    this.height = this.el.nativeElement.offsetHeight;
-    this.width = this.el.nativeElement.offsetWidth;
+    // this.top = this.el.nativeElement.offsetTop;
+    // this.left = this.el.nativeElement.offsetLeft;
+    // this.height = this.el.nativeElement.offsetHeight;
+    // this.width = this.el.nativeElement.offsetWidth;
   }
 
   ngAfterContentInit() {

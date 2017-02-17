@@ -1,4 +1,10 @@
+@import "../../variables";
+
 ul {
   margin: 0;
   padding: 0;
+}
+:host {
+  min-width: 10em;
+  background-color: $group-background-color;
 }
