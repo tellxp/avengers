@@ -1,4 +1,19 @@
-:host {
-  list-style: none;
+@import "../../variables";
 
+
+:host {
+  display: flex;
+  height: 2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  justify-content: flex-start;
+  align-items: center;
+  user-select: none;
+  list-style: none;
+  cursor: pointer;
+  background-color: $item-background-color;
+  color: $item-color;
+}
+:host:hover {
+  background-color: $item-hover-background-color;
 }

@@ -1,8 +1,12 @@
 @import "../../variables";
 :host {
   display: inline-flex;
+  height: 2em;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   background-color: $item-background-color;
-  padding: 0.5em;
   -webkit-user-select: none;
   color: $item-color;
   cursor: pointer;

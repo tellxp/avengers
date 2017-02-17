@@ -1,19 +1,20 @@
 import {Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
-import {Popup} from "../popup/popup.component";
-import {PositionService} from "../common/position.service";
+import {DomService} from "../common/dom.service";
 
 @Component({
   selector: 'ave-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  providers: [DomService]
 })
 export class Dropdown implements OnInit, AfterViewInit {
   @Input() title: string;
   @Input() expanded: boolean;
-  @ViewChild(Popup) popup: Popup;
+  private domService: DomService;
 
-  constructor(private el: ElementRef, private position: PositionService) {
-
+  constructor(private el: ElementRef, dom: DomService) {
+    this.domService = dom;
+    this.domService.loadElement(el);
   }
 
   ngOnInit() {
@@ -22,9 +23,10 @@ export class Dropdown implements OnInit, AfterViewInit {
   onClick() {
     this.expanded = !this.expanded;
   }
-
+  onBlur() {
+    this.expanded = false;
+  }
   ngAfterViewInit() {
-    this.position.setAnchor(this.el);
-    console.log(this.position);
+
   }
 }

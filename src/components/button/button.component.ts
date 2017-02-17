@@ -1,25 +1,23 @@
 import {Component, OnInit, ElementRef, AfterViewInit, AfterContentInit, HostListener} from '@angular/core';
+import {DomService} from "../common/dom.service";
 
 @Component({
   selector: 'ave-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
-  host: {'tabindex':'0'}
+  host: {'tabindex':'-1'},
+  providers: [DomService]
 })
 export class Button implements OnInit, AfterViewInit, AfterContentInit {
-  top: number;
-  left: number;
-  height: number;
-  width: number;
 
-  constructor() {
+  public domService: DomService;
+  constructor(el: ElementRef, dom: DomService) {
+    this.domService = dom;
+    this.domService.loadElement(el);
   }
 
   ngAfterViewInit() {
-    // this.top = this.el.nativeElement.offsetTop;
-    // this.left = this.el.nativeElement.offsetLeft;
-    // this.height = this.el.nativeElement.offsetHeight;
-    // this.width = this.el.nativeElement.offsetWidth;
+
   }
 
   ngAfterContentInit() {
