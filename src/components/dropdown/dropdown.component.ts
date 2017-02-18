@@ -9,16 +9,18 @@ import {DomService} from "../common/dom.service";
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   animations: [
-    trigger('expandedState', [
+    trigger('fadeIn', [
       transition('void => *', [
         style({
-          opacity: 0
+          opacity: 0,
+          height:0
         }),
-        animate('0.5s ease-in')
+        animate('1s ease')
       ]),
       transition('* => void', [
-        animate('0.5s ease-out', style({
-          opacity: 0
+        animate('1s ease', style({
+          opacity: 0,
+          height:0
         }))
       ])
     ])
