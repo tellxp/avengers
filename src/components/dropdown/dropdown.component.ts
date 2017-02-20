@@ -8,23 +8,7 @@ import {DomService} from "../common/dom.service";
   selector: 'ave-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      transition('void => *', [
-        style({
-          opacity: 0,
-          height:0
-        }),
-        animate('1s ease')
-      ]),
-      transition('* => void', [
-        animate('1s ease', style({
-          opacity: 0,
-          height:0
-        }))
-      ])
-    ])
-  ],
+
   providers: [DomService]
 })
 export class Dropdown implements OnInit, AfterViewInit {

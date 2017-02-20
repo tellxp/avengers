@@ -1,7 +1,7 @@
 <ave-button #anchor>
   {{title}}
 </ave-button>
-<ave-button  (click)="onClick()"><i class="fa fa-caret-down" aria-hidden="true"></i></ave-button>
-<ave-popup [@fadeIn] [anchor]="anchor" *ngIf="expanded">
+<ave-button (blur)="onBlur()" (click)="onClick()"><i class="fa fa-caret-down" aria-hidden="true"></i></ave-button>
+<ave-popup [anchor]="anchor" *ngIf="expanded">
   <ng-content></ng-content>
 </ave-popup>

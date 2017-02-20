@@ -1,0 +1,7 @@
+@import "../../variables";
+
+:host {
+  display: flex;
+  background-color: $bar-background-color;
+  width: 100%;
+}

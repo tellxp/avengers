@@ -1,1 +1,3 @@
-<ng-content *ngIf="parentTab.isActive()"></ng-content>
+<div [@fadeIn] *ngIf="parentTab.isActive()">
+  <ng-content></ng-content>
+</div>

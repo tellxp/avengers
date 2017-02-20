@@ -1,0 +1,4 @@
+<div #anchor (click)="onClick()">{{title}}</div>
+<ave-popup [anchor]="anchor" *ngIf="items.length > 1 && expanded">
+  <ng-content *ngFor="let item of items"></ng-content>
+</ave-popup>

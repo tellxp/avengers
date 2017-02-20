@@ -1,6 +1,7 @@
 @import "../../variables";
 
 div {
+  display: flex;
   background-color: $panel-background-color;
   color: $panel-color;
   height: 10em;
@@ -8,4 +9,8 @@ div {
   border-bottom-color: #ffffff;
   border-bottom-style: outset;
   border-bottom-width: 3px;
+}
+:host {
+  display: flex;
+  overflow: hidden;
 }

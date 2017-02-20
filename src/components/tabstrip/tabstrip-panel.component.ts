@@ -1,4 +1,7 @@
-import {Component,Input, ContentChildren, QueryList, OnInit, AfterContentInit} from '@angular/core';
+import {
+  Component, Input, ContentChildren, QueryList, OnInit, AfterContentInit, trigger,
+  transition, style, animate
+} from '@angular/core';
 import {TabstripPage} from "./tabstrip-page.component";
 import {isNullOrUndefined} from "util";
 import {Tabstrip} from "./tabstrip.component";
@@ -8,7 +11,24 @@ import {TabstripBar} from "./tabstrip-bar.component";
 @Component({
   selector: 'ave-tabstrip-panel',
   templateUrl: './tabstrip-panel.component.html',
-  styleUrls: ['./tabstrip-panel.component.scss']
+  styleUrls: ['./tabstrip-panel.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition('void => *', [
+        style({
+          opacity: 0,
+          height:0
+        }),
+        animate('1s ease')
+      ]),
+      transition('* => void', [
+        animate('1s ease', style({
+          opacity: 0,
+          height:0
+        }))
+      ])
+    ])
+  ]
 })
 export class TabstripPanel implements OnInit, AfterContentInit {
 

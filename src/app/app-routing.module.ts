@@ -4,6 +4,7 @@ import {TabstripDemo} from  './demo/tabstrip/tabstrip-demo.component'
 import {ButtonDemo} from  './demo/button/button-demo.component'
 import {PopupDemo} from "./demo/popup/popup-demo.component";
 import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
+import {MenuDemo} from "./demo/menu/menu-demo.component";
 
 
 const appRoutes: Routes = [
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
   { path: 'button-demo', component: ButtonDemo },
   { path: 'popup-demo', component: PopupDemo },
   { path: 'dropdown-demo', component: DropdownDemo },
+  { path: 'menu-demo', component: MenuDemo },
 
   ];
 

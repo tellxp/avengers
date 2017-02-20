@@ -1,4 +1,4 @@
-import {Injectable, ElementRef} from '@angular/core';
+import {Injectable, ElementRef, Component} from '@angular/core';
 
 @Injectable()
 export class DomService {
@@ -10,18 +10,30 @@ export class DomService {
   loadElement(el: ElementRef) {
     this.element = el;
   }
-  public getElementPosition(): ElementPosition {
+  public getComponentPosition(): ElementPosition {
     this.elementPosition.left = this.element.nativeElement.offsetLeft;
     this.elementPosition.top = this.element.nativeElement.offsetTop;
     return this.elementPosition;
   }
 
-  public getElementStyle(): ElementStyle {
+  public getComponentStyle(): ElementStyle {
     this.elementStyle.height = this.element.nativeElement.offsetHeight;
     this.elementStyle.width = this.element.nativeElement.offsetWidth;
     return this.elementStyle;
   }
+  public getElementPosition(el: HTMLElement): ElementPosition {
+    this.elementPosition.left = el.offsetLeft;
+    this.elementPosition.top = el.offsetTop;
+    return this.elementPosition;
+  }
+  public getElementStyle(el: HTMLElement): ElementStyle {
+    this.elementStyle.height = el.offsetHeight;
+    this.elementStyle.width = el.offsetWidth;
+    return this.elementStyle;
+  }
 }
+
+
 
 export class ElementPosition {
   left: number;
