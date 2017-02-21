@@ -1,8 +1,9 @@
 import {
   Component, OnInit, Input, ElementRef, AfterViewInit, ContentChildren, QueryList,
-  AfterContentInit
+  AfterContentInit, ContentChild
 } from '@angular/core';
 import {DomService} from "../common/dom.service";
+import {MenuPanel} from "./menu-panel.component";
 import {isNullOrUndefined} from "util";
 
 @Component({
@@ -11,12 +12,14 @@ import {isNullOrUndefined} from "util";
   styleUrls: ['./menu-item.component.scss'],
   providers: [DomService]
 })
-export class MenuItem implements OnInit, AfterContentInit,AfterViewInit {
+export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   @Input() title: string;
-  private items: MenuItem[];
-  @ContentChildren(MenuItem) private contentItems: QueryList<MenuItem>;
+  @ContentChild(MenuPanel) contentPanel: MenuPanel;
+  panel: MenuPanel;
   public domService: DomService;
   private expanded: boolean;
+
+  type: MenuItemType;
 
   constructor(el: ElementRef, dom: DomService) {
     this.domService = dom;
@@ -24,22 +27,27 @@ export class MenuItem implements OnInit, AfterContentInit,AfterViewInit {
   }
 
   ngAfterContentInit() {
-    this.items = this.contentItems.toArray();
-    console.log(this.items);
+    this.initPanel();
+  }
+
+  initPanel() {
+    if (!isNullOrUndefined(this.contentPanel)) {
+      this.panel = this.contentPanel;
+      this.panel.setParentItem(this);
+    }
   }
 
   ngAfterViewInit() {
   }
-  hasItems():boolean {
-    if (isNullOrUndefined(this.items)) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+
   onClick() {
     this.expanded = !this.expanded;
   }
+
   ngOnInit() {
   }
+}
+enum MenuItemType {
+  Entry,
+  Item
 }
