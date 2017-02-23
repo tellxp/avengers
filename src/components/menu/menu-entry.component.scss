@@ -1,0 +1,39 @@
+@import "../../variables";
+
+
+:host {
+  display: flex;
+  height: 3em;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  min-width: 6em;
+  background-color: $item-background-color;
+  color: $item-color;
+  padding: 0.5em;
+}
+:host:hover {
+  background-color: $item-hover-background-color;
+}
+ave-popup {
+  display: flex;
+  flex-flow: column;
+}
+
+div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  display: flex;
+}
+i {
+  display: flex;
+  font-size: 0.5em;
+  margin-left: 1em;
+}

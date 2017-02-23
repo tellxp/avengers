@@ -7,6 +7,7 @@ import {MenuItem} from "./menu-item.component";
 import {MenuBar} from "./menu-bar.component";
 import {PopupModule} from "../popup/popup.module";
 import {MenuPanel} from "./menu-panel.component";
+import {MenuEntry} from "./menu-entry.component";
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {MenuPanel} from "./menu-panel.component";
     exports: [
       Menu,
       MenuBar,
+      MenuEntry,
       MenuPanel,
       MenuGroup,
       MenuItem
@@ -23,6 +25,7 @@ import {MenuPanel} from "./menu-panel.component";
     declarations: [
       Menu,
       MenuBar,
+      MenuEntry,
       MenuPanel,
       MenuGroup,
       MenuItem

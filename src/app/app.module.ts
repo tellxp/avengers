@@ -19,11 +19,13 @@ import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
 import {CommonModule} from "../components/common/common.module";
 import {MenuDemo} from "./demo/menu/menu-demo.component";
 import {MenuModule} from "../components/menu/menu.module";
+import {HomeDemo} from "./demo/home/home-demo.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeDemo,
     TabstripDemo,
     ButtonDemo,
     PopupDemo,

@@ -38,9 +38,17 @@ export class DomService {
 export class ElementPosition {
   left: number;
   top: number;
+  constructor() {
+    this.left = 0;
+    this.top = 0;
+  }
 }
 
 export class ElementStyle {
   height: number;
   width: number;
+  constructor() {
+    this.height = 0;
+    this.width = 0;
+  }
 }

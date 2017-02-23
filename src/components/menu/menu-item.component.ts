@@ -15,13 +15,12 @@ import {isNullOrUndefined} from "util";
 export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   @Input() title: string;
   @ContentChild(MenuPanel) contentPanel: MenuPanel;
-  panel: MenuPanel;
+  @Input() panel: MenuPanel;
+  expanded: boolean;
   public domService: DomService;
-  private expanded: boolean;
-
-  type: MenuItemType;
 
   constructor(el: ElementRef, dom: DomService) {
+    this.expanded = false;
     this.domService = dom;
     this.domService.loadElement(el);
   }
@@ -40,14 +39,16 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
+  onFocus() {
+
+  }
   onClick() {
     this.expanded = !this.expanded;
+    console.log(this.panel.parent);
   }
-
+  onBlur() {
+    // this.expanded = false;
+  }
   ngOnInit() {
   }
-}
-enum MenuItemType {
-  Entry,
-  Item
 }

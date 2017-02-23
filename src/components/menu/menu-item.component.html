@@ -1,2 +1,4 @@
-<div #anchor (click)="onClick()">{{title}}</div>
-<ng-content *ngIf="expanded"></ng-content>
+<div tabindex="-1" (click)="onClick()" (focus)="onFocus()">
+  <span>{{title}}</span>
+  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+</div>
