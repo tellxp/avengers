@@ -31,6 +31,7 @@ export class DomService {
     this.elementStyle.width = el.offsetWidth;
     return this.elementStyle;
   }
+
 }
 
 

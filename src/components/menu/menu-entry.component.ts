@@ -1,6 +1,10 @@
-import {Component, OnInit, AfterContentInit, Input, ElementRef, ContentChildren, QueryList} from '@angular/core';
+import {
+  Component, OnInit, AfterContentInit, Input, ElementRef, ContentChildren, QueryList,
+  ContentChild, AfterViewInit, ViewChild, AfterViewChecked
+} from '@angular/core';
 import {DomService} from "../common/dom.service";
 import {MenuPanel} from "./menu-panel.component";
+import {Popup} from "../popup/popup.component";
 
 @Component({
   selector: 'ave-menu-entry',
@@ -8,10 +12,12 @@ import {MenuPanel} from "./menu-panel.component";
   styleUrls: ['./menu-entry.component.scss'],
   providers: [DomService]
 })
-export class MenuEntry implements OnInit, AfterContentInit {
+export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
 
   @Input() title: string;
-  @Input() panel: MenuPanel;
+  @ContentChild(MenuPanel) contentPanel: MenuPanel;
+  @ViewChild(Popup) popup: Popup;
+  panel: MenuPanel;
   domService: DomService;
   private expanded: boolean;
 
@@ -22,8 +28,19 @@ export class MenuEntry implements OnInit, AfterContentInit {
 
   ngOnInit() {
   }
+  ngAfterViewChecked() {
 
+  }
+  ngAfterViewInit() {
+  }
   ngAfterContentInit() {
+
+    this.initPanel();
+  }
+
+  initPanel() {
+    this.panel = this.contentPanel;
+    this.panel.setParentEntry(this);
   }
   onClick() {
     this.expanded = !this.expanded;

@@ -1,10 +1,10 @@
 import {
   Component, OnInit, Input, HostListener, ElementRef, ViewContainerRef, ComponentRef,
-  ViewRef, AfterViewInit, ViewChild, Renderer, trigger, transition, style, animate, AfterViewChecked
+  ViewRef, AfterViewInit, ViewChild, Renderer, trigger, transition, style, animate, AfterViewChecked, ContentChildren,
+  QueryList, AfterContentInit, ViewChildren
 } from '@angular/core';
 import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
 import {isNullOrUndefined} from "util";
-import {el} from "@angular/platform-browser/testing/browser_util";
 
 
 @Component({
@@ -31,16 +31,18 @@ import {el} from "@angular/platform-browser/testing/browser_util";
   ],
   providers: [DomService]
 })
-export class Popup implements OnInit, AfterViewChecked {
+export class Popup implements OnInit, AfterViewInit, AfterViewChecked, AfterContentInit {
   @Input() anchor: any;
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
 
+  @ViewChildren(Popup) contentPopups: QueryList<Popup>;
   private element: ElementRef;
   public domService: DomService;
   private anchorPosition: ElementPosition;
   private anchorStyle: ElementStyle;
   private position: ElementPosition;
+  public style: ElementStyle;
   private renderer: Renderer;
 
   constructor(el: ElementRef, dom: DomService, renderer: Renderer) {
@@ -48,6 +50,8 @@ export class Popup implements OnInit, AfterViewChecked {
     this.anchorStyle = new ElementStyle();
     this.orientation = PopupOrientation.Bottom;
     this.offset = new ElementPosition();
+    this.position = new ElementPosition();
+    this.style = new ElementStyle();
     this.renderer = renderer;
     this.element = el;
     this.domService = dom;
@@ -55,15 +59,21 @@ export class Popup implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    this.setPosition();
-    this.renderer.setElementStyle(this.element.nativeElement, 'left', this.position.left + 'px');
-    this.renderer.setElementStyle(this.element.nativeElement, 'top', this.position.top + 'px');
   }
 
   ngOnInit() {
   }
+  ngAfterViewInit() {
+
+  }
+
+  ngAfterContentInit() {
+    this.setPosition();
+    // this.setStyle();
 
 
+
+  }
   setPosition() {
     if (isNullOrUndefined(this.anchor.domService)) {
       this.anchorPosition = this.domService.getElementPosition(this.anchor);
@@ -73,8 +83,14 @@ export class Popup implements OnInit, AfterViewChecked {
       this.anchorStyle = this.anchor.domService.getComponentStyle();
     }
     this.position = this.calculatePosition(this.anchorPosition, this.anchorStyle, this.orientation, this.offset);
+    this.renderer.setElementStyle(this.element.nativeElement, 'left', this.position.left + 'px');
+    this.renderer.setElementStyle(this.element.nativeElement, 'top', this.position.top + 'px');
   }
 
+  setStyle() {
+    this.renderer.setElementStyle(this.element.nativeElement, 'width', this.style.width + 'px');
+    this.renderer.setElementStyle(this.element.nativeElement, 'height', this.style.height + 'px');
+  }
   calculatePosition(elPosition: ElementPosition, elStyle: ElementStyle,
                     orientation:PopupOrientation, offset: ElementPosition): ElementPosition {
     let value = new ElementPosition();
@@ -100,6 +116,7 @@ export class Popup implements OnInit, AfterViewChecked {
     }
     return value;
   }
+
   // @HostListener("window:scroll", [])
   // onWindowScroll() {
   //   this.anchorBtn = <Button>this.parent;

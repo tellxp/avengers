@@ -1,6 +1,7 @@
-<div (click)="onClick()">
+<div #anchor (click)="onClick()">
   <span>{{title}}</span>
   <i class="fa fa-chevron-down" aria-hidden="true"></i>
 </div>
-
-<ng-content *ngIf="expanded"></ng-content>
+<ave-popup [anchor]="anchor">
+  <ng-content *ngIf="expanded"></ng-content>
+</ave-popup>

@@ -23,10 +23,4 @@ export class MenuBar implements OnInit, AfterContentInit {
   setParentMenu(menu: Menu) {
     this.parentMenu = menu;
   }
-  pairEntriesAndPanels() {
-    let length = this.entries.length;
-    for (let i = 0; i < length; i++) {
-      this.entries[i].panel.setParentEntry(this.entries[i]);
-    }
-  }
 }

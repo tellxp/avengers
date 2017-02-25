@@ -11,14 +11,9 @@
   min-width: 6em;
   background-color: $item-background-color;
   color: $item-color;
-  padding: 0.5em;
 }
 :host:hover {
   background-color: $item-hover-background-color;
-}
-ave-popup {
-  display: flex;
-  flex-flow: column;
 }
 
 div {
