@@ -5,9 +5,9 @@ import {HttpModule} from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import {AppComponent} from './app.component';
+
 import {CellModule} from '../components/layout/layout.module';
-import {NavbarModule} from '../components/navbar/navbar.module';
-import {SideMenuModule} from '../components/side-menu/side-menu.module';
+
 import {TabstripDemo} from  './demo/tabstrip/tabstrip-demo.component'
 import {TabstripModule} from "../components/tabstrip/tabstrip.module";
 import {ButtonModule} from "../components/button/button.module";
@@ -42,8 +42,6 @@ import {HomeDemo} from "./demo/home/home-demo.component";
     //Avengers Component
     CommonModule,
     CellModule,
-    NavbarModule,
-    SideMenuModule,
     TabstripModule,
     ButtonModule,
     PopupModule,

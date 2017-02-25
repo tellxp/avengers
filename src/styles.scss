@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@progress/kendo-theme-default/scss/all";
 @import "~normalize.css";
 @import "variables";
-@import "~animate.css";
+@import "../lib/font-awesome-4.7.0/css/font-awesome.min.css";
 
 body, input, select {
   font-family: "Microsoft YaHei",SimSun,Tahoma,Arial;
