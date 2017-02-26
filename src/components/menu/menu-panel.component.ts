@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, AfterContentInit, AfterViewChecked, ElementRef, Renderer,
-  AfterViewInit
+  AfterViewInit, OnDestroy
 } from '@angular/core';
 import {MenuItem} from "./menu-item.component";
 import {MenuEntry} from "./menu-entry.component";
@@ -14,13 +14,17 @@ import {isNullOrUndefined} from "util";
   styleUrls: ['./menu-panel.component.scss'],
   providers: [DomService]
 })
-export class MenuPanel implements OnInit {
+export class MenuPanel implements OnInit,AfterViewInit, OnDestroy {
   parentMenu: Menu;
   parentItem: MenuItem;
   parentEntry: MenuEntry;
+  element: ElementRef;
+  domService: DomService;
 
-  constructor() {
-
+  constructor(el: ElementRef, dom: DomService) {
+    this.element = el;
+    this.domService = dom;
+    this.domService.loadElement(this.element);
   }
 
 
@@ -35,5 +39,11 @@ export class MenuPanel implements OnInit {
     this.parentMenu = menu;
   }
   ngOnInit() {
+  }
+  ngAfterViewInit() {
+
+  }
+  ngOnDestroy() {
+
   }
 }

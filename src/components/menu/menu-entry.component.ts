@@ -1,8 +1,8 @@
 import {
   Component, OnInit, AfterContentInit, Input, ElementRef, ContentChildren, QueryList,
-  ContentChild, AfterViewInit, ViewChild, AfterViewChecked
+  ContentChild, AfterViewInit, ViewChild, AfterViewChecked, Renderer
 } from '@angular/core';
-import {DomService} from "../common/dom.service";
+import {DomService, ElementStyle} from "../common/dom.service";
 import {MenuPanel} from "./menu-panel.component";
 import {Popup} from "../popup/popup.component";
 
@@ -21,7 +21,7 @@ export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, After
   domService: DomService;
   private expanded: boolean;
 
-  constructor(el: ElementRef, dom: DomService) {
+  constructor(el: ElementRef, dom: DomService,public renderer: Renderer) {
     this.domService = dom;
     this.domService.loadElement(el);
   }
@@ -32,9 +32,9 @@ export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, After
 
   }
   ngAfterViewInit() {
+
   }
   ngAfterContentInit() {
-
     this.initPanel();
   }
 
@@ -44,6 +44,8 @@ export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, After
   }
   onClick() {
     this.expanded = !this.expanded;
+    let width = 300;
+    this.renderer.setElementStyle(this.popup.element.nativeElement, 'width', width + 'px');
   }
 
 }

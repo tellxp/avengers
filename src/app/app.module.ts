@@ -21,6 +21,8 @@ import {MenuDemo} from "./demo/menu/menu-demo.component";
 import {MenuModule} from "../components/menu/menu.module";
 import {HomeDemo} from "./demo/home/home-demo.component";
 
+import {} from '@types/node'
+
 
 @NgModule({
   declarations: [

@@ -2,10 +2,10 @@ import {
   Component, Input, ContentChildren, QueryList, OnInit, AfterContentInit, trigger,
   transition, style, animate
 } from '@angular/core';
-import {TabstripPage} from "./tabstrip-page.component";
-import {isNullOrUndefined} from "util";
-import {Tabstrip} from "./tabstrip.component";
-import {TabstripBar} from "./tabstrip-bar.component";
+import {TabstripPage} from './tabstrip-page.component';
+import {isNullOrUndefined} from 'util';
+import {Tabstrip} from './tabstrip.component';
+import {TabstripBar} from './tabstrip-bar.component';
 
 
 @Component({

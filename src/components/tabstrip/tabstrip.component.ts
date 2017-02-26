@@ -3,8 +3,8 @@ import {
   Input, OnInit, AfterContentInit, ContentChildren, QueryList, ContentChild,
 } from '@angular/core';
 
-import {TabstripBar} from "./tabstrip-bar.component";
-import {TabstripPanel} from "./tabstrip-panel.component";
+import {TabstripBar} from './tabstrip-bar.component';
+import {TabstripPanel} from './tabstrip-panel.component';
 
 
 

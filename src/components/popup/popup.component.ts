@@ -17,14 +17,12 @@ import {isNullOrUndefined} from "util";
       transition('void => *', [
         style({
           opacity: 0,
-          height: 0
         }),
         animate('0.5s ease')
       ]),
       transition('* => void', [
         animate('0.5s ease', style({
           opacity: 0,
-          height: 0
         }))
       ])
     ])
@@ -37,13 +35,13 @@ export class Popup implements OnInit, AfterViewInit, AfterViewChecked, AfterCont
   @Input() offset: ElementPosition;
 
   @ViewChildren(Popup) contentPopups: QueryList<Popup>;
-  private element: ElementRef;
+  public element: ElementRef;
   public domService: DomService;
   private anchorPosition: ElementPosition;
   private anchorStyle: ElementStyle;
   private position: ElementPosition;
   public style: ElementStyle;
-  private renderer: Renderer;
+  public renderer: Renderer;
 
   constructor(el: ElementRef, dom: DomService, renderer: Renderer) {
     this.anchorPosition = new ElementPosition();
@@ -59,6 +57,7 @@ export class Popup implements OnInit, AfterViewInit, AfterViewChecked, AfterCont
   }
 
   ngAfterViewChecked() {
+    this.setPosition();
   }
 
   ngOnInit() {
@@ -68,10 +67,6 @@ export class Popup implements OnInit, AfterViewInit, AfterViewChecked, AfterCont
   }
 
   ngAfterContentInit() {
-    this.setPosition();
-    // this.setStyle();
-
-
 
   }
   setPosition() {
