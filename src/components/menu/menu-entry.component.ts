@@ -2,9 +2,9 @@ import {
   Component, OnInit, AfterContentInit, Input, ElementRef, ContentChildren, QueryList,
   ContentChild, AfterViewInit, ViewChild, AfterViewChecked, Renderer
 } from '@angular/core';
-import {DomService, ElementStyle} from "../common/dom.service";
-import {MenuPanel} from "./menu-panel.component";
-import {Popup} from "../popup/popup.component";
+import {DomService, ElementStyle} from '../common/dom.service';
+import {MenuPanel} from './menu-panel.component';
+import {Popup} from '../popup/popup.component';
 
 @Component({
   selector: 'ave-menu-entry',

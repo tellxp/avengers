@@ -1,7 +1,7 @@
 import {Component, OnInit, AfterContentInit, ContentChildren, QueryList} from '@angular/core';
-import {MenuEntry} from "./menu-entry.component";
-import {MenuBar} from "./menu-bar.component";
-import {MenuPanel} from "./menu-panel.component";
+import {MenuEntry} from './menu-entry.component';
+import {MenuBar} from './menu-bar.component';
+import {MenuPanel} from './menu-panel.component';
 
 @Component({
   selector: 'ave-menu',

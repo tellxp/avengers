@@ -1,8 +1,8 @@
-import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from "@angular/core";
-import {TabstripBar} from "./tabstrip-bar.component";
-import {TabstripPage} from "./tabstrip-page.component";
-import {isNullOrUndefined} from "util";
-import {TabstripPanel} from "./tabstrip-panel.component";
+import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from '@angular/core';
+import {TabstripBar} from './tabstrip-bar.component';
+import {TabstripPage} from './tabstrip-page.component';
+import {isNullOrUndefined} from 'util';
+import {TabstripPanel} from './tabstrip-panel.component';
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',

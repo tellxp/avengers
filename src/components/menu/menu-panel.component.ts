@@ -2,11 +2,10 @@ import {
   Component, OnInit, Input, AfterContentInit, AfterViewChecked, ElementRef, Renderer,
   AfterViewInit, OnDestroy
 } from '@angular/core';
-import {MenuItem} from "./menu-item.component";
-import {MenuEntry} from "./menu-entry.component";
-import {Menu} from "./menu.component";
-import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
-import {isNullOrUndefined} from "util";
+import {MenuItem} from './menu-item.component';
+import {MenuEntry} from './menu-entry.component';
+import {Menu} from './menu.component';
+import {DomService, ElementPosition, ElementStyle} from '../common/dom.service';
 
 @Component({
   selector: 'ave-menu-panel',

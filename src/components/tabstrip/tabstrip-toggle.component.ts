@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from "@angular/core";
-import {TabstripBar} from "./tabstrip-bar.component";
-import {TabstripPanel} from "./tabstrip-panel.component";
+import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from '@angular/core';
+import {TabstripBar} from './tabstrip-bar.component';
+import {TabstripPanel} from './tabstrip-panel.component';
 
 
 @Component({

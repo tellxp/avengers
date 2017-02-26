@@ -2,11 +2,11 @@ import {
   Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit, ContentChild,
   HostBinding
 } from '@angular/core';
-import {TabstripTab} from "./tabstrip-tab.component";
-import {isNullOrUndefined} from "util";
-import {TabstripToggle} from "./tabstrip-toggle.component";
-import {Tabstrip} from "./tabstrip.component";
-import {TabstripPanel} from "./tabstrip-panel.component";
+import {TabstripTab} from './tabstrip-tab.component';
+import {isNullOrUndefined} from 'util';
+import {TabstripToggle} from './tabstrip-toggle.component';
+import {Tabstrip} from './tabstrip.component';
+import {TabstripPanel} from './tabstrip-panel.component';
 
 @Component({
   selector: 'ave-tabstrip-bar',
@@ -46,7 +46,7 @@ export class TabstripBar implements OnInit, AfterContentInit {
   private loadTabs() {
     this._tabs = this.contentTabs.toArray();
     if (isNullOrUndefined(this._tabs)) {
-      throw new Error("tabs is null or undefined");
+      throw new Error('tabs is null or undefined');
     } else {
       let length: number = this._tabs.length;
       for (let i = 0; i < length; i++) {
@@ -60,7 +60,7 @@ export class TabstripBar implements OnInit, AfterContentInit {
 
   public pairTabAndPanel(panel: TabstripPanel) {
     if (isNullOrUndefined(this._tabs)) {
-      throw new Error("tabs is null or undefined");
+      throw new Error('tabs is null or undefined');
     } else {
       let length: number = this._tabs.length;
       for (let i = 0; i < length; i++) {

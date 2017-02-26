@@ -2,10 +2,10 @@ import {
   Component, OnInit, Input, ElementRef, AfterViewInit, ContentChildren, QueryList,
   AfterContentInit, ContentChild, ViewChild
 } from '@angular/core';
-import {DomService} from "../common/dom.service";
-import {MenuPanel} from "./menu-panel.component";
-import {isNullOrUndefined} from "util";
-import {PopupOrientation, Popup} from "../popup/popup.component";
+import {DomService} from '../common/dom.service';
+import {MenuPanel} from './menu-panel.component';
+import {isNullOrUndefined} from 'util';
+import {PopupOrientation, Popup} from '../popup/popup.component';
 
 @Component({
   selector: 'ave-menu-item',

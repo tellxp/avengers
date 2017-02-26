@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate} from '@angular/core';
-import {TabstripPanel} from "./tabstrip-panel.component";
-import {TabstripTab} from "./tabstrip-tab.component";
+import {TabstripPanel} from './tabstrip-panel.component';
+import {TabstripTab} from './tabstrip-tab.component';
 
 @Component({
   selector: 'ave-tabstrip-page',

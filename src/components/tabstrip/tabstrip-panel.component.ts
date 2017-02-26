@@ -17,14 +17,14 @@ import {TabstripBar} from './tabstrip-bar.component';
       transition('void => *', [
         style({
           opacity: 0,
-          height:0
+          height: 0
         }),
         animate('1s ease')
       ]),
       transition('* => void', [
         animate('1s ease', style({
           opacity: 0,
-          height:0
+          height: 0
         }))
       ])
     ])
@@ -48,9 +48,11 @@ export class TabstripPanel implements OnInit, AfterContentInit {
     this.expanded = false;
     this.activePage = null;
   }
+
   ngOnInit() {
 
   }
+
   ngAfterContentInit() {
     this.loadPages();
   }
@@ -58,7 +60,7 @@ export class TabstripPanel implements OnInit, AfterContentInit {
   private loadPages() {
     this.pages = this.contentPages.toArray();
     if (isNullOrUndefined(this.pages)) {
-      throw new Error("pages is null or undefined");
+      throw new Error('pages is null or undefined');
     } else {
       for (let i = 0; i < this.pages.length; i++) {
         this.pages[i].setParentPanel(this);
@@ -89,7 +91,6 @@ export class TabstripPanel implements OnInit, AfterContentInit {
   public collapse() {
     this.expanded = false;
   }
-
 
 
 }
