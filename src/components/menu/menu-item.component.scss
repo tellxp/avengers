@@ -14,6 +14,8 @@
 }
 :host:hover {
   background-color: $item-hover-background-color;
+  overflow: visible;
+
 }
 
 div {

@@ -6,6 +6,7 @@ import {DomService} from '../common/dom.service';
 import {MenuPanel} from './menu-panel.component';
 import {isNullOrUndefined} from 'util';
 import {PopupOrientation, Popup} from '../popup/popup.component';
+import {MenuEntry} from "./menu-entry.component";
 
 @Component({
   selector: 'ave-menu-item',
@@ -19,6 +20,7 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   @Input() panel: MenuPanel;
   expanded: boolean;
   @ViewChild(Popup) popup: Popup;
+  parentEntry: MenuEntry;
 
   orientation: PopupOrientation;
   public domService: DomService;
@@ -27,9 +29,10 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
     this.orientation = PopupOrientation.Right;
     this.expanded = false;
     this.domService = dom;
-    this.domService.loadElement(el);
   }
-
+  setParentEntry(entry: MenuEntry) {
+    this.parentEntry = entry;
+  }
   ngAfterContentInit() {
     this.initPanel();
   }
@@ -42,6 +45,7 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+
   }
 
   onFocus() {

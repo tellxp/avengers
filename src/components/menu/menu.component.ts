@@ -1,4 +1,7 @@
-import {Component, OnInit, AfterContentInit, ContentChildren, QueryList} from '@angular/core';
+import {
+  Component, OnInit, AfterContentInit, ContentChildren, QueryList, AfterViewInit,
+  ViewChildren
+} from '@angular/core';
 import {MenuEntry} from './menu-entry.component';
 import {MenuBar} from './menu-bar.component';
 import {MenuPanel} from './menu-panel.component';
@@ -8,12 +11,11 @@ import {MenuPanel} from './menu-panel.component';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class Menu implements OnInit, AfterContentInit {
+export class Menu implements OnInit, AfterContentInit, AfterViewInit {
   @ContentChildren(MenuBar) contentBars: QueryList<MenuBar>;
   @ContentChildren(MenuPanel) contentPanels: QueryList<MenuPanel>;
   bars: MenuBar[];
   panels: MenuPanel[];
-
   constructor() {
   }
 
@@ -24,7 +26,9 @@ export class Menu implements OnInit, AfterContentInit {
     this.initBars();
     this.initPanels();
   }
-
+ngAfterViewInit() {
+    console.log();
+}
   initBars() {
     this.bars = this.contentBars.toArray();
     let length = this.bars.length;

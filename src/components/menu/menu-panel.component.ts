@@ -13,7 +13,7 @@ import {DomService, ElementPosition, ElementStyle} from '../common/dom.service';
   styleUrls: ['./menu-panel.component.scss'],
   providers: [DomService]
 })
-export class MenuPanel implements OnInit,AfterViewInit, OnDestroy {
+export class MenuPanel implements OnInit,AfterViewChecked, AfterViewInit, OnDestroy {
   parentMenu: Menu;
   parentItem: MenuItem;
   parentEntry: MenuEntry;
@@ -23,9 +23,7 @@ export class MenuPanel implements OnInit,AfterViewInit, OnDestroy {
   constructor(el: ElementRef, dom: DomService) {
     this.element = el;
     this.domService = dom;
-    this.domService.loadElement(this.element);
   }
-
 
   setParentItem(item: MenuItem) {
     this.parentItem = item;
@@ -39,8 +37,9 @@ export class MenuPanel implements OnInit,AfterViewInit, OnDestroy {
   }
   ngOnInit() {
   }
+  ngAfterViewChecked() {
+  }
   ngAfterViewInit() {
-
   }
   ngOnDestroy() {
 

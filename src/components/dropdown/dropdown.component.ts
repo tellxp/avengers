@@ -14,11 +14,8 @@ import {DomService} from "../common/dom.service";
 export class Dropdown implements OnInit, AfterViewInit {
   @Input() title: string;
   @Input() expanded: boolean;
-  private domService: DomService;
 
-  constructor(private el: ElementRef, dom: DomService) {
-    this.domService = dom;
-    this.domService.loadElement(el);
+  constructor(private el: ElementRef, public dom: DomService) {
   }
 
   ngOnInit() {

@@ -1,10 +1,11 @@
 import {
   Component, OnInit, AfterContentInit, Input, ElementRef, ContentChildren, QueryList,
-  ContentChild, AfterViewInit, ViewChild, AfterViewChecked, Renderer
+  ContentChild, AfterViewInit, ViewChild, AfterViewChecked, Renderer, ViewChildren
 } from '@angular/core';
 import {DomService, ElementStyle} from '../common/dom.service';
 import {MenuPanel} from './menu-panel.component';
 import {Popup} from '../popup/popup.component';
+import {MenuItem} from "./menu-item.component";
 
 @Component({
   selector: 'ave-menu-entry',
@@ -15,37 +16,38 @@ import {Popup} from '../popup/popup.component';
 export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
 
   @Input() title: string;
-  @ContentChild(MenuPanel) contentPanel: MenuPanel;
-  @ViewChild(Popup) popup: Popup;
-  panel: MenuPanel;
-  domService: DomService;
+  @ContentChildren(MenuPanel) contentPanels: QueryList<MenuPanel>;
+  @ViewChildren(Popup) popups: QueryList<Popup>;
+  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
+  items: MenuItem[];
+  panels: MenuPanel[];
   private expanded: boolean;
 
-  constructor(el: ElementRef, dom: DomService,public renderer: Renderer) {
-    this.domService = dom;
-    this.domService.loadElement(el);
+  constructor(private el: ElementRef, public dom: DomService,public render: Renderer) {
   }
 
   ngOnInit() {
   }
   ngAfterViewChecked() {
-
   }
   ngAfterViewInit() {
 
   }
   ngAfterContentInit() {
     this.initPanel();
+    this.initItems();
   }
 
+  initItems() {
+    this.items = this.contentItems.toArray();
+  }
   initPanel() {
-    this.panel = this.contentPanel;
-    this.panel.setParentEntry(this);
+    this.panels = this.contentPanels.toArray();
+    // this.panels.setParentEntry(this);
   }
   onClick() {
     this.expanded = !this.expanded;
-    let width = 300;
-    this.renderer.setElementStyle(this.popup.element.nativeElement, 'width', width + 'px');
+
   }
 
 }

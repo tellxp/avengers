@@ -1,28 +1,22 @@
-import {Component, OnInit, ElementRef, AfterViewInit, AfterContentInit, HostListener} from '@angular/core';
+import {Component, ElementRef, AfterViewChecked} from "@angular/core";
 import {DomService} from "../common/dom.service";
+import {Widget} from "../common/widget";
 
 @Component({
   selector: 'ave-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
-  host: {'tabindex':'-1'},
+  host: {'tabindex': '-1'},
   providers: [DomService]
 })
-export class Button implements OnInit, AfterViewInit, AfterContentInit {
+export class Button extends Widget implements AfterViewChecked {
 
-  public domService: DomService;
-  constructor(el: ElementRef, dom: DomService) {
-    this.domService = dom;
-    this.domService.loadElement(el);
+  constructor(public el: ElementRef, public dom: DomService) {
+    super(el, dom);
   }
 
-  ngAfterViewInit() {
 
-  }
-
-  ngAfterContentInit() {
-  }
-
-  ngOnInit() {
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
   }
 }

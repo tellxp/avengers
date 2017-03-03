@@ -91,6 +91,4 @@ export class TabstripPanel implements OnInit, AfterContentInit {
   public collapse() {
     this.expanded = false;
   }
-
-
 }
