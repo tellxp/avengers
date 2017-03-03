@@ -1,17 +1,6 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ElementRef,
-  AfterViewInit,
-  Renderer,
-  AfterViewChecked,
-  QueryList,
-  AfterContentInit,
-  ViewChildren
-} from "@angular/core";
+import {Component, Input, ElementRef, Renderer, AfterViewChecked} from "@angular/core";
 import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
-import {isNullOrUndefined} from "util";
+import {Widget} from "../common/widget";
 
 
 @Component({
@@ -20,19 +9,14 @@ import {isNullOrUndefined} from "util";
   styleUrls: ['./popup.component.scss'],
   providers: [DomService]
 })
-export class Popup implements OnInit, AfterViewInit, AfterViewChecked, AfterContentInit {
+export class Popup extends Widget implements AfterViewChecked {
   @Input() anchor: any;
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
 
-  private anchorPosition: ElementPosition;
-  private anchorStyle: ElementStyle;
-  private position: ElementPosition;
-  public style: ElementStyle;
 
-  constructor(private el: ElementRef, public dom: DomService, public render: Renderer) {
-    this.anchorPosition = new ElementPosition();
-    this.anchorStyle = new ElementStyle();
+  constructor(public el: ElementRef, public dom: DomService, public render: Renderer) {
+    super(el, dom);
     this.orientation = PopupOrientation.Bottom;
     this.offset = new ElementPosition();
     this.position = new ElementPosition();
@@ -40,35 +24,29 @@ export class Popup implements OnInit, AfterViewInit, AfterViewChecked, AfterCont
   }
 
   ngAfterViewChecked() {
+    super.ngAfterViewChecked();
     this.setPosition();
   }
 
-  ngOnInit() {
-  }
-  ngAfterViewInit() {
-
-  }
-
-  ngAfterContentInit() {
-
-  }
   setPosition() {
-    if (isNullOrUndefined(this.anchor.domService)) {
-      this.anchorPosition = this.dom.getElementPosition(this.anchor);
-      this.anchorStyle = this.dom.getElementStyle(this.anchor);
-    } else {
-      this.anchorPosition = this.anchor.domService.getElementPosition();
-      this.anchorStyle = this.anchor.domService.getElementPosition();
+    let anchorPosition: ElementPosition = new ElementPosition();
+    let anchorStyle: ElementStyle = new ElementStyle();
+    if (this.anchor instanceof Widget) {
+      anchorPosition.left = this.anchor.position.left;
+      anchorPosition.top = this.anchor.position.top;
+      anchorStyle.width = this.anchor.style.width;
+      anchorStyle.height = this.anchor.style.height;
+      this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
     }
-    this.position = this.calculatePosition(this.anchorPosition, this.anchorStyle, this.orientation, this.offset);
-    this.render.setElementStyle(this.el.nativeElement, 'left', this.position.left + 'px');
-    this.render.setElementStyle(this.el.nativeElement, 'top', this.position.top + 'px');
+    if (this.anchor instanceof HTMLElement) {
+      anchorPosition = this.dom.getElementPosition(this.anchor);
+      anchorStyle = this.dom.getElementStyle(this.anchor);
+      this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
+    }
+    this.dom.setElementPosition(this.position, this.el.nativeElement, this.render);
+
   }
 
-  setStyle(style: ElementStyle) {
-    this.render.setElementStyle(this.el.nativeElement, 'width', style.width + 'px');
-    this.render.setElementStyle(this.el.nativeElement, 'height', style.height + 'px');
-  }
   calculatePosition(anchorPosition: ElementPosition, anchorStyle: ElementStyle,
                     orientation:PopupOrientation, offset: ElementPosition): ElementPosition {
     let position = new ElementPosition();

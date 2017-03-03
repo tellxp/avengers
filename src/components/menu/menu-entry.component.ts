@@ -1,11 +1,18 @@
 import {
-  Component, OnInit, AfterContentInit, Input, ElementRef, ContentChildren, QueryList,
-  ContentChild, AfterViewInit, ViewChild, AfterViewChecked, Renderer, ViewChildren
-} from '@angular/core';
-import {DomService, ElementStyle} from '../common/dom.service';
-import {MenuPanel} from './menu-panel.component';
-import {Popup} from '../popup/popup.component';
+  Component,
+  OnInit,
+  AfterContentInit,
+  Input,
+  ElementRef,
+  ContentChildren,
+  QueryList,
+  AfterViewInit,
+  AfterViewChecked,
+  Renderer
+} from "@angular/core";
+import {DomService} from "../common/dom.service";
 import {MenuItem} from "./menu-item.component";
+import {MenuGroup} from "./menu-group.component";
 
 @Component({
   selector: 'ave-menu-entry',
@@ -16,11 +23,8 @@ import {MenuItem} from "./menu-item.component";
 export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
 
   @Input() title: string;
-  @ContentChildren(MenuPanel) contentPanels: QueryList<MenuPanel>;
-  @ViewChildren(Popup) popups: QueryList<Popup>;
-  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
-  items: MenuItem[];
-  panels: MenuPanel[];
+  @ContentChildren(MenuGroup) contentGroups: QueryList<MenuGroup>;
+  groups: MenuGroup[];
   private expanded: boolean;
 
   constructor(private el: ElementRef, public dom: DomService,public render: Renderer) {
@@ -34,20 +38,23 @@ export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, After
 
   }
   ngAfterContentInit() {
-    this.initPanel();
-    this.initItems();
+    this.initGroups();
   }
-
-  initItems() {
-    this.items = this.contentItems.toArray();
+  initGroups() {
+    this.groups = this.contentGroups.toArray();
   }
-  initPanel() {
-    this.panels = this.contentPanels.toArray();
-    // this.panels.setParentEntry(this);
+  hasGroup(): boolean {
+    if (this.groups.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
   onClick() {
     this.expanded = !this.expanded;
-
+  }
+  onBlur() {
+    this.expanded = false;
   }
 
 }

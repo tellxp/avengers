@@ -4,17 +4,17 @@ import {Injectable, Renderer} from "@angular/core";
 export class DomService {
 
   public element: HTMLElement;
-  public bindWidget(el: HTMLElement) {
+  public bindElement(el: HTMLElement) {
     this.element = el;
   }
-  public getWidgetPosition(): ElementPosition {
+  public getBoundElementPosition(): ElementPosition {
     let position: ElementPosition = new ElementPosition();
     position.left = this.element.offsetLeft;
     position.top = this.element.offsetTop;
     return position;
   }
 
-  public getWidgetStyle(): ElementStyle {
+  public getBoundElementStyle(): ElementStyle {
     let style: ElementStyle = new ElementStyle();
     style.height = this.element.offsetHeight;
     style.width = this.element.offsetWidth;
@@ -53,7 +53,7 @@ export class DomService {
         throw Error('Unmatched type');
     }
   }
-  public setElementPosition(type: PositioningType, position: ElementPosition, el: HTMLElement, render: Renderer) {
+  public setElementPosition(position: ElementPosition, el: HTMLElement, render: Renderer) {
     render.setElementStyle(el, 'left', position.left + 'px');
     render.setElementStyle(el, 'top', position.top + 'px');
   }

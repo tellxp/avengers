@@ -1,4 +1,4 @@
-/*! Amaze UI v2.7.2 | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-12-16T16:25:57+0800 */ 
+/*! Amaze UI v2.7.2 | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-12-16T16:25:57+0800 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("jquery"));
@@ -5386,7 +5386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  var $dropdown = this.$dropdown;
-	  
+
 	  // @see #873
 	  if (e && e.offset) {
 	    $dropdown.offset(e.offset);
@@ -11054,7 +11054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  }
 
-	  // select with option groups
+	  // select with option panel
 	  if ($optgroup.length) {
 	    $optgroup.each(function(i) {
 	      // push group name
@@ -11069,7 +11069,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    });
 	  } else {
-	    // without option groups
+	    // without option panel
 	    this.$originalOptions.each(function(index, item) {
 	      pushOption(index, item, null);
 	    });

@@ -1,12 +1,18 @@
 import {
-  Component, OnInit, Input, ElementRef, AfterViewInit, ContentChildren, QueryList,
-  AfterContentInit, ContentChild, ViewChild
-} from '@angular/core';
-import {DomService} from '../common/dom.service';
-import {MenuPanel} from './menu-panel.component';
-import {isNullOrUndefined} from 'util';
-import {PopupOrientation, Popup} from '../popup/popup.component';
-import {MenuEntry} from "./menu-entry.component";
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  AfterViewInit,
+  ContentChildren,
+  QueryList,
+  AfterContentInit, ContentChild
+} from "@angular/core";
+import {DomService} from "../common/dom.service";
+import {PopupOrientation} from "../popup/popup.component";
+import {MenuGroup} from "./menu-group.component";
+import {MenuPanel} from "./menu-panel.component";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'ave-menu-item',
@@ -16,12 +22,9 @@ import {MenuEntry} from "./menu-entry.component";
 })
 export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   @Input() title: string;
-  @ContentChild(MenuPanel) contentPanel: MenuPanel;
-  @Input() panel: MenuPanel;
+  @ContentChild(MenuPanel) contentPanel;
   expanded: boolean;
-  @ViewChild(Popup) popup: Popup;
-  parentEntry: MenuEntry;
-
+  panel: MenuGroup[];
   orientation: PopupOrientation;
   public domService: DomService;
 
@@ -30,17 +33,20 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
     this.expanded = false;
     this.domService = dom;
   }
-  setParentEntry(entry: MenuEntry) {
-    this.parentEntry = entry;
-  }
+
   ngAfterContentInit() {
-    this.initPanel();
+    this.initGroups();
   }
 
-  initPanel() {
-    if (!isNullOrUndefined(this.contentPanel)) {
-      this.panel = this.contentPanel;
-      this.panel.setParentItem(this);
+  initGroups() {
+    this.panel = this.contentPanel;
+  }
+
+  hasGroup(): boolean {
+    if (isNullOrUndefined(this.panel)) {
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -48,15 +54,14 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
 
   }
 
-  onFocus() {
+  onMouseOver() {
+    this.expanded = true;
+  }
 
+  onMouseOut() {
+    this.expanded = false;
   }
-  onClick() {
-    this.expanded = !this.expanded;
-  }
-  onBlur() {
-    // this.expanded = false;
-  }
+
   ngOnInit() {
   }
 }

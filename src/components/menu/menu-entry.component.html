@@ -1,7 +1,7 @@
-<div #anchor (click)="onClick()">
+<div #anchor tabindex="-1" (click)="onClick()" (blur)="onBlur()">
   <span>{{title}}</span>
-  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+  <i class="fa fa-chevron-down" aria-hidden="true" *ngIf="hasGroup()"></i>
 </div>
-<ave-popup [anchor]="anchor">
+<ave-popup *ngIf="expanded" [anchor]="anchor">
   <ng-content></ng-content>
 </ave-popup>

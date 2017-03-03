@@ -1,4 +1,4 @@
-/*! Amaze UI v2.7.2 ~ IE8 Fucker | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-12-16T16:25:57+0800 */ 
+/*! Amaze UI v2.7.2 ~ IE8 Fucker | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-12-16T16:25:57+0800 */
 /*!
  * https://github.com/es-shims/es5-shim
  * @license es5-shim Copyright 2009-2015 by contributors, MIT License
@@ -1821,7 +1821,7 @@
                     if (lastIndex > lastLastIndex) {
                         pushCall(output, strSlice(string, lastLastIndex, match.index));
                         // Fix browsers whose `exec` methods don't consistently return `undefined` for
-                        // nonparticipating capturing groups
+                        // nonparticipating capturing panel
                         if (!compliantExecNpcg && match.length > 1) {
                             /* eslint-disable no-loop-func */
                             match[0].replace(separator2, function () {

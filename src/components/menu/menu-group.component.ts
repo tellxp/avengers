@@ -11,25 +11,18 @@ import {MenuItem} from './menu-item.component';
   styleUrls: ['./menu-group.component.scss'],
   providers: [DomService]
 })
-export class MenuGroup implements OnChanges, OnInit, DoCheck,
-  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked,OnDestroy {
-  items: MenuItem[];
-
-  constructor(dom: DomService, public viewRef: ViewContainerRef) {
-
-  }
-
+export class MenuGroup implements AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
   @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
-  ngOnChanges() {
-  }
+  // items: MenuItem[];
+  constructor(dom: DomService) {
 
-  ngOnInit() {
-  }
-  ngDoCheck() {
   }
 
   ngAfterContentInit() {
-    this.items = this.contentItems.toArray();
+    this.initItems();
+  }
+  initItems() {
+    // this.items = this.contentItems.toArray();
   }
   ngAfterContentChecked() {
   }
@@ -37,8 +30,7 @@ export class MenuGroup implements OnChanges, OnInit, DoCheck,
   }
   ngAfterViewChecked() {
   }
-  ngOnDestroy() {
-  }
+
   onClick() {
 
   }

@@ -1,11 +1,10 @@
 @import "../../variables";
 
 :host {
-  min-width: 10em;
+  min-width: 12em;
   background-color: $group-background-color;
 }
 :host {
   display: flex;
   flex-flow: column;
-  overflow: visible;
 }
