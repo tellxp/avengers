@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate} from '@angular/core';
-import {TabstripPanel} from './tabstrip-panel.component';
-import {TabstripTab} from './tabstrip-tab.component';
+import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {TabstripTabComponent} from './tabstrip-tab.component';
 
 @Component({
   selector: 'ave-tabstrip-page',
@@ -22,11 +22,11 @@ import {TabstripTab} from './tabstrip-tab.component';
     ])
   ]
 })
-export class TabstripPage implements OnInit, AfterContentInit {
+export class TabstripPageComponent implements OnInit, AfterContentInit {
 
-  private parentTab: TabstripTab;
+  private parentTab: TabstripTabComponent;
 
-  private parentPanel: TabstripPanel;
+  private parentPanel: TabstripPanelComponent;
 
   constructor() {
   }
@@ -37,11 +37,11 @@ export class TabstripPage implements OnInit, AfterContentInit {
   ngAfterContentInit() {
   }
 
-  public setParentTab(tab: TabstripTab) {
+  public setParentTab(tab: TabstripTabComponent) {
     this.parentTab = tab;
   }
 
-  public setParentPanel(panel: TabstripPanel) {
+  public setParentPanel(panel: TabstripPanelComponent) {
     this.parentPanel = panel;
   }
 }

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 
 import {BrowserModule} from "@angular/platform-browser";
-import {Button} from "./button.component";
+import {ButtonComponent} from "./button.component";
 import {PopupModule} from "../popup/popup.module";
 
 @NgModule({
@@ -10,10 +10,10 @@ import {PopupModule} from "../popup/popup.module";
     PopupModule
   ],
   declarations: [
-    Button
+    ButtonComponent
   ],
   exports: [
-    Button
+    ButtonComponent
   ],
   providers: [
   ],

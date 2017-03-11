@@ -1,22 +1,22 @@
 import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from '@angular/core';
-import {TabstripBar} from './tabstrip-bar.component';
-import {TabstripPage} from './tabstrip-page.component';
+import {TabstripBarComponent} from './tabstrip-bar.component';
+import {TabstripPageComponent} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
-import {TabstripPanel} from './tabstrip-panel.component';
+import {TabstripPanelComponent} from './tabstrip-panel.component';
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
   styleUrls: ['./tabstrip-tab.component.scss']
 })
-export class TabstripTab implements OnInit, AfterContentInit {
+export class TabstripTabComponent implements OnInit, AfterContentInit {
 
-  private pairedPanel: TabstripPanel;
+  private pairedPanel: TabstripPanelComponent;
 
-  @Input() private page: TabstripPage;
+  @Input() private page: TabstripPageComponent;
 
   @Input() private active: boolean;
 
-  private parentBar: TabstripBar;
+  private parentBar: TabstripBarComponent;
 
   ngOnInit() {
 
@@ -29,11 +29,11 @@ export class TabstripTab implements OnInit, AfterContentInit {
   constructor() {
   }
 
-  public setParent(bar: TabstripBar) {
+  public setParent(bar: TabstripBarComponent) {
     this.parentBar = bar;
   }
 
-  public setPairPanel(panel: TabstripPanel) {
+  public setPairPanel(panel: TabstripPanelComponent) {
     this.pairedPanel = panel;
   }
 
@@ -64,7 +64,7 @@ export class TabstripTab implements OnInit, AfterContentInit {
   }
 
   onClick() {
-    let currentActiveTab: TabstripTab = this.parentBar.getActiveTab();
+    let currentActiveTab: TabstripTabComponent = this.parentBar.getActiveTab();
     if (isNullOrUndefined(currentActiveTab)) {
       this.activate();
     } else {

@@ -5453,7 +5453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, this));
 	};
 
-	// Dropdown Plugin
+	// DropdownComponent Plugin
 	UI.plugin('dropdown', Dropdown);
 
 	// Init code
@@ -10972,7 +10972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 
 	  // disable Selected instance if <selected> is disabled
-	  // should call .disable() after Dropdown initialed
+	  // should call .disable() after DropdownComponent initialed
 	  if ($element[0].disabled) {
 	    this.disable();
 	  }
@@ -16284,7 +16284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      .children('.am-menu-sub.am-in').collapse('close');
 	  });
 
-	  // Dropdown/slideDown menu
+	  // DropdownComponent/slideDown menu
 	  $menus.
 	    filter('[data-am-menu-collapse]').
 	    find('> .am-menu-toggle').

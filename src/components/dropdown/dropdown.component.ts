@@ -11,7 +11,7 @@ import {DomService} from "../common/dom.service";
 
   providers: [DomService]
 })
-export class Dropdown implements OnInit, AfterViewInit {
+export class DropdownComponent implements OnInit, AfterViewInit {
   @Input() title: string;
   @Input() expanded: boolean;
 

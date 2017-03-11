@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {BrowserModule} from "@angular/platform-browser";
-import {Widget} from "./widget";
+import {WidgetComponent} from "./widget.component";
 
 @NgModule({
     imports: [

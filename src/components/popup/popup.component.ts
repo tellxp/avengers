@@ -1,6 +1,6 @@
 import {Component, Input, ElementRef, Renderer, AfterViewChecked} from "@angular/core";
 import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
-import {Widget} from "../common/widget";
+import {WidgetComponent} from "../common/widget.component";
 
 
 @Component({
@@ -9,7 +9,7 @@ import {Widget} from "../common/widget";
   styleUrls: ['./popup.component.scss'],
   providers: [DomService]
 })
-export class Popup extends Widget implements AfterViewChecked {
+export class PopupComponent extends WidgetComponent implements AfterViewChecked {
   @Input() anchor: any;
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
@@ -31,7 +31,7 @@ export class Popup extends Widget implements AfterViewChecked {
   setPosition() {
     let anchorPosition: ElementPosition = new ElementPosition();
     let anchorStyle: ElementStyle = new ElementStyle();
-    if (this.anchor instanceof Widget) {
+    if (this.anchor instanceof WidgetComponent) {
       anchorPosition.left = this.anchor.position.left;
       anchorPosition.top = this.anchor.position.top;
       anchorStyle.width = this.anchor.style.width;
@@ -75,7 +75,7 @@ export class Popup extends Widget implements AfterViewChecked {
 
   // @HostListener('window:scroll', [])
   // onWindowScroll() {
-  //   this.anchorBtn = <Button>this.parent;
+  //   this.anchorBtn = <ButtonComponent>this.parent;
   //   let styles = {
   //     'left': true ? this.anchorBtn.left + 'px' : '0px',
   //     'top': true ? this.anchorBtn.top + 'px' : '0px'

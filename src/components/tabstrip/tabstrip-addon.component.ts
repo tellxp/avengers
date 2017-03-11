@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './tabstrip-addon.component.html',
   styleUrls: ['./tabstrip-addon.component.scss']
 })
-export class TabstripAddon implements OnInit {
+export class TabstripAddonComponent implements OnInit {
   constructor() {
   }
 

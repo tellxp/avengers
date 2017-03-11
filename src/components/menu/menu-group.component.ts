@@ -3,7 +3,7 @@ import {
   AfterViewInit, AfterViewChecked, OnChanges, AfterContentChecked, OnDestroy, DoCheck
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
-import {MenuItem} from './menu-item.component';
+import {MenuItemComponent} from './menu-item.component';
 
 @Component({
   selector: 'ave-menu-group',
@@ -11,9 +11,9 @@ import {MenuItem} from './menu-item.component';
   styleUrls: ['./menu-group.component.scss'],
   providers: [DomService]
 })
-export class MenuGroup implements AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
-  // items: MenuItem[];
+export class MenuGroupComponent implements AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
+  // items: MenuItemComponent[];
   constructor(dom: DomService) {
 
   }
