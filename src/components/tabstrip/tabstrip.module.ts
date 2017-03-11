@@ -1,35 +1,35 @@
 import {NgModule} from '@angular/core';
 
-import {TabstripComponent} from './tabstrip.component';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {TabstripTabComponent} from './tabstrip-tab.component';
+import {Tabstrip} from './tabstrip.component';
+import {TabstripPanel} from './tabstrip-panel.component';
+import {TabstripTab} from './tabstrip-tab.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {TabstripBarComponent} from './tabstrip-bar.component';
-import {TabstripPageComponent} from './tabstrip-page.component';
-import {TabstripToggleComponent} from './tabstrip-toggle.component';
-import {TabstripAddonComponent} from './tabstrip-addon.component';
+import {TabstripBar} from './tabstrip-bar.component';
+import {TabstripPage} from './tabstrip-page.component';
+import {TabstripToggle} from './tabstrip-toggle.component';
+import {TabstripAddon} from './tabstrip-addon.component';
 
 @NgModule({
   imports: [
     BrowserModule
   ],
   declarations: [
-    TabstripComponent,
-    TabstripBarComponent,
-    TabstripTabComponent,
-    TabstripPanelComponent,
-    TabstripPageComponent,
-    TabstripToggleComponent,
-    TabstripAddonComponent
+    Tabstrip,
+    TabstripBar,
+    TabstripTab,
+    TabstripPanel,
+    TabstripPage,
+    TabstripToggle,
+    TabstripAddon
   ],
   exports: [
-    TabstripComponent,
-    TabstripBarComponent,
-    TabstripTabComponent,
-    TabstripPanelComponent,
-    TabstripPageComponent,
-    TabstripToggleComponent,
-    TabstripAddonComponent
+    Tabstrip,
+    TabstripBar,
+    TabstripTab,
+    TabstripPanel,
+    TabstripPage,
+    TabstripToggle,
+    TabstripAddon
   ],
   providers: []
 })

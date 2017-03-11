@@ -11,8 +11,8 @@ import {
   Renderer
 } from "@angular/core";
 import {DomService} from "../common/dom.service";
-import {MenuItemComponent} from "./menu-item.component";
-import {MenuGroupComponent} from "./menu-group.component";
+import {MenuItem} from "./menu-item.component";
+import {MenuGroup} from "./menu-group.component";
 
 @Component({
   selector: 'ave-menu-entry',
@@ -20,11 +20,11 @@ import {MenuGroupComponent} from "./menu-group.component";
   styleUrls: ['./menu-entry.component.scss'],
   providers: [DomService]
 })
-export class MenuEntryComponent implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
+export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
 
   @Input() title: string;
-  @ContentChildren(MenuGroupComponent) contentGroups: QueryList<MenuGroupComponent>;
-  groups: MenuGroupComponent[];
+  @ContentChildren(MenuGroup) contentGroups: QueryList<MenuGroup>;
+  groups: MenuGroup[];
   private expanded: boolean;
 
   constructor(private el: ElementRef, public dom: DomService,public render: Renderer) {

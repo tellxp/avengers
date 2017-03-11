@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import {BrowserModule} from "@angular/platform-browser";
-import {MenuComponent} from "./menu.component";
-import {MenuGroupComponent} from "./menu-group.component";
-import {MenuItemComponent} from "./menu-item.component";
-import {MenuBarComponent} from "./menu-bar.component";
+import {Menu} from "./menu.component";
+import {MenuGroup} from "./menu-group.component";
+import {MenuItem} from "./menu-item.component";
+import {MenuBar} from "./menu-bar.component";
 import {PopupModule} from "../popup/popup.module";
-import {MenuEntryComponent} from "./menu-entry.component";
-import {MenuPanelComponent} from "./menu-panel.component";
+import {MenuEntry} from "./menu-entry.component";
+import {MenuPanel} from "./menu-panel.component";
 
 @NgModule({
     imports: [
@@ -15,20 +15,20 @@ import {MenuPanelComponent} from "./menu-panel.component";
       PopupModule
     ],
     exports: [
-      MenuComponent,
-      MenuBarComponent,
-      MenuEntryComponent,
-      MenuPanelComponent,
-      MenuGroupComponent,
-      MenuItemComponent
+      Menu,
+      MenuBar,
+      MenuEntry,
+      MenuPanel,
+      MenuGroup,
+      MenuItem
     ],
     declarations: [
-      MenuComponent,
-      MenuBarComponent,
-      MenuEntryComponent,
-      MenuPanelComponent,
-      MenuGroupComponent,
-      MenuItemComponent
+      Menu,
+      MenuBar,
+      MenuEntry,
+      MenuPanel,
+      MenuGroup,
+      MenuItem
     ],
     providers: [],
 })

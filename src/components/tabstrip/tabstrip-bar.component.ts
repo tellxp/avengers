@@ -2,33 +2,33 @@ import {
   Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit, ContentChild,
   HostBinding
 } from '@angular/core';
-import {TabstripTabComponent} from './tabstrip-tab.component';
+import {TabstripTab} from './tabstrip-tab.component';
 import {isNullOrUndefined} from 'util';
-import {TabstripToggleComponent} from './tabstrip-toggle.component';
-import {TabstripComponent} from './tabstrip.component';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {TabstripToggle} from './tabstrip-toggle.component';
+import {Tabstrip} from './tabstrip.component';
+import {TabstripPanel} from './tabstrip-panel.component';
 
 @Component({
   selector: 'ave-tabstrip-bar',
   templateUrl: './tabstrip-bar.component.html',
   styleUrls: ['./tabstrip-bar.component.scss']
 })
-export class TabstripBarComponent implements OnInit, AfterContentInit {
+export class TabstripBar implements OnInit, AfterContentInit {
 
-  @ContentChildren(TabstripTabComponent) private contentTabs: QueryList<TabstripTabComponent>;
+  @ContentChildren(TabstripTab) private contentTabs: QueryList<TabstripTab>;
 
-  @ContentChild(TabstripToggleComponent) private contentToggle: TabstripToggleComponent;
+  @ContentChild(TabstripToggle) private contentToggle: TabstripToggle;
 
 
-  private _tabs: TabstripTabComponent[];
+  private _tabs: TabstripTab[];
 
-  private _toggle: TabstripToggleComponent;
+  private _toggle: TabstripToggle;
 
-  private _parentTabstrip: TabstripComponent;
+  private _parentTabstrip: Tabstrip;
 
-  private _pairedPanel: TabstripPanelComponent;
+  private _pairedPanel: TabstripPanel;
 
-  private _activeTab: TabstripTabComponent;
+  private _activeTab: TabstripTab;
 
 
   constructor() {
@@ -58,7 +58,7 @@ export class TabstripBarComponent implements OnInit, AfterContentInit {
     }
   }
 
-  public pairTabAndPanel(panel: TabstripPanelComponent) {
+  public pairTabAndPanel(panel: TabstripPanel) {
     if (isNullOrUndefined(this._tabs)) {
       throw new Error('tabs is null or undefined');
     } else {
@@ -69,7 +69,7 @@ export class TabstripBarComponent implements OnInit, AfterContentInit {
     }
   }
 
-  public pairToggleAndPanel(panel: TabstripPanelComponent) {
+  public pairToggleAndPanel(panel: TabstripPanel) {
     this._toggle.setPairedPanel(panel);
   }
   private hasActiveTab():boolean {
@@ -91,19 +91,19 @@ export class TabstripBarComponent implements OnInit, AfterContentInit {
     this._toggle.setParent(this);
   }
 
-  public setParentTabstrip(tabstrip: TabstripComponent) {
+  public setParentTabstrip(tabstrip: Tabstrip) {
     this._parentTabstrip = tabstrip;
   }
 
-  public setPairedPanel(panel: TabstripPanelComponent) {
+  public setPairedPanel(panel: TabstripPanel) {
     this._pairedPanel = panel;
   }
 
-  public setActiveTab(tab: TabstripTabComponent) {
+  public setActiveTab(tab: TabstripTab) {
     this._activeTab = tab;
   }
 
-  public getActiveTab(): TabstripTabComponent {
+  public getActiveTab(): TabstripTab {
     return this._activeTab;
   }
 }

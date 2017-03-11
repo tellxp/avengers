@@ -1,7 +1,7 @@
 import {DomService} from "./dom.service";
 import {ElementRef, AfterViewChecked} from "@angular/core";
 
-export class WidgetComponent implements AfterViewChecked {
+export class Widget implements AfterViewChecked {
   public position: WidgetPosition;
   public style: WidgetStyle;
 

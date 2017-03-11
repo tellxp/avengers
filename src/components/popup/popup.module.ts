@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {PopupComponent, PopupOrientation} from "./popup.component";
+import {Popup, PopupOrientation} from "./popup.component";
 import {BrowserModule} from "@angular/platform-browser";
 
 
@@ -8,10 +8,10 @@ import {BrowserModule} from "@angular/platform-browser";
       BrowserModule
     ],
     exports: [
-      PopupComponent
+      Popup
     ],
     declarations: [
-      PopupComponent
+      Popup
     ],
     providers: [
     ],

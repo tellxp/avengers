@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {TabstripComponent} from "../../../components/tabstrip/tabstrip.component";
+import {Tabstrip} from "../../../components/tabstrip/tabstrip.component";
 
 
 @Component({

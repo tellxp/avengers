@@ -1,8 +1,8 @@
 import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import {RowComponent} from "./row.component";
-import {ColComponent} from "./col.component";
+import {GridRow} from "./grid-row.component";
+import {GridColumn} from "./grid-col.component";
 
 
 @NgModule({
@@ -11,12 +11,12 @@ import {ColComponent} from "./col.component";
     FormsModule
   ],
   declarations: [
-    RowComponent,
-    ColComponent
+    GridRow,
+    GridColumn
   ],
   exports: [
-    RowComponent,
-    ColComponent
+    GridRow,
+    GridColumn
   ],
   providers: [
 

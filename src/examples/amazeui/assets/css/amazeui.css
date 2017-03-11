@@ -1625,7 +1625,7 @@ pre code {
   overflow-y: scroll;
 }
 /* ==========================================================================
-   Component: ButtonComponent
+   Component: Button
  ============================================================================ */
 .am-btn {
   display: inline-block;
@@ -2035,7 +2035,7 @@ input[type="reset"].am-btn-block,
 input[type="button"].am-btn-block {
   width: 100%;
 }
-/* ButtonComponent with loading spinner */
+/* Button with loading spinner */
 .am-btn.am-btn-loading .am-icon-spin {
   margin-right: 5px;
 }
@@ -4334,7 +4334,7 @@ a.am-badge:focus {
   }
 }
 /* ==========================================================================
-   Component: ButtonComponent Group
+   Component: Button Group
  ============================================================================ */
 .am-btn-group,
 .am-btn-group-stacked {
@@ -12151,7 +12151,7 @@ tbody.am-collapse.am-in {
   transition: all 0.45s;
 }
 /**
-  * MenuComponent Theme: default
+  * Menu Theme: default
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-default .am-menu-nav {
@@ -12230,7 +12230,7 @@ tbody.am-collapse.am-in {
 }
 /**
 /**
-  * MenuComponent Theme: dropdown1
+  * Menu Theme: dropdown1
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-dropdown1 {
@@ -12359,7 +12359,7 @@ tbody.am-collapse.am-in {
   margin-right: 5px;
 }
 /**
-  * MenuComponent Theme: dropdown2
+  * Menu Theme: dropdown2
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-dropdown2 .am-menu-toggle {
@@ -12471,7 +12471,7 @@ tbody.am-collapse.am-in {
   }
 }
 /**
-  * MenuComponent Theme: slide1
+  * Menu Theme: slide1
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-slide1 .am-menu-toggle {
@@ -12593,7 +12593,7 @@ tbody.am-collapse.am-in {
   }
 }
 /**
-  * MenuComponent Theme: offcanvas1
+  * Menu Theme: offcanvas1
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-offcanvas1 .am-menu-toggle {
@@ -12666,7 +12666,7 @@ tbody.am-collapse.am-in {
   border-top: 1px solid #1a1a1a;
 }
 /**
-  * MenuComponent Theme: offcanvas2
+  * Menu Theme: offcanvas2
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-offcanvas2 .am-menu-toggle {
@@ -12717,7 +12717,7 @@ tbody.am-collapse.am-in {
   color: #fff;
 }
 /**
-  * MenuComponent Theme: stack
+  * Menu Theme: stack
   * Author: Minwe (minwe@yunshipei.com)
   */
 .am-menu-stack .am-menu-nav {

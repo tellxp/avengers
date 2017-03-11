@@ -5,7 +5,7 @@ import {Component, OnInit} from "@angular/core";
   templateUrl: './menu-panel.component.html',
   styleUrls: ['./menu-panel.component.scss']
 })
-export class MenuPanelComponent implements OnInit {
+export class MenuPanel implements OnInit {
   constructor() {
   }
 

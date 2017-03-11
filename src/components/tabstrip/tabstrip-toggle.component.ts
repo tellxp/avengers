@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from '@angular/core';
-import {TabstripBarComponent} from './tabstrip-bar.component';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {TabstripBar} from './tabstrip-bar.component';
+import {TabstripPanel} from './tabstrip-panel.component';
 
 
 @Component({
@@ -8,12 +8,12 @@ import {TabstripPanelComponent} from './tabstrip-panel.component';
   templateUrl: './tabstrip-toggle.component.html',
   styleUrls: ['./tabstrip-toggle.component.scss']
 })
-export class TabstripToggleComponent implements OnInit, AfterContentInit {
+export class TabstripToggle implements OnInit, AfterContentInit {
 
 
-  private parentBar: TabstripBarComponent;
+  private parentBar: TabstripBar;
 
-  private pairedPanel: TabstripPanelComponent;
+  private pairedPanel: TabstripPanel;
 
   private expanded: boolean;
 
@@ -28,10 +28,10 @@ export class TabstripToggleComponent implements OnInit, AfterContentInit {
   constructor() {
   }
 
-  public setParent(bar: TabstripBarComponent) {
+  public setParent(bar: TabstripBar) {
     this.parentBar = bar;
   }
-  public setPairedPanel(panel: TabstripPanelComponent) {
+  public setPairedPanel(panel: TabstripPanel) {
     this.pairedPanel = panel;
   }
   private togglePanel() {

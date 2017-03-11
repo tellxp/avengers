@@ -2,7 +2,9 @@
   <span>{{title}}</span>
   <i class="fa fa-chevron-right" aria-hidden="true" *ngIf="hasGroup()"></i>
 </div>
-<ave-popup *ngIf="expanded"  [anchor]="anchor" [orientation]="orientation">
-  <ng-content></ng-content>
+<ave-popup *ngIf="expanded" [anchor]="anchor" [orientation]="orientation">
+  <ave-menu-panel>
+    <ng-content></ng-content>
+  </ave-menu-panel>
 </ave-popup>
 

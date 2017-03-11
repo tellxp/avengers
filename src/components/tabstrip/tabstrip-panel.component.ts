@@ -2,10 +2,10 @@ import {
   Component, Input, ContentChildren, QueryList, OnInit, AfterContentInit, trigger,
   transition, style, animate
 } from '@angular/core';
-import {TabstripPageComponent} from './tabstrip-page.component';
+import {TabstripPage} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
-import {TabstripComponent} from './tabstrip.component';
-import {TabstripBarComponent} from './tabstrip-bar.component';
+import {Tabstrip} from './tabstrip.component';
+import {TabstripBar} from './tabstrip-bar.component';
 
 
 @Component({
@@ -30,19 +30,19 @@ import {TabstripBarComponent} from './tabstrip-bar.component';
     ])
   ]
 })
-export class TabstripPanelComponent implements OnInit, AfterContentInit {
+export class TabstripPanel implements OnInit, AfterContentInit {
 
-  private _pairedBar: TabstripBarComponent;
+  private _pairedBar: TabstripBar;
 
   @Input() private expanded: boolean;
 
-  private parentTabstrip: TabstripComponent;
+  private parentTabstrip: Tabstrip;
 
-  @ContentChildren(TabstripPageComponent) private contentPages: QueryList<TabstripPageComponent>;
+  @ContentChildren(TabstripPage) private contentPages: QueryList<TabstripPage>;
 
-  private pages: TabstripPageComponent[];
+  private pages: TabstripPage[];
 
-  private activePage: TabstripPageComponent;
+  private activePage: TabstripPage;
 
   constructor() {
     this.expanded = false;
@@ -68,11 +68,11 @@ export class TabstripPanelComponent implements OnInit, AfterContentInit {
     }
   }
 
-  public setPairedBar(bar: TabstripBarComponent) {
+  public setPairedBar(bar: TabstripBar) {
     this._pairedBar = bar;
   }
 
-  public attachToTabstrip(tabstrip: TabstripComponent) {
+  public attachToTabstrip(tabstrip: Tabstrip) {
     this.parentTabstrip = tabstrip;
   }
 

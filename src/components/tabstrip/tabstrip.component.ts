@@ -3,8 +3,8 @@ import {
   Input, OnInit, AfterContentInit, ContentChildren, QueryList, ContentChild,
 } from '@angular/core';
 
-import {TabstripBarComponent} from './tabstrip-bar.component';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {TabstripBar} from './tabstrip-bar.component';
+import {TabstripPanel} from './tabstrip-panel.component';
 
 
 
@@ -13,13 +13,13 @@ import {TabstripPanelComponent} from './tabstrip-panel.component';
   templateUrl: './tabstrip.component.html',
   styleUrls: ['./tabstrip.component.scss']
 })
-export class TabstripComponent implements OnInit, AfterContentInit {
+export class Tabstrip implements OnInit, AfterContentInit {
 
-  @ContentChild(TabstripBarComponent) private contentBar: TabstripBarComponent;
-  @ContentChild(TabstripPanelComponent) private contentPanel: TabstripPanelComponent;
+  @ContentChild(TabstripBar) private contentBar: TabstripBar;
+  @ContentChild(TabstripPanel) private contentPanel: TabstripPanel;
 
-  private bar: TabstripBarComponent;
-  private panel: TabstripPanelComponent;
+  private bar: TabstripBar;
+  private panel: TabstripPanel;
 
   ngOnInit() {
   }

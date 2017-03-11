@@ -6,12 +6,12 @@ import {
   AfterViewInit,
   ContentChildren,
   QueryList,
-  AfterContentInit, ContentChild
+  AfterContentInit, ContentChild, ViewChildren, ViewChild
 } from "@angular/core";
 import {DomService} from "../common/dom.service";
 import {PopupOrientation} from "../popup/popup.component";
-import {MenuGroupComponent} from "./menu-group.component";
-import {MenuPanelComponent} from "./menu-panel.component";
+import {MenuGroup} from "./menu-group.component";
+import {MenuPanel} from "./menu-panel.component";
 import {isNullOrUndefined} from "util";
 
 @Component({
@@ -20,11 +20,13 @@ import {isNullOrUndefined} from "util";
   styleUrls: ['./menu-item.component.scss'],
   providers: [DomService]
 })
-export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewInit {
+export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   @Input() title: string;
-  @ContentChild(MenuPanelComponent) contentPanel;
+  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
+  @ViewChild(MenuPanel) viewPanel: QueryList<MenuPanel>;
+
   expanded: boolean;
-  panel: MenuGroupComponent[];
+  panel: MenuPanel;
   orientation: PopupOrientation;
   public domService: DomService;
 
@@ -35,12 +37,8 @@ export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewIni
   }
 
   ngAfterContentInit() {
-    this.initGroups();
   }
 
-  initGroups() {
-    this.panel = this.contentPanel;
-  }
 
   hasGroup(): boolean {
     if (isNullOrUndefined(this.panel)) {

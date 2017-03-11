@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 
 import {BrowserModule} from "@angular/platform-browser";
-import {DropdownComponent} from "../dropdown/dropdown.component";
+import {Dropdown} from "../dropdown/dropdown.component";
 import {PopupModule} from "../popup/popup.module";
 import {ButtonModule} from "../button/button.module";
-import {DropdownGroupComponent} from "./dropdown-group.component";
-import {DropdownItemComponent} from "./dropdown-item.component";
+import {DropdownGroup} from "./dropdown-group.component";
+import {DropdownItem} from "./dropdown-item.component";
 
 @NgModule({
   imports: [
@@ -14,14 +14,14 @@ import {DropdownItemComponent} from "./dropdown-item.component";
     ButtonModule
   ],
   declarations: [
-    DropdownComponent,
-    DropdownGroupComponent,
-    DropdownItemComponent
+    Dropdown,
+    DropdownGroup,
+    DropdownItem
   ],
   exports: [
-    DropdownComponent,
-    DropdownGroupComponent,
-    DropdownItemComponent
+    Dropdown,
+    DropdownGroup,
+    DropdownItem
   ],
   providers: [],
 })
