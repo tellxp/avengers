@@ -3,12 +3,12 @@ import {
   AfterViewInit, AfterViewChecked, OnChanges, AfterContentChecked, OnDestroy, DoCheck
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
-import {MenuItem} from './menu-item.component';
+import {MenuItem} from '../menu/menu-item.component';
 
 @Component({
-  selector: 'ave-menu-group',
-  templateUrl: './menu-group.component.html',
-  styleUrls: ['./menu-group.component.scss'],
+  selector: 'ave-megamenu-group',
+  templateUrl: 'megamenu-group.component.html',
+  styleUrls: ['megamenu-group.component.scss'],
   providers: [DomService]
 })
 export class MenuGroup implements AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {

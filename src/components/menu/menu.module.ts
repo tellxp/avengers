@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 
 import {BrowserModule} from "@angular/platform-browser";
 import {Menu} from "./menu.component";
-import {MenuGroup} from "./menu-group.component";
 import {MenuItem} from "./menu-item.component";
 import {MenuBar} from "./menu-bar.component";
 import {PopupModule} from "../popup/popup.module";
 import {MenuEntry} from "./menu-entry.component";
-import {MenuPanel} from "./menu-panel.component";
 
 @NgModule({
     imports: [
@@ -18,16 +16,12 @@ import {MenuPanel} from "./menu-panel.component";
       Menu,
       MenuBar,
       MenuEntry,
-      MenuPanel,
-      MenuGroup,
       MenuItem
     ],
     declarations: [
       Menu,
       MenuBar,
       MenuEntry,
-      MenuPanel,
-      MenuGroup,
       MenuItem
     ],
     providers: [],

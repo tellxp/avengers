@@ -25,7 +25,7 @@ export class Dropdown implements OnInit, AfterViewInit {
     this.expanded = !this.expanded;
   }
   onBlur() {
-    // this.expanded = false;
+    // this.active = false;
   }
   ngAfterViewInit() {
 

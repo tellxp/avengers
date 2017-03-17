@@ -24,7 +24,8 @@ div {
   align-items: center;
 }
 ave-popup {
-  //width: 100%;
+  display: flex;
+  flex-flow: column;
 }
 span {
   display: flex;

@@ -12,7 +12,8 @@ import {
 } from "@angular/core";
 import {DomService} from "../common/dom.service";
 import {MenuItem} from "./menu-item.component";
-import {MenuGroup} from "./menu-group.component";
+import {MenuGroup} from "../megamenu/megamenu-group.component";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'ave-menu-entry',
@@ -23,9 +24,10 @@ import {MenuGroup} from "./menu-group.component";
 export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
 
   @Input() title: string;
-  @ContentChildren(MenuGroup) contentGroups: QueryList<MenuGroup>;
-  groups: MenuGroup[];
-  private expanded: boolean;
+  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
+  items: MenuItem[];
+  activeItem: MenuItem;
+  private active: boolean;
 
   constructor(private el: ElementRef, public dom: DomService,public render: Renderer) {
   }
@@ -38,23 +40,46 @@ export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, After
 
   }
   ngAfterContentInit() {
-    this.initGroups();
+    this.initItems();
   }
-  initGroups() {
-    this.groups = this.contentGroups.toArray();
+  initItems() {
+    this.items = this.contentItems.toArray();
+    let length = this.contentItems.length;
+    for (let i = 0; i < length; i++) {
+      this.items[i].setParent(this);
+    }
   }
-  hasGroup(): boolean {
-    if (this.groups.length > 0) {
+  hasItem(): boolean {
+    if (this.items.length > 0) {
       return true;
     } else {
       return false;
     }
   }
+  activateItem(item: MenuItem) {
+    if (isNullOrUndefined(this.activeItem)) {
+      this.activeItem = item;
+      this.activeItem.activate();
+    } else {
+      this.activeItem.deactivate();
+      this.activeItem = item;
+      this.activeItem.activate();
+    }
+  }
+  deactivateItem() {
+    let length = this.items.length;
+    for (let i=0; i<length; i++) {
+      this.items[i].deactivate();
+      this.items[i].deactivateChildItem();
+
+    }
+  }
   onClick() {
-    this.expanded = !this.expanded;
+    this.active = !this.active;
   }
   onBlur() {
-    this.expanded = false;
+    this.active = false;
+    this.deactivateItem();
   }
 
 }

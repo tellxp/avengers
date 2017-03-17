@@ -6,13 +6,12 @@ import {
   AfterViewInit,
   ContentChildren,
   QueryList,
-  AfterContentInit, ContentChild, ViewChildren, ViewChild
+  AfterContentInit
 } from "@angular/core";
 import {DomService} from "../common/dom.service";
 import {PopupOrientation} from "../popup/popup.component";
-import {MenuGroup} from "./menu-group.component";
-import {MenuPanel} from "./menu-panel.component";
 import {isNullOrUndefined} from "util";
+import {MenuEntry} from "./menu-entry.component";
 
 @Component({
   selector: 'ave-menu-item',
@@ -23,43 +22,97 @@ import {isNullOrUndefined} from "util";
 export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   @Input() title: string;
   @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
-  @ViewChild(MenuPanel) viewPanel: QueryList<MenuPanel>;
 
-  expanded: boolean;
-  panel: MenuPanel;
+  parent: any;
+
+  childItems: MenuItem[];
+  activeChildItem: MenuItem;
+  active: boolean;
   orientation: PopupOrientation;
   public domService: DomService;
 
   constructor(el: ElementRef, dom: DomService) {
     this.orientation = PopupOrientation.Right;
-    this.expanded = false;
+    this.active = false;
     this.domService = dom;
   }
 
+  setParent(parent: any) {
+    this.parent = parent;
+  }
   ngAfterContentInit() {
+    this.initChildItems();
   }
 
+  initChildItems() {
+    let contentLength = this.contentItems.toArray().length;
 
-  hasGroup(): boolean {
-    if (isNullOrUndefined(this.panel)) {
-      return false;
-    } else {
-      return true;
+
+    this.childItems = this.contentItems.toArray().slice(1, contentLength);
+    // if (this.title == '1.1') {
+    //   console.log(this.childItems);
+    // }
+    let length = this.childItems.length;
+    for (let i = 0; i < length; i++) {
+      this.childItems[i].setParent(this);
     }
   }
 
   ngAfterViewInit() {
+  }
 
+  hasChildItem() {
+    if (this.childItems.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  activateChildItem(childItem: MenuItem) {
+    if (isNullOrUndefined(this.parent.activeChildItem)) {
+      this.parent.activeChildItem = childItem;
+      this.parent.activeChildItem.activate();
+    } else {
+      this.parent.activeChildItem.deactivate();
+      this.parent.activeChildItem = childItem;
+      this.parent.activeChildItem.activate();
+    }
+  }
+  deactivateChildItem(): boolean {
+    if (this.childItems.length > 0) {
+      let length = this.childItems.length;
+      for (let i = 0; i < length; i++) {
+        this.childItems[i].deactivate();
+        this.childItems[i].deactivateChildItem();
+      }
+    } else {
+      return true;
+    }
+  }
+  activate() {
+    this.active = true;
+  }
+
+  deactivate() {
+    this.active = false;
   }
 
   onMouseOver() {
-    this.expanded = true;
+    if (this.parent instanceof MenuEntry) {
+      this.parent.activateItem(this);
+    }
+    if (this.parent instanceof MenuItem) {
+      this.parent.activateChildItem(this);
+    }
   }
 
   onMouseOut() {
-    this.expanded = false;
-  }
 
+  }
+  onBlur() {
+
+  }
   ngOnInit() {
   }
 }

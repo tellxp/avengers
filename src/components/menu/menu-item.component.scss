@@ -12,6 +12,8 @@
   background-color: $item-background-color;
   color: $item-color;
 }
+:host:nth-child(n) {
+}
 :host:hover {
   background-color: $item-hover-background-color;
   overflow: visible;
@@ -27,7 +29,10 @@ div {
   padding-right: 0.5em;
   padding-left:0.5em;
 }
-
+ave-popup {
+  display: flex;
+  flex-flow: column;
+}
 span {
   display: flex;
 }
