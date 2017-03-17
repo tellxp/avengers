@@ -6,6 +6,7 @@ import {PopupDemo} from "./demo/popup/popup-demo.component";
 import {DropdownDemo} from "./demo/dropdown/dropdown-demo.component";
 import {MenuDemo} from "./demo/menu/menu-demo.component";
 import {HomeDemo} from "./demo/home/home-demo.component";
+import {MegamenuDemo} from "./demo/megamenu/megamenu-demo.component";
 
 
 const appRoutes: Routes = [
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'popup-demo', component: PopupDemo },
   { path: 'dropdown-demo', component: DropdownDemo },
   { path: 'menu-demo', component: MenuDemo },
+  { path: 'megamenu-demo', component: MegamenuDemo },
 
   ];
 

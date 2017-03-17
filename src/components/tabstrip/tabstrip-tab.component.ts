@@ -1,14 +1,17 @@
-import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit, ElementRef} from '@angular/core';
 import {TabstripBar} from './tabstrip-bar.component';
 import {TabstripPage} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
 import {TabstripPanel} from './tabstrip-panel.component';
+import {Widget} from "../common/widget.component";
+import {DomService} from "../common/dom.service";
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
-  styleUrls: ['./tabstrip-tab.component.scss']
+  styleUrls: ['./tabstrip-tab.component.scss'],
+  providers: [DomService]
 })
-export class TabstripTab implements OnInit, AfterContentInit {
+export class TabstripTab extends Widget implements OnInit, AfterContentInit {
 
   private pairedPanel: TabstripPanel;
 
@@ -26,7 +29,8 @@ export class TabstripTab implements OnInit, AfterContentInit {
     this.setPage();
   }
 
-  constructor() {
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
   }
 
   public setParent(bar: TabstripBar) {

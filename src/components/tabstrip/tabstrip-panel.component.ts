@@ -1,11 +1,13 @@
 import {
   Component, Input, ContentChildren, QueryList, OnInit, AfterContentInit, trigger,
-  transition, style, animate
+  transition, style, animate, ElementRef, Renderer
 } from '@angular/core';
 import {TabstripPage} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
 import {Tabstrip} from './tabstrip.component';
 import {TabstripBar} from './tabstrip-bar.component';
+import {Widget} from "../common/widget.component";
+import {DomService} from "../common/dom.service";
 
 
 @Component({
@@ -28,9 +30,10 @@ import {TabstripBar} from './tabstrip-bar.component';
         }))
       ])
     ])
-  ]
+  ],
+  providers: [DomService]
 })
-export class TabstripPanel implements OnInit, AfterContentInit {
+export class TabstripPanel extends Widget implements OnInit, AfterContentInit {
 
   private _pairedBar: TabstripBar;
 
@@ -44,13 +47,12 @@ export class TabstripPanel implements OnInit, AfterContentInit {
 
   private activePage: TabstripPage;
 
-  constructor() {
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
+  }
+  ngOnInit() {
     this.expanded = false;
     this.activePage = null;
-  }
-
-  ngOnInit() {
-
   }
 
   ngAfterContentInit() {

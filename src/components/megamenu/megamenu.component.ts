@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ave-mega-menu',
+  selector: 'ave-megamenu',
   templateUrl: './megamenu.component.html',
   styleUrls: ['./megamenu.component.scss']
 })

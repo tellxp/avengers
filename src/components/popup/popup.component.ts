@@ -1,4 +1,15 @@
-import {Component, Input, ElementRef, Renderer, AfterViewChecked} from "@angular/core";
+import {
+  Component,
+  Input,
+  ElementRef,
+  Renderer,
+  AfterViewChecked,
+  OnInit,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  OnDestroy
+} from "@angular/core";
 import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
 import {Widget} from "../common/widget.component";
 
@@ -9,20 +20,38 @@ import {Widget} from "../common/widget.component";
   styleUrls: ['./popup.component.scss'],
   providers: [DomService]
 })
-export class Popup extends Widget implements AfterViewChecked {
+export class Popup extends Widget implements OnInit,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy {
+
   @Input() anchor: any;
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
 
 
-  constructor(public el: ElementRef, public dom: DomService, public render: Renderer) {
-    super(el, dom);
-    this.orientation = PopupOrientation.Bottom;
-    this.offset = new ElementPosition();
-    this.position = new ElementPosition();
-    this.style = new ElementStyle();
+  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer) {
+    super(elementRef, domService);
+
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.orientation = PopupOrientation.Bottom;
+    this.offset = new ElementPosition();
+  }
+  ngAfterContentInit() {
+    super.ngAfterContentInit();
+  }
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
     this.setPosition();
@@ -43,12 +72,12 @@ export class Popup extends Widget implements AfterViewChecked {
       anchorStyle = this.dom.getElementStyle(this.anchor);
       this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
     }
-    this.dom.setElementPosition(this.position, this.el.nativeElement, this.render);
+    this.dom.setElementPosition(this.position, this.element, this.render);
 
   }
 
   calculatePosition(anchorPosition: ElementPosition, anchorStyle: ElementStyle,
-                    orientation:PopupOrientation, offset: ElementPosition): ElementPosition {
+                    orientation: PopupOrientation, offset: ElementPosition): ElementPosition {
     let position = new ElementPosition();
     switch (orientation) {
       case PopupOrientation.Left:

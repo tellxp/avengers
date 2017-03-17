@@ -1,14 +1,17 @@
-import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit, ElementRef} from '@angular/core';
 import {TabstripBar} from './tabstrip-bar.component';
 import {TabstripPanel} from './tabstrip-panel.component';
+import {Widget} from "../common/widget.component";
+import {DomService} from "../common/dom.service";
 
 
 @Component({
   selector: 'ave-tabstrip-toggle',
   templateUrl: './tabstrip-toggle.component.html',
-  styleUrls: ['./tabstrip-toggle.component.scss']
+  styleUrls: ['./tabstrip-toggle.component.scss'],
+  providers: [DomService]
 })
-export class TabstripToggle implements OnInit, AfterContentInit {
+export class TabstripToggle extends Widget implements OnInit, AfterContentInit {
 
 
   private parentBar: TabstripBar;
@@ -25,7 +28,8 @@ export class TabstripToggle implements OnInit, AfterContentInit {
     this.expanded = false;
   }
 
-  constructor() {
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
   }
 
   public setParent(bar: TabstripBar) {

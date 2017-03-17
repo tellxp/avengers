@@ -1,37 +1,30 @@
-import {
-  Component, OnInit, ContentChildren, QueryList, AfterContentInit, ViewContainerRef,
-  AfterViewInit, AfterViewChecked, OnChanges, AfterContentChecked, OnDestroy, DoCheck
-} from '@angular/core';
-import {DomService} from '../common/dom.service';
-import {MenuItem} from '../menu/menu-item.component';
+import {Component, OnInit, AfterContentInit, AfterViewInit, AfterViewChecked, AfterContentChecked} from "@angular/core";
 
 @Component({
   selector: 'ave-megamenu-group',
-  templateUrl: 'megamenu-group.component.html',
-  styleUrls: ['megamenu-group.component.scss'],
-  providers: [DomService]
+  templateUrl: './megamenu-group.component.html',
+  styleUrls: ['./megamenu-group.component.scss']
 })
-export class MenuGroup implements AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
-  // items: MenuItem[];
-  constructor(dom: DomService) {
+export class MegamenuGroup implements OnInit, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
 
   }
 
   ngAfterContentInit() {
-    this.initItems();
   }
-  initItems() {
-    // this.items = this.contentItems.toArray();
-  }
+
   ngAfterContentChecked() {
   }
+
   ngAfterViewInit() {
   }
+
   ngAfterViewChecked() {
   }
 
-  onClick() {
-
-  }
 }

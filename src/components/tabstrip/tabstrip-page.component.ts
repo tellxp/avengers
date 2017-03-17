@@ -1,6 +1,11 @@
-import {Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate} from '@angular/core';
+import {
+  Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate,
+  ElementRef
+} from '@angular/core';
 import {TabstripPanel} from './tabstrip-panel.component';
 import {TabstripTab} from './tabstrip-tab.component';
+import {Widget} from "../common/widget.component";
+import {DomService} from "../common/dom.service";
 
 @Component({
   selector: 'ave-tabstrip-page',
@@ -20,15 +25,17 @@ import {TabstripTab} from './tabstrip-tab.component';
         }))
       ])
     ])
-  ]
+  ],
+  providers: [DomService]
 })
-export class TabstripPage implements OnInit, AfterContentInit {
+export class TabstripPage extends Widget implements OnInit, AfterContentInit {
 
   private parentTab: TabstripTab;
 
   private parentPanel: TabstripPanel;
 
-  constructor() {
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
   }
 
   ngOnInit() {

@@ -1,19 +1,22 @@
 import {
   Component,
-  Input, OnInit, AfterContentInit, ContentChildren, QueryList, ContentChild,
+  Input, OnInit, AfterContentInit, ContentChildren, QueryList, ContentChild, ElementRef,
 } from '@angular/core';
 
 import {TabstripBar} from './tabstrip-bar.component';
 import {TabstripPanel} from './tabstrip-panel.component';
+import {Widget} from "../common/widget.component";
+import {DomService} from "../common/dom.service";
 
 
 
 @Component({
   selector: 'ave-tabstrip',
   templateUrl: './tabstrip.component.html',
-  styleUrls: ['./tabstrip.component.scss']
+  styleUrls: ['./tabstrip.component.scss'],
+  providers: [DomService]
 })
-export class Tabstrip implements OnInit, AfterContentInit {
+export class Tabstrip extends Widget implements OnInit, AfterContentInit {
 
   @ContentChild(TabstripBar) private contentBar: TabstripBar;
   @ContentChild(TabstripPanel) private contentPanel: TabstripPanel;
@@ -28,8 +31,8 @@ export class Tabstrip implements OnInit, AfterContentInit {
     this.init();
   }
 
-  constructor() {
-
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
   }
 
   private init() {

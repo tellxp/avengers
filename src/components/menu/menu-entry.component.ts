@@ -12,7 +12,6 @@ import {
 } from "@angular/core";
 import {DomService} from "../common/dom.service";
 import {MenuItem} from "./menu-item.component";
-import {MenuGroup} from "../megamenu/megamenu-group.component";
 import {isNullOrUndefined} from "util";
 
 @Component({

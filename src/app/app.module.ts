@@ -22,6 +22,8 @@ import {MenuModule} from "../components/menu/menu.module";
 import {HomeDemo} from "./demo/home/home-demo.component";
 
 import {} from '@types/node'
+import {MegamenuDemo} from "./demo/megamenu/megamenu-demo.component";
+import {MegamenuModule} from "../components/megamenu/megamenu.module";
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {} from '@types/node'
     ButtonDemo,
     PopupDemo,
     DropdownDemo,
-    MenuDemo
+    MenuDemo,
+    MegamenuDemo
 
   ],
   imports: [
@@ -48,7 +51,8 @@ import {} from '@types/node'
     ButtonModule,
     PopupModule,
     DropdownModule,
-    MenuModule
+    MenuModule,
+    MegamenuModule
 
   ],
   providers: [],
