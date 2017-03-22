@@ -8,7 +8,7 @@ import {
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  OnDestroy
+  OnDestroy, OnChanges, DoCheck
 } from "@angular/core";
 import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
 import {Widget} from "../common/widget.component";
@@ -20,11 +20,11 @@ import {Widget} from "../common/widget.component";
   styleUrls: ['./popup.component.scss'],
   providers: [DomService]
 })
-export class Popup extends Widget implements OnInit,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked,
+export class Popup extends Widget implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
   OnDestroy {
 
   @Input() anchor: any;
@@ -36,12 +36,18 @@ export class Popup extends Widget implements OnInit,
     super(elementRef, domService);
 
   }
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
 
   ngOnInit() {
     super.ngOnInit();
 
     this.orientation = PopupOrientation.Bottom;
     this.offset = new ElementPosition();
+  }
+  ngDoCheck() {
+    super.ngDoCheck();
   }
   ngAfterContentInit() {
     super.ngAfterContentInit();

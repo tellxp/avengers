@@ -4,7 +4,6 @@ div {
   display: flex;
   background-color: $panel-background-color;
   color: $panel-color;
-  height: 10em;
   width: 100%;
   border-bottom-color: #ffffff;
   border-bottom-style: outset;
@@ -12,6 +11,5 @@ div {
 }
 :host {
   display: flex;
-
-  overflow: hidden;
+  overflow: auto;
 }

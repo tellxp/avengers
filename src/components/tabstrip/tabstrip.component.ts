@@ -1,13 +1,20 @@
 import {
   Component,
-  Input, OnInit, AfterContentInit, ContentChildren, QueryList, ContentChild, ElementRef,
-} from '@angular/core';
-
-import {TabstripBar} from './tabstrip-bar.component';
-import {TabstripPanel} from './tabstrip-panel.component';
+  OnInit,
+  AfterContentInit,
+  ContentChild,
+  ElementRef,
+  OnChanges,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  DoCheck,
+  OnDestroy
+} from "@angular/core";
+import {TabstripBar} from "./tabstrip-bar.component";
+import {TabstripPanel} from "./tabstrip-panel.component";
 import {Widget} from "../common/widget.component";
 import {DomService} from "../common/dom.service";
-
 
 
 @Component({
@@ -16,7 +23,12 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip.component.scss'],
   providers: [DomService]
 })
-export class Tabstrip extends Widget implements OnInit, AfterContentInit {
+export class Tabstrip extends Widget implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
   @ContentChild(TabstripBar) private contentBar: TabstripBar;
   @ContentChild(TabstripPanel) private contentPanel: TabstripPanel;
@@ -24,21 +36,47 @@ export class Tabstrip extends Widget implements OnInit, AfterContentInit {
   private bar: TabstripBar;
   private panel: TabstripPanel;
 
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
+  }
+
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
   ngOnInit() {
+    super.ngOnInit();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
 
   ngAfterContentInit() {
+    super.ngAfterContentInit();
     this.init();
   }
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
   private init() {
     this.loadBar();
     this.loadPanel();
-    this.pairBarAndPanel();
+    this.bindBarAndPanel();
   }
 
   private loadBar() {
@@ -48,15 +86,17 @@ export class Tabstrip extends Widget implements OnInit, AfterContentInit {
 
   private loadPanel() {
     this.panel = this.contentPanel;
-    this.panel.attachToTabstrip(this);
+    this.panel.setParentTabstrip(this);
   }
 
-  private pairBarAndPanel() {
-    this.bar.setPairedPanel(this.panel);
-    this.bar.pairTabAndPanel(this.panel);
-    this.bar.pairToggleAndPanel(this.panel);
+  private bindBarAndPanel() {
+    this.bar.attachPanel(this.panel);
+    this.bar.attachPanelToTab(this.panel);
+    this.bar.attachPanelToToggle(this.panel);
 
-    this.panel.setPairedBar(this.bar);
+    this.panel.bindBar(this.bar);
+
+    this.bar.setDefaultActiveTab();
   }
 
 }

@@ -22,6 +22,6 @@ import {GridColumn} from "./grid-col.component";
 
   ]
 })
-export class CellModule {
+export class LayoutModule {
 
 }

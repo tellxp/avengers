@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate,
-  ElementRef
+  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges
 } from '@angular/core';
 import {TabstripPanel} from './tabstrip-panel.component';
 import {TabstripTab} from './tabstrip-tab.component';
@@ -10,6 +10,7 @@ import {DomService} from "../common/dom.service";
 @Component({
   selector: 'ave-tabstrip-page',
   templateUrl: './tabstrip-page.component.html',
+  styleUrls: ['./tabstrip-page.component.scss'],
   host:{'[@fadeIn]': 'true'},
   animations: [
     trigger('fadeIn', [
@@ -28,24 +29,68 @@ import {DomService} from "../common/dom.service";
   ],
   providers: [DomService]
 })
-export class TabstripPage extends Widget implements OnInit, AfterContentInit {
+export class TabstripPage extends Widget implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
-  private parentTab: TabstripTab;
+  private bindedTab: TabstripTab;
 
   private parentPanel: TabstripPanel;
+
+  private active: boolean;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
 
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
   ngOnInit() {
+    super.ngOnInit();
+    this.init();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
 
   ngAfterContentInit() {
+    super.ngAfterContentInit();
   }
 
-  public setParentTab(tab: TabstripTab) {
-    this.parentTab = tab;
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
+  init() {
+    this.active = false;
+  }
+
+  activate() {
+    this.active = true;
+  }
+  deactivate() {
+    this.active = false;
+  }
+  public bindTab(tab: TabstripTab) {
+    this.bindedTab = tab;
   }
 
   public setParentPanel(panel: TabstripPanel) {

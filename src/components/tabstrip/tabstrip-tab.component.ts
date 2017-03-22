@@ -1,4 +1,7 @@
-import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit, ElementRef} from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter, OnInit, AfterContentInit, ElementRef, DoCheck,
+  OnChanges, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy
+} from '@angular/core';
 import {TabstripBar} from './tabstrip-bar.component';
 import {TabstripPage} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
@@ -11,38 +14,75 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip-tab.component.scss'],
   providers: [DomService]
 })
-export class TabstripTab extends Widget implements OnInit, AfterContentInit {
+export class TabstripTab extends Widget implements  OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
-  private pairedPanel: TabstripPanel;
-
-  @Input() private page: TabstripPage;
+  @Input() public attachedPage: TabstripPage;
 
   @Input() private active: boolean;
 
   private parentBar: TabstripBar;
 
-  ngOnInit() {
+  private attachedPanel: TabstripPanel;
 
+
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.init();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
 
   ngAfterContentInit() {
-    this.setPage();
+    super.ngAfterContentInit();
+
+    this.attachPage();
+  }
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
 
-  public setParent(bar: TabstripBar) {
+  init() {
+    this.parentBar = null;
+    this.attachedPanel = null;
+  }
+  public setParentBar(bar: TabstripBar) {
     this.parentBar = bar;
   }
 
-  public setPairPanel(panel: TabstripPanel) {
-    this.pairedPanel = panel;
+  public attachPanel(panel: TabstripPanel) {
+    this.attachedPanel = panel;
   }
 
-  public setPage() {
-    this.page.setParentTab(this);
+  public attachPage() {
+    this.attachedPage.bindTab(this);
   }
 
   public isActive(): boolean {
@@ -55,16 +95,20 @@ export class TabstripTab extends Widget implements OnInit, AfterContentInit {
 
   public deactivate() {
     this.active = false;
+    this.attachedPage.deactivate();
+    this.attachedPanel.activePage = null;
     this.parentBar.setActiveTab(null);
   }
 
   public activate() {
     this.active = true;
+    this.attachedPage.activate();
+    this.attachedPanel.activePage = this.attachedPage;
     this.parentBar.setActiveTab(this);
   }
 
   private showPage() {
-    this.pairedPanel.expand();
+    this.attachedPanel.expand();
   }
 
   onClick() {

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {AppComponent} from './app.component';
 
-import {CellModule} from '../components/layout/layout.module';
+import {LayoutModule} from '../components/layout/layout.module';
 
 import {TabstripDemo} from  './demo/tabstrip/tabstrip-demo.component'
 import {TabstripModule} from "../components/tabstrip/tabstrip.module";
@@ -46,7 +46,7 @@ import {MegamenuModule} from "../components/megamenu/megamenu.module";
 
     //Avengers Component
     CommonModule,
-    CellModule,
+    LayoutModule,
     TabstripModule,
     ButtonModule,
     PopupModule,

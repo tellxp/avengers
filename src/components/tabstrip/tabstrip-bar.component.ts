@@ -1,12 +1,23 @@
 import {
-  Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit, ContentChild,
-  HostBinding, ElementRef
-} from '@angular/core';
-import {TabstripTab} from './tabstrip-tab.component';
-import {isNullOrUndefined} from 'util';
-import {TabstripToggle} from './tabstrip-toggle.component';
-import {Tabstrip} from './tabstrip.component';
-import {TabstripPanel} from './tabstrip-panel.component';
+  Component,
+  OnInit,
+  ContentChildren,
+  QueryList,
+  AfterContentInit,
+  ContentChild,
+  ElementRef,
+  DoCheck,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy,
+  OnChanges
+} from "@angular/core";
+import {TabstripTab} from "./tabstrip-tab.component";
+import {isNullOrUndefined} from "util";
+import {TabstripToggle} from "./tabstrip-toggle.component";
+import {Tabstrip} from "./tabstrip.component";
+import {TabstripPanel} from "./tabstrip-panel.component";
 import {Widget} from "../common/widget.component";
 import {DomService} from "../common/dom.service";
 
@@ -16,20 +27,24 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip-bar.component.scss'],
   providers: [DomService]
 })
-export class TabstripBar extends Widget implements OnInit, AfterContentInit {
+export class TabstripBar extends Widget implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
   @ContentChildren(TabstripTab) private contentTabs: QueryList<TabstripTab>;
-
-  @ContentChild(TabstripToggle) private contentToggle: TabstripToggle;
-
-
   private _tabs: TabstripTab[];
 
+
+  @ContentChild(TabstripToggle) private contentToggle: TabstripToggle;
   private _toggle: TabstripToggle;
 
   private _parentTabstrip: Tabstrip;
 
-  private _pairedPanel: TabstripPanel;
+  private _attachedPanel: TabstripPanel;
+
 
   private _activeTab: TabstripTab;
 
@@ -38,69 +53,77 @@ export class TabstripBar extends Widget implements OnInit, AfterContentInit {
     super(elementRef, domService);
   }
 
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
   ngOnInit() {
+    super.ngOnInit();
+
+    this.init();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
 
   ngAfterContentInit() {
+    super.ngAfterContentInit();
+
     this.loadTabs();
     this.loadToggle();
-    this.setDefaultActiveTab();
   }
 
-  private loadTabs() {
-    this._tabs = this.contentTabs.toArray();
-    if (isNullOrUndefined(this._tabs)) {
-      throw new Error('tabs is null or undefined');
-    } else {
-      let length: number = this._tabs.length;
-      for (let i = 0; i < length; i++) {
-        this._tabs[i].setParent(this);
-        if (this._tabs[i].isActive()) {
-          this._activeTab = this._tabs[i];
-        }
-      }
-    }
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+
   }
 
-  public pairTabAndPanel(panel: TabstripPanel) {
-    if (isNullOrUndefined(this._tabs)) {
-      throw new Error('tabs is null or undefined');
-    } else {
-      let length: number = this._tabs.length;
-      for (let i = 0; i < length; i++) {
-        this._tabs[i].setPairPanel(panel);
-      }
-    }
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
   }
 
-  public pairToggleAndPanel(panel: TabstripPanel) {
-    this._toggle.setPairedPanel(panel);
-  }
-  private hasActiveTab():boolean {
-    if (!isNullOrUndefined(this._activeTab)) {
-      return true;
-    } else {
-      return false;
-    }
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
   }
 
-  private setDefaultActiveTab() {
-    if (!this.hasActiveTab()) {
-      this._tabs[0].activate();
-    }
+  ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
-  private loadToggle() {
-    this._toggle = this.contentToggle;
-    this._toggle.setParent(this);
+  init() {
+    this._tabs = null;
+    this._toggle = null;
+    this._parentTabstrip = null;
+    this._attachedPanel = null;
+    this._activeTab = null;
   }
 
   public setParentTabstrip(tabstrip: Tabstrip) {
     this._parentTabstrip = tabstrip;
   }
 
-  public setPairedPanel(panel: TabstripPanel) {
-    this._pairedPanel = panel;
+  public attachPanel(panel: TabstripPanel) {
+    this._attachedPanel = panel;
+  }
+
+  private loadTabs() {
+    this._tabs = this.contentTabs.toArray();
+
+    let length = this._tabs.length;
+    for (let i = 0; i < length; i++) {
+      this._tabs[i].setParentBar(this);
+      if (this._tabs[i].isActive()) {
+        this._activeTab = this._tabs[i];
+      }
+    }
+  }
+
+  public attachPanelToTab(panel: TabstripPanel) {
+    let length = this._tabs.length;
+    for (let i = 0; i < length; i++) {
+      this._tabs[i].attachPanel(panel);
+    }
   }
 
   public setActiveTab(tab: TabstripTab) {
@@ -110,4 +133,28 @@ export class TabstripBar extends Widget implements OnInit, AfterContentInit {
   public getActiveTab(): TabstripTab {
     return this._activeTab;
   }
+
+  public setDefaultActiveTab() {
+    if (isNullOrUndefined(this._activeTab)) {
+      this._activeTab = this._tabs[0];
+      this._activeTab.activate();
+    }
+  }
+
+  private loadToggle() {
+    this._toggle = this.contentToggle;
+    this._toggle.setParentBar(this);
+  }
+
+  public attachPanelToToggle(panel: TabstripPanel) {
+    this._toggle.bindPanel(panel);
+  }
+  private hasActiveTab(): boolean {
+    if (!isNullOrUndefined(this._activeTab)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

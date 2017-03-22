@@ -1,6 +1,17 @@
-import {Component, Input, Output, EventEmitter, OnInit, AfterContentInit, ElementRef} from '@angular/core';
-import {TabstripBar} from './tabstrip-bar.component';
-import {TabstripPanel} from './tabstrip-panel.component';
+import {
+  Component,
+  OnInit,
+  AfterContentInit,
+  ElementRef,
+  OnChanges,
+  DoCheck,
+  AfterViewInit,
+  OnDestroy,
+  AfterContentChecked,
+  AfterViewChecked
+} from "@angular/core";
+import {TabstripBar} from "./tabstrip-bar.component";
+import {TabstripPanel} from "./tabstrip-panel.component";
 import {Widget} from "../common/widget.component";
 import {DomService} from "../common/dom.service";
 
@@ -11,8 +22,12 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip-toggle.component.scss'],
   providers: [DomService]
 })
-export class TabstripToggle extends Widget implements OnInit, AfterContentInit {
-
+export class TabstripToggle extends Widget implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
   private parentBar: TabstripBar;
 
@@ -20,33 +35,64 @@ export class TabstripToggle extends Widget implements OnInit, AfterContentInit {
 
   private expanded: boolean;
 
-  ngOnInit() {
 
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
 
   ngAfterContentInit() {
+    super.ngAfterContentInit();
     this.expanded = false;
   }
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
 
-  public setParent(bar: TabstripBar) {
+  public setParentBar(bar: TabstripBar) {
     this.parentBar = bar;
   }
-  public setPairedPanel(panel: TabstripPanel) {
+
+  public bindPanel(panel: TabstripPanel) {
     this.pairedPanel = panel;
   }
+
   private togglePanel() {
     this.expanded = this.pairedPanel.isExpanded();
     if (this.expanded) {
       this.pairedPanel.collapse();
       this.expanded = false;
+
     } else {
       this.pairedPanel.expand();
       this.expanded = true;
     }
+
   }
 
   onToggleClick() {

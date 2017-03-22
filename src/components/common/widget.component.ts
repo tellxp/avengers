@@ -5,11 +5,16 @@ import {
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  OnDestroy
+  OnDestroy, OnChanges, DoCheck
 } from "@angular/core";
 import {DomService} from "./dom.service";
 
-export class Widget implements OnInit, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+export class Widget implements OnChanges,
+  OnInit,
+  DoCheck ,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
   public position: WidgetPosition;
   public style: WidgetStyle;
   public element: HTMLElement;
@@ -22,13 +27,16 @@ export class Widget implements OnInit, AfterContentInit, AfterContentChecked, Af
   }
 
   public checkPosition() {
-    this.position.left = this.dom.getBoundElementPosition().left;
-    this.position.top = this.dom.getBoundElementPosition().top;
+    this.position.left = this.dom.getBindedElementPosition().left;
+    this.position.top = this.dom.getBindedElementPosition().top;
   }
 
   public checkStyle() {
-    this.style.width = this.dom.getBoundElementStyle().width;
-    this.style.height = this.dom.getBoundElementStyle().height;
+    this.style.width = this.dom.getBindedElementStyle().width;
+    this.style.height = this.dom.getBindedElementStyle().height;
+  }
+  ngOnChanges() {
+
   }
 
   ngOnInit() {
@@ -38,6 +46,9 @@ export class Widget implements OnInit, AfterContentInit, AfterContentChecked, Af
     this.dom.bindElement(this.element);
   }
 
+  ngDoCheck() {
+
+  }
   ngAfterContentInit() {
 
   }

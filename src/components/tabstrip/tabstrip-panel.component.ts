@@ -1,13 +1,29 @@
 import {
-  Component, Input, ContentChildren, QueryList, OnInit, AfterContentInit, trigger,
-  transition, style, animate, ElementRef, Renderer
-} from '@angular/core';
-import {TabstripPage} from './tabstrip-page.component';
-import {isNullOrUndefined} from 'util';
-import {Tabstrip} from './tabstrip.component';
-import {TabstripBar} from './tabstrip-bar.component';
+  Component,
+  Input,
+  ContentChildren,
+  QueryList,
+  OnInit,
+  AfterContentInit,
+  trigger,
+  transition,
+  style,
+  animate,
+  ElementRef,
+  Renderer,
+  DoCheck,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnChanges,
+  OnDestroy
+} from "@angular/core";
+import {TabstripPage} from "./tabstrip-page.component";
+import {Tabstrip} from "./tabstrip.component";
+import {TabstripBar} from "./tabstrip-bar.component";
 import {Widget} from "../common/widget.component";
-import {DomService} from "../common/dom.service";
+import {DomService, PositioningType} from "../common/dom.service";
+import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -33,49 +49,94 @@ import {DomService} from "../common/dom.service";
   ],
   providers: [DomService]
 })
-export class TabstripPanel extends Widget implements OnInit, AfterContentInit {
+export class TabstripPanel extends Widget implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
-  private _pairedBar: TabstripBar;
-
+  @Input() private height: number;
   @Input() private expanded: boolean;
+
+  @ContentChildren(TabstripPage) private contentPages: QueryList<TabstripPage>;
+  private pages: TabstripPage[];
+  public activePage: TabstripPage;
 
   private parentTabstrip: Tabstrip;
 
-  @ContentChildren(TabstripPage) private contentPages: QueryList<TabstripPage>;
+  private _bindedBar: TabstripBar;
 
-  private pages: TabstripPage[];
+  private docked: boolean;
 
-  private activePage: TabstripPage;
+  public render: Renderer;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
+
+  constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer) {
     super(elementRef, domService);
+
+    this.render = renderer;
   }
+
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
   ngOnInit() {
-    this.expanded = false;
-    this.activePage = null;
+    super.ngOnInit();
+
+    this.init();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
 
   ngAfterContentInit() {
+    super.ngAfterContentInit();
     this.loadPages();
+  }
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
+
+  init() {
+    this.activePage = null;
+    this.docked = false;
+
+    if (isNullOrUndefined(this.height)) {
+      this.height = 60;
+    }
+  }
+
+  public setParentTabstrip(tabstrip: Tabstrip) {
+    this.parentTabstrip = tabstrip;
+  }
+
+  public bindBar(bar: TabstripBar) {
+    this._bindedBar = bar;
   }
 
   private loadPages() {
     this.pages = this.contentPages.toArray();
-    if (isNullOrUndefined(this.pages)) {
-      throw new Error('pages is null or undefined');
-    } else {
-      for (let i = 0; i < this.pages.length; i++) {
-        this.pages[i].setParentPanel(this);
-      }
+
+    for (let i = 0; i < this.pages.length; i++) {
+      this.pages[i].setParentPanel(this);
     }
-  }
-
-  public setPairedBar(bar: TabstripBar) {
-    this._pairedBar = bar;
-  }
-
-  public attachToTabstrip(tabstrip: Tabstrip) {
-    this.parentTabstrip = tabstrip;
   }
 
   public isExpanded() {
@@ -86,7 +147,35 @@ export class TabstripPanel extends Widget implements OnInit, AfterContentInit {
     }
   }
 
+  dock() {
+    let positionType = PositioningType.Relative;
+    this.dom.setBindedElementPositioningType(positionType, this.render);
+  }
+
+  undock() {
+    let positionType = PositioningType.Absolute;
+    this.dom.setBindedElementPositioningType(positionType, this.render);
+  }
+
+  setPosition() {
+    this.position = this.dom.getBindedElementPosition();
+    this.position.left = this._bindedBar.dom.getBindedElementPosition().left;
+    this.position.top = this._bindedBar.dom.getBindedElementPosition().top + this._bindedBar.dom.getBindedElementStyle().height;
+
+    let positionType = PositioningType.Absolute;
+    this.dom.setBindedElementPositioningType(positionType, this.render);
+    this.dom.setBindedElementPosition(this.position, this.render);
+  }
+
+  setStyle() {
+    this.style.width = this._bindedBar.dom.getBindedElementStyle().width;
+    this.style.height = this.height;
+    this.dom.setBindedElementStyle(this.style, this.render);
+  }
+
   public expand() {
+    this.setPosition();
+    this.setStyle();
     this.expanded = true;
   }
 
