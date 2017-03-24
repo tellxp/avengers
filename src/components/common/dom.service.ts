@@ -1,4 +1,4 @@
-import {Injectable, Renderer} from "@angular/core";
+import {Injectable, Renderer2} from '@angular/core';
 
 @Injectable()
 export class DomService {
@@ -10,71 +10,71 @@ export class DomService {
   }
 
   public getBindedElementPosition(): ElementPosition {
-    let position: ElementPosition = new ElementPosition();
+    const position: ElementPosition = new ElementPosition();
     position.left = this.element.offsetLeft;
     position.top = this.element.offsetTop;
     return position;
   }
 
   public getBindedElementStyle(): ElementStyle {
-    let style: ElementStyle = new ElementStyle();
+    const style: ElementStyle = new ElementStyle();
     style.height = this.element.offsetHeight;
     style.width = this.element.offsetWidth;
     return style;
   }
 
   public getElementPosition(el: HTMLElement): ElementPosition {
-    let position: ElementPosition = new ElementPosition();
+    const position: ElementPosition = new ElementPosition();
     position.left = el.offsetLeft;
     position.top = el.offsetTop;
     return position;
   }
 
   public getElementStyle(el: HTMLElement): ElementStyle {
-    let style: ElementStyle = new ElementStyle();
+    const style: ElementStyle = new ElementStyle();
     style.height = el.offsetHeight;
     style.width = el.offsetWidth;
     return style;
   }
 
-  public setElementPositioningType(type: PositioningType, el: HTMLElement, render: Renderer) {
+  public setElementPositioningType(type: PositioningType, el: HTMLElement, render: Renderer2) {
     switch (type) {
       case PositioningType.Absolute:
-        render.setElementStyle(el, 'position', 'absolute');
+        render.setStyle(el, 'position', 'absolute');
         break;
       case PositioningType.Fixed:
-        render.setElementStyle(el, 'position', 'fixed');
+        render.setStyle(el, 'position', 'fixed');
         break;
       case PositioningType.Static:
-        render.setElementStyle(el, 'position', 'static');
+        render.setStyle(el, 'position', 'static');
         break;
       case PositioningType.Relative:
-        render.setElementStyle(el, 'position', 'relative');
+        render.setStyle(el, 'position', 'relative');
         break;
       default:
         throw Error('Unmatched type');
     }
   }
 
-  public setElementPosition(position: ElementPosition, el: HTMLElement, renderer: Renderer) {
-    renderer.setElementStyle(el, 'left', position.left + 'px');
-    renderer.setElementStyle(el, 'top', position.top + 'px');
+  public setElementPosition(position: ElementPosition, el: HTMLElement, renderer: Renderer2) {
+    renderer.setStyle(el, 'left', position.left + 'px');
+    renderer.setStyle(el, 'top', position.top + 'px');
   }
 
-  public setElementStyle(style: ElementStyle, el: HTMLElement, renderer: Renderer) {
-    renderer.setElementStyle(el, 'width', style.width + 'px');
-    renderer.setElementStyle(el, 'height', style.height + 'px');
+  public setElementStyle(style: ElementStyle, el: HTMLElement, renderer: Renderer2) {
+    renderer.setStyle(el, 'width', style.width + 'px');
+    renderer.setStyle(el, 'height', style.height + 'px');
   }
 
-  public setBindedElementPosition(position: ElementPosition, renderer: Renderer) {
+  public setBindedElementPosition(position: ElementPosition, renderer: Renderer2) {
     this.setElementPosition(position, this.element, renderer);
   }
 
-  public setBindedElementStyle(style: ElementStyle, renderer: Renderer) {
+  public setBindedElementStyle(style: ElementStyle, renderer: Renderer2) {
     this.setElementStyle(style, this.element, renderer);
   }
 
-  public setBindedElementPositioningType(type: PositioningType, renderer: Renderer) {
+  public setBindedElementPositioningType(type: PositioningType, renderer: Renderer2) {
     this.setElementPositioningType(type, this.element, renderer);
   }
 }

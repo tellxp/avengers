@@ -10,11 +10,11 @@ import {
   AfterViewChecked,
   DoCheck,
   OnDestroy
-} from "@angular/core";
-import {TabstripBar} from "./tabstrip-bar.component";
-import {TabstripPanel} from "./tabstrip-panel.component";
-import {Widget} from "../common/widget.component";
-import {DomService} from "../common/dom.service";
+} from '@angular/core';
+import {TabstripBarComponent} from './tabstrip-bar.component';
+import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../common/dom.service';
 
 
 @Component({
@@ -23,18 +23,18 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip.component.scss'],
   providers: [DomService]
 })
-export class Tabstrip extends Widget implements OnChanges,
+export class TabstripComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ContentChild(TabstripBar) private contentBar: TabstripBar;
-  @ContentChild(TabstripPanel) private contentPanel: TabstripPanel;
+  @ContentChild(TabstripBarComponent) private contentBar: TabstripBarComponent;
+  @ContentChild(TabstripPanelComponent) private contentPanel: TabstripPanelComponent;
 
-  private bar: TabstripBar;
-  private panel: TabstripPanel;
+  private bar: TabstripBarComponent;
+  private panel: TabstripPanelComponent;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

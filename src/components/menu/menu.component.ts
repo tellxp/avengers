@@ -1,14 +1,14 @@
-import {Component, OnInit, AfterContentInit, ContentChildren, QueryList, AfterViewInit} from "@angular/core";
-import {MenuBar} from "./menu-bar.component";
+import {Component, OnInit, AfterContentInit, ContentChildren, QueryList, AfterViewInit} from '@angular/core';
+import {MenuBarComponent} from './menu-bar.component';
 
 @Component({
   selector: 'ave-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class Menu implements OnInit, AfterContentInit, AfterViewInit {
-  @ContentChildren(MenuBar) contentBars: QueryList<MenuBar>;
-  bars: MenuBar[];
+export class MenuComponent implements OnInit, AfterContentInit, AfterViewInit {
+  @ContentChildren(MenuBarComponent) contentBars: QueryList<MenuBarComponent>;
+  bars: MenuBarComponent[];
 
   constructor() {
   }

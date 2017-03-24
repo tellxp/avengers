@@ -9,10 +9,10 @@ import {
   AfterViewInit,
   AfterViewChecked,
   Renderer
-} from "@angular/core";
-import {DomService} from "../common/dom.service";
-import {MenuItem} from "./menu-item.component";
-import {isNullOrUndefined} from "util";
+} from '@angular/core';
+import {DomService} from '../common/dom.service';
+import {MenuItemComponent} from './menu-item.component';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'ave-menu-entry',
@@ -20,13 +20,13 @@ import {isNullOrUndefined} from "util";
   styleUrls: ['./menu-entry.component.scss'],
   providers: [DomService]
 })
-export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
+export class MenuEntryComponent implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
 
   @Input() title: string;
-  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
-  items: MenuItem[];
-  activeItem: MenuItem;
-  private active: boolean;
+  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
+  items: MenuItemComponent[];
+  activeItem: MenuItemComponent;
+  public active: boolean;
 
   constructor(private el: ElementRef, public dom: DomService,public render: Renderer) {
   }
@@ -55,7 +55,7 @@ export class MenuEntry implements OnInit, AfterContentInit, AfterViewInit, After
       return false;
     }
   }
-  activateItem(item: MenuItem) {
+  activateItem(item: MenuItemComponent) {
     if (isNullOrUndefined(this.activeItem)) {
       this.activeItem = item;
       this.activeItem.activate();

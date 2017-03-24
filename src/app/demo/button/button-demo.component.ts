@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, ContentChildren, QueryList, ContentChild} from '@angular/core';
-import {Button} from "../../../components/button/button.component";
-import {Popup} from "../../../components/popup/popup.component";
+import {ButtonComponent} from "../../../components/button/button.component";
+import {PopupComponent} from "../../../components/popup/popup.component";
 
 @Component({
     templateUrl: './button-demo.component.html',

@@ -9,9 +9,9 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy
-} from "@angular/core";
-import {Widget} from "../common/widget.component";
-import {DomService} from "../common/dom.service";
+} from '@angular/core';
+import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../common/dom.service';
 
 @Component({
   selector: 'ave-tabstrip-addon',
@@ -19,7 +19,7 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip-addon.component.scss'],
   providers: [DomService]
 })
-export class TabstripAddon extends Widget implements OnChanges,
+export class TabstripAddonComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,

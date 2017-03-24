@@ -1,9 +1,8 @@
-import {NgModule} from "@angular/core";
-import {Megamenu} from "./megamenu.component";
-import {MegamenuGroup} from "./megamenu-group.component";
-import {MegamenuItem} from "./megamenu-item.component";
-import {PopupModule} from "../popup/popup.module";
-import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from '@angular/core';
+import {MegamenuComponent} from './megamenu.component';
+import {MegamenuGroupComponent} from './megamenu-group.component';
+import {MegamenuItemComponent} from './megamenu-item.component';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 @NgModule({
@@ -12,14 +11,14 @@ import {BrowserModule} from "@angular/platform-browser";
   ],
 
   declarations: [
-    Megamenu,
-    MegamenuGroup,
-    MegamenuItem
+    MegamenuComponent,
+    MegamenuGroupComponent,
+    MegamenuItemComponent
   ],
   exports: [
-    Megamenu,
-    MegamenuGroup,
-    MegamenuItem
+    MegamenuComponent,
+    MegamenuGroupComponent,
+    MegamenuItemComponent
   ],
   providers: [],
 })

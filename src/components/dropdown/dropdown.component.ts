@@ -1,8 +1,5 @@
-import {
-  Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, trigger, state,
-  transition, style, animate
-} from '@angular/core';
-import {DomService} from "../common/dom.service";
+import {AfterViewInit, Component, ElementRef, Input, OnInit} from '@angular/core';
+import {DomService} from '../common/dom.service';
 
 @Component({
   selector: 'ave-dropdown',
@@ -11,7 +8,7 @@ import {DomService} from "../common/dom.service";
 
   providers: [DomService]
 })
-export class Dropdown implements OnInit, AfterViewInit {
+export class DropdownComponent implements OnInit, AfterViewInit {
   @Input() title: string;
   @Input() expanded: boolean;
 
@@ -24,9 +21,11 @@ export class Dropdown implements OnInit, AfterViewInit {
   onClick() {
     this.expanded = !this.expanded;
   }
+
   onBlur() {
     // this.active = false;
   }
+
   ngAfterViewInit() {
 
   }

@@ -5,10 +5,6 @@ import {
   QueryList,
   OnInit,
   AfterContentInit,
-  trigger,
-  transition,
-  style,
-  animate,
   ElementRef,
   Renderer,
   DoCheck,
@@ -16,14 +12,15 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnChanges,
-  OnDestroy
-} from "@angular/core";
-import {TabstripPage} from "./tabstrip-page.component";
-import {Tabstrip} from "./tabstrip.component";
-import {TabstripBar} from "./tabstrip-bar.component";
-import {Widget} from "../common/widget.component";
-import {DomService, PositioningType} from "../common/dom.service";
-import {isNullOrUndefined} from "util";
+  OnDestroy, Renderer2
+} from '@angular/core';
+import {TabstripPageComponent} from './tabstrip-page.component';
+import {TabstripComponent} from './tabstrip.component';
+import {TabstripBarComponent} from './tabstrip-bar.component';
+import {WidgetComponent} from '../common/widget.component';
+import {DomService, PositioningType} from '../common/dom.service';
+import {isNullOrUndefined} from 'util';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 
 @Component({
@@ -31,7 +28,7 @@ import {isNullOrUndefined} from "util";
   templateUrl: './tabstrip-panel.component.html',
   styleUrls: ['./tabstrip-panel.component.scss'],
   animations: [
-    trigger('fadeIn', [
+    trigger('fadeDown', [
       transition('void => *', [
         style({
           opacity: 0,
@@ -49,7 +46,7 @@ import {isNullOrUndefined} from "util";
   ],
   providers: [DomService]
 })
-export class TabstripPanel extends Widget implements OnChanges,
+export class TabstripPanelComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -59,20 +56,20 @@ export class TabstripPanel extends Widget implements OnChanges,
   @Input() private height: number;
   @Input() private expanded: boolean;
 
-  @ContentChildren(TabstripPage) private contentPages: QueryList<TabstripPage>;
-  private pages: TabstripPage[];
-  public activePage: TabstripPage;
+  @ContentChildren(TabstripPageComponent) private contentPages: QueryList<TabstripPageComponent>;
+  private pages: TabstripPageComponent[];
+  public activePage: TabstripPageComponent;
 
-  private parentTabstrip: Tabstrip;
+  private parentTabstrip: TabstripComponent;
 
-  private _bindedBar: TabstripBar;
+  private _bindedBar: TabstripBarComponent;
 
   private docked: boolean;
 
-  public render: Renderer;
+  public render: Renderer2;
 
 
-  constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer) {
+  constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer2) {
     super(elementRef, domService);
 
     this.render = renderer;
@@ -123,11 +120,11 @@ export class TabstripPanel extends Widget implements OnChanges,
     }
   }
 
-  public setParentTabstrip(tabstrip: Tabstrip) {
+  public setParentTabstrip(tabstrip: TabstripComponent) {
     this.parentTabstrip = tabstrip;
   }
 
-  public bindBar(bar: TabstripBar) {
+  public bindBar(bar: TabstripBarComponent) {
     this._bindedBar = bar;
   }
 

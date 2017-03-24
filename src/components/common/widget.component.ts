@@ -6,10 +6,10 @@ import {
   AfterContentChecked,
   AfterViewInit,
   OnDestroy, OnChanges, DoCheck
-} from "@angular/core";
-import {DomService} from "./dom.service";
+} from '@angular/core';
+import {DomService} from './dom.service';
 
-export class Widget implements OnChanges,
+export class WidgetComponent implements OnChanges,
   OnInit,
   DoCheck ,
   AfterContentInit, AfterContentChecked,

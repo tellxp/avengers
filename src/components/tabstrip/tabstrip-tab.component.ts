@@ -1,33 +1,42 @@
 import {
-  Component, Input, Output, EventEmitter, OnInit, AfterContentInit, ElementRef, DoCheck,
-  OnChanges, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
-import {TabstripBar} from './tabstrip-bar.component';
-import {TabstripPage} from './tabstrip-page.component';
+import {TabstripBarComponent} from './tabstrip-bar.component';
+import {TabstripPageComponent} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
-import {TabstripPanel} from './tabstrip-panel.component';
-import {Widget} from "../common/widget.component";
-import {DomService} from "../common/dom.service";
+import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../common/dom.service';
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
   styleUrls: ['./tabstrip-tab.component.scss'],
   providers: [DomService]
 })
-export class TabstripTab extends Widget implements  OnChanges,
+export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() public attachedPage: TabstripPage;
+  @Input() public attachedPage: TabstripPageComponent;
 
-  @Input() private active: boolean;
+  @Input() public active: boolean;
 
-  private parentBar: TabstripBar;
+  private parentBar: TabstripBarComponent;
 
-  private attachedPanel: TabstripPanel;
+  public attachedPanel: TabstripPanelComponent;
 
 
   ngOnChanges() {
@@ -73,11 +82,12 @@ export class TabstripTab extends Widget implements  OnChanges,
     this.parentBar = null;
     this.attachedPanel = null;
   }
-  public setParentBar(bar: TabstripBar) {
+
+  public setParentBar(bar: TabstripBarComponent) {
     this.parentBar = bar;
   }
 
-  public attachPanel(panel: TabstripPanel) {
+  public attachPanel(panel: TabstripPanelComponent) {
     this.attachedPanel = panel;
   }
 
@@ -112,7 +122,7 @@ export class TabstripTab extends Widget implements  OnChanges,
   }
 
   onClick() {
-    let currentActiveTab: TabstripTab = this.parentBar.getActiveTab();
+    let currentActiveTab: TabstripTabComponent = this.parentBar.getActiveTab();
     if (isNullOrUndefined(currentActiveTab)) {
       this.activate();
     } else {

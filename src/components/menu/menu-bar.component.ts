@@ -1,17 +1,17 @@
 import {Component, OnInit, ContentChildren, QueryList, AfterContentInit} from '@angular/core';
-import {MenuEntry} from "./menu-entry.component";
-import {Menu} from "./menu.component";
+import {MenuEntryComponent} from './menu-entry.component';
+import {MenuComponent} from './menu.component';
 
 @Component({
   selector: 'ave-menu-bar',
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.scss']
 })
-export class MenuBar implements OnInit, AfterContentInit {
-  @ContentChildren(MenuEntry) contentEntries: QueryList<MenuEntry>
+export class MenuBarComponent implements OnInit, AfterContentInit {
+  @ContentChildren(MenuEntryComponent) contentEntries: QueryList<MenuEntryComponent>
 
-  parentMenu: Menu;
-  entries: MenuEntry[];
+  parentMenu: MenuComponent;
+  entries: MenuEntryComponent[];
   constructor() {
   }
 
@@ -20,7 +20,7 @@ export class MenuBar implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     this.entries = this.contentEntries.toArray();
   }
-  setParentMenu(menu: Menu) {
+  setParentMenu(menu: MenuComponent) {
     this.parentMenu = menu;
   }
 }

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './megamenu.component.html',
   styleUrls: ['./megamenu.component.scss']
 })
-export class Megamenu implements OnInit {
+export class MegamenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }

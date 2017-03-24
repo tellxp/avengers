@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['grid-col.component.scss']
 })
 
-export class GridColumn {
+export class GridColumnComponent {
 
 }

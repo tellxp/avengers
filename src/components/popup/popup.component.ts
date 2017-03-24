@@ -8,10 +8,10 @@ import {
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  OnDestroy, OnChanges, DoCheck
-} from "@angular/core";
-import {DomService, ElementPosition, ElementStyle} from "../common/dom.service";
-import {Widget} from "../common/widget.component";
+  OnDestroy, OnChanges, DoCheck, Renderer2
+} from '@angular/core';
+import {DomService, ElementPosition, ElementStyle} from '../common/dom.service';
+import {WidgetComponent} from '../common/widget.component';
 
 
 @Component({
@@ -20,7 +20,7 @@ import {Widget} from "../common/widget.component";
   styleUrls: ['./popup.component.scss'],
   providers: [DomService]
 })
-export class Popup extends Widget implements OnChanges,
+export class PopupComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -32,7 +32,7 @@ export class Popup extends Widget implements OnChanges,
   @Input() offset: ElementPosition;
 
 
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer) {
+  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
 
   }
@@ -66,7 +66,7 @@ export class Popup extends Widget implements OnChanges,
   setPosition() {
     let anchorPosition: ElementPosition = new ElementPosition();
     let anchorStyle: ElementStyle = new ElementStyle();
-    if (this.anchor instanceof Widget) {
+    if (this.anchor instanceof WidgetComponent) {
       anchorPosition.left = this.anchor.position.left;
       anchorPosition.top = this.anchor.position.top;
       anchorStyle.width = this.anchor.style.width;
@@ -110,7 +110,7 @@ export class Popup extends Widget implements OnChanges,
 
   // @HostListener('window:scroll', [])
   // onWindowScroll() {
-  //   this.anchorBtn = <Button>this.parent;
+  //   this.anchorBtn = <ButtonComponent>this.parent;
   //   let styles = {
   //     'left': true ? this.anchorBtn.left + 'px' : '0px',
   //     'top': true ? this.anchorBtn.top + 'px' : '0px'

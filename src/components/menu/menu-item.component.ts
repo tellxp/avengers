@@ -7,11 +7,11 @@ import {
   ContentChildren,
   QueryList,
   AfterContentInit
-} from "@angular/core";
-import {DomService} from "../common/dom.service";
-import {PopupOrientation} from "../popup/popup.component";
-import {isNullOrUndefined} from "util";
-import {MenuEntry} from "./menu-entry.component";
+} from '@angular/core';
+import {DomService} from '../common/dom.service';
+import {PopupOrientation} from '../popup/popup.component';
+import {isNullOrUndefined} from 'util';
+import {MenuEntryComponent} from './menu-entry.component';
 
 @Component({
   selector: 'ave-menu-item',
@@ -19,14 +19,14 @@ import {MenuEntry} from "./menu-entry.component";
   styleUrls: ['./menu-item.component.scss'],
   providers: [DomService]
 })
-export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
+export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewInit {
   @Input() title: string;
-  @ContentChildren(MenuItem) contentItems: QueryList<MenuItem>;
+  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
   parent: any;
 
-  childItems: MenuItem[];
-  activeChildItem: MenuItem;
+  childItems: MenuItemComponent[];
+  activeChildItem: MenuItemComponent;
   active: boolean;
   orientation: PopupOrientation;
   public domService: DomService;
@@ -69,7 +69,7 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
     }
   }
 
-  activateChildItem(childItem: MenuItem) {
+  activateChildItem(childItem: MenuItemComponent) {
     if (isNullOrUndefined(this.parent.activeChildItem)) {
       this.parent.activeChildItem = childItem;
       this.parent.activeChildItem.activate();
@@ -99,10 +99,10 @@ export class MenuItem implements OnInit, AfterContentInit, AfterViewInit {
   }
 
   onMouseOver() {
-    if (this.parent instanceof MenuEntry) {
+    if (this.parent instanceof MenuEntryComponent) {
       this.parent.activateItem(this);
     }
-    if (this.parent instanceof MenuItem) {
+    if (this.parent instanceof MenuItemComponent) {
       this.parent.activateChildItem(this);
     }
   }

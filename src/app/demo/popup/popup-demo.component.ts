@@ -1,5 +1,5 @@
 import {Component, OnInit, ContentChild, Input} from '@angular/core';
-import {Popup, PopupOrientation} from "../../../components/popup/popup.component";
+import {PopupComponent, PopupOrientation} from "../../../components/popup/popup.component";
 
 @Component({
   templateUrl: './popup-demo.component.html',
@@ -10,7 +10,7 @@ export class PopupDemo implements OnInit {
   constructor() {
   }
   private showPopup: boolean;
-  @ContentChild(Popup) popup: Popup;
+  @ContentChild(PopupComponent) popup: PopupComponent;
 
   ngOnInit() {
   }

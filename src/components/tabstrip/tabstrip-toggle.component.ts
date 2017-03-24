@@ -9,11 +9,11 @@ import {
   OnDestroy,
   AfterContentChecked,
   AfterViewChecked
-} from "@angular/core";
-import {TabstripBar} from "./tabstrip-bar.component";
-import {TabstripPanel} from "./tabstrip-panel.component";
-import {Widget} from "../common/widget.component";
-import {DomService} from "../common/dom.service";
+} from '@angular/core';
+import {TabstripBarComponent} from './tabstrip-bar.component';
+import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../common/dom.service';
 
 
 @Component({
@@ -22,18 +22,18 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip-toggle.component.scss'],
   providers: [DomService]
 })
-export class TabstripToggle extends Widget implements OnChanges,
+export class TabstripToggleComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  private parentBar: TabstripBar;
+  private parentBar: TabstripBarComponent;
 
-  private pairedPanel: TabstripPanel;
+  private pairedPanel: TabstripPanelComponent;
 
-  private expanded: boolean;
+  public expanded: boolean;
 
 
   ngOnChanges() {
@@ -74,11 +74,11 @@ export class TabstripToggle extends Widget implements OnChanges,
     super(elementRef, domService);
   }
 
-  public setParentBar(bar: TabstripBar) {
+  public setParentBar(bar: TabstripBarComponent) {
     this.parentBar = bar;
   }
 
-  public bindPanel(panel: TabstripPanel) {
+  public bindPanel(panel: TabstripPanelComponent) {
     this.pairedPanel = panel;
   }
 

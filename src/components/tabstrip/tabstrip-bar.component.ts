@@ -12,14 +12,14 @@ import {
   AfterViewChecked,
   OnDestroy,
   OnChanges
-} from "@angular/core";
-import {TabstripTab} from "./tabstrip-tab.component";
-import {isNullOrUndefined} from "util";
-import {TabstripToggle} from "./tabstrip-toggle.component";
-import {Tabstrip} from "./tabstrip.component";
-import {TabstripPanel} from "./tabstrip-panel.component";
-import {Widget} from "../common/widget.component";
-import {DomService} from "../common/dom.service";
+} from '@angular/core';
+import {TabstripTabComponent} from './tabstrip-tab.component';
+import {isNullOrUndefined} from 'util';
+import {TabstripToggleComponent} from './tabstrip-toggle.component';
+import {TabstripComponent} from './tabstrip.component';
+import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../common/dom.service';
 
 @Component({
   selector: 'ave-tabstrip-bar',
@@ -27,26 +27,26 @@ import {DomService} from "../common/dom.service";
   styleUrls: ['./tabstrip-bar.component.scss'],
   providers: [DomService]
 })
-export class TabstripBar extends Widget implements OnChanges,
+export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ContentChildren(TabstripTab) private contentTabs: QueryList<TabstripTab>;
-  private _tabs: TabstripTab[];
+  @ContentChildren(TabstripTabComponent) private contentTabs: QueryList<TabstripTabComponent>;
+  private _tabs: TabstripTabComponent[];
 
 
-  @ContentChild(TabstripToggle) private contentToggle: TabstripToggle;
-  private _toggle: TabstripToggle;
+  @ContentChild(TabstripToggleComponent) private contentToggle: TabstripToggleComponent;
+  private _toggle: TabstripToggleComponent;
 
-  private _parentTabstrip: Tabstrip;
+  private _parentTabstrip: TabstripComponent;
 
-  private _attachedPanel: TabstripPanel;
+  private _attachedPanel: TabstripPanelComponent;
 
 
-  private _activeTab: TabstripTab;
+  private _activeTab: TabstripTabComponent;
 
 
   constructor(elementRef: ElementRef, domService: DomService) {
@@ -99,11 +99,11 @@ export class TabstripBar extends Widget implements OnChanges,
     this._activeTab = null;
   }
 
-  public setParentTabstrip(tabstrip: Tabstrip) {
+  public setParentTabstrip(tabstrip: TabstripComponent) {
     this._parentTabstrip = tabstrip;
   }
 
-  public attachPanel(panel: TabstripPanel) {
+  public attachPanel(panel: TabstripPanelComponent) {
     this._attachedPanel = panel;
   }
 
@@ -119,18 +119,18 @@ export class TabstripBar extends Widget implements OnChanges,
     }
   }
 
-  public attachPanelToTab(panel: TabstripPanel) {
+  public attachPanelToTab(panel: TabstripPanelComponent) {
     let length = this._tabs.length;
     for (let i = 0; i < length; i++) {
       this._tabs[i].attachPanel(panel);
     }
   }
 
-  public setActiveTab(tab: TabstripTab) {
+  public setActiveTab(tab: TabstripTabComponent) {
     this._activeTab = tab;
   }
 
-  public getActiveTab(): TabstripTab {
+  public getActiveTab(): TabstripTabComponent {
     return this._activeTab;
   }
 
@@ -146,7 +146,7 @@ export class TabstripBar extends Widget implements OnChanges,
     this._toggle.setParentBar(this);
   }
 
-  public attachPanelToToggle(panel: TabstripPanel) {
+  public attachPanelToToggle(panel: TabstripPanelComponent) {
     this._toggle.bindPanel(panel);
   }
   private hasActiveTab(): boolean {

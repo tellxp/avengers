@@ -7,9 +7,9 @@ import {
   AfterContentChecked,
   AfterViewInit,
   OnDestroy
-} from "@angular/core";
-import {DomService} from "../common/dom.service";
-import {Widget} from "../common/widget.component";
+} from '@angular/core';
+import {DomService} from '../common/dom.service';
+import {WidgetComponent} from '../common/widget.component';
 
 
 @Component({
@@ -17,7 +17,7 @@ import {Widget} from "../common/widget.component";
   templateUrl: './megamenu-entry.component.html',
   styleUrls: ['./megamenu-entry.component.scss']
 })
-export class MegamenuEntry extends Widget implements OnInit,
+export class MegamenuEntryComponent extends WidgetComponent implements OnInit,
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,

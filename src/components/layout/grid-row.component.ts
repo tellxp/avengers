@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['grid-row.component.scss']
 })
 
-export class GridRow {
+export class GridRowComponent {
 
 }
