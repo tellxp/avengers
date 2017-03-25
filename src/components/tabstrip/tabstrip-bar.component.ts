@@ -35,18 +35,18 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @ContentChildren(TabstripTabComponent) private contentTabs: QueryList<TabstripTabComponent>;
-  private _tabs: TabstripTabComponent[];
+  private tabs: TabstripTabComponent[];
 
 
   @ContentChild(TabstripToggleComponent) private contentToggle: TabstripToggleComponent;
-  private _toggle: TabstripToggleComponent;
+  private toggle: TabstripToggleComponent;
 
   private _parentTabstrip: TabstripComponent;
 
   private _attachedPanel: TabstripPanelComponent;
 
 
-  private _activeTab: TabstripTabComponent;
+  private activeTab: TabstripTabComponent;
 
 
   constructor(elementRef: ElementRef, domService: DomService) {
@@ -92,11 +92,11 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    this._tabs = null;
-    this._toggle = null;
+    this.tabs = null;
+    this.toggle = null;
     this._parentTabstrip = null;
     this._attachedPanel = null;
-    this._activeTab = null;
+    this.activeTab = null;
   }
 
   public setParentTabstrip(tabstrip: TabstripComponent) {
@@ -108,53 +108,46 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   }
 
   private loadTabs() {
-    this._tabs = this.contentTabs.toArray();
+    this.tabs = this.contentTabs.toArray();
 
-    let length = this._tabs.length;
+    const length = this.tabs.length;
     for (let i = 0; i < length; i++) {
-      this._tabs[i].setParentBar(this);
-      if (this._tabs[i].isActive()) {
-        this._activeTab = this._tabs[i];
+      this.tabs[i].setParentBar(this);
+      if (this.tabs[i].isActive()) {
+        this.activeTab = this.tabs[i];
       }
     }
   }
 
   public attachPanelToTab(panel: TabstripPanelComponent) {
-    let length = this._tabs.length;
+    const length = this.tabs.length;
     for (let i = 0; i < length; i++) {
-      this._tabs[i].attachPanel(panel);
+      this.tabs[i].attachPanel(panel);
     }
   }
 
   public setActiveTab(tab: TabstripTabComponent) {
-    this._activeTab = tab;
+    this.activeTab = tab;
   }
 
   public getActiveTab(): TabstripTabComponent {
-    return this._activeTab;
+    return this.activeTab;
   }
 
   public setDefaultActiveTab() {
-    if (isNullOrUndefined(this._activeTab)) {
-      this._activeTab = this._tabs[0];
-      this._activeTab.activate();
+    if (isNullOrUndefined(this.activeTab)) {
+      this.activeTab = this.tabs[0];
+      this.activeTab.activate();
     }
   }
 
   private loadToggle() {
-    this._toggle = this.contentToggle;
-    this._toggle.setParentBar(this);
+    this.toggle = this.contentToggle;
+    this.toggle.setParentBar(this);
   }
 
   public attachPanelToToggle(panel: TabstripPanelComponent) {
-    this._toggle.bindPanel(panel);
-  }
-  private hasActiveTab(): boolean {
-    if (!isNullOrUndefined(this._activeTab)) {
-      return true;
-    } else {
-      return false;
-    }
+    this.toggle.bindPanel(panel);
   }
 
 }

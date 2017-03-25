@@ -8,7 +8,7 @@ import {
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  OnDestroy, OnChanges, DoCheck, Renderer2
+  OnDestroy, OnChanges, DoCheck, Renderer2, HostBinding
 } from '@angular/core';
 import {DomService, ElementPosition, ElementStyle} from '../common/dom.service';
 import {WidgetComponent} from '../common/widget.component';
@@ -30,7 +30,6 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   @Input() anchor: any;
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
-
 
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);

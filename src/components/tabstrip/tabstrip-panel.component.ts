@@ -1,18 +1,19 @@
 import {
-  Component,
-  Input,
-  ContentChildren,
-  QueryList,
-  OnInit,
-  AfterContentInit,
-  ElementRef,
-  Renderer,
-  DoCheck,
   AfterContentChecked,
-  AfterViewInit,
+  AfterContentInit,
   AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  DoCheck,
+  ElementRef,
+  HostBinding,
+  Input,
   OnChanges,
-  OnDestroy, Renderer2
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer2
 } from '@angular/core';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripComponent} from './tabstrip.component';
@@ -20,7 +21,7 @@ import {TabstripBarComponent} from './tabstrip-bar.component';
 import {WidgetComponent} from '../common/widget.component';
 import {DomService, PositioningType} from '../common/dom.service';
 import {isNullOrUndefined} from 'util';
-import {animate, style, transition, trigger} from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
 @Component({
@@ -29,14 +30,22 @@ import {animate, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./tabstrip-panel.component.scss'],
   animations: [
     trigger('fadeDown', [
-      transition('void => *', [
+      state('expanded', style({
+          opacity: 100
+        })
+      ),
+      state('collapsed', style({
+          opacity: 0
+        })
+      ),
+      transition('collapsed => expanded', [
         style({
           opacity: 0,
           height: 0
         }),
         animate('1s ease')
       ]),
-      transition('* => void', [
+      transition('expanded => collapsed', [
         animate('1s ease', style({
           opacity: 0,
           height: 0
@@ -53,8 +62,8 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() private height: number;
-  @Input() private expanded: boolean;
+  @Input() public height: number;
+  @Input() public expanded: boolean;
 
   @ContentChildren(TabstripPageComponent) private contentPages: QueryList<TabstripPageComponent>;
   private pages: TabstripPageComponent[];
@@ -64,10 +73,15 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   private _bindedBar: TabstripBarComponent;
 
-  private docked: boolean;
+  public docked: boolean;
 
   public render: Renderer2;
 
+  public state: string;
+
+  @HostBinding('@fadeDown') get fadeDown() {
+    return this.state;
+  }
 
   constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer2) {
     super(elementRef, domService);
@@ -96,6 +110,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   ngAfterContentChecked() {
     super.ngAfterContentChecked();
+
   }
 
   ngAfterViewInit() {
@@ -104,6 +119,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
+
   }
 
   ngOnDestroy() {
@@ -114,7 +130,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   init() {
     this.activePage = null;
     this.docked = false;
-
+    this.state = 'collapsed';
     if (isNullOrUndefined(this.height)) {
       this.height = 60;
     }
@@ -145,13 +161,15 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   }
 
   dock() {
-    let positionType = PositioningType.Relative;
+    const positionType = PositioningType.Static;
     this.dom.setBindedElementPositioningType(positionType, this.render);
+    this.docked = true;
   }
 
   undock() {
-    let positionType = PositioningType.Absolute;
+    const positionType = PositioningType.Absolute;
     this.dom.setBindedElementPositioningType(positionType, this.render);
+    this.docked = false;
   }
 
   setPosition() {
@@ -159,7 +177,12 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
     this.position.left = this._bindedBar.dom.getBindedElementPosition().left;
     this.position.top = this._bindedBar.dom.getBindedElementPosition().top + this._bindedBar.dom.getBindedElementStyle().height;
 
-    let positionType = PositioningType.Absolute;
+    let positionType;
+    if (this.docked) {
+      positionType = PositioningType.Static;
+    } else {
+      positionType = PositioningType.Absolute;
+    }
     this.dom.setBindedElementPositioningType(positionType, this.render);
     this.dom.setBindedElementPosition(this.position, this.render);
   }
@@ -174,9 +197,14 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
     this.setPosition();
     this.setStyle();
     this.expanded = true;
+    this.state = 'expanded';
   }
 
   public collapse() {
+    this.style.width = this._bindedBar.dom.getBindedElementStyle().width;
+    this.style.height = 0;
+    this.dom.setBindedElementStyle(this.style, this.render);
     this.expanded = false;
+    this.state = 'collapsed';
   }
 }

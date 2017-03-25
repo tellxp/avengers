@@ -31,10 +31,7 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
 
   private parentBar: TabstripBarComponent;
 
-  private pairedPanel: TabstripPanelComponent;
-
-  public expanded: boolean;
-
+  private attachedPanel: TabstripPanelComponent;
 
   ngOnChanges() {
     super.ngOnChanges();
@@ -50,7 +47,6 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.expanded = false;
   }
 
   ngAfterContentChecked() {
@@ -79,23 +75,20 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
   }
 
   public bindPanel(panel: TabstripPanelComponent) {
-    this.pairedPanel = panel;
+    this.attachedPanel = panel;
   }
 
   private togglePanel() {
-    this.expanded = this.pairedPanel.isExpanded();
-    if (this.expanded) {
-      this.pairedPanel.collapse();
-      this.expanded = false;
-
+    if (this.attachedPanel.docked) {
+      this.attachedPanel.undock();
+      this.attachedPanel.collapse();
     } else {
-      this.pairedPanel.expand();
-      this.expanded = true;
+      this.attachedPanel.dock();
+      this.attachedPanel.expand();
     }
-
   }
 
-  onToggleClick() {
+  onClick() {
     this.togglePanel();
   }
 }

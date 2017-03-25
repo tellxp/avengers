@@ -1,5 +1,7 @@
-<div (click)="onToggleClick()">
-  <i [ngClass]="{'fa': true, 'fa-chevron-up': expanded, 'fa-chevron-down': !expanded}" aria-hidden="true"></i>
-  <i class="fa fa-thumb-tack myrotate" aria-hidden="true"></i>
+<div (click)="onClick()">
+  <i *ngIf="!(attachedPanel.expanded && !attachedPanel.docked)"
+     [ngClass]="{'fa': true, 'fa-chevron-up': attachedPanel.expanded, 'fa-chevron-down': !attachedPanel.expanded}"
+     aria-hidden="true"></i>
+  <i *ngIf="attachedPanel.expanded && !attachedPanel.docked" class="fa fa-thumb-tack myrotate" aria-hidden="true"></i>
 </div>
 

@@ -1,15 +1,17 @@
 import {
-  Component,
-  OnInit,
-  AfterContentInit,
-  ContentChild,
-  ElementRef,
-  OnChanges,
   AfterContentChecked,
-  AfterViewInit,
+  AfterContentInit,
   AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChild,
   DoCheck,
-  OnDestroy
+  ElementRef,
+  HostBinding,
+  HostListener,
+  OnChanges,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
@@ -33,8 +35,17 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
   @ContentChild(TabstripBarComponent) private contentBar: TabstripBarComponent;
   @ContentChild(TabstripPanelComponent) private contentPanel: TabstripPanelComponent;
 
+  @HostBinding('attr.tabindex') '-1';
+
+
   private bar: TabstripBarComponent;
   private panel: TabstripPanelComponent;
+
+  @HostListener('blur') onBlur() {
+    if (!this.panel.docked) {
+      this.panel.collapse();
+    }
+  }
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

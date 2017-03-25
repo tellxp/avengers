@@ -117,18 +117,14 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
     this.parentBar.setActiveTab(this);
   }
 
-  private showPage() {
-    this.attachedPanel.expand();
-  }
-
   onClick() {
-    let currentActiveTab: TabstripTabComponent = this.parentBar.getActiveTab();
+    const currentActiveTab: TabstripTabComponent = this.parentBar.getActiveTab();
     if (isNullOrUndefined(currentActiveTab)) {
       this.activate();
     } else {
       currentActiveTab.deactivate();
       this.activate();
     }
-    this.showPage();
+    this.attachedPanel.expand();
   }
 }
