@@ -8,11 +8,12 @@ import {
   QueryList,
   AfterViewInit,
   AfterViewChecked,
-  Renderer
+  Renderer, OnChanges, DoCheck, AfterContentChecked, OnDestroy
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
 import {MenuItemComponent} from './menu-item.component';
 import {isNullOrUndefined} from 'util';
+import {WidgetComponent} from '../common/widget.component';
 
 @Component({
   selector: 'ave-menu-entry',
@@ -20,7 +21,12 @@ import {isNullOrUndefined} from 'util';
   styleUrls: ['./menu-entry.component.scss'],
   providers: [DomService]
 })
-export class MenuEntryComponent implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked {
+export class MenuEntryComponent extends WidgetComponent implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
@@ -28,22 +34,48 @@ export class MenuEntryComponent implements OnInit, AfterContentInit, AfterViewIn
   activeItem: MenuItemComponent;
   public active: boolean;
 
-  constructor(private el: ElementRef, public dom: DomService,public render: Renderer) {
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
+
+  }
+
+  ngOnChanges() {
+    super.ngOnChanges();
   }
 
   ngOnInit() {
+    super.ngOnInit();
   }
-  ngAfterViewChecked() {
-  }
-  ngAfterViewInit() {
 
+  ngDoCheck() {
+    super.ngDoCheck();
   }
+
   ngAfterContentInit() {
-    this.initItems();
+    super.ngAfterContentInit();
+
+    this.init();
   }
-  initItems() {
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewInit();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
+  init() {
     this.items = this.contentItems.toArray();
-    let length = this.contentItems.length;
+    const length = this.contentItems.length;
     for (let i = 0; i < length; i++) {
       this.items[i].setParent(this);
     }

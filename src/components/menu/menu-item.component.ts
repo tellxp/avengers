@@ -1,17 +1,13 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  ElementRef,
-  AfterViewInit,
-  ContentChildren,
-  QueryList,
-  AfterContentInit
+  AfterContentChecked,
+  AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChildren, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit,
+  QueryList
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
 import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
 import {MenuEntryComponent} from './menu-entry.component';
+import {WidgetComponent} from '../common/widget.component';
 
 @Component({
   selector: 'ave-menu-item',
@@ -19,7 +15,13 @@ import {MenuEntryComponent} from './menu-entry.component';
   styleUrls: ['./menu-item.component.scss'],
   providers: [DomService]
 })
-export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewInit {
+export class MenuItemComponent extends WidgetComponent implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
+
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
@@ -31,17 +33,52 @@ export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewIni
   orientation: PopupOrientation;
   public domService: DomService;
 
-  constructor(el: ElementRef, dom: DomService) {
-    this.orientation = PopupOrientation.Right;
-    this.active = false;
-    this.domService = dom;
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
+
   }
 
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
+  }
+
+  ngAfterContentInit() {
+    super.ngAfterContentInit();
+
+    this.init();
+  }
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewInit();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+  init() {
+    this.orientation = PopupOrientation.Right;
+    this.active = false;
+    this.initChildItems();
+
+  }
   setParent(parent: any) {
     this.parent = parent;
-  }
-  ngAfterContentInit() {
-    this.initChildItems();
   }
 
   initChildItems() {
@@ -58,8 +95,6 @@ export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewIni
     }
   }
 
-  ngAfterViewInit() {
-  }
 
   hasChildItem() {
     if (this.childItems.length > 0) {
@@ -79,6 +114,7 @@ export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewIni
       this.parent.activeChildItem.activate();
     }
   }
+
   deactivateChildItem(): boolean {
     if (this.childItems.length > 0) {
       let length = this.childItems.length;
@@ -90,6 +126,7 @@ export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewIni
       return true;
     }
   }
+
   activate() {
     this.active = true;
   }
@@ -110,9 +147,9 @@ export class MenuItemComponent implements OnInit, AfterContentInit, AfterViewIni
   onMouseOut() {
 
   }
+
   onBlur() {
 
   }
-  ngOnInit() {
-  }
+
 }

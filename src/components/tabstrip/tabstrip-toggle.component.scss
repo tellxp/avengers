@@ -1,9 +1,18 @@
 @import "../../variables";
 
 :host {
+  display: flex;
   align-self: flex-end;
   color: $item-color;
   margin-left: 0.2em;
   margin-right: 0.2em;
 }
 
+div {
+  display: flex;
+  justify-content: center;
+  min-width: 2em;
+  .fa-thumb-tack {
+    transform: rotate(90deg);
+  }
+}
