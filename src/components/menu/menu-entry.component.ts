@@ -1,14 +1,17 @@
 import {
-  Component,
-  OnInit,
+  AfterContentChecked,
   AfterContentInit,
-  Input,
-  ElementRef,
-  ContentChildren,
-  QueryList,
-  AfterViewInit,
   AfterViewChecked,
-  Renderer, OnChanges, DoCheck, AfterContentChecked, OnDestroy
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  DoCheck,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  QueryList
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
 import {MenuItemComponent} from './menu-item.component';
@@ -80,6 +83,7 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
       this.items[i].setParent(this);
     }
   }
+
   hasItem(): boolean {
     if (this.items.length > 0) {
       return true;
@@ -87,6 +91,7 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
       return false;
     }
   }
+
   activateItem(item: MenuItemComponent) {
     if (isNullOrUndefined(this.activeItem)) {
       this.activeItem = item;
@@ -97,17 +102,20 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
       this.activeItem.activate();
     }
   }
+
   deactivateItem() {
     let length = this.items.length;
-    for (let i=0; i<length; i++) {
+    for (let i = 0; i < length; i++) {
       this.items[i].deactivate();
       this.items[i].deactivateChildItem();
 
     }
   }
+
   onClick() {
     this.active = !this.active;
   }
+
   onBlur() {
     this.active = false;
     this.deactivateItem();

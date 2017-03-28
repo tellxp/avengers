@@ -82,14 +82,14 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   initChildItems() {
-    let contentLength = this.contentItems.toArray().length;
+    const contentLength = this.contentItems.toArray().length;
 
 
     this.childItems = this.contentItems.toArray().slice(1, contentLength);
     // if (this.title == '1.1') {
     //   console.log(this.childItems);
     // }
-    let length = this.childItems.length;
+    const length = this.childItems.length;
     for (let i = 0; i < length; i++) {
       this.childItems[i].setParent(this);
     }

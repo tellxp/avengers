@@ -8,6 +8,7 @@ import {
   DoCheck,
   ElementRef,
   HostBinding,
+  HostListener,
   Input,
   OnChanges,
   OnDestroy,
@@ -71,7 +72,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   private parentTabstrip: TabstripComponent;
 
-  private _bindedBar: TabstripBarComponent;
+  private bindedBar: TabstripBarComponent;
 
   public docked: boolean;
 
@@ -81,6 +82,26 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   @HostBinding('@fadeDown') get fadeDown() {
     return this.state;
+  }
+
+  @HostListener('@fadeDown.start') animationStart() {
+    if (!this.expanded) {
+
+    }
+  }
+
+  @HostListener('@fadeDown.done') animationDone() {
+    if (!this.expanded) {
+      this.style.width = 0;
+      this.style.height = 0;
+      this.dom.setBindedElementStyle(this.style, this.render);
+    }
+
+    if (!this.docked) {
+      this.style.width = 0;
+      const positionType = PositioningType.Static;
+      this.dom.setBindedElementPositioningType(positionType, this.render);
+    }
   }
 
   constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer2) {
@@ -141,7 +162,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   }
 
   public bindBar(bar: TabstripBarComponent) {
-    this._bindedBar = bar;
+    this.bindedBar = bar;
   }
 
   private loadPages() {
@@ -167,15 +188,14 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   }
 
   undock() {
-    const positionType = PositioningType.Absolute;
-    this.dom.setBindedElementPositioningType(positionType, this.render);
+
     this.docked = false;
   }
 
   setPosition() {
     this.position = this.dom.getBindedElementPosition();
-    this.position.left = this._bindedBar.dom.getBindedElementPosition().left;
-    this.position.top = this._bindedBar.dom.getBindedElementPosition().top + this._bindedBar.dom.getBindedElementStyle().height;
+    this.position.left = this.bindedBar.dom.getBindedElementPosition().left;
+    this.position.top = this.bindedBar.dom.getBindedElementPosition().top + this.bindedBar.dom.getBindedElementStyle().height;
 
     let positionType;
     if (this.docked) {
@@ -188,23 +208,24 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   }
 
   setStyle() {
-    this.style.width = this._bindedBar.dom.getBindedElementStyle().width;
+    this.style.width = this.bindedBar.dom.getBindedElementStyle().width;
     this.style.height = this.height;
     this.dom.setBindedElementStyle(this.style, this.render);
   }
 
   public expand() {
-    this.setPosition();
     this.setStyle();
+    this.setPosition();
     this.expanded = true;
     this.state = 'expanded';
   }
 
   public collapse() {
-    this.style.width = this._bindedBar.dom.getBindedElementStyle().width;
-    this.style.height = 0;
-    this.dom.setBindedElementStyle(this.style, this.render);
     this.expanded = false;
     this.state = 'collapsed';
+  }
+
+  onButtonClick() {
+    console.log(this.bindedBar.dom.getBindedElementStyle().width);
   }
 }

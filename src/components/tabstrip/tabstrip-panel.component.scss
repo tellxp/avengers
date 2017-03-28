@@ -1,15 +1,15 @@
 @import "../../variables";
 
 div {
+
+ }
+:host {
   display: flex;
+  overflow: hidden;
   background-color: $panel-background-color;
   color: $panel-color;
-  width: 100%;
+  //width: 100%;
   border-bottom-color: #ffffff;
   border-bottom-style: outset;
   border-bottom-width: 3px;
-}
-:host {
-  display: flex;
-  overflow: auto;
 }

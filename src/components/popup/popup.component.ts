@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {DomService, ElementPosition, ElementStyle} from '../common/dom.service';
 import {WidgetComponent} from '../common/widget.component';
+import {isNullOrUndefined} from 'util';
 
 
 @Component({
@@ -41,8 +42,9 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
 
   ngOnInit() {
     super.ngOnInit();
-
-    this.orientation = PopupOrientation.Bottom;
+    if (isNullOrUndefined(this.orientation)) {
+      this.orientation = PopupOrientation.Bottom;
+    }
     this.offset = new ElementPosition();
   }
   ngDoCheck() {
@@ -83,7 +85,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
 
   calculatePosition(anchorPosition: ElementPosition, anchorStyle: ElementStyle,
                     orientation: PopupOrientation, offset: ElementPosition): ElementPosition {
-    let position = new ElementPosition();
+    const position = new ElementPosition();
     switch (orientation) {
       case PopupOrientation.Left:
         position.left = anchorPosition.left + offset.left;
