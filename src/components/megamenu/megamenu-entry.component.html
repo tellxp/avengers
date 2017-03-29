@@ -1,0 +1,7 @@
+<div #anchor tabindex="-1" (click)="onClick()">
+  <span>{{title}}</span>
+  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+</div>
+<ave-popup *ngIf="active" [anchor]="anchor">
+  <ng-content></ng-content>
+</ave-popup>

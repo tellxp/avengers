@@ -11,7 +11,9 @@
   min-width: 8em;
   background-color: $item-background-color;
   color: $item-color;
+  outline: none;
 }
+
 :host:hover {
   background-color: $item-hover-background-color;
 }
@@ -22,6 +24,7 @@ div {
   height: 100%;
   justify-content: center;
   align-items: center;
+  outline: none;
 }
 ave-popup {
   display: flex;

@@ -1,13 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  ElementRef,
+  OnChanges,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import {DomService} from '../common/dom.service';
+import {WidgetComponent} from '../common/widget.component';
+
 
 @Component({
-    selector: 'ave-dropdown-group',
-    templateUrl: './dropdown-group.component.html',
-    styleUrls: ['./dropdown-group.component.scss']
+  selector: 'ave-dropdown-group',
+  templateUrl: './dropdown-group.component.html',
+  styleUrls: ['./dropdown-group.component.scss'],
+  providers: [DomService]
 })
-export class DropdownGroupComponent implements OnInit {
-    constructor() { }
+export class DropdownGroupComponent extends WidgetComponent implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
-    ngOnInit() { }
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
+  }
+
+  ngOnChanges() {
+    super.ngOnChanges();
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  ngDoCheck() {
+    super.ngDoCheck();
+  }
+
+  ngAfterContentInit() {
+    super.ngAfterContentInit();
+  }
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
 
 }

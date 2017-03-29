@@ -104,7 +104,7 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   }
 
   deactivateItem() {
-    let length = this.items.length;
+    const length = this.items.length;
     for (let i = 0; i < length; i++) {
       this.items[i].deactivate();
       this.items[i].deactivateChildItem();
