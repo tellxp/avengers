@@ -26,15 +26,7 @@ export class WidgetComponent implements OnChanges,
     this.dom = domService;
   }
 
-  public checkPosition() {
-    this.position.left = this.dom.getBindedElementPosition().left;
-    this.position.top = this.dom.getBindedElementPosition().top;
-  }
 
-  public checkStyle() {
-    this.style.width = this.dom.getBindedElementStyle().width;
-    this.style.height = this.dom.getBindedElementStyle().height;
-  }
   ngOnChanges() {
 
   }
@@ -42,7 +34,6 @@ export class WidgetComponent implements OnChanges,
   ngOnInit() {
     this.position = new WidgetPosition();
     this.style = new WidgetStyle();
-
     this.dom.bindElement(this.element);
   }
 
@@ -68,6 +59,15 @@ export class WidgetComponent implements OnChanges,
 
   ngOnDestroy() {
 
+  }
+  public checkPosition() {
+    this.position.left = this.dom.getBindedElementPosition().left;
+    this.position.top = this.dom.getBindedElementPosition().top;
+  }
+
+  public checkStyle() {
+    this.style.width = this.dom.getBindedElementStyle().width;
+    this.style.height = this.dom.getBindedElementStyle().height;
   }
 }
 export class WidgetPosition {

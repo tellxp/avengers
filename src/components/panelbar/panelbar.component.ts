@@ -15,12 +15,12 @@ import {WidgetComponent} from '../common/widget.component';
 
 
 @Component({
-  selector: 'ave-dropdown-group',
-  templateUrl: './dropdown-group.component.html',
-  styleUrls: ['./dropdown-group.component.scss'],
+  selector: 'ave-panelbar',
+  templateUrl: './panelbar.component.html',
+  styleUrls: ['./panelbar.component.scss'],
   providers: [DomService]
 })
-export class DropdownGroupComponent extends WidgetComponent implements OnChanges,
+export class PanelbarComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -62,4 +62,5 @@ export class DropdownGroupComponent extends WidgetComponent implements OnChanges
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+
 }

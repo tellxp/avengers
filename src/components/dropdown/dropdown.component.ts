@@ -21,7 +21,6 @@ export class DropdownComponent extends WidgetComponent implements OnChanges,
 
   @Input() title: string;
   @Input() expanded: boolean;
-  @Input() value;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -29,57 +28,34 @@ export class DropdownComponent extends WidgetComponent implements OnChanges,
 
   ngOnChanges() {
     super.ngOnChanges();
-    this.value = 'ngOnChanges';
-    console.log(this.value);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.value = 'ngOnInit';
-    console.log(this.value);
-
   }
 
   ngDoCheck() {
     super.ngDoCheck();
-    this.value = 'ngDoCheck';
-    console.log(this.value);
-
   }
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.value = 'ngAfterContentInit';
-    console.log(this.value);
-
   }
 
   ngAfterContentChecked() {
     super.ngAfterContentChecked();
-    this.value = 'ngAfterContentChecked';
-    console.log(this.value);
-
   }
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
-    this.value = 'ngAfterViewInit';
-    console.log(this.value);
-
   }
 
   ngAfterViewChecked() {
     super.ngAfterViewInit();
-    this.value = 'ngAfterViewChecked';
-    console.log(this.value);
-
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
-    this.value = 'ngOnDestroy';
-    console.log(this.value);
-
   }
 
   onClick() {

@@ -23,6 +23,8 @@ import {HomeDemo} from './demo/home/home-demo.component';
 import {MegamenuDemo} from './demo/megamenu/megamenu-demo.component';
 import {MegamenuModule} from '../components/megamenu/megamenu.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PanelbarDemo} from './demo/panelbar/panelbar-demo.component';
+import {PanelbarModule} from '../components/panelbar/panelbar.module';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PopupDemo,
     DropdownDemo,
     MenuDemo,
-    MegamenuDemo
+    MegamenuDemo,
+    PanelbarDemo
 
   ],
   imports: [
@@ -52,7 +55,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PopupModule,
     DropdownModule,
     MenuModule,
-    MegamenuModule
+    MegamenuModule,
+    PanelbarModule,
 
   ],
   providers: [],

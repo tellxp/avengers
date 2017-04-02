@@ -10,6 +10,7 @@
   -webkit-user-select: none;
   color: $item-color;
   cursor: pointer;
+  outline: none;
 }
 :host:hover {
   background-color: $item-hover-background-color;

@@ -62,5 +62,4 @@ export class DropdownItemComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-
 }

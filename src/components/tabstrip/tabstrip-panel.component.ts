@@ -99,7 +99,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
     if (!this.docked) {
       this.style.width = 0;
-      const positionType = PositioningType.Static;
+      const positionType = PositioningType.Absolute;
       this.dom.setBindedElementPositioningType(positionType, this.render);
     }
   }
@@ -223,9 +223,5 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   public collapse() {
     this.expanded = false;
     this.state = 'collapsed';
-  }
-
-  onButtonClick() {
-    console.log(this.bindedBar.dom.getBindedElementStyle().width);
   }
 }
