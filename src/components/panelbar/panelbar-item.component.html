@@ -2,4 +2,6 @@
   <span>{{title}}</span>
   <i class="fa fa-chevron-down" aria-hidden="true" *ngIf="hasChildItem()"></i>
 </div>
-<ng-content *ngIf="active"></ng-content>
+<ave-panel [alignment]="itemAlignment">
+  <ng-content *ngIf="active"></ng-content>
+</ave-panel>

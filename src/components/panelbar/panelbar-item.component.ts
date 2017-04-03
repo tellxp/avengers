@@ -3,7 +3,7 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component,
+  Component, ContentChild,
   ContentChildren,
   DoCheck,
   ElementRef,
@@ -15,6 +15,8 @@ import {
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
 import {WidgetComponent} from '../common/widget.component';
+import {PanelbarContentComponent} from './panelbar-content.component';
+import {PanelAlignmentType} from '../panel/panel.component';
 
 
 @Component({
@@ -32,6 +34,8 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
 
   @Input() title: string;
   @ContentChildren(PanelbarItemComponent) contentItems: QueryList<PanelbarItemComponent>;
+  @ContentChild(PanelbarContentComponent) container;
+  itemAlignment: PanelAlignmentType;
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
   active: boolean;
@@ -76,6 +80,7 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   }
   init() {
     this.active = false;
+    this.itemAlignment = PanelAlignmentType.Stack;
   }
   initChildItems() {
     const contentItemsLength = this.contentItems.toArray().length;
@@ -102,5 +107,6 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   }
   onClick() {
     this.toggleItem();
+    console.log(this.contentItems);
   }
 }

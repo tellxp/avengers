@@ -25,6 +25,8 @@ import {MegamenuModule} from '../components/megamenu/megamenu.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PanelbarDemo} from './demo/panelbar/panelbar-demo.component';
 import {PanelbarModule} from '../components/panelbar/panelbar.module';
+import {PanelDemo} from './demo/panel/panel-demo.component';
+import {PanelModule} from '../components/panel/panel.module';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {PanelbarModule} from '../components/panelbar/panelbar.module';
     DropdownDemo,
     MenuDemo,
     MegamenuDemo,
-    PanelbarDemo
+    PanelbarDemo,
+    PanelDemo
 
   ],
   imports: [
@@ -57,7 +60,7 @@ import {PanelbarModule} from '../components/panelbar/panelbar.module';
     MenuModule,
     MegamenuModule,
     PanelbarModule,
-
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,22 +3,28 @@
 :host {
   display: flex;
   flex-flow: column;
-  background-color: $group-background-color;
-  color: $group-item-color
+  user-select: none;
+  cursor: pointer;
+  background-color: $group-item-background-color;
+  color: $group-item-color;
+  outline: none;
 }
+
+
+div:focus {
+  background-color: $group-item-hover-background-color;
+  overflow: visible;
+}
+
 div {
   display: flex;
   width: 100%;
   height: 100%;
   justify-content: flex-start;
   align-items: center;
-  padding-right: 0.5em;
-  padding-left:0.5em;
+  outline: none;
 }
-ave-popup {
-  display: flex;
-  flex-flow: column;
-}
+
 span {
   display: flex;
 }
@@ -28,3 +34,4 @@ i {
   margin-left: auto;
   margin-right: 1em;
 }
+

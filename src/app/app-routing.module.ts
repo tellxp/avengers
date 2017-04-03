@@ -8,6 +8,7 @@ import {MenuDemo} from './demo/menu/menu-demo.component';
 import {HomeDemo} from './demo/home/home-demo.component';
 import {MegamenuDemo} from './demo/megamenu/megamenu-demo.component';
 import {PanelbarDemo} from './demo/panelbar/panelbar-demo.component';
+import {PanelDemo} from './demo/panel/panel-demo.component';
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   {path: 'menu-demo', component: MenuDemo},
   {path: 'megamenu-demo', component: MegamenuDemo},
   {path: 'panelbar-demo', component: PanelbarDemo},
+  {path: 'panel-demo', component: PanelDemo},
 
 ];
 
