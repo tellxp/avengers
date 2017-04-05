@@ -19,7 +19,7 @@ import {DropdownDemo} from './demo/dropdown/dropdown-demo.component';
 import {CommonModule} from '../components/common/common.module';
 import {MenuDemo} from './demo/menu/menu-demo.component';
 import {MenuModule} from '../components/menu/menu.module';
-import {HomeDemo} from './demo/home/home-demo.component';
+import {HomeDemoComponent} from './demo/home/home-demo.component';
 import {MegamenuDemo} from './demo/megamenu/megamenu-demo.component';
 import {MegamenuModule} from '../components/megamenu/megamenu.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -29,42 +29,22 @@ import {PanelDemoComponent} from './demo/panel/panel-demo.component';
 import {PanelModule} from '../components/panel/panel.module';
 import {NavbarDemoComponent} from './demo/navbar/navbar-demo.component';
 import {NavbarModule} from '../components/navbar/navbar.module';
+import {AppDemoModule} from './demo/app-demo.module';
+import {AppExampleComponent} from './examples/app-example.component';
+import {AppExampleModule} from './examples/app-example.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeDemo,
-    TabstripDemo,
-    ButtonDemo,
-    PopupDemo,
-    DropdownDemo,
-    MenuDemo,
-    MegamenuDemo,
-    PanelbarDemo,
-    PanelDemoComponent,
-    NavbarDemoComponent
-
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-
-    // Avengers Component
-    CommonModule,
-    LayoutModule,
-    TabstripModule,
-    ButtonModule,
-    PopupModule,
-    DropdownModule,
-    MenuModule,
-    MegamenuModule,
-    PanelbarModule,
-    PanelModule,
-    NavbarModule
+    AppDemoModule,
+    AppExampleModule,
+    AppRoutingModule
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
