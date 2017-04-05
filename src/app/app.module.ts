@@ -25,8 +25,10 @@ import {MegamenuModule} from '../components/megamenu/megamenu.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PanelbarDemo} from './demo/panelbar/panelbar-demo.component';
 import {PanelbarModule} from '../components/panelbar/panelbar.module';
-import {PanelDemo} from './demo/panel/panel-demo.component';
+import {PanelDemoComponent} from './demo/panel/panel-demo.component';
 import {PanelModule} from '../components/panel/panel.module';
+import {NavbarDemoComponent} from './demo/navbar/navbar-demo.component';
+import {NavbarModule} from '../components/navbar/navbar.module';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import {PanelModule} from '../components/panel/panel.module';
     MenuDemo,
     MegamenuDemo,
     PanelbarDemo,
-    PanelDemo
+    PanelDemoComponent,
+    NavbarDemoComponent
 
   ],
   imports: [
@@ -60,7 +63,8 @@ import {PanelModule} from '../components/panel/panel.module';
     MenuModule,
     MegamenuModule,
     PanelbarModule,
-    PanelModule
+    PanelModule,
+    NavbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

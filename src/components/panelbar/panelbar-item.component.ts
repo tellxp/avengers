@@ -107,6 +107,5 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   }
   onClick() {
     this.toggleItem();
-    console.log(this.contentItems);
   }
 }
