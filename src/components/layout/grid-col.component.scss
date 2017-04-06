@@ -1,8 +1,7 @@
-.cell-col {
+:host {
   display: flex;
   flex-flow: column;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   height: 100%;
   width: 100%;
 }

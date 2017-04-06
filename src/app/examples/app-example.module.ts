@@ -15,6 +15,8 @@ import {PanelModule} from '../../components/panel/panel.module';
 import {NavbarModule} from '../../components/navbar/navbar.module';
 import {AppExampleRoutingModule} from './app-example-routing.module';
 import {AppExampleComponent} from './app-example.component';
+import {LoginExampleComponent} from './login/login-example.component';
+import {HomeExampleComponent} from './home/home-example.component';
 
 
 @NgModule({
@@ -37,10 +39,15 @@ import {AppExampleComponent} from './app-example.component';
       NavbarModule
     ],
     exports: [
-      AppExampleComponent
+      AppExampleComponent,
+      HomeExampleComponent,
+      LoginExampleComponent,
+
     ],
     declarations: [
-      AppExampleComponent
+      AppExampleComponent,
+      HomeExampleComponent,
+      LoginExampleComponent,
     ],
     providers: [
     ],

@@ -6,8 +6,14 @@
 body, input, select {
   font-family: "Microsoft YaHei",SimSun,Tahoma,Arial;
   font-size: 1em;
-}
 
+}
+body, html {
+  height: 100%;
+}
 .v-theme-default {
 
+}
+ng-component {
+  width: 100%;
 }

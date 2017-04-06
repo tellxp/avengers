@@ -17,6 +17,7 @@ const appDemoRoutes: Routes = [
   {
     path: 'demo', component: AppDemoComponent,
     children: [
+      {path: '', component: HomeDemoComponent},
       {path: 'home', component: HomeDemoComponent},
       {path: 'tabstrip-demo', component: TabstripDemo},
       {path: 'button-demo', component: ButtonDemo},
