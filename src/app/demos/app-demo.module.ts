@@ -24,12 +24,17 @@ import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 import {PanelModule} from '../../components/panel/panel.module';
 import {NavbarModule} from '../../components/navbar/navbar.module';
 import {AppDemoRoutingModule} from './app-demo-routing.module';
+import {TextboxComponent} from '../../components/textbox/textbox.component';
+import {TextboxModule} from '../../components/textbox/textbox.module';
+import {TextboxDemoComponent} from './textbox/textbox-demo.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
     imports: [
       BrowserModule,
       BrowserAnimationsModule,
+      FormsModule,
       AppDemoRoutingModule,
 
       // Avengers Component
@@ -43,7 +48,8 @@ import {AppDemoRoutingModule} from './app-demo-routing.module';
       MegamenuModule,
       PanelbarModule,
       PanelModule,
-      NavbarModule
+      NavbarModule,
+      TextboxModule
     ],
     exports: [
       AppDemoComponent
@@ -59,7 +65,8 @@ import {AppDemoRoutingModule} from './app-demo-routing.module';
       MegamenuDemo,
       PanelbarDemo,
       PanelDemoComponent,
-      NavbarDemoComponent
+      NavbarDemoComponent,
+      TextboxDemoComponent
     ],
     providers: [
     ],

@@ -11,6 +11,7 @@ import {PanelbarDemo} from './panelbar/panelbar-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {AppDemoComponent} from './app-demo.component';
+import {TextboxDemoComponent} from './textbox/textbox-demo.component';
 
 
 const appDemoRoutes: Routes = [
@@ -27,7 +28,8 @@ const appDemoRoutes: Routes = [
       {path: 'megamenu-demo', component: MegamenuDemo},
       {path: 'panelbar-demo', component: PanelbarDemo},
       {path: 'panel-demo', component: PanelDemoComponent},
-      {path: 'navbar-demo', component: NavbarDemoComponent}
+      {path: 'navbar-demo', component: NavbarDemoComponent},
+      {path: 'textbox-demo', component: TextboxDemoComponent}
     ]
   }
 ];
