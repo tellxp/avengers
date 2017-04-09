@@ -17,12 +17,12 @@ export class WidgetComponent implements OnChanges,
   OnDestroy {
   public position: WidgetPosition;
   public style: WidgetStyle;
-  public element: HTMLElement;
+  public elementRef: ElementRef;
   public dom: DomService;
 
   constructor(elementRef: ElementRef, domService: DomService) {
 
-    this.element = elementRef.nativeElement;
+    this.elementRef = elementRef;
     this.dom = domService;
   }
 
@@ -34,7 +34,7 @@ export class WidgetComponent implements OnChanges,
   ngOnInit() {
     this.position = new WidgetPosition();
     this.style = new WidgetStyle();
-    this.dom.bindElement(this.element);
+    this.dom.bindElement(this.elementRef.nativeElement);
   }
 
   ngDoCheck() {

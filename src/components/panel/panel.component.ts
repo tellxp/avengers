@@ -72,10 +72,10 @@ export class PanelComponent extends WidgetComponent implements OnChanges,
     }
     switch (this.alignment) {
       case PanelAlignmentType.Stack:
-        this.render.setStyle(this.element, 'flex-flow', 'column');
+        this.render.setStyle(this.elementRef, 'flex-flow', 'column');
         break;
       case PanelAlignmentType.Tile:
-        this.render.setStyle(this.element, 'flex-flow', 'row');
+        this.render.setStyle(this.elementRef, 'flex-flow', 'row');
         break;
       default:
         throw Error('Unmatched alignment');

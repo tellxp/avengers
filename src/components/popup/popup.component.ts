@@ -79,7 +79,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
       anchorStyle = this.dom.getElementStyle(this.anchor);
       this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
     }
-    this.dom.setElementPosition(this.position, this.element, this.render);
+    this.dom.setElementPosition(this.position, this.elementRef.nativeElement, this.render);
 
   }
 

@@ -1,5 +1,5 @@
-<input #input [(ngModel)]="value">
-<h4>box value: {{input.value}}</h4>
+<input #inputBox type="text"
+       (input)="updateModelOnChange(inputBox.value)">
 <!--<input type="text">-->
 <!--<input type="password">-->
 <!--<input type="number">-->

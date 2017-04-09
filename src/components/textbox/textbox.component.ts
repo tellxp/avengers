@@ -15,7 +15,7 @@ import {DomService} from '../common/dom.service';
 import {WidgetComponent} from '../common/widget.component';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-export const INPUTMASK_VALUE_ACCESSOR: any = {
+export const TEXTBOX_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => TextboxComponent),
   multi: true
@@ -25,7 +25,7 @@ export const INPUTMASK_VALUE_ACCESSOR: any = {
   selector: 'ave-textbox',
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.scss'],
-  providers: [DomService, INPUTMASK_VALUE_ACCESSOR]
+  providers: [DomService, TEXTBOX_VALUE_ACCESSOR]
 })
 
 export class TextboxComponent extends WidgetComponent implements OnChanges,
@@ -77,20 +77,22 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-  onKeyPress() {
-    console.log(this.value);
+  update(value: string) {
+    this.value = value;
+    this.updateModelOnChange(this.value);
   }
   writeValue(value: any): void {
     this.value = value;
   }
 
   registerOnChange(fn: Function): void {
-    this.onChange = fn;
+    this.updateModelOnChange = fn;
   }
-  onChange: Function = () => {};
+  updateModelOnChange: Function = () => {};
+  updateModelOnTouched: Function = () => {};
 
   registerOnTouched(fn: Function): void {
-    this.onChange = fn;
+    this.updateModelOnTouched = fn;
   }
 
   setDisabledState(val: boolean): void {

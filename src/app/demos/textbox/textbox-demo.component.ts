@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./textbox-demo.component.scss']
 })
 export class TextboxDemoComponent implements OnInit {
-  value: string;
+  inputText: string;
 
   constructor() {
   }
