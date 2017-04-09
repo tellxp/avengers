@@ -37,7 +37,6 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
 
   @Input() type: TextboxType;
   @Input() value: string;
-  @Input() myname: string;
 
   @HostBinding('attr.tabindex') '-1';
 
@@ -48,7 +47,6 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
 
   ngOnChanges() {
     super.ngOnChanges();
-    this.myname = 'textbox1';
   }
 
   ngOnInit() {
@@ -69,6 +67,7 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
+
   }
 
   ngAfterViewChecked() {

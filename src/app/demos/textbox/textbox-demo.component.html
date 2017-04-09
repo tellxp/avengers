@@ -1,2 +1,2 @@
-<ave-textbox [(ngModel)]="value"></ave-textbox>
-<h4>{{value}}</h4>
+<ave-textbox #box [value]="value"></ave-textbox>
+<h4>demo value: {{box.value}}</h4>
