@@ -1,4 +1,4 @@
-import {
+﻿import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
