@@ -1,26 +1,28 @@
-<ave-grid-row>
-  <ave-grid-column class="illustration">
-  </ave-grid-column>
-  <ave-grid-column class="login-form">
+<ave-grid class="container">
+  <ave-grid-column class="illustration"></ave-grid-column>
+  <ave-grid-column class="right-content">
     <ave-grid-row>
       <h3>请输入用户名和密码</h3>
     </ave-grid-row>
     <ave-grid-row>
-      <ave-grid-column>
-          <input type="text" placeholder="请输入用户名">
-          <input type="password" placeholder="请输入密码">
+      <p>工作或学校</p>
+    </ave-grid-row>
+    <ave-grid-row>
+      <ave-grid-column class="form-group">
+        <ave-textbox class="form-control" [placeholder]="'请输入用户名'"></ave-textbox>
+        <ave-textbox class="form-control" [placeholder]="'请输入密码'"></ave-textbox>
         <ave-grid-row>
-          <input type="checkbox">
-          <label>记住密码</label>
+          <input class="form-control" id="remember_me" type="checkbox">
+          <label class="form-control" for="remember_me">记住密码</label>
         </ave-grid-row>
         <ave-grid-row>
-          <button value="">登录</button>
-          <button value="">注册</button>
+          <ave-button class="form-control" id="login_in" value="">登录</ave-button>
+          <ave-button class="form-control" id="sign_up" value="">注册</ave-button>
         </ave-grid-row>
       </ave-grid-column>
     </ave-grid-row>
-    <ave-grid-row>
+    <ave-grid-row class="footer-control">
       Copyright by
     </ave-grid-row>
   </ave-grid-column>
-</ave-grid-row>
+</ave-grid>

@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '../../components/common/common.module';
-import {LayoutModule} from '../../components/layout/layout.module';
+import {GridModule} from '../../components/grid/grid.module';
 import {TabstripModule} from '../../components/tabstrip/tabstrip.module';
 import {ButtonModule} from '../../components/button/button.module';
 import {PopupModule} from '../../components/popup/popup.module';
@@ -17,6 +17,8 @@ import {AppExampleRoutingModule} from './app-example-routing.module';
 import {AppExampleComponent} from './app-example.component';
 import {LoginExampleComponent} from './login/login-example.component';
 import {HomeExampleComponent} from './home/home-example.component';
+import {GridExampleComponent} from './grid/grid-example.component';
+import {TextboxModule} from '../../components/textbox/textbox.module';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import {HomeExampleComponent} from './home/home-example.component';
 
       // Avengers Component
       CommonModule,
-      LayoutModule,
+      GridModule,
       TabstripModule,
       ButtonModule,
       PopupModule,
@@ -36,18 +38,21 @@ import {HomeExampleComponent} from './home/home-example.component';
       MegamenuModule,
       PanelbarModule,
       PanelModule,
-      NavbarModule
+      NavbarModule,
+      TextboxModule,
     ],
     exports: [
       AppExampleComponent,
       HomeExampleComponent,
       LoginExampleComponent,
-
+      GridExampleComponent,
     ],
     declarations: [
       AppExampleComponent,
       HomeExampleComponent,
       LoginExampleComponent,
+      GridExampleComponent,
+
     ],
     providers: [
     ],

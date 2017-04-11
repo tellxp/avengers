@@ -29,6 +29,9 @@ export class PanelComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() alignment: PanelAlignmentType;
+  @Input() width: string;
+  @Input() height: string;
+
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
   }

@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 
-import {LayoutModule} from '../components/layout/layout.module';
+import {GridModule} from '../components/grid/grid.module';
 
 import {TabstripDemo} from './demos/tabstrip/tabstrip-demo.component';
 import {TabstripModule} from '../components/tabstrip/tabstrip.module';

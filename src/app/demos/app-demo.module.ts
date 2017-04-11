@@ -13,7 +13,7 @@ import {PanelDemoComponent} from './panel/panel-demo.component';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '../../components/common/common.module';
-import {LayoutModule} from '../../components/layout/layout.module';
+import {GridModule} from '../../components/grid/grid.module';
 import {TabstripModule} from '../../components/tabstrip/tabstrip.module';
 import {ButtonModule} from '../../components/button/button.module';
 import {PopupModule} from '../../components/popup/popup.module';
@@ -39,7 +39,7 @@ import {FormsModule} from '@angular/forms';
 
       // Avengers Component
       CommonModule,
-      LayoutModule,
+      GridModule,
       TabstripModule,
       ButtonModule,
       PopupModule,

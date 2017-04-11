@@ -7,7 +7,7 @@
   padding-left: 0.5em;
   padding-right: 0.5em;
   background-color: $item-background-color;
-  -webkit-user-select: none;
+  user-select: none;
   color: $item-color;
   cursor: pointer;
   outline: none;

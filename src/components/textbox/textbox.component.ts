@@ -38,13 +38,14 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy, ControlValueAccessor {
 
+  @HostBinding('attr.tabindex') '-1';
   @Input() type: TextboxType;
   @Input() value: string;
   @Input() placeholder: string;
+
   updateModelOnChange: Function = () => void {};
   updateModelOnTouched: Function = () => void {};
 
-  @HostBinding('attr.tabindex') '-1';
 
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
