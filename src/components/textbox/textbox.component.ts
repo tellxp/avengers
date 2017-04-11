@@ -5,11 +5,14 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, forwardRef, HostBinding,
+  ElementRef,
+  forwardRef,
+  HostBinding,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit,
+  Renderer2
 } from '@angular/core';
 import {DomService} from '../common/dom.service';
 import {WidgetComponent} from '../common/widget.component';
@@ -37,11 +40,13 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
 
   @Input() type: TextboxType;
   @Input() value: string;
+  @Input() placeholder: string;
+  updateModelOnChange: Function = () => void {};
+  updateModelOnTouched: Function = () => void {};
 
   @HostBinding('attr.tabindex') '-1';
 
-
-  constructor(elementRef: ElementRef, domService: DomService) {
+  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
   }
 
@@ -77,10 +82,34 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+
+  setBlurStyle() {
+    this.render.setStyle(this.elementRef.nativeElement, 'border-color', 'rgba(0,0,0,.4)');
+    this.render.setStyle(this.elementRef.nativeElement, 'outline', 'none');
+  }
+
+  setFocusStyle() {
+    this.render.setStyle(this.elementRef.nativeElement, 'border-color', 'rgb(0, 120, 215)');
+    this.render.setStyle(this.elementRef.nativeElement, 'outline', 'auto');
+    this.render.setStyle(this.elementRef.nativeElement, 'outline-color', 'rgb(77, 144, 254)');
+    this.render.setStyle(this.elementRef.nativeElement, 'outline-width', '5px');
+    this.render.setStyle(this.elementRef.nativeElement, 'outline-offset', '-2px');
+  }
+
+  onFocus() {
+    this.setFocusStyle();
+  }
+
+  onBlur() {
+    this.setBlurStyle();
+  }
+
   update(value: string) {
     this.value = value;
     this.updateModelOnChange(this.value);
+    this.updateModelOnTouched(this.value);
   }
+
   writeValue(value: any): void {
     this.value = value;
   }
@@ -88,8 +117,6 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
   registerOnChange(fn: Function): void {
     this.updateModelOnChange = fn;
   }
-  updateModelOnChange: Function = () => {};
-  updateModelOnTouched: Function = () => {};
 
   registerOnTouched(fn: Function): void {
     this.updateModelOnTouched = fn;

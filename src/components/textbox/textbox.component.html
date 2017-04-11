@@ -1,5 +1,9 @@
 <input #inputBox type="text"
-       (input)="updateModelOnChange(inputBox.value)">
+       [attr.placeholder]="placeholder"
+       (focus)="onFocus()"
+       (blur)="onBlur()"
+       [ngModel]="value"
+       (ngModelChange)="update($event)">
 <!--<input type="text">-->
 <!--<input type="password">-->
 <!--<input type="number">-->
