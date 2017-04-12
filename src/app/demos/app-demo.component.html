@@ -1,4 +1,4 @@
-<ave-grid-row class="container">
+<ave-grid class="container">
   <ave-grid-column class="side-menu">
     <ave-grid-row class="brand">
       <a routerLink="/"><img src="../../assets/brand.svg" alt="brand"></a>
@@ -16,14 +16,15 @@
         <a routerLink="./panel-demo" routerLinkActive="active">Panel</a>
         <a routerLink="./navbar-demo" routerLinkActive="active">Navbar</a>
         <a routerLink="./textbox-demo" routerLinkActive="active">Textbox</a>
+        <a routerLink="./checkbox-demo" routerLinkActive="active">Checkbox</a>
         <h3>示例</h3>
         <a routerLink="/example" routerLinkActive="active">Example</a>
       </ave-grid-column>
     </ave-grid-row>
   </ave-grid-column>
-  <ave-grid-column>
-    <ave-grid-row  class="content">
+  <ave-grid-column class="content">
+    <ave-grid-row>
       <router-outlet></router-outlet>
     </ave-grid-row>
   </ave-grid-column>
-</ave-grid-row>
+</ave-grid>

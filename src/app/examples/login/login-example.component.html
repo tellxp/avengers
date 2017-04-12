@@ -12,8 +12,10 @@
         <ave-textbox class="form-control" [placeholder]="'请输入用户名'"></ave-textbox>
         <ave-textbox class="form-control" [placeholder]="'请输入密码'"></ave-textbox>
         <ave-grid-row>
-          <input class="form-control" id="remember_me" type="checkbox">
-          <label class="form-control" for="remember_me">记住密码</label>
+
+          <label>
+            <input id="remember_me" type="checkbox">记住密码
+          </label>
         </ave-grid-row>
         <ave-grid-row>
           <ave-button class="form-control" id="login_in" value="">登录</ave-button>
@@ -22,7 +24,8 @@
       </ave-grid-column>
     </ave-grid-row>
     <ave-grid-row class="footer-control">
-      Copyright by
+      <span>© 2017 Avengers</span>
+      <a href="./example">Examples</a>
     </ave-grid-row>
   </ave-grid-column>
 </ave-grid>

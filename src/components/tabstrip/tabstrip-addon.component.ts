@@ -10,8 +10,8 @@ import {
   AfterViewChecked,
   OnDestroy
 } from '@angular/core';
-import {WidgetComponent} from '../common/widget.component';
-import {DomService} from '../common/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
+import {DomService} from '../widget/dom.service';
 
 @Component({
   selector: 'ave-tabstrip-addon',

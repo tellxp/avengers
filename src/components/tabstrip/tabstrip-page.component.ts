@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {TabstripTabComponent} from './tabstrip-tab.component';
-import {WidgetComponent} from '../common/widget.component';
-import {DomService} from '../common/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
+import {DomService} from '../widget/dom.service';
 
 @Component({
   selector: 'ave-tabstrip-page',

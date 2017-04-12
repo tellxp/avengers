@@ -1,0 +1,28 @@
+﻿@import "../../variables";
+
+i {
+  color: #0f9ae0;
+}
+input {
+  -moz-appearance: none;
+  position: absolute;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 0px;
+  height: 0px;
+}
+:host {
+  display: inline-flex;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  height: 1.2em;
+  width: 1.2em;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  cursor: pointer;
+}

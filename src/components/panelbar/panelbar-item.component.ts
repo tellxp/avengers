@@ -13,8 +13,8 @@ import {
   OnInit,
   QueryList
 } from '@angular/core';
-import {DomService} from '../common/dom.service';
-import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../widget/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
 import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelAlignmentType} from '../panel/panel.component';
 

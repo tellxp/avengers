@@ -3,11 +3,11 @@ import {
   AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChildren, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit,
   QueryList
 } from '@angular/core';
-import {DomService} from '../common/dom.service';
+import {DomService} from '../widget/dom.service';
 import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
 import {MenuEntryComponent} from './menu-entry.component';
-import {WidgetComponent} from '../common/widget.component';
+import {WidgetComponent} from '../widget/widget.component';
 
 @Component({
   selector: 'ave-menu-item',

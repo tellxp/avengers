@@ -18,8 +18,8 @@ import {isNullOrUndefined} from 'util';
 import {TabstripToggleComponent} from './tabstrip-toggle.component';
 import {TabstripComponent} from './tabstrip.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {WidgetComponent} from '../common/widget.component';
-import {DomService} from '../common/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
+import {DomService} from '../widget/dom.service';
 
 @Component({
   selector: 'ave-tabstrip-bar',

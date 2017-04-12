@@ -15,8 +15,8 @@ import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {isNullOrUndefined} from 'util';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {WidgetComponent} from '../common/widget.component';
-import {DomService} from '../common/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
+import {DomService} from '../widget/dom.service';
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',

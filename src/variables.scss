@@ -1,5 +1,6 @@
-$component-background-color: #ffffff;
 
+$common-color: #ffffff;
+$component-background-color: transparentize($common-color, 1);
 
 $bar-background-color: #0078d7;
 $bar-item-background-color: #0078d7;

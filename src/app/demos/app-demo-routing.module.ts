@@ -12,6 +12,7 @@ import {PanelDemoComponent} from './panel/panel-demo.component';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {AppDemoComponent} from './app-demo.component';
 import {TextboxDemoComponent} from './textbox/textbox-demo.component';
+import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
 
 
 const appDemoRoutes: Routes = [
@@ -29,7 +30,8 @@ const appDemoRoutes: Routes = [
       {path: 'panelbar-demo', component: PanelbarDemo},
       {path: 'panel-demo', component: PanelDemoComponent},
       {path: 'navbar-demo', component: NavbarDemoComponent},
-      {path: 'textbox-demo', component: TextboxDemoComponent}
+      {path: 'textbox-demo', component: TextboxDemoComponent},
+      {path: 'checkbox-demo', component: CheckboxDemoComponent},
     ]
   }
 ];

@@ -10,8 +10,8 @@ import {
   OnDestroy,
   OnInit, Renderer2
 } from '@angular/core';
-import {DomService} from '../common/dom.service';
-import {WidgetComponent} from '../common/widget.component';
+import {DomService} from '../widget/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
 import {isNullOrUndefined} from 'util';
 
 

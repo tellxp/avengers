@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {TextboxComponent} from './textbox.component';
+import {CheckboxComponent} from './checkbox.component';
 import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -11,12 +10,12 @@ import {CommonModule} from '@angular/common';
       FormsModule
     ],
     exports: [
-      TextboxComponent
+      CheckboxComponent
     ],
     declarations: [
-      TextboxComponent
+      CheckboxComponent
     ],
     providers: [
     ],
 })
-export class TextboxModule { }
+export class CheckboxModule { }
