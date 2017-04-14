@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, Input,
   OnChanges,
   OnDestroy,
   OnInit
@@ -26,6 +26,13 @@ export class GridComponent extends WidgetComponent implements OnChanges,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+
+  @Input() width: string;
+  @Input() gutter: string;
+  @Input() colmunNumber: string;
+  @Input() colmunWidth: string;
+
+
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

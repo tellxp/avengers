@@ -6,6 +6,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoginExampleComponent implements OnInit {
 
+  checkState: boolean;
   constructor() {
   }
 

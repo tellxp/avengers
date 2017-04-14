@@ -15,3 +15,4 @@ export class CheckboxDemoComponent implements OnInit {
   }
 
 }
+

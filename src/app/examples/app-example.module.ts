@@ -19,6 +19,8 @@ import {LoginExampleComponent} from './login/login-example.component';
 import {HomeExampleComponent} from './home/home-example.component';
 import {GridExampleComponent} from './grid/grid-example.component';
 import {TextboxModule} from '../../components/textbox/textbox.module';
+import {CheckboxModule} from '../../components/checkbox/checkbox.module';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import {TextboxModule} from '../../components/textbox/textbox.module';
       BrowserModule,
       BrowserAnimationsModule,
       AppExampleRoutingModule,
+      FormsModule,
 
       // Avengers Component
       CommonModule,
@@ -40,6 +43,7 @@ import {TextboxModule} from '../../components/textbox/textbox.module';
       PanelModule,
       NavbarModule,
       TextboxModule,
+      CheckboxModule,
     ],
     exports: [
       AppExampleComponent,

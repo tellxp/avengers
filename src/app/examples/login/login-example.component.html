@@ -12,9 +12,8 @@
         <ave-textbox class="form-control" [placeholder]="'请输入用户名'"></ave-textbox>
         <ave-textbox class="form-control" [placeholder]="'请输入密码'"></ave-textbox>
         <ave-grid-row>
-
           <label>
-            <input id="remember_me" type="checkbox">记住密码
+            <ave-checkbox class="form-control" [(ngModel)]="checkState"></ave-checkbox>记住密码{{checkState}}
           </label>
         </ave-grid-row>
         <ave-grid-row>

@@ -4,10 +4,9 @@ i {
   color: #0f9ae0;
 }
 input {
-  -moz-appearance: none;
+  appearance: none;
   position: absolute;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
   width: 0px;
   height: 0px;
 }
@@ -21,6 +20,7 @@ input {
   user-select: none;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 label {
