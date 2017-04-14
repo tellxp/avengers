@@ -6,37 +6,28 @@ import {
   Component,
   DoCheck,
   ElementRef,
-  Input,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, Renderer2
 } from '@angular/core';
 import {DomService} from '../widget/dom.service';
 import {WidgetComponent} from '../widget/widget.component';
 
 
 @Component({
-  selector: 'ave-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss'],
+  selector: 'ave-grid-column',
+  templateUrl: './grid-column.component.html',
+  styleUrls: ['./grid-column.component.scss'],
   providers: [DomService]
 })
-export class GridComponent extends WidgetComponent implements OnChanges,
+export class GridColumnComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() width: string;
-  @Input() gutter: string;
-  @Input() colmunNumber: string;
-  @Input() colmunWidth: string;
-  // TODO
-  // 栅格系统怎么控制
-
-
-  constructor(elementRef: ElementRef, domService: DomService) {
+  constructor(elementRef: ElementRef, domService: DomService, public render: Renderer2) {
     super(elementRef, domService);
   }
 

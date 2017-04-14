@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {GridRowComponent} from './grid-row.component';
-import {GridColumnComponent} from './grid-col.component';
+import {GridColumnComponent} from './grid-column.component';
 import {GridComponent} from './grid.component';
 
 
