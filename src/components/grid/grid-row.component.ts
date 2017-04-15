@@ -13,11 +13,11 @@ import {
   OnInit,
   QueryList,
   Renderer2
-} from "@angular/core";
-import {DomService, ElementStyle} from "../widget/dom.service";
-import {WidgetComponent} from "../widget/widget.component";
-import {GridColumnComponent} from "./grid-column.component";
-import {isNullOrUndefined} from "util";
+} from '@angular/core';
+import {DomService, ElementStyle} from '../widget/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
+import {GridColumnComponent} from './grid-column.component';
+import {isNullOrUndefined} from 'util';
 
 
 @Component({
@@ -35,7 +35,7 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
 
   @Input() gutter: number;
   @Input() amount: number;
-  @Input() height: number;
+  @Input() height: string;
 
   @ContentChildren(GridColumnComponent) contentColumn: QueryList<GridColumnComponent>;
   columns: GridColumnComponent[];
@@ -49,43 +49,25 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
       this.gutter = 1;
     }
     if (isNullOrUndefined(this.amount)) {
-      this.amount = 24;
+      this.amount = 1;
     }
 
     if (isNullOrUndefined(this.height)) {
-      this.height = 32;
+      this.height = 'auto';
     }
   }
 
   loadColumns() {
     this.columns = this.contentColumn.toArray();
-  }
-
-  setColumnStyle() {
     const length = this.columns.length;
-    const columnWidth = this.calculateColumnWidth();
-    const columnMargin = this.calculateColumnMargin();
     for (let i = 0; i < length; i++) {
-      const columnStyle: ElementStyle = new ElementStyle();
-      columnStyle.height = this.height;
-      columnStyle.width = columnWidth;
-      this.render.setStyle(this.columns[i].elementRef.nativeElement, 'width', columnStyle.width + '%');
-      this.render.setStyle(this.columns[i].elementRef.nativeElement, 'height', columnStyle.height + '%');
-      this.render.setStyle(this.columns[i].elementRef.nativeElement, 'margin-left', columnMargin + '%');
-      this.render.setStyle(this.columns[i].elementRef.nativeElement, 'margin-right', columnMargin + '%');
-      console.log(columnWidth);
+      this.columns[i].setParentRow(this);
+      this.columns[i].setWidth();
+      this.columns[i].setHeight();
+      this.columns[i].setPadding();
     }
   }
 
-  calculateColumnMargin(): number {
-    const value = this.gutter / 2;
-    return value;
-  }
-  calculateColumnWidth(): number {
-
-    const value = 100 / this.amount - this.gutter;
-    return value;
-  }
 
   ngOnChanges() {
     super.ngOnChanges();
@@ -93,6 +75,7 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
 
   ngOnInit() {
     super.ngOnInit();
+
     this.init();
   }
 
@@ -108,7 +91,6 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentChecked() {
     super.ngAfterContentChecked();
-    this.setColumnStyle();
 
   }
 
@@ -118,7 +100,6 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
-    this.setColumnStyle();
 
   }
 

@@ -29,9 +29,8 @@ export class GridComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() width: string;
-  @Input() gutter: string;
-  @Input() colmunNumber: string;
-  @Input() colmunWidth: string;
+  @Input() height: string;
+  @Input() alignment: string;
   // TODO
   // 栅格系统怎么控制
 

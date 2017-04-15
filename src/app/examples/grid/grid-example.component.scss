@@ -1,9 +1,25 @@
-ave-grid-column {
-  background-color: #006cc1;
+ave-grid-row:nth-child(odd) {
+  align-items: center;
+  background-color: #0f9ae0;
 }
-
-ave-grid-row {
+ave-grid-row:nth-child(even) {
+  align-items: center;
   background-color: #eeeeee;
+}
+ave-grid-row {
+  margin-bottom: 1em;
+}
+ave-grid-column {
+  justify-content: center;
+  align-items: center;
+
+}
+span {
+  display: inline-flex;
+  justify-content: center;
   width: 100%;
-  flex-wrap: wrap;
+  background-color: #dcdce6;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
