@@ -47,12 +47,14 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
 
   calculateWidth(amount: number, gutter: number, span: number): number {
 
-    const value = 100 / amount * span - gutter;
-    if (span === 4) {
-      console.log(amount, gutter, value);
+    if (100 / amount < gutter) {
+      throw Error('gutter must be smaller than 100 / amount! '
+        + 'gutter is: ' + gutter
+        + ', 100 / amount is: ' + 100 / amount);
+    } else {
+      const value = 100 / amount * span - gutter;
+      return value;
     }
-
-    return value;
   }
 
   setWidth() {
@@ -71,10 +73,10 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
     this.render.setStyle(this.elementRef.nativeElement, 'height', height);
   }
 
-  setPadding() {
-    const padding = this.parentRow.gutter / 2;
-    this.render.setStyle(this.elementRef.nativeElement, 'padding-left', padding + '%');
-    this.render.setStyle(this.elementRef.nativeElement, 'padding-right', padding + '%');
+  setMargin() {
+    const margin = this.parentRow.gutter / 2;
+    this.render.setStyle(this.elementRef.nativeElement, 'margin-left', margin + '%');
+    this.render.setStyle(this.elementRef.nativeElement, 'margin-right', margin + '%');
   }
 
 

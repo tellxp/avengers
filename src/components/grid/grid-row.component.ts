@@ -64,7 +64,7 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
       this.columns[i].setParentRow(this);
       this.columns[i].setWidth();
       this.columns[i].setHeight();
-      this.columns[i].setPadding();
+      this.columns[i].setMargin();
     }
   }
 

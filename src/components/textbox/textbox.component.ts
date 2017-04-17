@@ -129,9 +129,7 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
 }
 export enum TextboxType {
   Text,
-  Number,
-  Seearch,
+  Search,
   Email,
-  Url,
-  Tel
+  Url
 }
