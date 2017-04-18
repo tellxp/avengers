@@ -1,9 +1,9 @@
 @import "../../variables";
 :host {
   display: inline-flex;
-  height: 2em;
   justify-content: center;
   align-items: center;
+  min-height: 1.5em;
   padding-left: 0.5em;
   padding-right: 0.5em;
   background-color: $item-background-color;

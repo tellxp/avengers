@@ -66,9 +66,12 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
       this.columns[i].setHeight();
       this.columns[i].setMargin();
     }
+    this.setHeight();
   }
 
-
+  setHeight() {
+    this.render.setStyle(this.elementRef.nativeElement, 'height', this.height);
+  }
   ngOnChanges() {
     super.ngOnChanges();
   }

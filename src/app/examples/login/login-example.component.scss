@@ -1,34 +1,40 @@
 @import "../../../variables";
 
-.container {
-  height: 100%;
-}
 
 .illustration {
-  width: 100%;
   background: url("../../../assets/heroillustration.jpg");
+  justify-content: flex-end;
 }
 
 .right-content {
+  background-color: #ffffff;
   min-width: 20em;
-  margin-left: 5%;
+  padding-left: 3em;
+  padding-right: 3em;
+
 }
 
 .form-control {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
   min-height: 1em;
+  margin-bottom: 1em;
 }
 
 .form-group {
   width: 16em;
 }
 
-.form-control#sign_up {
-  margin-left: 1em;
+.form-control#login_in {
+  min-height: 2em;
+  margin-right: 2em;
 }
 .footer-control {
   margin-top: auto;
   margin-bottom: 2em;
   justify-content: flex-start;
+}
+
+ave-grid-row {
+
+}
+ave-grid-column {
 }

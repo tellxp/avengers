@@ -39,9 +39,12 @@
     <ave-grid-column><span>col 1</span></ave-grid-column>
     <ave-grid-column><span>col 1</span></ave-grid-column>
   </ave-grid-row>
-
+<ave-grid-row [amount]="24" [gutter]="0">
+  <ave-grid-column [span]="18"><span>col 18</span></ave-grid-column>
+  <ave-grid-column [span]="6"><span>col 6</span></ave-grid-column>
+</ave-grid-row>
   <ave-grid-row id="third" [amount]="12">
-    <ave-grid-column [span]="1">
+    <ave-grid-column [span]="2">
       <ave-button>Button</ave-button>
     </ave-grid-column>
     <ave-grid-column [span]="2"><span>col 2</span></ave-grid-column>
