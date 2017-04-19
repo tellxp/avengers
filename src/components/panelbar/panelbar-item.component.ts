@@ -16,7 +16,6 @@ import {
 import {DomService} from '../widget/dom.service';
 import {WidgetComponent} from '../widget/widget.component';
 import {PanelbarContentComponent} from './panelbar-content.component';
-import {PanelAlignmentType} from '../panel/panel.component';
 
 
 @Component({
@@ -35,7 +34,6 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   @Input() title: string;
   @ContentChildren(PanelbarItemComponent) contentItems: QueryList<PanelbarItemComponent>;
   @ContentChild(PanelbarContentComponent) container;
-  itemAlignment: PanelAlignmentType;
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
   active: boolean;
@@ -80,7 +78,6 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   }
   init() {
     this.active = false;
-    this.itemAlignment = PanelAlignmentType.Stack;
   }
   initChildItems() {
     const contentItemsLength = this.contentItems.toArray().length;

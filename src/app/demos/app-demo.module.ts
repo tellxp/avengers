@@ -8,7 +8,7 @@ import {PopupDemo} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
-import {PanelbarDemo} from './panelbar/panelbar-demo.component';
+import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -66,7 +66,7 @@ import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
       DropdownDemo,
       MenuDemo,
       MegamenuDemo,
-      PanelbarDemo,
+      PanelbarDemoComponent,
       PanelDemoComponent,
       NavbarDemoComponent,
       TextboxDemoComponent,

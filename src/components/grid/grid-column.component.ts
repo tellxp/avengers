@@ -3,26 +3,27 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component,
+  Component, ContentChildren,
   DoCheck,
   ElementRef,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, QueryList,
   Renderer2
-} from "@angular/core";
-import {DomService} from "../widget/dom.service";
-import {WidgetComponent} from "../widget/widget.component";
-import {GridRowComponent} from "./grid-row.component";
-import {isNullOrUndefined} from "util";
+} from '@angular/core';
+import {DomService} from '../widget/dom.service';
+import {WidgetComponent} from '../widget/widget.component';
+import {GridRowComponent} from './grid-row.component';
+import {isNullOrUndefined} from 'util';
+import {GridColumnConfig} from './grid-column.config';
 
 
 @Component({
   selector: 'ave-grid-column',
   templateUrl: './grid-column.component.html',
   styleUrls: ['./grid-column.component.scss'],
-  providers: [DomService]
+  providers: [DomService, GridColumnConfig]
 })
 export class GridColumnComponent extends WidgetComponent implements OnChanges,
   OnInit,
@@ -32,12 +33,16 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() span: number;
+  @Input() offset: number;
 
   parentRow: GridRowComponent;
 
   init() {
     if (isNullOrUndefined(this.span)) {
-      this.span = 1;
+      this.span = this.config.span;
+    }
+    if (isNullOrUndefined(this.offset)) {
+      this.offset = this.config.offset;
     }
   }
 
@@ -49,10 +54,19 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
 
     if (100 / amount < gutter) {
       throw Error('gutter must be smaller than 100 / amount! '
-        + 'gutter is: ' + gutter
-        + ', 100 / amount is: ' + 100 / amount);
+        + 'But now, 100 / amount - gutter is: ' + (100 / amount - gutter));
     } else {
       const value = 100 / amount * span - gutter;
+      return value;
+    }
+  }
+
+  calculateOffset(amount: number, gutter: number, offset: number) {
+    if (100 / amount < gutter) {
+      throw Error('gutter must be smaller than 100 / amount! '
+        + 'But now, 100 / amount - gutter is: ' + (100 / amount - gutter));
+    } else {
+      const value = 100 / amount * offset + gutter;
       return value;
     }
   }
@@ -67,20 +81,22 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
     this.render.setStyle(this.elementRef.nativeElement, 'width', width + '%');
   }
 
-  setHeight() {
-    const height = this.parentRow.height;
-
-    this.render.setStyle(this.elementRef.nativeElement, 'height', height);
-  }
 
   setMargin() {
-    const margin = this.parentRow.gutter / 2;
-    this.render.setStyle(this.elementRef.nativeElement, 'margin-left', margin + '%');
-    this.render.setStyle(this.elementRef.nativeElement, 'margin-right', margin + '%');
+
+    const amount = this.parentRow.amount;
+    const gutter = this.parentRow.gutter;
+    const offset = this.offset;
+
+    const gutterMargin = this.parentRow.gutter / 2;
+    const offsetMargin = this.calculateOffset(amount, gutter, offset);
+
+    this.render.setStyle(this.elementRef.nativeElement, 'margin-left', gutterMargin + offsetMargin + '%');
+    this.render.setStyle(this.elementRef.nativeElement, 'margin-right', gutterMargin + '%');
   }
 
 
-  constructor(elementRef: ElementRef, domService: DomService, public render: Renderer2) {
+  constructor(elementRef: ElementRef, domService: DomService, private config: GridColumnConfig, public render: Renderer2) {
     super(elementRef, domService);
   }
 

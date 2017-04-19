@@ -1,39 +1,35 @@
-<ave-grid [width]="'100%'" [height]="'100%'" [alignment]="'column'">
-  <ave-grid-row [gutter]="0" [amount]="24" [height]="'100%'" class="illustration">
-    <ave-grid-column [span]="6" class="right-content">
-      <ave-grid-row>
-        <h3>请输入用户名和密码</h3>
-      </ave-grid-row>
-      <ave-grid-row>
-        <p>工作或学校</p>
-      </ave-grid-row>
-      <ave-grid-row>
-        <ave-grid-column class="form-group">
-          <ave-textbox class="form-control" [placeholder]="'请输入用户名'"></ave-textbox>
-          <ave-textbox class="form-control" [placeholder]="'请输入密码'"></ave-textbox>
-          <ave-grid-row>
-            <label>
-              <ave-checkbox class="form-control" [(ngModel)]="checkState"></ave-checkbox>
-              记住密码
-            </label>
-          </ave-grid-row>
-          <ave-grid-row>
-            <ave-button class="form-control" id="login_in" value="">登录</ave-button>
-            <ave-button class="form-control" id="sign_up" value="">注册</ave-button>
-          </ave-grid-row>
-        </ave-grid-column>
-      </ave-grid-row>
-      <ave-grid-row [amount]="2" class="footer-control">
-        <ave-grid-column>
-          <span>© 2017 Avengers</span>
-        </ave-grid-column>
-        <ave-grid-column>
-          <a href="./example"><img  class="logo" src="../../../assets/logo.png" alt="logo"></a>
-        </ave-grid-column>
-      </ave-grid-row>
-      <ave-grid-row class="footer-link">
-        <a routerLink="./grid" routerLinkActive="true">使用条款</a>
-      </ave-grid-row>
-    </ave-grid-column>
-  </ave-grid-row>
-</ave-grid>
+<ave-panel class="container">
+  <ave-panel class="right-panel">
+    <ave-panel>
+      <h3>请输入用户名和密码</h3>
+    </ave-panel>
+    <ave-panel>
+      <p>工作或学校</p>
+    </ave-panel>
+    <ave-panel class="form-group">
+      <ave-textbox class="form-control" [placeholder]="'请输入用户名'"></ave-textbox>
+      <ave-textbox class="form-control" [placeholder]="'请输入密码'"></ave-textbox>
+    </ave-panel>
+    <ave-panel class="form-group">
+      <label class="form-control" >
+        <ave-checkbox [(ngModel)]="checkState"></ave-checkbox>
+        记住密码
+      </label>
+    </ave-panel>
+    <ave-panel>
+      <ave-button class="form-control" id="login_in" value="">登录</ave-button>
+      <ave-button class="form-control" id="sign_up" value="">注册</ave-button>
+    </ave-panel>
+    <ave-panel class="footer-group">
+      <ave-panel class="footer-control">
+        <span>©2017 Avengers</span>
+      </ave-panel>
+      <ave-panel class="footer-control">
+        <a href="./example"><img  class="logo" src="../../../assets/logo.png" alt="logo"></a>
+      </ave-panel>
+    </ave-panel>
+    <ave-panel class="footer-link">
+      <a routerLink="./grid" routerLinkActive="true">使用条款</a>
+    </ave-panel>
+  </ave-panel>
+</ave-panel>

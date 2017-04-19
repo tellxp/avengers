@@ -8,6 +8,7 @@ import {
   OnDestroy, OnChanges, DoCheck
 } from '@angular/core';
 import {DomService} from './dom.service';
+import {isNullOrUndefined} from 'util';
 
 export class WidgetComponent implements OnChanges,
   OnInit,
@@ -68,6 +69,15 @@ export class WidgetComponent implements OnChanges,
   public checkStyle() {
     this.style.width = this.dom.getBindedElementStyle().width;
     this.style.height = this.dom.getBindedElementStyle().height;
+  }
+
+  public setIfNullOrUndefined(field: any, value: any): any {
+    if (isNullOrUndefined(field)) {
+      field = value;
+    } else {
+      // Do nothing
+    }
+    return field;
   }
 }
 export class WidgetPosition {

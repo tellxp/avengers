@@ -28,10 +28,6 @@ export class PanelComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() alignment: PanelAlignmentType;
-  @Input() width: string;
-  @Input() height: string;
-
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
   }
@@ -70,23 +66,6 @@ export class PanelComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
   setAlignment() {
-    if (isNullOrUndefined(this.alignment)) {
-      this.alignment = PanelAlignmentType.Tile;
-    }
-    switch (this.alignment) {
-      case PanelAlignmentType.Stack:
-        this.render.setStyle(this.elementRef.nativeElement, 'flex-flow', 'column');
-        break;
-      case PanelAlignmentType.Tile:
-        this.render.setStyle(this.elementRef.nativeElement, 'flex-flow', 'row');
-        break;
-      default:
-        throw Error('Unmatched alignment');
-    }
-
   }
 }
-export enum PanelAlignmentType {
-  Stack,
-  Tile
-}
+

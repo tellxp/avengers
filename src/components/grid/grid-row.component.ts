@@ -18,13 +18,15 @@ import {DomService, ElementStyle} from '../widget/dom.service';
 import {WidgetComponent} from '../widget/widget.component';
 import {GridColumnComponent} from './grid-column.component';
 import {isNullOrUndefined} from 'util';
+import {GridRowConfig} from './grid-row.config';
+import {GridConfig} from './grid.config';
 
 
 @Component({
   selector: 'ave-grid-row',
   templateUrl: './grid-row.component.html',
   styleUrls: ['./grid-row.component.scss'],
-  providers: [DomService]
+  providers: [DomService, GridRowConfig]
 })
 export class GridRowComponent extends WidgetComponent implements OnChanges,
   OnInit,
@@ -35,25 +37,21 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
 
   @Input() gutter: number;
   @Input() amount: number;
-  @Input() height: string;
 
   @ContentChildren(GridColumnComponent) contentColumn: QueryList<GridColumnComponent>;
+
   columns: GridColumnComponent[];
 
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
+  constructor(elementRef: ElementRef, domService: DomService, private config: GridRowConfig) {
     super(elementRef, domService);
   }
 
   init() {
     if (isNullOrUndefined(this.gutter)) {
-      this.gutter = 1;
+      this.gutter = this.config.gutter;
     }
     if (isNullOrUndefined(this.amount)) {
-      this.amount = 1;
-    }
-
-    if (isNullOrUndefined(this.height)) {
-      this.height = 'auto';
+      this.amount = this.config.amount;
     }
   }
 
@@ -63,15 +61,10 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
     for (let i = 0; i < length; i++) {
       this.columns[i].setParentRow(this);
       this.columns[i].setWidth();
-      this.columns[i].setHeight();
       this.columns[i].setMargin();
     }
-    this.setHeight();
   }
 
-  setHeight() {
-    this.render.setStyle(this.elementRef.nativeElement, 'height', this.height);
-  }
   ngOnChanges() {
     super.ngOnChanges();
   }
