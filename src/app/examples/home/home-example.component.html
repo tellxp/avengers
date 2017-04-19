@@ -1,7 +1,14 @@
-<ave-grid-row>
-  <ave-grid-column>
-    <h1>Example home!</h1>
-    <a routerLink="./login" routerLinkActive="true">login</a>
-    <a routerLink="./grid" routerLinkActive="true">grid</a>
-  </ave-grid-column>
-</ave-grid-row>
+<ave-grid [alignment]="'column'">
+  <ave-grid-row>
+    <a routerLink="./" routerLinkActive="true">
+      <img src="../../../assets/logo.png" alt="logo">
+    </a>
+  </ave-grid-row>
+  <ave-grid-row>
+    <ave-grid-column>
+      <h1>模板</h1>
+      <a routerLink="./login" routerLinkActive="true">login</a>
+      <a routerLink="./grid" routerLinkActive="true">grid</a>
+    </ave-grid-column>
+  </ave-grid-row>
+</ave-grid>

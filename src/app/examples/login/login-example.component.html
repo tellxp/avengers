@@ -14,7 +14,7 @@
           <ave-grid-row>
             <label>
               <ave-checkbox class="form-control" [(ngModel)]="checkState"></ave-checkbox>
-              记住密码{{checkState}}
+              记住密码
             </label>
           </ave-grid-row>
           <ave-grid-row>
@@ -23,9 +23,16 @@
           </ave-grid-row>
         </ave-grid-column>
       </ave-grid-row>
-      <ave-grid-row class="footer-control">
-        <span>© 2017 Avengers</span>
-        <a href="./example">Examples</a>
+      <ave-grid-row [amount]="2" class="footer-control">
+        <ave-grid-column>
+          <span>© 2017 Avengers</span>
+        </ave-grid-column>
+        <ave-grid-column>
+          <a href="./example"><img  class="logo" src="../../../assets/logo.png" alt="logo"></a>
+        </ave-grid-column>
+      </ave-grid-row>
+      <ave-grid-row class="footer-link">
+        <a routerLink="./grid" routerLinkActive="true">使用条款</a>
       </ave-grid-row>
     </ave-grid-column>
   </ave-grid-row>

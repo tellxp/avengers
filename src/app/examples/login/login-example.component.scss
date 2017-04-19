@@ -8,7 +8,7 @@
 
 .right-content {
   background-color: #ffffff;
-  min-width: 20em;
+  min-width: 16em;
   padding-left: 3em;
   padding-right: 3em;
 
@@ -29,10 +29,17 @@
 }
 .footer-control {
   margin-top: auto;
-  margin-bottom: 2em;
   justify-content: flex-start;
+  align-items: center;
 }
-
+.logo {
+    width: 100px;
+    height: auto;
+}
+.footer-link {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
 ave-grid-row {
 
 }
