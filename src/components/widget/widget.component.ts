@@ -75,13 +75,12 @@ export class WidgetComponent implements OnChanges,
     this.style.height = this.dom.getBindedElementStyle().height;
   }
 
-  public setIfNullOrUndefined(field: any, value: any): any {
+  public getValueIfNullOrUndefined<T>(field: T, value: T): T {
     if (isNullOrUndefined(field)) {
-      field = value;
+      return value;
     } else {
-      // Do nothing
+      return field;
     }
-    return field;
   }
 }
 export class WidgetPosition {

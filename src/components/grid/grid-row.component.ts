@@ -11,15 +11,12 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList,
-  Renderer2
+  QueryList
 } from '@angular/core';
-import {DomService, ElementStyle} from '../widget/dom.service';
+import {DomService} from '../widget/dom.service';
 import {WidgetComponent} from '../widget/widget.component';
 import {GridColumnComponent} from './grid-column.component';
-import {isNullOrUndefined} from 'util';
 import {GridRowConfig} from './grid-row.config';
-import {GridConfig} from './grid.config';
 
 
 @Component({
@@ -47,12 +44,8 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    if (isNullOrUndefined(this.gutter)) {
-      this.gutter = this.config.gutter;
-    }
-    if (isNullOrUndefined(this.amount)) {
-      this.amount = this.config.amount;
-    }
+    this.gutter = this.getValueIfNullOrUndefined(this.gutter, this.config.gutter);
+    this.amount = this.getValueIfNullOrUndefined(this.amount, this.config.amount);
   }
 
   loadColumns() {
