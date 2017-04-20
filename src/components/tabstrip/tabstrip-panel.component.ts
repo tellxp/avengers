@@ -19,8 +19,8 @@ import {
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripComponent} from './tabstrip.component';
 import {TabstripBarComponent} from './tabstrip-bar.component';
-import {WidgetComponent} from '../widget/widget.component';
-import {DomService, PositioningType} from '../widget/dom.service';
+import {WidgetComponent} from '../core/widget.component';
+import {DomService, PositioningType} from '../core/dom.service';
 import {isNullOrUndefined} from 'util';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 

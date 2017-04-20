@@ -1,20 +1,5 @@
 @import "../../variables";
-:host {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 1.5em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: $item-background-color;
-  user-select: none;
-  color: $item-color;
-  cursor: pointer;
-  outline: none;
-}
-:host:hover {
-  background-color: $item-hover-background-color;
-}
-:host:focus {
-  background-color: $item-active-background-color;
+
+:host-context(.theme-default) {
+  background-color: red;
 }

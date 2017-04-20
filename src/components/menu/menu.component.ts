@@ -13,8 +13,8 @@
   QueryList
 } from '@angular/core';
 import {MenuBarComponent} from './menu-bar.component';
-import {WidgetComponent} from '../widget/widget.component';
-import {DomService} from '../widget/dom.service';
+import {WidgetComponent} from '../core/widget.component';
+import {DomService} from '../core/dom.service';
 
 @Component({
   selector: 'ave-menu',

@@ -1,0 +1,24 @@
+@import "../variables";
+.v-widget {
+  display: inline-flex;
+}
+
+.v-button {
+  justify-content: center;
+  align-items: center;
+  min-height: 1.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: $item-background-color;
+  user-select: none;
+  color: $item-color;
+  cursor: pointer;
+  outline: none;
+}
+
+.v-button:hover {
+  background-color: $item-hover-background-color;
+}
+.v-button:focus {
+  background-color: $item-active-background-color;
+}

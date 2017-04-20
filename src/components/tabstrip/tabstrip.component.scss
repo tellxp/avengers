@@ -1,10 +1,11 @@
 @import "../../variables";
 
 :host {
-  display: flex;
+  display: inline-flex;
   flex-flow: column;
   background-color: $component-background-color;
   outline: none;
+  width: 100%;
 }
 
 

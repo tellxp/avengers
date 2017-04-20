@@ -2,8 +2,8 @@ import {
   Component, ElementRef, AfterViewChecked, HostBinding, OnChanges, OnInit, DoCheck, AfterContentInit,
   AfterViewInit, OnDestroy, AfterContentChecked, Input
 } from '@angular/core';
-import {DomService} from '../widget/dom.service';
-import {WidgetComponent} from '../widget/widget.component';
+import {DomService} from '../core/dom.service';
+import {WidgetComponent} from '../core/widget.component';
 
 @Component({
   selector: 'ave-button',
@@ -19,7 +19,9 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() value;
-  @HostBinding('attr.tabindex') '-1';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-widget') widgetClass = 'true';
+  @HostBinding('class.v-button') buttonClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

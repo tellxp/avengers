@@ -13,10 +13,10 @@ import {
   OnInit,
   QueryList
 } from '@angular/core';
-import {DomService} from '../widget/dom.service';
+import {DomService} from '../core/dom.service';
 import {MenuItemComponent} from './menu-item.component';
 import {isNullOrUndefined} from 'util';
-import {WidgetComponent} from '../widget/widget.component';
+import {WidgetComponent} from '../core/widget.component';
 
 @Component({
   selector: 'ave-menu-entry',

@@ -1,14 +1,18 @@
-<ave-grid>
-  <ave-grid-row>
+<ave-grid class="container">
+  <ave-grid-row class="logo">
     <a routerLink="./" routerLinkActive="true">
       <img src="../../../assets/logo.png" alt="logo">
     </a>
   </ave-grid-row>
   <ave-grid-row>
-    <ave-grid-column>
-      <h1>模板</h1>
-      <a routerLink="./login" routerLinkActive="true">login</a>
-      <a routerLink="./grid" routerLinkActive="true">grid</a>
+    <h1>起步样例</h1>
+  </ave-grid-row>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column class="list">
+      <a class="link" routerLink="./grid" routerLinkActive="true">grid</a>
+    </ave-grid-column>
+    <ave-grid-column class="list">
+      <a class="link" routerLink="./login" routerLinkActive="true">login</a>
     </ave-grid-column>
   </ave-grid-row>
 </ave-grid>

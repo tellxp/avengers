@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {WidgetComponent} from '../widget/widget.component';
-import {DomService} from '../widget/dom.service';
+import {WidgetComponent} from '../core/widget.component';
+import {DomService} from '../core/dom.service';
 
 
 @Component({

@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.logo {
+  background-color: #0078d7;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  color: #ffffff;
+  height: 4em;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}

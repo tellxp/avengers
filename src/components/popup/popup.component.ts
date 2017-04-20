@@ -10,8 +10,8 @@ import {
   AfterViewInit,
   OnDestroy, OnChanges, DoCheck, Renderer2, HostBinding
 } from '@angular/core';
-import {DomService, ElementPosition, ElementStyle} from '../widget/dom.service';
-import {WidgetComponent} from '../widget/widget.component';
+import {DomService, ElementPosition, ElementStyle} from '../core/dom.service';
+import {WidgetComponent} from '../core/widget.component';
 import {isNullOrUndefined} from 'util';
 
 
