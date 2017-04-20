@@ -1,18 +1,20 @@
 import {
-  ElementRef,
-  AfterViewChecked,
-  OnInit,
-  AfterContentInit,
   AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
   AfterViewInit,
-  OnDestroy, OnChanges, DoCheck
+  DoCheck,
+  ElementRef,
+  OnChanges,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
 import {DomService} from './dom.service';
 import {isNullOrUndefined} from 'util';
 
 export class WidgetComponent implements OnChanges,
   OnInit,
-  DoCheck ,
+  DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
@@ -41,6 +43,7 @@ export class WidgetComponent implements OnChanges,
   ngDoCheck() {
 
   }
+
   ngAfterContentInit() {
 
   }
@@ -61,6 +64,7 @@ export class WidgetComponent implements OnChanges,
   ngOnDestroy() {
 
   }
+
   public checkPosition() {
     this.position.left = this.dom.getBindedElementPosition().left;
     this.position.top = this.dom.getBindedElementPosition().top;
