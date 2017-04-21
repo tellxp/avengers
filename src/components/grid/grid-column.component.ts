@@ -66,7 +66,7 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
       throw Error('gutter must be smaller than 100 / amount! '
         + 'But now, 100 / amount - gutter is: ' + (100 / amount - gutter));
     } else {
-      const value = 100 / amount * offset + gutter;
+      const value = 100 / amount * offset;
       return value;
     }
   }
@@ -81,18 +81,24 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
     this.render.setStyle(this.elementRef.nativeElement, 'width', width + '%');
   }
 
+  setGutter() {
+    const gutter = this.parentRow.gutter;
 
-  setMargin() {
+    const padding = gutter / 2;
+
+    this.render.setStyle(this.elementRef.nativeElement, 'padding-left', padding + '%');
+    this.render.setStyle(this.elementRef.nativeElement, 'padding-right', padding + '%');
+  }
+
+  setOffset() {
 
     const amount = this.parentRow.amount;
     const gutter = this.parentRow.gutter;
     const offset = this.offset;
 
-    const gutterMargin = this.parentRow.gutter / 2;
     const offsetMargin = this.calculateOffset(amount, gutter, offset);
 
-    this.render.setStyle(this.elementRef.nativeElement, 'margin-left', gutterMargin + offsetMargin + '%');
-    this.render.setStyle(this.elementRef.nativeElement, 'margin-right', gutterMargin + '%');
+    this.render.setStyle(this.elementRef.nativeElement, 'margin-left', offsetMargin + '%');
   }
 
 

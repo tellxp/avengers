@@ -20,3 +20,8 @@ span {
   background-color: #dcdce6;
   border-radius: 2px;
 }
+
+.container {
+  display: flex;
+  flex-flow: column;
+}
