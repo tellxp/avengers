@@ -37,6 +37,32 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
 
   parentRow: GridRowComponent;
 
+
+
+  calculateColumnWidth(amount: number, gutter: number, span: number): number {
+
+    if (this.isValidGutter(amount, gutter)) {
+      return 100 / amount * span - gutter;
+    } else {
+      throw Error('gutter is not valid!');
+    }
+  }
+
+  isValidGutter(amount: number, gutter: number): boolean {
+    if (100 / amount < gutter) {
+      throw Error('gutter must be smaller than 100 / amount! '
+        + 'But now, 100 / amount - gutter is: ' + (100 / amount - gutter));
+    } else {
+      return false;
+    }
+  }
+  calculateColumnOffset(amount: number, gutter: number, offset: number) {
+    if (this.isValidGutter(amount, gutter)) {
+      return 100 / amount * offset;
+    } else {
+      throw Error('gutter is not valid!');
+    }
+  }
   init() {
     if (isNullOrUndefined(this.span)) {
       this.span = this.config.span;
@@ -50,33 +76,12 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
     this.parentRow = row;
   }
 
-  calculateWidth(amount: number, gutter: number, span: number): number {
-
-    if (100 / amount < gutter) {
-      throw Error('gutter must be smaller than 100 / amount! '
-        + 'But now, 100 / amount - gutter is: ' + (100 / amount - gutter));
-    } else {
-      const value = 100 / amount * span - gutter;
-      return value;
-    }
-  }
-
-  calculateOffset(amount: number, gutter: number, offset: number) {
-    if (100 / amount < gutter) {
-      throw Error('gutter must be smaller than 100 / amount! '
-        + 'But now, 100 / amount - gutter is: ' + (100 / amount - gutter));
-    } else {
-      const value = 100 / amount * offset;
-      return value;
-    }
-  }
-
   setWidth() {
     const amount = this.parentRow.amount;
     const gutter = this.parentRow.gutter;
     const span = this.span;
 
-    const width = this.calculateWidth(amount, gutter, span);
+    const width = this.calculateColumnWidth(amount, gutter, span);
 
     this.render.setStyle(this.elementRef.nativeElement, 'width', width + '%');
   }
@@ -96,7 +101,7 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
     const gutter = this.parentRow.gutter;
     const offset = this.offset;
 
-    const offsetMargin = this.calculateOffset(amount, gutter, offset);
+    const offsetMargin = this.calculateColumnOffset(amount, gutter, offset);
 
     this.render.setStyle(this.elementRef.nativeElement, 'margin-left', offsetMargin + '%');
   }
