@@ -44,8 +44,8 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    this.gutter = this.getValueIfNullOrUndefined(this.gutter, this.config.gutter);
-    this.amount = this.getValueIfNullOrUndefined(this.amount, this.config.amount);
+    this.gutter = this.getValidValue(this.gutter, this.config.gutter);
+    this.amount = this.getValidValue(this.amount, this.config.amount);
   }
 
   loadColumns() {
@@ -53,9 +53,9 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
     const length = this.columns.length;
     for (let i = 0; i < length; i++) {
       this.columns[i].setParentRow(this);
-      this.columns[i].setWidth();
-      this.columns[i].setGutter();
-      this.columns[i].setOffset();
+      this.columns[i].setWidthStyle();
+      this.columns[i].setPaddingStyle();
+      this.columns[i].setMarginStyle();
     }
   }
 

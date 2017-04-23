@@ -12,7 +12,7 @@ import {MenuModule} from '../../components/menu/menu.module';
 import {MegamenuModule} from '../../components/megamenu/megamenu.module';
 import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 import {PanelModule} from '../../components/panel/panel.module';
-import {NavbarModule} from '../../components/navbar/navbar.module';
+import {RoutebarModule} from '../../components/routebar/routebar.module';
 import {AppExampleRoutingModule} from './app-example-routing.module';
 import {AppExampleComponent} from './app-example.component';
 import {LoginExampleComponent} from './login/login-example.component';
@@ -21,6 +21,7 @@ import {GridExampleComponent} from './grid/grid-example.component';
 import {TextboxModule} from '../../components/textbox/textbox.module';
 import {CheckboxModule} from '../../components/checkbox/checkbox.module';
 import {FormsModule} from '@angular/forms';
+import {DashboardExampleComponent} from './dashboard/dashboard-example.component';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import {FormsModule} from '@angular/forms';
       MegamenuModule,
       PanelbarModule,
       PanelModule,
-      NavbarModule,
+      RoutebarModule,
       TextboxModule,
       CheckboxModule,
     ],
@@ -50,12 +51,14 @@ import {FormsModule} from '@angular/forms';
       HomeExampleComponent,
       LoginExampleComponent,
       GridExampleComponent,
+      DashboardExampleComponent,
     ],
     declarations: [
       AppExampleComponent,
       HomeExampleComponent,
       LoginExampleComponent,
       GridExampleComponent,
+      DashboardExampleComponent,
 
     ],
     providers: [

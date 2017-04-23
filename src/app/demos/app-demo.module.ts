@@ -22,7 +22,7 @@ import {MenuModule} from '../../components/menu/menu.module';
 import {MegamenuModule} from '../../components/megamenu/megamenu.module';
 import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 import {PanelModule} from '../../components/panel/panel.module';
-import {NavbarModule} from '../../components/navbar/navbar.module';
+import {RoutebarModule} from '../../components/routebar/routebar.module';
 import {AppDemoRoutingModule} from './app-demo-routing.module';
 import {TextboxModule} from '../../components/textbox/textbox.module';
 import {TextboxDemoComponent} from './textbox/textbox-demo.component';
@@ -50,7 +50,7 @@ import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
       MegamenuModule,
       PanelbarModule,
       PanelModule,
-      NavbarModule,
+      RoutebarModule,
       TextboxModule,
       CheckboxModule,
     ],

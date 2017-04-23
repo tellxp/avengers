@@ -14,14 +14,13 @@ import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
 
 
-
 @Component({
-  selector: 'ave-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  selector: 'ave-routebar',
+  templateUrl: './routebar.component.html',
+  styleUrls: ['./routebar.component.scss'],
   providers: [DomService]
 })
-export class NavbarComponent extends WidgetComponent implements OnChanges,
+export class RoutebarComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,

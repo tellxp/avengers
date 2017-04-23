@@ -75,7 +75,7 @@ export class WidgetComponent implements OnChanges,
     this.style.height = this.dom.getBindedElementStyle().height;
   }
 
-  public getValueIfNullOrUndefined<T>(field: T, value: T): T {
+  public getValidValue<T>(field: T, value: T): T {
     if (isNullOrUndefined(field)) {
       return value;
     } else {

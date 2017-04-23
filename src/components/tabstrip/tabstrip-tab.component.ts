@@ -92,7 +92,12 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   }
 
   public attachPage() {
-    this.attachedPage.bindTab(this);
+    if (isNullOrUndefined(this.attachedPage)) {
+      // do nothing
+    } else {
+      this.attachedPage.bindTab(this);
+    }
+
   }
 
   public isActive(): boolean {

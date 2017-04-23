@@ -15,12 +15,12 @@ import {WidgetComponent} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-navbar-item',
-  templateUrl: './navbar-item.component.html',
-  styleUrls: ['./navbar-item.component.scss'],
+  selector: 'ave-routebar-item',
+  templateUrl: './routebar-item.component.html',
+  styleUrls: ['./routebar-item.component.scss'],
   providers: [DomService]
 })
-export class NavbarItemComponent extends WidgetComponent implements OnChanges,
+export class RoutebarItemComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,

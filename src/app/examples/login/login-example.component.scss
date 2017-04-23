@@ -17,7 +17,10 @@
   flex-flow: column;
 
 }
-
+.header-group {
+  width: 16em;
+  flex-flow: column;
+}
 .form-control {
   min-height: 1em;
   margin-bottom: 1em;
@@ -27,13 +30,17 @@
   width: 16em;
   flex-flow: column;
 }
-
-.form-control#login_in {
+.button-group {
+  width: 16em;
+  flex-flow: row;
+}
+.button-control {
   min-height: 2em;
   margin-right: 2em;
 }
 
 .footer-group {
+  width: 16em;
   margin-top: auto;
   justify-content: flex-start;
   height: 4em;
@@ -47,12 +54,8 @@
     height: auto;
 }
 .footer-link {
+  width: 16em;
   margin-top: 1em;
   margin-bottom: 2em;
   height: 2em;
-}
-ave-grid-row {
-
-}
-ave-grid-column {
 }

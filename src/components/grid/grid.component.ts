@@ -29,10 +29,33 @@ export class GridComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
+
+  static isValidGutter(amount: number, gutter: number): boolean {
+    if (100 / amount < gutter) {
+      throw Error('gutter must be smaller than 100 / amount! '
+        + 'but now, 100 / amount - gutter is: ' + (100 / amount - gutter));
+    } else {
+      return true;
+    }
+  }
+  static calculateColumnWidth(amount: number, gutter: number, span: number): number {
+
+    if (this.isValidGutter(amount, gutter)) {
+      return 100 / amount * span - gutter;
+    } else {
+      throw Error('gutter is not valid!');
+    }
+  }
+  static calculateColumnOffset(amount: number, gutter: number, offset: number) {
+    if (this.isValidGutter(amount, gutter)) {
+      return 100 / amount * offset;
+    } else {
+      throw Error('gutter is not valid!');
+    }
+  }
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
   }
-
   ngOnChanges() {
     super.ngOnChanges();
   }
