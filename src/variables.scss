@@ -1,8 +1,13 @@
 
+
 $common-color: #ffffff;
 $component-background-color: transparentize($common-color, 1);
 
-$bar-background-color: #0078d7;
+
+$bar-background-color: (
+  default: #0078d7,
+  material: #004d4d
+);
 $bar-item-background-color: #0078d7;
 $bar-item-color: #ffffff;
 
@@ -21,7 +26,7 @@ $group-item-background-color: #0060ac;
 $group-item-hover-background-color: #005496;
 $group-item-color: #ffffff;
 
-$item-background-color: #0078d7;
+$item-background-color: #002050;
 $item-hover-background-color: #006cc1;
 $item-active-background-color: #0060ac;
 $item-color: #ffffff;
@@ -31,3 +36,5 @@ $grid-breakpoints-sm: 576px;
 $grid-breakpoints-md: 768px;
 $grid-breakpoints-lg: 992px;
 $grid-breakpoints-xl: 1200px;
+
+$control-padding: 0.5em;

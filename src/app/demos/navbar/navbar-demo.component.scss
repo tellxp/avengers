@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  flex-flow: row;
+  height: 3em;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1em;
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1em;
+  }
+}
+.navbar-toggle {
+  color: #ffffff;
+}
+.navbar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.navbar-addon {
+  display: inline-flex;
+  margin-left: auto;
+  border-radius: 4px;
+}
+.toggle-menu {
+  height: 100%;
+}

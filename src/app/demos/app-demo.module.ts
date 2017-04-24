@@ -10,7 +10,7 @@ import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
 import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
-import {NavbarDemoComponent} from './navbar/navbar-demo.component';
+import {RoutebarDemoComponent} from './routebar/routebar-demo.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '../../components/core/widget.module';
 import {GridModule} from '../../components/grid/grid.module';
@@ -27,9 +27,10 @@ import {AppDemoRoutingModule} from './app-demo-routing.module';
 import {TextboxModule} from '../../components/textbox/textbox.module';
 import {TextboxDemoComponent} from './textbox/textbox-demo.component';
 import {FormsModule} from '@angular/forms';
-import {CheckboxComponent} from '../../components/checkbox/checkbox.component';
 import {CheckboxModule} from '../../components/checkbox/checkbox.module';
 import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
+import {NavbarModule} from '../../components/navbar/navbar.module';
+import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
       RoutebarModule,
       TextboxModule,
       CheckboxModule,
+      NavbarModule,
     ],
     exports: [
       AppDemoComponent
@@ -68,9 +70,10 @@ import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
       MegamenuDemo,
       PanelbarDemoComponent,
       PanelDemoComponent,
-      NavbarDemoComponent,
+      RoutebarDemoComponent,
       TextboxDemoComponent,
       CheckboxDemoComponent,
+      NavbarDemoComponent,
     ],
     providers: [
     ],

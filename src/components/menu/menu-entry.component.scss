@@ -3,15 +3,14 @@
 
 :host {
   display: flex;
-  height: 3em;
   justify-content: center;
   align-items: center;
   user-select: none;
   cursor: pointer;
-  min-width: 8em;
   background-color: $item-background-color;
   color: $item-color;
   outline: none;
+
 }
 
 :host:hover {
@@ -25,6 +24,8 @@ div {
   justify-content: center;
   align-items: center;
   outline: none;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 ave-popup {
   display: flex;
@@ -33,8 +34,4 @@ ave-popup {
 span {
   display: flex;
 }
-i {
-  display: flex;
-  font-size: 0.5em;
-  margin-left: 1em;
-}
+

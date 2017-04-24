@@ -1,5 +1,11 @@
 @import "../../variables";
 
 :host-context(.theme-default) {
-  background-color: red;
+  height: 100%;
+  //background-color: #002050;
+  user-select: none;
+  color: $item-color;
+  cursor: pointer;
+  outline: none;
 }
+

@@ -3,6 +3,7 @@
 @import "variables";
 @import "../lib/font-awesome-4.7.0/css/font-awesome.min.css";
 @import "theme/avengers.common";
+@import "theme/avengers.default";
 
 body, input, select {
   font-family: "Microsoft YaHei", SimSun, Tahoma, Arial;
@@ -20,5 +21,6 @@ body, html {
 
 ng-component {
   width: 100%;
+  height: 100%;
 }
 

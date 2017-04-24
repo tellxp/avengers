@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NavbarComponent} from './navbar.component';
+import {NavbarItemComponent} from './navbar-item.component';
 
 
 @NgModule({
@@ -8,10 +9,12 @@ import {NavbarComponent} from './navbar.component';
       BrowserModule
     ],
     exports: [
-      NavbarComponent
+      NavbarComponent,
+      NavbarItemComponent
     ],
     declarations: [
-      NavbarComponent
+      NavbarComponent,
+      NavbarItemComponent
     ],
     providers: [
     ],

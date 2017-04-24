@@ -32,6 +32,9 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() title: string;
+  @Input() icon: string;
+  @Input() showChevron: boolean;
+
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
   items: MenuItemComponent[];
   activeItem: MenuItemComponent;

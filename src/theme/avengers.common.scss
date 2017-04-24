@@ -1,24 +1,27 @@
 @import "../variables";
-.v-widget {
+
+.v-control {
+  display: inline-flex;
+  padding: $control-padding;
+  overflow: hidden;
+}
+
+.v-container {
+  display: flex;
+}
+
+.v-link {
   display: inline-flex;
 }
 
-.v-button {
+.v-control .v-btn {
   justify-content: center;
   align-items: center;
-  min-height: 1.5em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: $item-background-color;
+  padding: $control-padding;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
   user-select: none;
-  color: $item-color;
   cursor: pointer;
-  outline: none;
-}
 
-.v-button:hover {
-  background-color: $item-hover-background-color;
-}
-.v-button:focus {
-  background-color: $item-active-background-color;
 }

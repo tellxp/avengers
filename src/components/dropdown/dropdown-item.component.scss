@@ -3,7 +3,8 @@
 
 :host {
   display: flex;
-  height: 2em;
+  min-height: 2em;
+  height: 100%;
   padding-left: 0.5em;
   padding-right: 0.5em;
   justify-content: flex-start;
