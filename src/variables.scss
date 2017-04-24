@@ -38,3 +38,12 @@ $grid-breakpoints-lg: 992px;
 $grid-breakpoints-xl: 1200px;
 
 $control-padding: 0.5em;
+
+$btn-back-color: (
+  default: #002050,
+  material: #42a5f5
+);
+$btn-fore-color: (
+  default: #ffffff,
+  material: #000000
+);

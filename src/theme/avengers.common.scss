@@ -14,14 +14,10 @@
   display: inline-flex;
 }
 
-.v-control .v-btn {
+.v-control.v-btn {
   justify-content: center;
   align-items: center;
   padding: $control-padding;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
   user-select: none;
   cursor: pointer;
-
 }

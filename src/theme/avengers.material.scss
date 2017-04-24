@@ -1,0 +1,10 @@
+@import "../variables";
+
+
+
+.v-btn {
+  background-color: map-get($btn-back-color, material);
+  color: map-get($btn-fore-color, material);
+  outline: none;
+}
+
