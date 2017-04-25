@@ -14,10 +14,18 @@
   display: inline-flex;
 }
 
-.v-control.v-btn {
+.v-btn {
+  @extend .v-control;
+
   justify-content: center;
   align-items: center;
   padding: $control-padding;
   user-select: none;
   cursor: pointer;
+}
+
+@mixin ave-truncate-line() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
