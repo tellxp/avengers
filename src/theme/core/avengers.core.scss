@@ -14,7 +14,7 @@
   display: inline-flex;
 }
 
-.v-btn {
+.v-button {
   @extend .v-control;
 
   justify-content: center;
@@ -22,6 +22,8 @@
   padding: $control-padding;
   user-select: none;
   cursor: pointer;
+  background-color: map-get($btn-back-color, default);
+  color: map-get($btn-fore-color, default);
 }
 
 @mixin ave-truncate-line() {

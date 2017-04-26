@@ -1,9 +1,9 @@
-﻿@import "../../variables";
+﻿@import "../../theme/variables";
 
 :host {
   display: flex;
   flex-flow: row;
-  background-color: $component-background-color;
+  background-color: $component-back-color;
   outline: none;
 
 }

@@ -1,8 +1,8 @@
-@import "../../variables";
+@import "../../theme/variables";
 
 :host {
   display: flex;
   flex-flow: column;
-  background-color: $component-background-color;
+  background-color: $component-back-color;
   width: 100%;
 }
