@@ -2,11 +2,12 @@
 @import "~normalize.css";
 @import "styles/core/variables";
 @import "../lib/font-awesome-4.7.0/css/font-awesome.min.css";
-@import "styles/core/avengers.core";
-@import "theme/avengers.material";
+@import "styles/core/utils";
+@import "theming/prebuild/avengers.material";
 
-body, input, select {
-  font-family: "Microsoft YaHei", SimSun, Tahoma, Arial;
+body {
+  font-size: $ave-body-font-size-base;
+  font-family: $ave-font-family;
 }
 
 body, html {

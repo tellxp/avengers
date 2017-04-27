@@ -1,0 +1,11 @@
+@import "../core";
+@import "../theming";
+
+// Define a theme.
+$primary: ave-palette($ave-deep-purple);
+$accent:  ave-palette($ave-amber, A200, A100, A400);
+
+$theme: ave-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include avengers-theme($theme);

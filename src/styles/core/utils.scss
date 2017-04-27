@@ -2,7 +2,6 @@
 
 %v-control {
   display: inline-flex;
-  padding: $control-padding;
   overflow: hidden;
 }
 
@@ -20,4 +19,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@mixin user-select($value) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
