@@ -1,0 +1,20 @@
+
+// Typography
+$ave-body-font-size-base: 1em;
+$ave-font-family: "Microsoft YaHei", Roboto, 'Helvetica Neue', sans-serif !default;
+
+
+// Color
+$base-color: #ffffff;
+$component-back-color: transparentize($base-color, 1);
+
+$control-padding: 0.5em;
+
+$btn-back-color: (
+  default: #002050,
+  material: #42a5f5
+);
+$btn-fore-color: (
+  default: #ffffff,
+  material: #000000
+);

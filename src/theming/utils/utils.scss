@@ -1,19 +1,3 @@
-@import "variables";
-
-%v-control {
-  display: inline-flex;
-  overflow: hidden;
-}
-
-%v-container {
-  display: flex;
-}
-
-%v-link {
-  display: inline-flex;
-}
-
-
 
 @mixin ave-truncate-line() {
   white-space: nowrap;

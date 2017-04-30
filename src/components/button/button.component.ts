@@ -20,7 +20,6 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @Input() value;
   @HostBinding('attr.tabindex') tabIndex = '-1';
-  @HostBinding('class.v-button') btnClass = true;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
