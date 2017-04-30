@@ -1,8 +1,20 @@
-//$ave-frame-normal: (
-//  padding: (
-//    base: 0,
-//    control:
-//  ),
-//  margin: (),
-//  border: ()
-//);
+$ave-frame-normal: (
+  container: (
+    padding: 0.5em 1em 0.5em 1em,
+    margin: 0
+  ),
+  control: (
+    padding: 0.25em 0.5em 0.25em 0.5em,
+    margin: 0
+  ),
+  link: (
+    padding: 0.25em 0.5em 0.25em 0.5em,
+    margin: 0
+  )
+);
+
+@function ave-frame($base-frame, $type: control) {
+  @return (
+    map_get($base-frame, $type)
+  );
+}
