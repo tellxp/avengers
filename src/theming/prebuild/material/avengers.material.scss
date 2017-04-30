@@ -1,20 +1,21 @@
 @import "../../core/core";
 @import "../../core/theming";
+@import "typography";
 
 
 // Define a theme.
 
 // Colors
-$primary: ave-palette($ave-indigo);
-$accent:  ave-palette($ave-red, A200, A100, A400);
+$primary-color: ave-palette($ave-indigo);
+$accent-color:  ave-palette($ave-red, A200, A100, A400);
 
 // Typography.
-$typography: ave-typography();
+$primary-font: ave-typography($ave-typography-normal);
 
 // Frame.
-$size: ave-frame();
+$primary-size: ave-frame();
 
-$theme: ave-light-theme($primary, $accent);
+$theme: ave-light-theme($primary-color, $accent-color);
 
 // Include all theme styles for the components.
 @include avengers-theme($theme);

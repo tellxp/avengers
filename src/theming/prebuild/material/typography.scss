@@ -1,6 +1,30 @@
 $ave-typography-normal: (
-  base-font: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-  control-font: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-  link-font: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif
+  font-family: (
+    base: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
+    control: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
+    link: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif
+  ),
+  font-size: (
+    base: 1.15em,
+    control: 1em,
+    link: 1em
+  )
 );
 
+@function ave-typography($typography) {
+  @return (
+    font-family: map_get($typography, font-family),
+    font-size: map_get($typography, font-size)
+  );
+}
+
+@function ave-font-family($font-family, $type) {
+  @return (
+    map_get($font-family, $type)
+  );
+}
+.v-test {
+  $typo: ave-typography($ave-typography-normal);
+  $font-family: map_get($typo, font-family);
+  font-family: ave-font-family($font-family, control);
+}
