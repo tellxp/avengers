@@ -1,4 +1,22 @@
-@import "base";
-@import "../../components/button/button";
+@import "../../core/core";
+@import "../../core/theming";
+@import "typography";
+@import "sizing";
 
 
+// Define a theme.
+
+// Colors
+$primary-color: ave-palette($ave-blue);
+$accent-color:  ave-palette($ave-red, A200, A100, A400);
+
+// Typography.
+$typography: ave-typography($ave-typography-normal);
+
+// Frame.
+$sizing: ave-sizing($ave-sizing-normal);
+
+$theme: ave-light-theme($primary-color, $accent-color, $typography, $sizing);
+
+// Include all theme styles for the components.
+@include avengers-theme($theme);

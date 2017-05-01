@@ -4,21 +4,41 @@
 // Applies typography style to ave-button
 @mixin ave-button-typography($theme) {
   // Typography.
-  font-size: $ave-body-font-size-base;
-  font-family: $ave-font-family;
-  font-weight: 500;
+  $type: 'control';
+  $typography: map_get($theme, 'typography');
+
+  $font-family: map_get($typography, 'font-family');
+  $font-size: map_get($typography, 'font-size');
+  $font-weight: map_get($typography, 'font-weight');
+  $text-underline: map_get($typography, 'text-underline');
+
+  font-family: map_get($font-family, $type);
+  font-size: map_get($font-size, $type);
+  font-weight: map_get($font-weight, $type);
+  text-underline: map_get($text-underline, $type);
 }
 
 @mixin ave-button-sizing($theme) {
   // Sizing.
-  margin: $ave-button-margin;
-  min-width: $ave-button-min-width;
-  line-height: $ave-button-line-height;
-  padding: $ave-button-padding;
-  border-radius: $ave-button-border-radius;
+  $type: 'control';
+  $sizing: map_get($theme, 'sizing');
+
+  $margin: map_get($sizing, 'margin');
+  $min-width: map_get($sizing, 'min-width');
+  $padding: map_get($sizing, 'padding');
+  $border-radius: map_get($sizing, 'border-radius');
+
+  margin: map_get($margin, $type);
+  min-width: map_get($min-width, $type);
+  padding: map_get($padding, $type);
+  border-radius: map_get($border-radius, $type);
 }
+
 // Applies a focus style to an md-button element for each of the supported palettes.
 @mixin ave-button-focus-color($theme) {
+
+  // TODO rewrite color
+
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
@@ -44,6 +64,8 @@
 }
 
 @mixin ave-button-ripple-color($theme, $hue, $opacity: 0.2) {
+
+  // TODO rewrite color
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);

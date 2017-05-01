@@ -1,0 +1,32 @@
+$ave-sizing-normal: (
+  margin: (
+    base: 0,
+    container: 0,
+    control: 0,
+    link: 0
+  ),
+  min-width: (
+    base: 0,
+    container: 0,
+    control: 1em,
+    link: 1em
+  ),
+  padding: (
+    base: 0,
+    container: 0,
+    control: 0.25em 0.5em 0.25em 0.5em,
+    link: 0.25em 0.5em 0.25em 0.5em
+  ),
+  border-radius: (
+    base: 0,
+    container: 0,
+    control: 2px,
+    link: 2px
+  )
+);
+
+@function ave-sizing($base-sizing, $type: control) {
+  @return (
+    map_get($base-sizing, $type)
+  );
+}

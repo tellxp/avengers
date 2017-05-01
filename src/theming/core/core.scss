@@ -33,7 +33,7 @@
   @return $result;
 }
 // Creates a container object for a light theme to be given to individual component theme mixins.
-@function ave-light-theme($primary, $accent, $typography, $frame, $warn: ave-palette($ave-red)) {
+@function ave-light-theme($primary, $accent, $typography, $sizing, $warn: ave-palette($ave-red)) {
   @return (
     primary: $primary,
     accent: $accent,
@@ -42,7 +42,7 @@
     foreground: $ave-light-theme-foreground,
     background: $ave-light-theme-background,
     typography: $typography,
-    frame: $frame
+    sizing: $sizing
   );
 }
 
