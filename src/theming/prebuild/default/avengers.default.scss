@@ -11,10 +11,10 @@ $primary-color: ave-palette($ave-blue);
 $accent-color:  ave-palette($ave-red, A200, A100, A400);
 
 // Typography.
-$typography: ave-typography($ave-typography-normal);
+$typography: $ave-typography-normal;
 
 // Frame.
-$sizing: ave-sizing($ave-sizing-normal);
+$sizing: $ave-sizing-normal;
 
 $theme: ave-light-theme($primary-color, $accent-color, $typography, $sizing);
 

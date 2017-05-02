@@ -90,7 +90,7 @@
   $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
-  &.v-primary {
+  .v-button {
     #{$property}: ave-color($primary, $color);
   }
   &.v-accent {
@@ -115,6 +115,12 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
+  .v-button {
+    @include ave-button-typography($theme);
+    @include ave-button-sizing($theme);
+    @include ave-button-theme-color($theme, 'color');
+    @include ave-button-theme-color($theme, 'background-color');
+  }
   .v-default-button, .v-icon-button, .v-raised-button, .v-fab, .v-mini-fab {
     // Apply color to focus overlay.
     // The focus overlay will be visible when any button type is focused or when

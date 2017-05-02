@@ -21,11 +21,6 @@ $ave-typography-normal: (
   )
 );
 
-@function ave-typography($base-typography, $type: base) {
-  @return (
-    map_get($base-typography, $type)
-  );
-}
 
 .v-test {
 
