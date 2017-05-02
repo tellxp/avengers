@@ -2,7 +2,7 @@
 @import "../../core/theming";
 @import "typography";
 @import "sizing";
-
+@import "palette";
 
 // Define a theme.
 
@@ -11,7 +11,7 @@ $primary-color: ave-palette($ave-light-blue);
 $accent-color:  ave-palette($ave-red, A200, A100, A400);
 
 // Typography.
-$typography: $ave-typography-normal;
+$typography: $ave-typography-default;
 
 // Frame.
 $sizing: $ave-sizing-normal;

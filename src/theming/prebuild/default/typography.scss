@@ -1,9 +1,10 @@
-$ave-typography-normal: (
+$font-family-default: "Microsoft YaHei", Roboto, "Helvetica Neue", sans-serif;
+$ave-typography-default: (
   font-family: (
-    base: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-    container: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-    control: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-    link: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif
+    base: $font-family-default,
+    container: $font-family-default,
+    control: $font-family-default,
+    link: $font-family-default
   ),
   font-size: (
     base: 1.15em,
@@ -25,7 +26,7 @@ $ave-typography-normal: (
   )
 );
 
-
 .v-test {
-
+  $font: map_get($ave-typography-default,'font-family');
+  font-family: map_get($font, 'base');
 }

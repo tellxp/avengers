@@ -2,7 +2,7 @@ $ave-sizing-normal: (
   margin: (
     base: 0,
     container: 0,
-    control: 0,
+    control: 0.3em 0 0.3em 0,
     link: 0
   ),
   min-width: (
@@ -14,20 +14,20 @@ $ave-sizing-normal: (
   padding: (
     base: 0,
     container: 0,
-    control: 0.25em 0.5em 0.25em 0.5em,
+    control: 0.5em 1em 0.5em 1em,
     link: 0.25em 0.5em 0.25em 0.5em
   ),
   border: (
     base: none,
     container: none,
-    control: 1px solid #0d47a1,
+    control: none,
     link: none
   ),
   border-radius: (
     base: 0,
     container: 0,
-    control: 2px,
-    link: 2px
+    control: 1px,
+    link: 0
   )
 );
 

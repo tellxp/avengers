@@ -1,5 +1,6 @@
 @import "../../utils/utils";
 @import "../../core/control";
+@import "../../core/core";
 
 // Flat and raised button standards
 $ave-button-padding: 0 16px !default;
@@ -29,6 +30,5 @@ $ave-button-border-radius: 2px !default;
   // Make anchors render like buttons.
   white-space: nowrap;
   text-decoration: none;
-
-
 }
+

@@ -42,11 +42,34 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
+  $background: map-get($theme, 'background');
 
   $type: 'control';
-  color: ave-color($background, 'raised-button');
-
+  background-color: map-get($background, 'background');
+  &.v-button-default {
+    background-color: ave-color($primary, 0);
+    &:hover {
+      background-color: ave-color($primary, 0.5);
+    }
+  }
+  &.v-button-primary {
+    background-color: ave-color($primary, 1);
+  }
+  &.v-button-success {
+    background-color: ave-color($primary, 1);
+  }
+  &.v-button-info {
+    background-color: ave-color($primary, 1);
+  }
+  &.v-button-warning {
+    background-color: ave-color($primary, 1);
+  }
+  &.v-button-danger {
+    background-color: ave-color($primary, 1);
+  }
+  &.v-button-link {
+    background-color: ave-color($primary, 1);
+  }
 }
 
 @mixin ave-button-fore-color($theme) {
@@ -149,54 +172,12 @@
     @include ave-button-back-color($theme);
     @include ave-button-fore-color($theme);
   }
+  .v-button:hover {
+    background-color: map_get($background, 'hovered-button');
+  }
   .v-button:focus {
-    background-color: map_get($background, 'selected-button');
-  }
-  .v-default-button, .v-icon-button, .v-raised-button, .v-fab, .v-mini-fab {
-    // Apply color to focus overlay.
-    // The focus overlay will be visible when any button type is focused or when
-    // flat buttons or icon buttons are hovered.
-    @include ave-button-focus-color($theme);
-  }
-
-  .v-default-button, .v-icon-button {
-    background: transparent;
-
-    @include ave-button-theme-color($theme, 'color');
-  }
-
-  .v-raised-button, .v-fab, .v-mini-fab {
-    // Default properties when not using any [color] value.
-    color: ave-color($foreground, text);
-    background-color: ave-color($background, raised-button);
-
-    @include ave-button-theme-color($theme, 'color', default-contrast);
-    @include ave-button-theme-color($theme, 'background-color');
-
-    // Add ripple effect with contrast color to buttons that don't have a focus overlay.
-    @include ave-button-ripple-color($theme, default-contrast);
-  }
-
-  // Add ripple effect with default color to flat buttons, which also have a focus overlay.
-  .v-default-button {
-    @include ave-button-ripple-color($theme, default, 0.1);
-  }
-
-  // Add ripple effect with default color to the icon button. Ripple color needs to be stronger
-  // since the icon button doesn't have a focus overlay.
-  .v-icon-button {
-    @include ave-button-ripple-color($theme, default);
-  }
-
-  // TODO(devversion): The color class accent should be just set from TS code. No need for this.
-  .v-fab, .v-mini-fab {
-    background-color: ave-color($accent);
-    color: ave-color($accent, default-contrast);
-
-    // Button fab elements are using the accent palette by default. The color classes won't
-    // be set on the element. To have a proper ripple color for those, we set the ripple color.
-    .v-ripple-element {
-      background-color: ave-color($accent, default-contrast, 0.2);
-    }
+    padding: 6px 14px 6px 14px;
+    border: 2px solid black;
+    background-color: map_get($background, 'focused-button');
   }
 }

@@ -649,7 +649,7 @@ $ave-blue-grey: (
 $ave-light-theme-background: (
   status-bar: map_get($ave-grey, 300),
   app-bar:    map_get($ave-grey, 100),
-  background: map_get($ave-grey, 50),
+  background: map_get($ave-grey, 500),
   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
   card:       white,
   dialog:     white,
