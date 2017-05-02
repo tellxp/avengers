@@ -10,12 +10,12 @@
   $font-family: map_get($typography, 'font-family');
   $font-size: map_get($typography, 'font-size');
   $font-weight: map_get($typography, 'font-weight');
-  $text-underline: map_get($typography, 'text-underline');
+  $text-decoration: map_get($typography, 'text-decoration');
 
   font-family: map_get($font-family, $type);
   font-size: map_get($font-size, $type);
   font-weight: map_get($font-weight, $type);
-  text-underline: map_get($text-underline, $type);
+  text-decoration: map_get($text-decoration, $type);
 }
 
 @mixin ave-button-sizing($theme) {
@@ -26,18 +26,46 @@
   $margin: map_get($sizing, 'margin');
   $min-width: map_get($sizing, 'min-width');
   $padding: map_get($sizing, 'padding');
+  $border: map_get($sizing, 'border');
   $border-radius: map_get($sizing, 'border-radius');
 
   margin: map_get($margin, $type);
   min-width: map_get($min-width, $type);
   padding: map_get($padding, $type);
+  border: map_get($border, $type);
   border-radius: map_get($border-radius, $type);
+
+}
+
+@mixin ave-button-back-color($theme) {
+  //Color
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+
+  $type: 'control';
+  color: ave-color($background, 'raised-button');
+
+}
+
+@mixin ave-button-fore-color($theme) {
+  //Color
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  $foreground: map-get($theme, foreground);
+
+  $type: 'control';
+  color: ave-color($foreground, 'text');
 }
 
 // Applies a focus style to an md-button element for each of the supported palettes.
 @mixin ave-button-focus-color($theme) {
 
   // TODO rewrite color
+
 
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -118,8 +146,11 @@
   .v-button {
     @include ave-button-typography($theme);
     @include ave-button-sizing($theme);
-    @include ave-button-theme-color($theme, 'color');
-    @include ave-button-theme-color($theme, 'background-color');
+    @include ave-button-back-color($theme);
+    @include ave-button-fore-color($theme);
+  }
+  .v-button:focus {
+    background-color: map_get($background, 'selected-button');
   }
   .v-default-button, .v-icon-button, .v-raised-button, .v-fab, .v-mini-fab {
     // Apply color to focus overlay.

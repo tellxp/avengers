@@ -1,33 +1,27 @@
 $ave-typography-normal: (
-  base: (
-    font-family: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-    font-size: 1.15em,
-    text-underline: none
+  font-family: (
+    base: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
+    control: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
+    link: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif
   ),
-  control: (
-    font-family: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-    font-size: 1em,
-    text-underline: none
+  font-size: (
+    base: 1.15em,
+    control: 1em,
+    link: 1em
   ),
-  link: (
-    font-family: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
-    font-size: 1em,
-    text-underline: none
+  font-weight:(
+    base: 400,
+    control: 500,
+    link: 600
+  ),
+  text-underline: (
+    base: none,
+    control: none,
+    link: none
   )
 );
 
-@function ave-typography($base-typography, $type: base) {
-  @return (
-    map_get($base-typography, $type)
-  );
-}
-
 
 .v-test {
-  $type: 'control';
 
-  $typo: ave-typography($ave-typography-normal, $type);
-
-  font-family: map_get($typo, 'font-family');
-  text-underline: map_get($typo, 'text-underline');
 }

@@ -1,21 +1,25 @@
 $ave-typography-normal: (
   font-family: (
     base: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
+    container: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
     control: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif,
     link: #{'\"'}#{Microsoft YaHei}#{'\"'}#{','} Roboto#{','} #{'\"'}#{Helvetica Neue}#{'\"'}#{','} sans-serif
   ),
   font-size: (
     base: 1.15em,
+    container: 1em,
     control: 1em,
     link: 1em
   ),
   font-weight:(
     base: 400,
+    container: 400,
     control: 500,
     link: 600
   ),
-  text-underline: (
+  text-decoration: (
     base: none,
+    container: none,
     control: none,
     link: none
   )
