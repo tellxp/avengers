@@ -3,23 +3,21 @@
 @import "typography";
 @import "sizing";
 @import "palette";
+@import "brush";
 
 // Define a theme.
 
 // Color
 $theme-color: (
-  default: ave-palette($ave-grey),
-  primary: ave-palette($ave-blue),
-  secondary: ave-palette($ave-light-blue),
-  success: ave-palette($ave-green),
-  info: ave-palette($ave-cyan),
-  warning: ave-palette($ave-deep-orange),
-  danger: ave-palette($ave-red),
-  link: ave-palette($ave-grey)
+  default: ave-brush($ave-indigo),
+  primary: ave-brush($ave-blue),
+  secondary: ave-brush($ave-light-blue),
+  success: ave-brush($ave-green),
+  info: ave-brush($ave-cyan),
+  warning: ave-brush($ave-deep-orange),
+  danger: ave-brush($ave-red),
+  link: ave-brush($ave-grey)
 );
-
-$primary-color: ave-palette($ave-light-blue);
-$danger-color:  ave-palette($ave-red, A200, A100, A400);
 
 // Typography.
 $typography: $ave-typography-default;
@@ -27,7 +25,7 @@ $typography: $ave-typography-default;
 // Frame.
 $sizing: $ave-sizing-normal;
 
-$theme: ave-light-theme($primary-color, $typography, $sizing);
+$theme: ave-theme($theme-color, $typography, $sizing);
 
 // Include all theme styles for the components.
-@include avengers-theme($theme);
+@include avengers-theme-loader($theme);

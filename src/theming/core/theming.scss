@@ -1,5 +1,5 @@
 @import "../components/button/button-theme";
 
-@mixin avengers-theme($theme) {
+@mixin avengers-theme-loader($theme) {
   @include ave-button-theme($theme);
 }

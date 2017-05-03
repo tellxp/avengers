@@ -3,11 +3,9 @@
 $ave-body-font-size-base: 1em;
 $ave-font-family: "Microsoft YaHei", Roboto, 'Helvetica Neue', sans-serif !default;
 
-
 // Color
 $base-color: #ffffff;
 $component-back-color: transparentize($base-color, 1);
-
 
 $bar-background-color: (
   default: #0078d7,
@@ -21,7 +19,6 @@ $bar-item-hover-color: #ffffff;
 
 $bar-item-active-background-color: #ffffff;
 $bar-item-active-color: #000000;
-
 
 $panel-background-color: #ffffff;
 $panel-color: #000000;

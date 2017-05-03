@@ -4,7 +4,16 @@ $black-12-opacity: rgba(black, 0.12);
 $white-12-opacity: rgba(white, 0.12);
 $black-6-opacity: rgba(black, 0.06);
 $white-6-opacity: rgba(white, 0.06);
-
+$component-state: (
+  default,
+  primary,
+  secondary,
+  success,
+  info,
+  warning,
+  danger,
+  link
+);
 // Background palette for light themes.
 $ave-light-theme-background: (
   status-bar: #e0e0e0,
@@ -110,7 +119,7 @@ $ave-dark-theme-foreground: (
 
 }
 // Creates a container object for a light theme to be given to individual component theme mixins.
-@function ave-light-theme($theme-color, $theme-typography, $theme-sizing) {
+@function ave-theme($theme-color, $theme-typography, $theme-sizing) {
   @return (
     color: $theme-color,
     typography: $theme-typography,
