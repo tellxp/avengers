@@ -111,13 +111,7 @@ $ave-dark-theme-foreground: (
   @return $result;
 }
 
-@function ave-typography($base-typography, $thinner, $thicker) {
 
-}
-
-@function ave-sizing($base-sizing, $tighter, $looser) {
-
-}
 // Creates a container object for a light theme to be given to individual component theme mixins.
 @function ave-theme($theme-color, $theme-typography, $theme-sizing) {
   @return (

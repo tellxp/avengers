@@ -1,35 +1,28 @@
-$font-family-default: "Microsoft YaHei UI", Roboto, "Helvetica Neue", sans-serif;
-$ave-typography-default: (
-  font-family: (
-    base: $font-family-default,
-    container: $font-family-default,
-    control: $font-family-default,
-    link: $font-family-default
-  ),
-  font-size: (
-    base: 1.15em,
-    container: 1em,
-    control: 1em,
-    link: 1em
-  ),
-  font-weight:(
-    base: 400,
-    container: 400,
-    control: 500,
-    link: 600
-  ),
-  text-decoration: (
-    base: none,
-    container: none,
-    control: none,
-    link: none
-  )
+$font-family-yahei: "Microsoft YaHei UI", "Helvetica Neue", sans-serif;
+$font-family-yahei-thin: "Microsoft YaHei Light", "Helvetica Neue", sans-serif;
+$font-family-google: DroidSans, "Helvetica Neue", sans-serif;
+$font-family-apple: STHeiti, "Helvetica Neue", sans-serif;
+
+$ave-typography-yahei: (
+  50: normal 100 1em/1em $font-family-yahei-thin,
+  100: normal 100 1em/1em $font-family-yahei,
+  200: normal 200 1em/1em $font-family-yahei,
+  300: normal 300 1em/1em $font-family-yahei,
+  400: normal 400 1em/1em $font-family-yahei,
+  500: normal 500 1em/1em $font-family-yahei,
+  600: normal 600 1em/1em $font-family-yahei,
+  700: normal 700 1em/1em $font-family-yahei,
+  800: normal 800 1em/1em $font-family-yahei,
+  900: normal 900 1em/1em $font-family-yahei
 );
 
-@function ave-typography($base-typography, $thinner, $thicker) {
+@function ave-typography($base-typography, $default: 400, $thinner: 200, $thicker: 700) {
   $result: (
-    font-family: $font-family-default,
-    font-size: 1.15em,
-    font-weight: 500
+    font: map-get($base-typography, $default),
+    font-active: map-get($base-typography, $default),
+    font-hover: map-get($base-typography, $default),
+    font-focus: map-get($base-typography, $default),
+    font-visited: map-get($base-typography, $default),
   );
+  @return $result;
 }

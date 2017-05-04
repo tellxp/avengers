@@ -1,41 +1,61 @@
 @import "../../core/core";
 @import "button";
+@import "../../prebuild/default/typography";
 
+@function ave-button-scene-typography($theme, $scene, $property) {
+  $typography: map_get($theme, typography);
+  $typography-scene: map_get($typography, $scene);
+  @return map_get($typography-scene, $property);
+}
 
+@function ave-button-scene-sizing($theme, $scene, $property) {
+  $sizing: map_get($theme, sizing);
+  $sizing-scene: map_get($sizing, $scene);
+  @return map_get($sizing-scene, $property);
+}
 // Applies typography style to ave-button
 @mixin ave-button-typography($theme) {
   // Typography.
-  $type: 'control';
-  $typography: map_get($theme, 'typography');
-
-  $font-family: map_get($typography, 'font-family');
-  $font-size: map_get($typography, 'font-size');
-  $font-weight: map_get($typography, 'font-weight');
-  $text-decoration: map_get($typography, 'text-decoration');
-
-  font-family: map_get($font-family, $type);
-  font-size: map_get($font-size, $type);
-  font-weight: map_get($font-weight, $type);
-  text-decoration: map_get($text-decoration, $type);
+  $typography: map_get($theme, typography);
+  @each $scene in $component-scene {
+    &.v-button-#{$scene} {
+      font: ave-button-scene-typography($theme, $scene, font);
+      &:active {
+        font: ave-button-scene-typography($theme, $scene, font-active);
+      }
+      &:hover {
+        font: ave-button-scene-typography($theme, $scene, font-hover);
+      }
+      &:focus {
+        font: ave-button-scene-typography($theme, $scene, font-focus);
+      }
+      &:visited {
+        font: ave-button-scene-typography($theme, $scene, font-visited);
+      }
+    }
+  }
 }
 
 @mixin ave-button-sizing($theme) {
   // Sizing.
-  $type: 'control';
-  $sizing: map_get($theme, 'sizing');
-
-  $margin: map_get($sizing, 'margin');
-  $min-width: map_get($sizing, 'min-width');
-  $padding: map_get($sizing, 'padding');
-  $border: map_get($sizing, 'border');
-  $border-radius: map_get($sizing, 'border-radius');
-
-  margin: map_get($margin, $type);
-  min-width: map_get($min-width, $type);
-  padding: map_get($padding, $type);
-  border: map_get($border, $type);
-  border-radius: map_get($border-radius, $type);
-
+  $sizing: map_get($theme, sizing);
+  @each $scene in $component-scene {
+    &.v-button-#{$scene} {
+      padding: ave-button-scene-sizing($theme, $scene, padding);
+      &:active {
+        padding: ave-button-scene-sizing($theme, $scene, padding);
+      }
+      &:hover {
+        padding: ave-button-scene-sizing($theme, $scene, padding);
+      }
+      &:focus {
+        padding: ave-button-scene-sizing($theme, $scene, padding);
+      }
+      &:visited {
+        padding: ave-button-scene-sizing($theme, $scene, padding);
+      }
+    }
+  }
 }
 
 

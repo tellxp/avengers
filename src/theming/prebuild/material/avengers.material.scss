@@ -7,8 +7,8 @@
 // Define a theme.
 
 // Colors
-$primary-color: ave-palette($ave-indigo);
-$accent-color:  ave-palette($ave-red, A200, A100, A400);
+$primary-color: ave-palette($ave-palette-indigo);
+$accent-color:  ave-palette($ave-palette-red, A200, A100, A400);
 
 // Typography.
 $typography: ave-typography($ave-typography-normal);

@@ -8,21 +8,39 @@
 
 // Color
 $theme-color: (
-  default: ave-palette($ave-indigo),
-  primary: ave-palette($ave-blue),
-  secondary: ave-palette($ave-light-blue),
-  success: ave-palette($ave-green),
-  info: ave-palette($ave-cyan),
-  warning: ave-palette($ave-deep-orange),
-  danger: ave-palette($ave-red),
-  link: ave-palette($ave-grey)
+  default: ave-palette($ave-palette-indigo),
+  primary: ave-palette($ave-palette-blue),
+  secondary: ave-palette($ave-palette-light-blue),
+  success: ave-palette($ave-palette-green),
+  info: ave-palette($ave-palette-cyan),
+  warning: ave-palette($ave-palette-deep-orange),
+  danger: ave-palette($ave-palette-red),
+  link: ave-palette($ave-palette-grey)
 );
 
 // Typography.
-$typography: $ave-typography-default;
+$typography: (
+  default: ave-typography($ave-typography-yahei),
+  primary: ave-typography($ave-typography-yahei),
+  secondary: ave-typography($ave-typography-yahei),
+  success: ave-typography($ave-typography-yahei),
+  info: ave-typography($ave-typography-yahei),
+  warning: ave-typography($ave-typography-yahei),
+  danger: ave-typography($ave-typography-yahei),
+  link: ave-typography($ave-typography-yahei)
+);
 
 // Frame.
-$sizing: $ave-sizing-normal;
+$sizing: (
+  default: ave-sizing($ave-sizing-horizontal),
+  primary: ave-sizing($ave-sizing-stretch),
+  secondary: ave-sizing($ave-sizing-stretch),
+  success: ave-sizing($ave-sizing-stretch),
+  info: ave-sizing($ave-sizing-stretch),
+  warning: ave-sizing($ave-sizing-stretch),
+  danger: ave-sizing($ave-sizing-stretch),
+  link: ave-sizing($ave-sizing-stretch)
+);
 
 $theme: ave-theme($theme-color, $typography, $sizing);
 

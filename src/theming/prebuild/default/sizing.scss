@@ -1,38 +1,45 @@
-$ave-sizing-normal: (
-  margin: (
-    base: 0,
-    container: 0,
-    control: 0.3em 0 0.3em 0,
-    link: 0
-  ),
-  min-width: (
-    base: 0,
-    container: 0,
-    control: 1em,
-    link: 1em
-  ),
-  padding: (
-    base: 0,
-    container: 0,
-    control: 0.5em 1em 0.5em 1em,
-    link: 0.25em 0.5em 0.25em 0.5em
-  ),
-  border: (
-    base: none,
-    container: none,
-    control: none,
-    link: none
-  ),
-  border-radius: (
-    base: 0,
-    container: 0,
-    control: 1px,
-    link: 0
-  )
+$ave-sizing-vertical: (
+  50: 0,
+  100: 0.25em 0.125em,
+  200: 0.5em 0.25em,
+  300: 0.75em 0.375em,
+  400: 1em 0.5em,
+  500: 1.25em 0.625em,
+  600: 1.5em 0.75em,
+  700: 1.75em  0.875em,
+  800: 2em 1em,
+  900: 2.25em 1.125em
 );
 
-@function ave-sizing($base-sizing, $type: control) {
-  @return (
-    map_get($base-sizing, $type)
+$ave-sizing-horizontal: (
+  50: 0,
+  100: 0.125em 0.25em,
+  200: 0.25em 0.5em,
+  300: 0.375em 0.75em,
+  400: 0.5em 1em,
+  500: 0.625em 1.25em,
+  600: 0.75em 1.5em,
+  700: 0.875em 1.75em,
+  800: 1em 2em,
+  900: 1.125em 2.25em
+);
+
+$ave-sizing-stretch: (
+  50: 0,
+  100: 0.25em,
+  200: 0.5em,
+  300: 0.75em,
+  400: 1em,
+  500: 1.25em,
+  600: 1.5em,
+  700: 1.75em,
+  800: 2em,
+  900: 2.25em
+);
+
+@function ave-sizing($base-sizing, $default: 400, $tighter: 200, $looser: 700) {
+  $result: (
+    padding: map_get($base-sizing, $default)
   );
+  @return $result;
 }
