@@ -640,3 +640,20 @@ $ave-blue-grey: (
 );
 
 
+
+@function ave-palette($base-palette, $default: 600, $lighter: 50, $darker: 900) {
+  $result: (
+    backcolor: map-get($base-palette, $default),
+    backcolor-active: map-get($base-palette, $darker),
+    backcolor-hover: map-get($base-palette, $darker),
+    backcolor-focus: map-get($base-palette, $darker),
+    backcolor-visited: map-get($base-palette, $darker),
+
+    forecolor: map-get($base-palette, $lighter),
+    forecolor-active: map-get($base-palette, $lighter),
+    forecolor-hover: map-get($base-palette, $lighter),
+    forecolor-focus: map-get($base-palette, $lighter),
+    forecolor-visited: map-get($base-palette, $lighter)
+  );
+  @return $result;
+}

@@ -31,7 +31,7 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
 
   private parentBar: TabstripBarComponent;
 
-  private attachedPanel: TabstripPanelComponent;
+  public attachedPanel: TabstripPanelComponent;
 
   ngOnChanges() {
     super.ngOnChanges();

@@ -24,7 +24,7 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
 
   private parentPanel: TabstripPanelComponent;
 
-  private active: boolean;
+  public active: boolean;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

@@ -4,7 +4,7 @@ import {AppDemoComponent} from './app-demo.component';
 import {HomeDemoComponent} from './home/home-demo.component';
 import {TabstripDemo} from './tabstrip/tabstrip-demo.component';
 import {ButtonDemo} from './button/button-demo.component';
-import {PopupDemo} from './popup/popup-demo.component';
+import {PopupDemoComponent} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
@@ -64,7 +64,7 @@ import {NavbarDemoComponent} from './navbar/navbar-demo.component';
       HomeDemoComponent,
       TabstripDemo,
       ButtonDemo,
-      PopupDemo,
+      PopupDemoComponent,
       DropdownDemo,
       MenuDemo,
       MegamenuDemo,

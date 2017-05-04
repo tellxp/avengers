@@ -5,11 +5,11 @@ import {PopupComponent, PopupOrientation} from "../../../components/popup/popup.
   templateUrl: './popup-demo.component.html',
   styleUrls: ['./popup-demo.component.scss']
 })
-export class PopupDemo implements OnInit {
+export class PopupDemoComponent implements OnInit {
   orientation = PopupOrientation.Bottom;
   constructor() {
   }
-  private showPopup: boolean;
+  public showPopup: boolean;
   @ContentChild(PopupComponent) popup: PopupComponent;
 
   ngOnInit() {

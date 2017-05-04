@@ -26,7 +26,10 @@ $ave-typography-default: (
   )
 );
 
-.v-test {
-  $font: map_get($ave-typography-default,'font-family');
-  font-family: map_get($font, 'base');
+@function ave-typography($base-typography, $thinner, $thicker) {
+  $result: (
+    font-family: $font-family-default,
+    font-size: 1.15em,
+    font-weight: 500
+  );
 }

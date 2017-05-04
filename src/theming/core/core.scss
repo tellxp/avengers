@@ -4,7 +4,7 @@ $black-12-opacity: rgba(black, 0.12);
 $white-12-opacity: rgba(white, 0.12);
 $black-6-opacity: rgba(black, 0.06);
 $white-6-opacity: rgba(white, 0.06);
-$component-state: (
+$component-scene: (
   default,
   primary,
   secondary,
@@ -146,4 +146,9 @@ $ave-dark-theme-foreground: (
   $opacity: if($opacity == null, opacity($color), $opacity);
 
   @return rgba($color, $opacity);
+}
+@function ave-scene-property-color($theme, $scene, $property) {
+  $color: map_get($theme, color);
+  $color-scene: map_get($color, $scene);
+  @return map_get($color-scene, $property);
 }

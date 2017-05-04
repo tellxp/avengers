@@ -3,20 +3,19 @@
 @import "typography";
 @import "sizing";
 @import "palette";
-@import "brush";
 
 // Define a theme.
 
 // Color
 $theme-color: (
-  default: ave-brush($ave-indigo),
-  primary: ave-brush($ave-blue),
-  secondary: ave-brush($ave-light-blue),
-  success: ave-brush($ave-green),
-  info: ave-brush($ave-cyan),
-  warning: ave-brush($ave-deep-orange),
-  danger: ave-brush($ave-red),
-  link: ave-brush($ave-grey)
+  default: ave-palette($ave-indigo),
+  primary: ave-palette($ave-blue),
+  secondary: ave-palette($ave-light-blue),
+  success: ave-palette($ave-green),
+  info: ave-palette($ave-cyan),
+  warning: ave-palette($ave-deep-orange),
+  danger: ave-palette($ave-red),
+  link: ave-palette($ave-grey)
 );
 
 // Typography.

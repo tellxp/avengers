@@ -37,25 +37,48 @@
   border-radius: map_get($border-radius, $type);
 
 }
-@function ave-button-state-color($theme, $state: default) {
-  $color: map_get($theme, color);
-  @return map_get($color, $state);
-}
+
+
 @mixin ave-button-backcolor($theme) {
-  //State
-  $type: 'control';
-  @each $state in $component-state {
-    &.v-button-#{$state} {
-      $color: ave-button-state-color($theme, $state);
-      background-color: map_get($color, backcolor);
+  //Scene
+  @each $scene in $component-scene {
+    &.v-button-#{$scene} {
+      background-color: ave-scene-property-color($theme, $scene, backcolor);
+      &:active {
+        background-color: ave-scene-property-color($theme, $scene, backcolor-active);
+      }
+      &:hover {
+        background-color: ave-scene-property-color($theme, $scene, backcolor-hover);
+      }
+      &:focus {
+        background-color: ave-scene-property-color($theme, $scene, backcolor-focus);
+      }
+      &:visited {
+        background-color: ave-scene-property-color($theme, $scene, backcolor-visited);
+      }
     }
   }
 }
 
-@mixin ave-button-fore-color($theme) {
-  //Color
-
-
+@mixin ave-button-forecolor($theme) {
+  //Scene
+  @each $scene in $component-scene {
+    &.v-button-#{$scene} {
+      color: ave-scene-property-color($theme, $scene, forecolor);
+      &:active {
+        color: ave-scene-property-color($theme, $scene, forecolor-active);
+      }
+      &:hover {
+        color: ave-scene-property-color($theme, $scene, forecolor-hover);
+      }
+      &:focus {
+        color: ave-scene-property-color($theme, $scene, forecolor-focus);
+      }
+      &:visited {
+        color: ave-scene-property-color($theme, $scene, forecolor-visited);
+      }
+    }
+  }
 }
 
 @mixin ave-button-theme($theme) {
@@ -64,6 +87,6 @@
     @include ave-button-typography($theme);
     @include ave-button-sizing($theme);
     @include ave-button-backcolor($theme);
-    @include ave-button-fore-color($theme);
+    @include ave-button-forecolor($theme);
   }
 }
