@@ -1,112 +1,69 @@
 @import "../../core/core";
 @import "button";
-@import "../../prebuild/default/typography";
 
-@function ave-button-scene-typography($theme, $scene, $property) {
-  $typography: map_get($theme, typography);
-  $typography-scene: map_get($typography, $scene);
-  @return map_get($typography-scene, $property);
+// Ingredient dictionary
+$ave-button-ingredient: (
+  palette,
+  typography,
+  sizing
+);
+
+// Property dictionary
+$ave-button-palette-property: (
+  background-color,
+  color
+);
+$ave-button-typography-property: (
+  font
+);
+$ave-button-sizing-property: (
+  padding
+);
+
+// Palette
+@mixin ave-button-state-property($scene-state, $property) {
+  @each $property in $ave-button-palette-property {
+    #{$property}: ave-state-property($scene-state, $property);
+  }
+  @each $property in $ave-button-typography-property {
+    #{$property}: ave-state-property($scene-state, $property);
+  }
+  @each $property in $ave-button-sizing-property {
+    #{$property}: ave-state-property($scene-state, $property);
+  }
 }
 
-@function ave-button-scene-sizing($theme, $scene, $property) {
-  $sizing: map_get($theme, sizing);
-  $sizing-scene: map_get($sizing, $scene);
-  @return map_get($sizing-scene, $property);
-}
-// Applies typography style to ave-button
-@mixin ave-button-typography($theme) {
-  // Typography.
-  $typography: map_get($theme, typography);
-  @each $scene in $component-scene {
-    &.v-button-#{$scene} {
-      font: ave-button-scene-typography($theme, $scene, font);
-      &:active {
-        font: ave-button-scene-typography($theme, $scene, font-active);
+@mixin ave-button-scene-state($ingredient-scene) {
+  @each $state in $theme-component-state {
+    @if ($state == none) {
+      & {
+        $scene-state: ave-scene-state($ingredient-scene, $state);
+        @include ave-button-state-property($scene-state, $state);
       }
-      &:hover {
-        font: ave-button-scene-typography($theme, $scene, font-hover);
-      }
-      &:focus {
-        font: ave-button-scene-typography($theme, $scene, font-focus);
-      }
-      &:visited {
-        font: ave-button-scene-typography($theme, $scene, font-visited);
+    } @else {
+      &:#{$state} {
+        $scene-state: ave-scene-state($ingredient-scene, $state);
+        @include ave-button-state-property($scene-state, $state);
       }
     }
   }
 }
 
-@mixin ave-button-sizing($theme) {
-  // Sizing.
-  $sizing: map_get($theme, sizing);
-  @each $scene in $component-scene {
+@mixin ave-button-ingredient-scene($theme-ingredient) {
+  @each $scene in $theme-component-scene {
+    $ingredient-scene: ave-ingredient-scene($theme-ingredient, $scene);
     &.v-button-#{$scene} {
-      padding: ave-button-scene-sizing($theme, $scene, padding);
-      &:active {
-        padding: ave-button-scene-sizing($theme, $scene, padding);
-      }
-      &:hover {
-        padding: ave-button-scene-sizing($theme, $scene, padding);
-      }
-      &:focus {
-        padding: ave-button-scene-sizing($theme, $scene, padding);
-      }
-      &:visited {
-        padding: ave-button-scene-sizing($theme, $scene, padding);
-      }
-    }
-  }
-}
-
-
-@mixin ave-button-backcolor($theme) {
-  //Scene
-  @each $scene in $component-scene {
-    &.v-button-#{$scene} {
-      background-color: ave-scene-property-color($theme, $scene, backcolor);
-      &:active {
-        background-color: ave-scene-property-color($theme, $scene, backcolor-active);
-      }
-      &:hover {
-        background-color: ave-scene-property-color($theme, $scene, backcolor-hover);
-      }
-      &:focus {
-        background-color: ave-scene-property-color($theme, $scene, backcolor-focus);
-      }
-      &:visited {
-        background-color: ave-scene-property-color($theme, $scene, backcolor-visited);
-      }
-    }
-  }
-}
-
-@mixin ave-button-forecolor($theme) {
-  //Scene
-  @each $scene in $component-scene {
-    &.v-button-#{$scene} {
-      color: ave-scene-property-color($theme, $scene, forecolor);
-      &:active {
-        color: ave-scene-property-color($theme, $scene, forecolor-active);
-      }
-      &:hover {
-        color: ave-scene-property-color($theme, $scene, forecolor-hover);
-      }
-      &:focus {
-        color: ave-scene-property-color($theme, $scene, forecolor-focus);
-      }
-      &:visited {
-        color: ave-scene-property-color($theme, $scene, forecolor-visited);
-      }
+      @include ave-button-scene-state($ingredient-scene);
     }
   }
 }
 
 @mixin ave-button-theme($theme) {
-
-  .v-button {
-    @include ave-button-typography($theme);
-    @include ave-button-sizing($theme);
-    @include ave-button-backcolor($theme);
-    @include ave-button-forecolor($theme);
+  @each $ingredient in $ave-button-ingredient {
+    $theme-ingredient: ave-theme-ingredient($theme, $ingredient);
+    .v-button {
+      @include ave-button-ingredient-scene($theme-ingredient);
+    }
   }
 }
+

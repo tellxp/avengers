@@ -18,11 +18,21 @@ $ave-typography-yahei: (
 
 @function ave-typography($base-typography, $default: 400, $thinner: 200, $thicker: 700) {
   $result: (
-    font: map-get($base-typography, $default),
-    font-active: map-get($base-typography, $default),
-    font-hover: map-get($base-typography, $default),
-    font-focus: map-get($base-typography, $default),
-    font-visited: map-get($base-typography, $default),
+    none: (
+      font: map-get($base-typography, $default)
+    ),
+    active: (
+      font: map-get($base-typography, $default)
+    ),
+    hover: (
+      font: map-get($base-typography, $default)
+    ),
+    focus: (
+      font: map-get($base-typography, $default)
+    ),
+    visited: (
+      font: map-get($base-typography, $default)
+    )
   );
   @return $result;
 }

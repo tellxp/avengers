@@ -4,7 +4,8 @@ $black-12-opacity: rgba(black, 0.12);
 $white-12-opacity: rgba(white, 0.12);
 $black-6-opacity: rgba(black, 0.06);
 $white-6-opacity: rgba(white, 0.06);
-$component-scene: (
+
+$theme-component-scene: (
   default,
   primary,
   secondary,
@@ -14,69 +15,14 @@ $component-scene: (
   danger,
   link
 );
-// Background palette for light themes.
-$ave-light-theme-background: (
-  status-bar: #e0e0e0,
-  app-bar:    #ffffff,
-  background: #ffffff,
-  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
-  card:       white,
-  dialog:     white,
-  disabled-button: $black-12-opacity,
-  raised-button: white,
-  hovered-button: rgba(#bdbdbd, 0.6),
-  focused-button: rgba(#bdbdbd, 0.6),
-  selected-button: rgba(#bdbdbd, 0.6),
-  selected-disabled-button: #bdbdbd,
-  disabled-button-toggle: #eeeeee,
-);
 
-// Background palette for dark themes.
-$ave-dark-theme-background: (
-  status-bar: black,
-  app-bar:    #212121,
-  background: #303030,
-  hover:      rgba(white, 0.04), // TODO(kara): check style with Material Design UX
-  card:       #424242,
-  dialog:     #424242,
-  disabled-button: $white-12-opacity,
-  raised-button: #424242,
-  focused-button: $white-6-opacity,
-  selected-button: #212121,
-  selected-disabled-button: #424242,
-  disabled-button-toggle: #000000,
+$theme-component-state: (
+  none,
+  active,
+  hover,
+  focus,
+  visited
 );
-
-// Foreground palette for light themes.
-$ave-light-theme-foreground: (
-  base:            black,
-  divider:         $black-12-opacity,
-  dividers:        $black-12-opacity,
-  disabled:        rgba(black, 0.38),
-  disabled-button: rgba(black, 0.38),
-  disabled-text:   rgba(black, 0.38),
-  hint-text:       rgba(black, 0.38),
-  secondary-text:  rgba(black, 0.54),
-  icon:            rgba(black, 0.54),
-  icons:           rgba(black, 0.54),
-  text:            rgba(black, 0.87)
-);
-
-// Foreground palette for dark themes.
-$ave-dark-theme-foreground: (
-  base:            white,
-  divider:         $white-12-opacity,
-  dividers:        $white-12-opacity,
-  disabled:        rgba(white, 0.3),
-  disabled-button: rgba(white, 0.3),
-  disabled-text:   rgba(white, 0.3),
-  hint-text:       rgba(white, 0.3),
-  secondary-text:  rgba(white, 0.7),
-  icon:            white,
-  icons:           white,
-  text:            white
-);
-
 
 // For a given hue in a palette, return the contrast color from the map of contrast palettes.
 // @param $color-map
@@ -95,7 +41,6 @@ $ave-dark-theme-foreground: (
     default: map-get($base-palette, $default),
     lighter: map-get($base-palette, $lighter),
     darker: map-get($base-palette, $darker),
-
     default-contrast: ave-contrast($base-palette, $default),
     lighter-contrast: ave-contrast($base-palette, $lighter),
     darker-contrast: ave-contrast($base-palette, $darker)
@@ -111,11 +56,10 @@ $ave-dark-theme-foreground: (
   @return $result;
 }
 
-
 // Creates a container object for a light theme to be given to individual component theme mixins.
-@function ave-theme($theme-color, $theme-typography, $theme-sizing) {
+@function ave-theme($theme-palette, $theme-typography, $theme-sizing) {
   @return (
-    color: $theme-color,
+    palette: $theme-palette,
     typography: $theme-typography,
     sizing: $theme-sizing
   );
@@ -141,8 +85,41 @@ $ave-dark-theme-foreground: (
 
   @return rgba($color, $opacity);
 }
+
 @function ave-scene-property-color($theme, $scene, $property) {
   $color: map_get($theme, color);
   $color-scene: map_get($color, $scene);
   @return map_get($color-scene, $property);
+}
+
+@function ave-scene-state-sizing($theme, $scene, $property) {
+  $sizing: map_get($theme, sizing);
+  $sizing-scene: map_get($sizing, $scene);
+  @return map_get($sizing-scene, $property);
+}
+
+@function ave-theme-ingredient($theme, $ingredient) {
+  $result: map_get($theme, $ingredient);
+  @return $result;
+}
+
+@function ave-ingredient-scene($ingredient, $scene) {
+  $result: map_get($ingredient, $scene);
+  @return $result;
+}
+
+@function ave-scene-state($scene, $state) {
+  $result: map_get($scene, $state);
+  @return $result;
+}
+
+@function ave-state-property($state, $property) {
+  $result: map_get($state, $property);
+  @return $result;
+}
+
+@function ave-scene-property-typography($theme, $scene, $property) {
+  $typography: map_get($theme, typography);
+  $typography-scene: map_get($typography, $scene);
+  @return map_get($typography-scene, $property);
 }

@@ -2,13 +2,6 @@
 @import "../../core/control";
 @import "../../core/core";
 
-// Flat and raised button standards
-$ave-button-padding: 0 16px !default;
-$ave-button-min-width: 88px !default;
-$ave-button-margin: 0 !default;
-$ave-button-line-height: 36px !default;
-$ave-button-border-radius: 2px !default;
-
 // Mixin overriding default button styles like the gray background, the border, and the outline.
 @mixin ave-button-reset {
   @include user-select(none);
@@ -20,12 +13,14 @@ $ave-button-border-radius: 2px !default;
 %v-button-base {
   @extend %v-control;
 
+  // Reset browser <button> styles.
+  @include ave-button-reset();
+
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   position: relative;
-  // Reset browser <button> styles.
-  @include ave-button-reset();
+
 
   // Make anchors render like buttons.
   white-space: nowrap;

@@ -7,7 +7,7 @@
 // Define a theme.
 
 // Color
-$theme-color: (
+$theme-palette: (
   default: ave-palette($ave-palette-indigo),
   primary: ave-palette($ave-palette-blue),
   secondary: ave-palette($ave-palette-light-blue),
@@ -19,7 +19,7 @@ $theme-color: (
 );
 
 // Typography.
-$typography: (
+$theme-typography: (
   default: ave-typography($ave-typography-yahei),
   primary: ave-typography($ave-typography-yahei),
   secondary: ave-typography($ave-typography-yahei),
@@ -31,18 +31,20 @@ $typography: (
 );
 
 // Frame.
-$sizing: (
-  default: ave-sizing($ave-sizing-horizontal),
-  primary: ave-sizing($ave-sizing-stretch),
-  secondary: ave-sizing($ave-sizing-stretch),
-  success: ave-sizing($ave-sizing-stretch),
-  info: ave-sizing($ave-sizing-stretch),
-  warning: ave-sizing($ave-sizing-stretch),
-  danger: ave-sizing($ave-sizing-stretch),
-  link: ave-sizing($ave-sizing-stretch)
+$theme-sizing: (
+  default: ave-sizing($ave-sizing-ratio-1dot618),
+  primary: ave-sizing($ave-sizing-ratio-1dot618),
+  secondary: ave-sizing($ave-sizing-ratio-1dot618),
+  success: ave-sizing($ave-sizing-ratio-1dot618),
+  info: ave-sizing($ave-sizing-ratio-1dot618),
+  warning: ave-sizing($ave-sizing-ratio-1dot618),
+  danger: ave-sizing($ave-sizing-ratio-1dot618),
+  link: ave-sizing($ave-sizing-ratio-1dot618)
 );
 
-$theme: ave-theme($theme-color, $typography, $sizing);
+$theme: ave-theme($theme-palette, $theme-typography, $theme-sizing);
 
 // Include all theme styles for the components.
 @include avengers-theme-loader($theme);
+
+
