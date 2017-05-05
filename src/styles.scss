@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~normalize.css";
-@import "theming/prebuild/default/base";
+@import "styles/theme/default/base";
 @import "../lib/font-awesome-4.7.0/css/font-awesome.min.css";
-@import "theming/utils/utils";
-@import "theming/prebuild/default/avengers.default";
+@import "styles/utils/utils";
+@import "styles/theme/default/avengers.default";
 
 //body {
 //  font-size: $ave-body-font-size-base;
