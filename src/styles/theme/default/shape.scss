@@ -1,4 +1,4 @@
-$ave-sizing-ratio-dot5: (
+$ave-shape-ratio-dot5: (
   50: 0,
   100: 0.25em 0.25em*0.5,
   200: 0.5em 0.5em*0.5,
@@ -10,7 +10,7 @@ $ave-sizing-ratio-dot5: (
   800: 2em 2em*0.5,
   900: 2.25em 2.25em*0.5
 );
-$ave-sizing-ratio-dot618: (
+$ave-shape-ratio-dot618: (
   50: 0,
   100: 0.25em 0.25em*0.618,
   200: 0.5em 0.5em*0.618,
@@ -23,7 +23,7 @@ $ave-sizing-ratio-dot618: (
   900: 2.25em 2.25em*0.618
 );
 
-$ave-sizing-ratio-1: (
+$ave-shape-ratio-1: (
   50: 0,
   100: 0.25em,
   200: 0.5em,
@@ -36,7 +36,7 @@ $ave-sizing-ratio-1: (
   900: 2.25em
 );
 
-$ave-sizing-ratio-1dot618: (
+$ave-shape-ratio-1dot618: (
   50: 0,
   100: 0.125em 0.125em*1.618,
   200: 0.25em 0.25em*1.618,
@@ -49,7 +49,7 @@ $ave-sizing-ratio-1dot618: (
   900: 1.125em 1.125em*1.618
 );
 
-$ave-sizing-ratio-2: (
+$ave-shape-ratio-2: (
   50: 0,
   100: 0.125em 0.125em*2,
   200: 0.25em 0.25em*2,
@@ -62,7 +62,7 @@ $ave-sizing-ratio-2: (
   900: 1.125em 1.125em*2
 );
 
-@function ave-sizing($base-sizing, $default: 400, $tighter: 200, $looser: 700) {
+@function ave-shape($base-sizing, $default: 400, $tighter: 200, $looser: 700) {
   $result: (
     none: (
       padding: map_get($base-sizing, $default)

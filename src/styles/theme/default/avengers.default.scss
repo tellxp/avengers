@@ -1,7 +1,7 @@
 @import "../../core/core";
 @import "../../core/theming";
 @import "typography";
-@import "sizing";
+@import "shape";
 @import "palette";
 
 // Define a theme.
@@ -31,18 +31,18 @@ $theme-typography: (
 );
 
 // Frame.
-$theme-sizing: (
-  default: ave-sizing($ave-sizing-ratio-1dot618),
-  primary: ave-sizing($ave-sizing-ratio-1dot618),
-  secondary: ave-sizing($ave-sizing-ratio-1dot618),
-  success: ave-sizing($ave-sizing-ratio-1dot618),
-  info: ave-sizing($ave-sizing-ratio-1dot618),
-  warning: ave-sizing($ave-sizing-ratio-1dot618),
-  danger: ave-sizing($ave-sizing-ratio-1dot618),
-  link: ave-sizing($ave-sizing-ratio-1dot618)
+$theme-shape: (
+  default: ave-shape($ave-shape-ratio-1dot618),
+  primary: ave-shape($ave-shape-ratio-1dot618),
+  secondary: ave-shape($ave-shape-ratio-1dot618),
+  success: ave-shape($ave-shape-ratio-1dot618),
+  info: ave-shape($ave-shape-ratio-1dot618),
+  warning: ave-shape($ave-shape-ratio-1dot618),
+  danger: ave-shape($ave-shape-ratio-1dot618),
+  link: ave-shape($ave-shape-ratio-1dot618)
 );
 
-$theme: ave-theme($theme-palette, $theme-typography, $theme-sizing);
+$theme: ave-theme($theme-palette, $theme-typography, $theme-shape);
 
 // Include all theme styles for the components.
 @include avengers-theme-loader($theme);

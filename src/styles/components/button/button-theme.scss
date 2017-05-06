@@ -16,54 +16,54 @@ $ave-button-palette-property: (
 $ave-button-typography-property: (
   font
 );
-$ave-button-sizing-property: (
+$ave-button-shape-property: (
   padding
 );
 
 
 // Palette
-@mixin ave-button-state-property($scene-state, $property) {
+@mixin ave-component-property-style($scene-state, $property) {
   @each $property in $ave-button-palette-property {
     #{$property}: ave-state-property($scene-state, $property);
   }
   @each $property in $ave-button-typography-property {
     #{$property}: ave-state-property($scene-state, $property);
   }
-  @each $property in $ave-button-sizing-property {
+  @each $property in $ave-button-shape-property {
     #{$property}: ave-state-property($scene-state, $property);
   }
 }
 
-@mixin ave-button-scene-state($ingredient-scene) {
+@mixin ave-component-state-style($ingredient-scene) {
   @each $state in $theme-component-state {
     @if ($state == none) {
       & {
         $scene-state: ave-scene-state($ingredient-scene, $state);
-        @include ave-button-state-property($scene-state, $state);
+        @include ave-component-property-style($scene-state, $state);
       }
     } @else {
       &:#{$state} {
         $scene-state: ave-scene-state($ingredient-scene, $state);
-        @include ave-button-state-property($scene-state, $state);
+        @include ave-component-property-style($scene-state, $state);
       }
     }
   }
 }
 
-@mixin ave-button-ingredient-scene($theme-ingredient) {
+@mixin ave-component-scene-style($theme-ingredient) {
   @each $scene in $theme-component-scene {
     $ingredient-scene: ave-ingredient-scene($theme-ingredient, $scene);
     &.v-button-#{$scene} {
-      @include ave-button-scene-state($ingredient-scene);
+      @include ave-component-state-style($ingredient-scene);
     }
   }
 }
 
-@mixin ave-button-theme($theme) {
+@mixin ave-component-theme($theme, $component) {
   @each $ingredient in $ave-button-ingredient {
     $theme-ingredient: ave-theme-ingredient($theme, $ingredient);
-    .v-button {
-      @include ave-button-ingredient-scene($theme-ingredient);
+    .#{$ave-prefix}-button {
+      @include ave-component-scene-style($theme-ingredient);
     }
   }
 }
