@@ -4,14 +4,8 @@
 @import "../typography";
 @import "../shape";
 
-// Ingredient dictionary
-$ave-button-ingredient: (
-  palette,
-  typography,
-  sizing
-);
-
 // Property dictionary
+// TODO continue loose couple of property
 $ave-button-property: (
   background-color,
   color,
@@ -56,7 +50,11 @@ $ave-button-theme-shape: (
   link: ave-shape($ave-shape-ratio-1dot618)
 );
 
-$ave-button-theme: ave-component-theme($ave-button-theme-palette, $ave-button-theme-typography, $ave-button-theme-shape);
+$ave-button-theme: (
+  $ave-button-theme-palette,
+  $ave-button-theme-typography,
+  $ave-button-theme-shape
+);
 
 
 

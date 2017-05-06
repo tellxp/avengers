@@ -4,16 +4,10 @@
 @import "palette";
 @import "./component-theme/button-theme";
 
-$ave-component-ingredient: (
-  button: $ave-button-ingredient
+$themes: (
+  button: $ave-button-theme
 );
-@function ave-theme() {
-  $result: (
-    button: $ave-button-theme
-  );
-  @return $result;
-}
-$themes: ave-theme();
+
 @mixin avengers-theme-loader($themes) {
   @each $component-name, $component-theme in $themes {
     @include ave-component-style($component-name, $component-theme);

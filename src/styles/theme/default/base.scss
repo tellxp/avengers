@@ -56,7 +56,7 @@ $theme-component-state: (
 }
 
 @mixin ave-component-style($component-name, $component-theme) {
-  @each $ingredient-name, $ingredient-style in $component-theme {
+  @each $ingredient-style in $component-theme {
     .#{$ave-prefix}-#{$component-name} {
       @include ave-component-scene-style($ingredient-style);
     }
