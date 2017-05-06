@@ -1,22 +1,3 @@
-@import "../../styles/theme/default/base";
-
-
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-  background-color: $item-background-color;
-  color: $item-color;
-  outline: none;
-
-}
-
-:host:hover {
-  background-color: $item-hover-background-color;
-}
-
 div {
   display: flex;
   width: 100%;

@@ -16,7 +16,7 @@ $typography: ave-typography($ave-typography-normal);
 // Frame.
 $frame: ave-frame($ave-frame-normal);
 
-$theme: ave-theme($primary-color, $accent-color, $typography, $frame);
+$theme: ave-component-theme($primary-color, $accent-color, $typography, $frame);
 
 // Include all theme styles for the components.
 @include avengers-theme-loader($theme);

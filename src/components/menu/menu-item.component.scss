@@ -1,23 +1,4 @@
-@import "../../styles/theme/default/base";
 
-
-:host {
-  display: flex;
-  height: 3em;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-  min-width: 10em;
-  background-color: $item-background-color;
-  color: $item-color;
-}
-
-:host:hover {
-  background-color: $item-hover-background-color;
-  overflow: visible;
-
-}
 
 div {
   display: flex;

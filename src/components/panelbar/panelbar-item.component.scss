@@ -1,20 +1,4 @@
-@import "../../styles/theme/default/base";
 
-:host {
-  display: flex;
-  flex-flow: column;
-  user-select: none;
-  cursor: pointer;
-  background-color: $group-item-background-color;
-  color: $group-item-color;
-  outline: none;
-}
-
-
-div:focus {
-  background-color: $group-item-hover-background-color;
-  overflow: visible;
-}
 
 div {
   display: flex;

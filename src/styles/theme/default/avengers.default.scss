@@ -1,50 +1,25 @@
 @import "../../core/core";
-@import "../../core/theming";
 @import "typography";
 @import "shape";
 @import "palette";
+@import "./component-theme/button-theme";
 
-// Define a theme.
-
-// Color
-$theme-palette: (
-  default: ave-palette($ave-palette-indigo),
-  primary: ave-palette($ave-palette-blue),
-  secondary: ave-palette($ave-palette-light-blue),
-  success: ave-palette($ave-palette-green),
-  info: ave-palette($ave-palette-cyan),
-  warning: ave-palette($ave-palette-deep-orange),
-  danger: ave-palette($ave-palette-red),
-  link: ave-palette($ave-palette-grey)
+$ave-component-ingredient: (
+  button: $ave-button-ingredient
 );
+@function ave-theme() {
+  $result: (
+    button: $ave-button-theme
+  );
+  @return $result;
+}
+$themes: ave-theme();
+@mixin avengers-theme-loader($themes) {
+  @each $component-name, $component-theme in $themes {
+    @include ave-component-style($component-name, $component-theme);
+  }
+}
 
-// Typography.
-$theme-typography: (
-  default: ave-typography($ave-typography-yahei),
-  primary: ave-typography($ave-typography-yahei),
-  secondary: ave-typography($ave-typography-yahei),
-  success: ave-typography($ave-typography-yahei),
-  info: ave-typography($ave-typography-yahei),
-  warning: ave-typography($ave-typography-yahei),
-  danger: ave-typography($ave-typography-yahei),
-  link: ave-typography($ave-typography-yahei)
-);
-
-// Frame.
-$theme-shape: (
-  default: ave-shape($ave-shape-ratio-1dot618),
-  primary: ave-shape($ave-shape-ratio-1dot618),
-  secondary: ave-shape($ave-shape-ratio-1dot618),
-  success: ave-shape($ave-shape-ratio-1dot618),
-  info: ave-shape($ave-shape-ratio-1dot618),
-  warning: ave-shape($ave-shape-ratio-1dot618),
-  danger: ave-shape($ave-shape-ratio-1dot618),
-  link: ave-shape($ave-shape-ratio-1dot618)
-);
-
-$theme: ave-theme($theme-palette, $theme-typography, $theme-shape);
 
 // Include all theme styles for the components.
-@include avengers-theme-loader($theme);
-
-
+@include avengers-theme-loader($themes);

@@ -7,45 +7,58 @@ $ave-font-family: "Microsoft YaHei", Roboto, 'Helvetica Neue', sans-serif !defau
 $base-color: #ffffff;
 $component-back-color: transparentize($base-color, 1);
 
-$bar-background-color: (
-  default: #0078d7,
-  material: #004d4d
+$theme-component-scene: (
+  default,
+  primary,
+  secondary,
+  success,
+  info,
+  warning,
+  danger,
+  link
 );
-$bar-item-background-color: #0078d7;
-$bar-item-color: #ffffff;
 
-$bar-item-hover-background-color: #006cc1;
-$bar-item-hover-color: #ffffff;
-
-$bar-item-active-background-color: #ffffff;
-$bar-item-active-color: #000000;
-
-$panel-background-color: #ffffff;
-$panel-color: #000000;
-
-$group-background-color: #0078d7;
-$group-item-background-color: #0060ac;
-$group-item-hover-background-color: #005496;
-$group-item-color: #ffffff;
-
-$item-background-color: #002050;
-$item-hover-background-color: #006cc1;
-$item-active-background-color: #0060ac;
-$item-color: #ffffff;
-
-$grid-breakpoints-xs: 0;
-$grid-breakpoints-sm: 576px;
-$grid-breakpoints-md: 768px;
-$grid-breakpoints-lg: 992px;
-$grid-breakpoints-xl: 1200px;
-
-$control-padding: 0.5em;
-
-$btn-back-color: (
-  default: #002050,
-  material: #42a5f5
+$theme-component-state: (
+  none,
+  active,
+  hover,
+  focus,
+  visited
 );
-$btn-fore-color: (
-  default: #ffffff,
-  material: #000000
-);
+
+// Palette
+@mixin ave-component-property-style($state-style) {
+  @each $property, $value in $state-style {
+    #{$property}: $value;
+  }
+}
+
+@mixin ave-component-state-style($scene-style) {
+  @each $state, $state-style in $scene-style {
+    @if ($state == none) {
+      & {
+        @include ave-component-property-style($state-style);
+      }
+    } @else {
+      &:#{$state} {
+        @include ave-component-property-style($state-style);
+      }
+    }
+  }
+}
+
+@mixin ave-component-scene-style($ingredient-style) {
+  @each $scene, $scene-style in $ingredient-style {
+    &-#{$scene} {
+      @include ave-component-state-style($scene-style);
+    }
+  }
+}
+
+@mixin ave-component-style($component-name, $component-theme) {
+  @each $ingredient-name, $ingredient-style in $component-theme {
+    .#{$ave-prefix}-#{$component-name} {
+      @include ave-component-scene-style($ingredient-style);
+    }
+  }
+}
