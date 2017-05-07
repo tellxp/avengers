@@ -25,26 +25,41 @@ $theme-component-state: (
   focus,
   visited
 );
-@function ave-ingredient-property($property-palette, $component-property) {
-  $component-ingredient-property: ();
+
+// Get property map for component by using 1 state theme
+@function ave-component-state-property($theme-state, $component-property) {
+  $component-theme-state: ();
   @each $property in $component-property {
     $result: (
-      $property: map_get($property-palette, $property)
+      $property: map_get($theme-state, $property)
     );
-    $component-property-palette: map_merge($component-ingredient-property, $result);
+    $component-theme-state: map_merge($component-theme-state, $result);
   }
-  @return $component-ingredient-property;
+  @return $component-theme-state;
 }
-@function ave-ingredient-state($state-palette, $component-state, $component-property) {
-  $component-state-palette: ();
+
+// Get state map for component by using 1 scene theme
+@function ave-component-scene-state($theme-scene, $component-state, $component-property) {
+  $component-theme-scene: ();
   @each $state in $component-state {
-    $property-palette: map_get($state-palette, $state);
+    $theme-property: map_get($theme-scene, $state);
     $result: (
-      $state: ave-ingredient-property($property-palette, $component-property)
+      $state: ave-component-state-property($theme-property, $component-property)
     );
-    $component-state-palette: map_merge($component-state-palette, $result);
+    $component-theme-scene: map_merge($component-theme-scene, $result);
   }
-  @return $component-state-palette;
+  @return $component-theme-scene;
+}
+
+@function ave-component-theme-composer($ingredient-base, $component-state, $component-property) {
+  $component-theme-ingredient: ();
+  @each $scene, $theme-scene in $ingredient-base {
+    $result: (
+      $scene: ave-component-scene-state($theme-scene, $component-state, $component-property)
+    );
+    $component-theme-ingredient: map_merge($component-theme-ingredient, $result);
+  }
+  @return $component-theme-ingredient;
 }
 // Palette
 @mixin ave-component-property-style($state-style) {

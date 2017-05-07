@@ -5,7 +5,7 @@
 @import "../shape";
 
 // State dictionary
-$ave-button-state-map: (
+$ave-button-state: (
   none,
   active,
   hover,
@@ -14,18 +14,17 @@ $ave-button-state-map: (
 );
 
 // Property dictionary
-$ave-button-property-map: (
+$ave-button-property: (
   background-color,
   color,
   font,
   padding
 );
-$ave-button-theme-ingredient: ();
 // Define a theme.
 
 // Color
-$ave-button-theme-palette: (
-  default: ave-ingredient-state(ave-palette($ave-palette-indigo),$ave-button-state-map,$ave-button-property-map),
+$ave-button-palette-base: (
+  default: ave-palette($ave-palette-indigo),
   primary: ave-palette($ave-palette-blue),
   secondary: ave-palette($ave-palette-light-blue),
   success: ave-palette($ave-palette-green),
@@ -36,7 +35,7 @@ $ave-button-theme-palette: (
 );
 
 // Typography.
-$ave-button-theme-typography: (
+$ave-button-typography-base: (
   default: ave-typography($ave-typography-yahei),
   primary: ave-typography($ave-typography-yahei),
   secondary: ave-typography($ave-typography-yahei),
@@ -48,8 +47,8 @@ $ave-button-theme-typography: (
 );
 
 // Frame.
-$ave-button-theme-shape: (
-  default: ave-shape($ave-shape-ratio-dot618),
+$ave-button-shape-base: (
+  default: ave-shape($ave-shape-ratio-2),
   primary: ave-shape($ave-shape-ratio-1dot618),
   secondary: ave-shape($ave-shape-ratio-1dot618),
   success: ave-shape($ave-shape-ratio-1dot618),
@@ -59,10 +58,14 @@ $ave-button-theme-shape: (
   link: ave-shape($ave-shape-ratio-1dot618)
 );
 
+$ave-button-palette: ave-component-theme-composer($ave-button-palette-base, $ave-button-state, $ave-button-property);
+$ave-button-typography: ave-component-theme-composer($ave-button-typography-base, $ave-button-state, $ave-button-property);
+$ave-button-shape: ave-component-theme-composer($ave-button-shape-base, $ave-button-state, $ave-button-property);
+
 $ave-button-theme: (
-  $ave-button-theme-palette,
-  $ave-button-theme-typography,
-  $ave-button-theme-shape
+  $ave-button-palette,
+  $ave-button-typography,
+  $ave-button-shape
 );
 
 
