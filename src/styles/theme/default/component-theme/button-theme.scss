@@ -4,19 +4,28 @@
 @import "../typography";
 @import "../shape";
 
+// State dictionary
+$ave-button-state-map: (
+  none,
+  active,
+  hover,
+  focus,
+  visited
+);
+
 // Property dictionary
-// TODO continue loose couple of property
-$ave-button-property: (
+$ave-button-property-map: (
   background-color,
   color,
   font,
   padding
 );
+$ave-button-theme-ingredient: ();
 // Define a theme.
 
 // Color
 $ave-button-theme-palette: (
-  default: ave-palette($ave-palette-indigo),
+  default: ave-ingredient-state(ave-palette($ave-palette-indigo),$ave-button-state-map,$ave-button-property-map),
   primary: ave-palette($ave-palette-blue),
   secondary: ave-palette($ave-palette-light-blue),
   success: ave-palette($ave-palette-green),
@@ -40,7 +49,7 @@ $ave-button-theme-typography: (
 
 // Frame.
 $ave-button-theme-shape: (
-  default: ave-shape($ave-shape-ratio-1dot618),
+  default: ave-shape($ave-shape-ratio-dot618),
   primary: ave-shape($ave-shape-ratio-1dot618),
   secondary: ave-shape($ave-shape-ratio-1dot618),
   success: ave-shape($ave-shape-ratio-1dot618),

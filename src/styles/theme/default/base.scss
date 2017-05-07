@@ -25,7 +25,27 @@ $theme-component-state: (
   focus,
   visited
 );
-
+@function ave-ingredient-property($property-palette, $component-property) {
+  $component-ingredient-property: ();
+  @each $property in $component-property {
+    $result: (
+      $property: map_get($property-palette, $property)
+    );
+    $component-property-palette: map_merge($component-ingredient-property, $result);
+  }
+  @return $component-ingredient-property;
+}
+@function ave-ingredient-state($state-palette, $component-state, $component-property) {
+  $component-state-palette: ();
+  @each $state in $component-state {
+    $property-palette: map_get($state-palette, $state);
+    $result: (
+      $state: ave-ingredient-property($property-palette, $component-property)
+    );
+    $component-state-palette: map_merge($component-state-palette, $result);
+  }
+  @return $component-state-palette;
+}
 // Palette
 @mixin ave-component-property-style($state-style) {
   @each $property, $value in $state-style {
