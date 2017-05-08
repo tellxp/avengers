@@ -6,7 +6,7 @@ import {
   Component, ContentChild,
   ContentChildren,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   Input,
   OnChanges,
   OnDestroy,
@@ -37,6 +37,8 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
   active: boolean;
+
+  @HostBinding('class.v-panelbar-item') panelbarItemClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

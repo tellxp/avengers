@@ -1,0 +1,7 @@
+@import "../../core/container";
+
+%v-panel-base {
+  @extend %v-container;
+  flex-flow: row;
+  justify-content: flex-start;
+}

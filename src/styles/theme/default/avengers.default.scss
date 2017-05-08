@@ -2,10 +2,14 @@
 @import "typography";
 @import "shape";
 @import "palette";
-@import "./component-theme/button-theme";
+@import "components-theme/button/button-theme";
+@import "components-theme/panelbar/panelbar-theme";
+@import "components-theme/panelbar/panelbar-item-theme";
 
 $themes: (
-  button: $ave-button-theme
+  button: $ave-button-theme,
+  panelbar: $ave-panelbar-theme,
+  panelbar-item: $ave-panelbar-item-theme
 );
 
 @mixin avengers-theme-loader($themes) {

@@ -1,0 +1,8 @@
+@import "panelbar-base";
+
+.v-panelbar {
+  @extend %v-panelbar-base;
+}
+.v-panelbar-item {
+  @extend %v-panelbar-item-base;
+}

@@ -1,0 +1,84 @@
+@import "../../../../components-base/panelbar/panelbar";
+@import "../../base";
+@import "../../palette";
+@import "../../typography";
+@import "../../shape";
+
+// State dictionary
+$ave-panelbar-state: (
+  none,
+  //active,
+  //hover,
+  //focus,
+  //visited
+);
+
+// Property dictionary
+$ave-panelbar-property: (
+  background-color,
+  color,
+  font,
+  padding
+);
+// Define a theme.
+
+// Color
+$ave-panelbar-palette-base: (
+  default: ave-palette($ave-palette-grey),
+  primary: ave-palette($ave-palette-indigo),
+  secondary: ave-palette($ave-palette-white),
+  success: ave-palette($ave-palette-white),
+  info: ave-palette($ave-palette-white),
+  warning: ave-palette($ave-palette-white),
+  danger: ave-palette($ave-palette-white),
+  link: ave-palette($ave-palette-white)
+);
+
+// Typography.
+$ave-panelbar-typography-base: (
+  default: ave-typography($ave-typography-yahei),
+  primary: ave-typography($ave-typography-yahei),
+  secondary: ave-typography($ave-typography-yahei),
+  success: ave-typography($ave-typography-yahei),
+  info: ave-typography($ave-typography-yahei),
+  warning: ave-typography($ave-typography-yahei),
+  danger: ave-typography($ave-typography-yahei),
+  link: ave-typography($ave-typography-yahei)
+);
+
+// Frame.
+$ave-panelbar-shape-base: (
+  default: ave-shape($ave-shape-ratio-dot618),
+  primary: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-dot5),
+  success: ave-shape($ave-shape-ratio-dot5),
+  info: ave-shape($ave-shape-ratio-dot5),
+  warning: ave-shape($ave-shape-ratio-dot5),
+  danger: ave-shape($ave-shape-ratio-1dot618),
+  link: ave-shape($ave-shape-ratio-1dot618)
+);
+
+$ave-panelbar-palette: ave-component-theme-composer($ave-panelbar-palette-base, $ave-panelbar-state, $ave-panelbar-property);
+$ave-panelbar-typography: ave-component-theme-composer($ave-panelbar-typography-base, $ave-panelbar-state, $ave-panelbar-property);
+$ave-panelbar-shape: ave-component-theme-composer($ave-panelbar-shape-base, $ave-panelbar-state, $ave-panelbar-property);
+
+$ave-panelbar-theme: (
+  $ave-panelbar-palette,
+  $ave-panelbar-typography,
+  $ave-panelbar-shape
+);
+
+@mixin ave-panelbar-theme() {
+  .v-panelbar-item {
+    div {
+      padding: 0.5em;
+    }
+    div:focus {
+      background-color: map_get($ave-palette-indigo, 700);
+    }
+    ave-panel {
+      background-color: #F6F6F6;
+    }
+  }
+}
+@include ave-panelbar-theme();

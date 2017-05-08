@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   OnChanges,
   OnDestroy,
   OnInit
@@ -26,6 +26,8 @@ export class PanelbarComponent extends WidgetComponent implements OnChanges,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+
+  @HostBinding('class.v-panelbar') panelbarClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

@@ -1,8 +1,8 @@
-@import "../../../components-base/button/button";
-@import "../base";
-@import "../palette";
-@import "../typography";
-@import "../shape";
+@import "../../../../components-base/button/button";
+@import "../../base";
+@import "../../palette";
+@import "../../typography";
+@import "../../shape";
 
 // State dictionary
 $ave-button-state: (
@@ -26,7 +26,7 @@ $ave-button-property: (
 $ave-button-palette-base: (
   default: ave-palette($ave-palette-indigo),
   primary: ave-palette($ave-palette-blue),
-  secondary: ave-palette($ave-palette-light-blue),
+  secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
   info: ave-palette($ave-palette-cyan),
   warning: ave-palette($ave-palette-deep-orange),

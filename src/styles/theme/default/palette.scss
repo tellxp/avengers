@@ -639,9 +639,40 @@ $ave-palette-blue-grey: (
   )
 );
 
+$ave-palette-white: (
+  50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
+  500: #ffffff,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: white,
+    500: white,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: white,
+    A700: $white-87-opacity,
+  )
+);
 
-
-@function ave-palette($base-palette, $default: 600, $lighter: 50, $darker: 900) {
+@function ave-palette($base-palette, $default: 400, $lighter: 50, $darker: 900) {
   $result: (
     none:(
       background-color: map-get($base-palette, $default),

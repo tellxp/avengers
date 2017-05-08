@@ -18,7 +18,7 @@ import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 
 const appDemoRoutes: Routes = [
   {
-    path: 'demo', component: AppDemoComponent,
+    path: 'demos', component: AppDemoComponent,
     children: [
       {path: '', component: HomeDemoComponent},
       {path: 'home', component: HomeDemoComponent},

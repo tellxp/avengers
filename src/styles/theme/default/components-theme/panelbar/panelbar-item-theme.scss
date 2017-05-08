@@ -1,0 +1,68 @@
+@import "../../../../components-base/panelbar/panelbar-item";
+@import "../../base";
+@import "../../palette";
+@import "../../typography";
+@import "../../shape";
+
+// State dictionary
+$ave-panelbar-item-state: (
+  none,
+);
+
+// Property dictionary
+$ave-panelbar-item-property: (
+  background-color,
+  color,
+  font,
+  padding
+);
+// Define a theme.
+
+// Color
+$ave-panelbar-item-palette-base: (
+  default: ave-palette($ave-palette-grey),
+  primary: ave-palette($ave-palette-indigo),
+  secondary: ave-palette($ave-palette-white),
+  success: ave-palette($ave-palette-white),
+  info: ave-palette($ave-palette-white),
+  warning: ave-palette($ave-palette-white),
+  danger: ave-palette($ave-palette-white),
+  link: ave-palette($ave-palette-white)
+);
+
+// Typography.
+$ave-panelbar-item-typography-base: (
+  default: ave-typography($ave-typography-yahei),
+  primary: ave-typography($ave-typography-yahei),
+  secondary: ave-typography($ave-typography-yahei),
+  success: ave-typography($ave-typography-yahei),
+  info: ave-typography($ave-typography-yahei),
+  warning: ave-typography($ave-typography-yahei),
+  danger: ave-typography($ave-typography-yahei),
+  link: ave-typography($ave-typography-yahei)
+);
+
+// Frame.
+$ave-panelbar-item-shape-base: (
+  default: ave-shape($ave-shape-ratio-dot618),
+  primary: ave-shape($ave-shape-ratio-dot618, 50,50,50),
+  secondary: ave-shape($ave-shape-ratio-dot5),
+  success: ave-shape($ave-shape-ratio-dot5),
+  info: ave-shape($ave-shape-ratio-dot5),
+  warning: ave-shape($ave-shape-ratio-dot5),
+  danger: ave-shape($ave-shape-ratio-1dot618),
+  link: ave-shape($ave-shape-ratio-1dot618)
+);
+
+$ave-panelbar-item-palette: ave-component-theme-composer($ave-panelbar-item-palette-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
+$ave-panelbar-item-typography: ave-component-theme-composer($ave-panelbar-item-typography-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
+$ave-panelbar-item-shape: ave-component-theme-composer($ave-panelbar-item-shape-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
+
+$ave-panelbar-item-theme: (
+  $ave-panelbar-item-palette,
+  $ave-panelbar-item-typography,
+  $ave-panelbar-item-shape
+);
+
+
+
