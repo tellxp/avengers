@@ -115,6 +115,11 @@ $ave-panelbar-item-theme: (
   .#{$ave-prefix}-panelbar-item {
     @include ave-panelbar-item-scene-style($shape);
     .v-panelbar-item-header {
+      display: flex;
+      height: 100%;
+      justify-content: flex-start;
+      align-items: center;
+      outline: none;
       padding: 0.618em 0.5em;
     }
     .v-panelbar-item-panel {

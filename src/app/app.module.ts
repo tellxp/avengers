@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AppDemoModule} from './demos/app-demo.module';
 import {AppExampleModule} from './examples/app-example.module';
+import {GuidelinesModule} from './material-design-zh/guidelines/guidelines.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {AppExampleModule} from './examples/app-example.module';
     HttpModule,
     AppDemoModule,
     AppExampleModule,
+    GuidelinesModule,
     AppRoutingModule
   ],
   declarations: [

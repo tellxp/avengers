@@ -48,7 +48,7 @@ $ave-panelbar-typography-base: (
 
 // Frame.
 $ave-panelbar-shape-base: (
-  default: ave-shape($ave-shape-ratio-dot618),
+  default: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
   primary: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
   secondary: ave-shape($ave-shape-ratio-dot5),
   success: ave-shape($ave-shape-ratio-dot5),

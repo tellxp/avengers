@@ -4,9 +4,11 @@
   @extend %v-container;
   flex-flow: column;
   justify-content: flex-start;
-  border: solid;
-  border-width: 1px;
-  border-color: #bdbdbd;
+  overflow: auto;
+
+  //outline: solid;
+  //outline-width: 1px;
+  //outline-color: #bdbdbd;
 }
 
 
@@ -14,12 +16,12 @@
 .v-panelbar {
   @extend %v-panelbar-base;
   .v-panelbar-item {
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #bdbdbd;
+    outline-bottom: solid;
+    outline-width: 1px;
+    outline-color: #bdbdbd;
   }
   .v-panelbar-item:last-of-type {
-    border-bottom: none;
+    outline-bottom: none;
   }
 }
 

@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-flow: row;
+  height:100%;
+  width: 100%;
+  overflow: auto;
+
+}
+.left-panel {
+  display: block;
+  min-height: 100%;
+  width: 25%;
+  overflow: auto;
+  border-right: solid;
+  border-width: 2px;
+  border-color: #bdbdbd;
+}
+.panelbar {
+  display: flex;
+  width: 100%;
+}
+.right-panel {
+  display: block;
+  width: 75%;
+  overflow: auto;
+
+
+}
+.brand {
+  display: flex;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: #bdbdbd;
+}
+
+.article-name {
+  text-indent: 1em;
+  font-size: 0.9em;
+  font-weight: normal;
+  cursor: pointer;
+
+}
+.category-name {
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+.toolbar {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
