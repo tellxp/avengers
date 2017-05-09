@@ -640,20 +640,20 @@ $ave-palette-blue-grey: (
 );
 
 $ave-palette-white: (
-  50: #ffffff,
-  100: #ffffff,
-  200: #ffffff,
-  300: #ffffff,
-  400: #ffffff,
-  500: #ffffff,
-  600: #ffffff,
-  700: #ffffff,
-  800: #ffffff,
-  900: #ffffff,
-  A100: #ffffff,
-  A200: #ffffff,
-  A400: #ffffff,
-  A700: #ffffff,
+  50: rgba(#ffffff, 0),
+  100: rgba(#ffffff, 0.1),
+  200: rgba(#ffffff, 0.2),
+  300: rgba(#ffffff, 0.3),
+  400: rgba(#ffffff, 1.0),
+  500: rgba(#ffffff, 0.5),
+  600: rgba(#ffffff, 0.6),
+  700: rgba(#ffffff, 0.7),
+  800: rgba(#ffffff, 0.8),
+  900: rgba(#ffffff, 1),
+  A100: rgba(#ffffff, 0.5),
+  A200: rgba(#ffffff, 1),
+  A400: rgba(#000000, 0.5),
+  A700: rgba(#000000, 1),
   contrast: (
     50: $black-87-opacity,
     100: $black-87-opacity,
@@ -672,28 +672,89 @@ $ave-palette-white: (
   )
 );
 
-@function ave-palette($base-palette, $default: 400, $lighter: 50, $darker: 900) {
-  $result: (
-    none:(
-      background-color: map-get($base-palette, $default),
-      color: map-get($base-palette, $lighter),
-    ),
-    active:(
-      background-color: map-get($base-palette, $darker),
-      color: map-get($base-palette, $lighter),
-    ),
-    hover:(
-      background-color: map-get($base-palette, $darker),
-      color: map-get($base-palette, $lighter),
-    ),
-    focus:(
-      background-color: map-get($base-palette, $darker),
-      color: map-get($base-palette, $lighter),
-    ),
-    visited:(
-      background-color: map-get($base-palette, $darker),
-      color: map-get($base-palette, $lighter)
-    )
-  );
+$ave-palette-black: (
+  50: rgba(#000000, 0),
+  100: rgba(#000000, 0.1),
+  200: rgba(#000000, 0.2),
+  300: rgba(#000000, 0.3),
+  400: rgba(#000000, 0.4),
+  500: rgba(#000000, 0.5),
+  600: rgba(#000000, 0.6),
+  700: rgba(#000000, 0.7),
+  800: rgba(#000000, 0.8),
+  900: rgba(#000000, 1),
+  A100: rgba(#ffffff, 0.5),
+  A200: rgba(#ffffff, 1),
+  A400: rgba(#000000, 0.5),
+  A700: rgba(#000000, 1),
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: white,
+    500: white,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: white,
+    A700: $white-87-opacity,
+  )
+);
+
+
+@function ave-palette($base-palette, $default: 400, $lighter: 50, $darker: 700, $is-dark: true) {
+  $result: ();
+  @if($is-dark) {
+    $result: (
+      none:(
+        background-color: map-get($base-palette, $default),
+        color: map-get($base-palette, $lighter),
+      ),
+      active:(
+        background-color: map-get($base-palette, $darker),
+        color: map-get($base-palette, $lighter),
+      ),
+      hover:(
+        background-color: map-get($base-palette, $darker),
+        color: map-get($base-palette, $lighter),
+      ),
+      focus:(
+        background-color: map-get($base-palette, $darker),
+        color: map-get($base-palette, $lighter),
+      ),
+      visited:(
+        background-color: map-get($base-palette, $darker),
+        color: map-get($base-palette, $lighter)
+      )
+    );
+  } @else {
+    $result: (
+      none:(
+        background-color: map-get($base-palette, $default),
+        color: map-get($base-palette, $darker),
+      ),
+      active:(
+        background-color: map-get($base-palette, $lighter),
+        color: map-get($base-palette, $darker),
+      ),
+      hover:(
+        background-color: map-get($base-palette, $lighter),
+        color: map-get($base-palette, $darker),
+      ),
+      focus:(
+        background-color: map-get($base-palette, $lighter),
+        color: map-get($base-palette, $darker),
+      ),
+      visited:(
+        background-color: map-get($base-palette, $lighter),
+        color: map-get($base-palette, $darker)
+      )
+    );
+  }
+
   @return $result;
 }

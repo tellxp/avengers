@@ -1,4 +1,13 @@
-@import "panelbar-base";
+@import "../../core/container";
+
+%v-panelbar-item-base {
+  @extend %v-container;
+  flex-flow: column;
+  justify-content: flex-start;
+
+}
 .v-panelbar-item {
   @extend %v-panelbar-item-base;
+  background-color: #ffffff;
+  color: #000000;
 }

@@ -1,7 +1,7 @@
-<div tabindex="-1" (click)="onClick()">
+<div tabindex="-1" (click)="onClick()" class="v-panelbar-item-header">
   <span>{{title}}</span>
   <i class="fa fa-chevron-down" aria-hidden="true" *ngIf="hasChildItem()"></i>
 </div>
-<ave-panel>
+<ave-panel class="v-panelbar-item-panel">
   <ng-content *ngIf="active"></ng-content>
 </ave-panel>

@@ -6,18 +6,17 @@
 @import "components-theme/panelbar/panelbar-theme";
 @import "components-theme/panelbar/panelbar-item-theme";
 
-$themes: (
-  button: $ave-button-theme,
-  panelbar: $ave-panelbar-theme,
-  panelbar-item: $ave-panelbar-item-theme
-);
+@mixin avengers-theme-loader() {
+  //@each $component-name, $component-theme in $themes {
+  //  @include ave-component-style($component-name, $component-theme);
+  //}
+  @include ave-button-style($ave-button-theme);
 
-@mixin avengers-theme-loader($themes) {
-  @each $component-name, $component-theme in $themes {
-    @include ave-component-style($component-name, $component-theme);
-  }
+  @include ave-panelbar-style($ave-panelbar-theme);
+  @include ave-panelbar-item-style($ave-panelbar-item-theme);
+
 }
 
 
 // Include all theme styles for the components.
-@include avengers-theme-loader($themes);
+@include avengers-theme-loader();

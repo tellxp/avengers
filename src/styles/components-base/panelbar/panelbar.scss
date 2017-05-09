@@ -1,8 +1,25 @@
-@import "panelbar-base";
+@import "../../core/container";
+
+%v-panelbar-base {
+  @extend %v-container;
+  flex-flow: column;
+  justify-content: flex-start;
+  border: solid;
+  border-width: 1px;
+  border-color: #bdbdbd;
+}
+
+
 
 .v-panelbar {
   @extend %v-panelbar-base;
+  .v-panelbar-item {
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #bdbdbd;
+  }
+  .v-panelbar-item:last-of-type {
+    border-bottom: none;
+  }
 }
-.v-panelbar-item {
-  @extend %v-panelbar-item-base;
-}
+

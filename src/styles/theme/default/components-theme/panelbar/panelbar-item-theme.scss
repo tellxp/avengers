@@ -7,6 +7,10 @@
 // State dictionary
 $ave-panelbar-item-state: (
   none,
+  active,
+  hover,
+  focus,
+  visited
 );
 
 // Property dictionary
@@ -20,14 +24,14 @@ $ave-panelbar-item-property: (
 
 // Color
 $ave-panelbar-item-palette-base: (
-  default: ave-palette($ave-palette-grey),
+  default: ave-palette($ave-palette-white, A200, A700),
   primary: ave-palette($ave-palette-indigo),
-  secondary: ave-palette($ave-palette-white),
-  success: ave-palette($ave-palette-white),
-  info: ave-palette($ave-palette-white),
-  warning: ave-palette($ave-palette-white),
-  danger: ave-palette($ave-palette-white),
-  link: ave-palette($ave-palette-white)
+  secondary: ave-palette($ave-palette-purple),
+  success: ave-palette($ave-palette-green),
+  info: ave-palette($ave-palette-blue),
+  warning: ave-palette($ave-palette-yellow),
+  danger: ave-palette($ave-palette-deep-purple),
+  link: ave-palette($ave-palette-black, A200, A700)
 );
 
 // Typography.
@@ -44,14 +48,14 @@ $ave-panelbar-item-typography-base: (
 
 // Frame.
 $ave-panelbar-item-shape-base: (
-  default: ave-shape($ave-shape-ratio-dot618),
-  primary: ave-shape($ave-shape-ratio-dot618, 50,50,50),
-  secondary: ave-shape($ave-shape-ratio-dot5),
-  success: ave-shape($ave-shape-ratio-dot5),
-  info: ave-shape($ave-shape-ratio-dot5),
-  warning: ave-shape($ave-shape-ratio-dot5),
-  danger: ave-shape($ave-shape-ratio-1dot618),
-  link: ave-shape($ave-shape-ratio-1dot618)
+  default: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  primary: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  secondary: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  success: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  info: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  warning: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  danger: ave-shape($ave-shape-ratio-dot618, 50, 50),
+  link: ave-shape($ave-shape-ratio-dot618, 50, 50)
 );
 
 $ave-panelbar-item-palette: ave-component-theme-composer($ave-panelbar-item-palette-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
@@ -59,10 +63,65 @@ $ave-panelbar-item-typography: ave-component-theme-composer($ave-panelbar-item-t
 $ave-panelbar-item-shape: ave-component-theme-composer($ave-panelbar-item-shape-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
 
 $ave-panelbar-item-theme: (
-  $ave-panelbar-item-palette,
-  $ave-panelbar-item-typography,
-  $ave-panelbar-item-shape
+  palette: $ave-panelbar-item-palette,
+  typography: $ave-panelbar-item-typography,
+  shape: $ave-panelbar-item-shape
 );
 
+@mixin ave-panelbar-item-property-style($state-style) {
+  @each $property, $value in $state-style {
+    #{$property}: $value;
+  }
+}
 
+@mixin ave-panelbar-item-state-style($scene-style) {
+  @each $state, $state-style in $scene-style {
+    @if ($state == none) {
+      & {
+        @include ave-panelbar-item-property-style($state-style);
+      }
+    } @else {
+      &:#{$state} {
+        @include ave-panelbar-item-property-style($state-style);
+      }
+    }
+  }
+}
+
+@mixin ave-panelbar-item-scene-style($ingredient-style) {
+  @each $scene, $scene-style in $ingredient-style {
+    &-#{$scene} {
+      @include ave-panelbar-item-state-style($scene-style);
+    }
+  }
+}
+
+@mixin ave-panelbar-item-style($component-theme) {
+  $palette: map_get($component-theme, palette);
+  $typography: map_get($component-theme, typography);
+  $shape: map_get($component-theme, shape);
+
+  // Palette
+  .#{$ave-prefix}-panelbar-item {
+    @include ave-panelbar-item-scene-style($palette);
+  }
+
+  // Typography
+  .#{$ave-prefix}-panelbar-item {
+    @include ave-panelbar-item-scene-style($typography);
+  }
+
+  // Shape
+  .#{$ave-prefix}-panelbar-item {
+    @include ave-panelbar-item-scene-style($shape);
+    .v-panelbar-item-header {
+      padding: 0.618em 0.5em;
+    }
+    .v-panelbar-item-panel {
+      padding: 0;
+      background-color: ave-property($palette, default, none, background-color);
+      color: ave-property($palette, default, none, color);
+    }
+  }
+}
 

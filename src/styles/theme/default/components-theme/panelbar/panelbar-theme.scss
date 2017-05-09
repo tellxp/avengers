@@ -24,8 +24,8 @@ $ave-panelbar-property: (
 
 // Color
 $ave-panelbar-palette-base: (
-  default: ave-palette($ave-palette-grey),
-  primary: ave-palette($ave-palette-indigo),
+  default: ave-palette($ave-palette-white),
+  primary: ave-palette($ave-palette-white),
   secondary: ave-palette($ave-palette-white),
   success: ave-palette($ave-palette-white),
   info: ave-palette($ave-palette-white),
@@ -63,22 +63,50 @@ $ave-panelbar-typography: ave-component-theme-composer($ave-panelbar-typography-
 $ave-panelbar-shape: ave-component-theme-composer($ave-panelbar-shape-base, $ave-panelbar-state, $ave-panelbar-property);
 
 $ave-panelbar-theme: (
-  $ave-panelbar-palette,
-  $ave-panelbar-typography,
-  $ave-panelbar-shape
+  palette: $ave-panelbar-palette,
+  typography: $ave-panelbar-typography,
+  shape: $ave-panelbar-shape
 );
 
-@mixin ave-panelbar-theme() {
-  .v-panelbar-item {
-    div {
-      padding: 0.5em;
-    }
-    div:focus {
-      background-color: map_get($ave-palette-indigo, 700);
-    }
-    ave-panel {
-      background-color: #F6F6F6;
+@mixin ave-panelbar-property-style($state-style) {
+  @each $property, $value in $state-style {
+    #{$property}: $value;
+  }
+}
+
+@mixin ave-panelbar-state-style($scene-style) {
+  @each $state, $state-style in $scene-style {
+    @if ($state == none) {
+      & {
+        @include ave-panelbar-property-style($state-style);
+      }
+    } @else {
+      &:#{$state} {
+        @include ave-panelbar-property-style($state-style);
+      }
     }
   }
 }
-@include ave-panelbar-theme();
+
+@mixin ave-panelbar-scene-style($ingredient-style) {
+  @each $scene, $scene-style in $ingredient-style {
+    &-#{$scene} {
+      @include ave-panelbar-state-style($scene-style);
+    }
+  }
+}
+
+@mixin ave-panelbar-style($component-theme) {
+  $palette: map_get($component-theme, palette);
+  $typography: map_get($component-theme, typography);
+  $shape: map_get($component-theme, shape);
+  .#{$ave-prefix}-panelbar {
+    @include ave-panelbar-scene-style($palette);
+  }
+  .#{$ave-prefix}-panelbar {
+    @include ave-panelbar-scene-style($typography);
+  }
+  .#{$ave-prefix}-panelbar {
+    @include ave-panelbar-scene-style($shape);
+  }
+}

@@ -61,39 +61,46 @@ $theme-component-state: (
   }
   @return $component-theme-ingredient;
 }
+
+@function ave-property($component-theme, $scene-name, $state-name, $property-name) {
+  $theme-scene: map_get($component-theme, $scene-name);
+  $theme-state: map_get($theme-scene, $state-name);
+  $theme-property: map_get($theme-state, $property-name);
+  @return $theme-property;
+}
 // Palette
-@mixin ave-component-property-style($state-style) {
-  @each $property, $value in $state-style {
-    #{$property}: $value;
-  }
-}
-
-@mixin ave-component-state-style($scene-style) {
-  @each $state, $state-style in $scene-style {
-    @if ($state == none) {
-      & {
-        @include ave-component-property-style($state-style);
-      }
-    } @else {
-      &:#{$state} {
-        @include ave-component-property-style($state-style);
-      }
-    }
-  }
-}
-
-@mixin ave-component-scene-style($ingredient-style) {
-  @each $scene, $scene-style in $ingredient-style {
-    &-#{$scene} {
-      @include ave-component-state-style($scene-style);
-    }
-  }
-}
-
-@mixin ave-component-style($component-name, $component-theme) {
-  @each $ingredient-style in $component-theme {
-    .#{$ave-prefix}-#{$component-name} {
-      @include ave-component-scene-style($ingredient-style);
-    }
-  }
-}
+//@mixin ave-component-property-style($state-style) {
+//  @each $property, $value in $state-style {
+//    #{$property}: $value;
+//  }
+//}
+//
+//@mixin ave-component-state-style($scene-style) {
+//  @each $state, $state-style in $scene-style {
+//    @if ($state == none) {
+//      & {
+//        @include ave-component-property-style($state-style);
+//      }
+//    } @else {
+//      &:#{$state} {
+//        @include ave-component-property-style($state-style);
+//      }
+//    }
+//  }
+//}
+//
+//@mixin ave-component-scene-style($ingredient-style) {
+//  @each $scene, $scene-style in $ingredient-style {
+//    &-#{$scene} {
+//      @include ave-component-state-style($scene-style);
+//    }
+//  }
+//}
+//
+//@mixin ave-component-style($component-name, $component-theme) {
+//  @each $ingredient-style in $component-theme {
+//    .#{$ave-prefix}-#{$component-name} {
+//      @include ave-component-scene-style($ingredient-style);
+//    }
+//  }
+//}

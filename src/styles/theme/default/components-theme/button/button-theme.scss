@@ -63,10 +63,50 @@ $ave-button-typography: ave-component-theme-composer($ave-button-typography-base
 $ave-button-shape: ave-component-theme-composer($ave-button-shape-base, $ave-button-state, $ave-button-property);
 
 $ave-button-theme: (
-  $ave-button-palette,
-  $ave-button-typography,
-  $ave-button-shape
+  palette: $ave-button-palette,
+  typography: $ave-button-typography,
+  shape: $ave-button-shape
 );
+@mixin ave-button-property-style($state-style) {
+  @each $property, $value in $state-style {
+    #{$property}: $value;
+  }
+}
 
+@mixin ave-button-state-style($scene-style) {
+  @each $state, $state-style in $scene-style {
+    @if ($state == none) {
+      & {
+        @include ave-button-property-style($state-style);
+      }
+    } @else {
+      &:#{$state} {
+        @include ave-button-property-style($state-style);
+      }
+    }
+  }
+}
 
+@mixin ave-button-scene-style($ingredient-style) {
+  @each $scene, $scene-style in $ingredient-style {
+    &-#{$scene} {
+      @include ave-button-state-style($scene-style);
+    }
+  }
+}
 
+@mixin ave-button-style($component-theme) {
+  $palette: map_get($component-theme, palette);
+  $typography: map_get($component-theme, typography);
+  $shape: map_get($component-theme, shape);
+
+  .#{$ave-prefix}-button {
+    @include ave-button-scene-style($palette);
+  }
+  .#{$ave-prefix}-button {
+    @include ave-button-scene-style($typography);
+  }
+  .#{$ave-prefix}-button {
+    @include ave-button-scene-style($shape);
+  }
+}
