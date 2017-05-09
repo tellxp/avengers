@@ -6,9 +6,9 @@ import {IntroductionComponent} from './material-design/introduction/introduction
 
 const appRoutes: Routes = [
   {
-    path: 'guidelines', component: GuidelinesComponent,
+    path: 'material-design-zh', component: GuidelinesComponent,
     children: [
-      {path: '', component: IntroductionComponent},
+      {path: 'guidelines', component: IntroductionComponent},
       {path: 'material-design/introduction', component: IntroductionComponent},
     ]
   },
