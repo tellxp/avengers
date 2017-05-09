@@ -28,6 +28,8 @@
 }
 .brand {
   display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
   border-bottom: solid;
   border-width: 2px;
   border-color: #bdbdbd;
