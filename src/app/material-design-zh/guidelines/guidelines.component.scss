@@ -50,6 +50,14 @@
 .toolbar {
   display: flex;
   flex-flow: row;
+  position: fixed;
+  top:0;
+  height: 3em;
   justify-content: center;
   align-items: center;
+}
+.content {
+  display: block;
+  height: 100%;
+  margin-top: 6em;
 }

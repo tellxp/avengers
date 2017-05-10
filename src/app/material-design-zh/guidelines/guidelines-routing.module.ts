@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {GuidelinesComponent} from './guidelines.component';
 import {IntroductionComponent} from './material-design/introduction/introduction.component';
+import {GuidelinesComponent} from './guidelines.component';
 
 
 const appRoutes: Routes = [
@@ -12,7 +12,6 @@ const appRoutes: Routes = [
       {path: 'material-design/introduction', component: IntroductionComponent},
     ]
   },
-
 ];
 
 @NgModule({
