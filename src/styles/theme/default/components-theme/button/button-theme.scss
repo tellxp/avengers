@@ -3,6 +3,7 @@
 @import "../../palette";
 @import "../../typography";
 @import "../../shape";
+@import "../../elevation";
 
 // State dictionary
 $ave-button-state: (
@@ -82,6 +83,7 @@ $ave-button-theme: (
     } @else {
       &:#{$state} {
         @include ave-button-property-style($state-style);
+        @include ave-elevation(4);
       }
     }
   }
@@ -108,5 +110,8 @@ $ave-button-theme: (
   }
   .#{$ave-prefix}-button {
     @include ave-button-scene-style($shape);
+  }
+  .#{$ave-prefix}-button {
+    @include ave-elevation(2);
   }
 }
