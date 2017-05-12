@@ -1,18 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>css滤镜</title>
+  <meta charset="UTF-8">
+  <title>filter</title>
   <style>
-    body{}
-    .try{ margin-left:30px;}
+    html, body {
+      height: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .back {
+      display: block;
+      height: 100%;
+      width: 900px;
+      position: absolute;
+      background-size: cover;
+      background-position: 0 0;
+      background-image: url(heroillustration.jpg);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+
+    .container {
+      display: block;
+      height: 300px;
+      width: 400px;
+      position: absolute;
+      background-size: cover;
+      background-position: 0 0;
+      background-image: url(heroillustration.jpg);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+
+      border-radius: 10px;
+      filter: blur(10px);
+    }
+
   </style>
 </head>
 <body>
-<br /><br />
-<div class="try"><font color="#CC33C2">施杨de编程世界</font><br />
-  <br />
-  <div><img src="logo.png" style="filter:light(); width:400px; height:300px" onload="javascript:this.filters.light.addAmbient(10,250,100,55)"
+<div class="back">
 
+</div>
+<div class="container">
+
+</div>
 </body>
 </html>
