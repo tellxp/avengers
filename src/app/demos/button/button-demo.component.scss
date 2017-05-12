@@ -2,3 +2,18 @@ ave-popup {
   background-color: darkblue;
   color: #ffffff;
 }
+.light-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: lightgrey;
+}
+.content {
+  color: black;
+}
+.container {
+  position: relative;
+}

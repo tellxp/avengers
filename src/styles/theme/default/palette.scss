@@ -706,21 +706,21 @@ $ave-palette-black: (
 );
 
 
-@function ave-palette($base-palette, $default: 400, $lighter: 50, $darker: 700, $is-dark: true) {
+@function ave-palette($base-palette, $default: 500, $lighter: 100, $darker: 900, $is-dark: true) {
   $result: ();
   @if($is-dark) {
     $result: (
       none:(
         background-color: map-get($base-palette, $default),
-        color: map-get($base-palette, $lighter),
+        color: white,
       ),
       active:(
         background-color: map-get($base-palette, $darker),
         color: map-get($base-palette, $lighter),
       ),
       hover:(
-        background-color: map-get($base-palette, $darker),
-        color: map-get($base-palette, $lighter),
+        background-color: map-get($base-palette, 300),
+        color: white,
       ),
       focus:(
         background-color: map-get($base-palette, $darker),

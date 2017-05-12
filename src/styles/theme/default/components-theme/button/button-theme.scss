@@ -73,17 +73,27 @@ $ave-button-theme: (
     #{$property}: $value;
   }
 }
+@mixin ave-button-light-overlay-style($scene-style) {
 
+}
 @mixin ave-button-state-style($scene-style) {
   @each $state, $state-style in $scene-style {
     @if ($state == none) {
       & {
         @include ave-button-property-style($state-style);
+        //background-color: blue;
+        .light-overlay {
+          filter:mask(color：#bdbdbd);
+        }
       }
     } @else {
       &:#{$state} {
-        @include ave-button-property-style($state-style);
-        @include ave-elevation(4);
+
+        .light-overlay {
+          filter:mask(color：#bdbdbd);
+        }
+        //@include ave-button-property-style($state-style);
+        //@include ave-elevation(4);
       }
     }
   }
@@ -103,15 +113,15 @@ $ave-button-theme: (
   $shape: map_get($component-theme, shape);
 
   .#{$ave-prefix}-button {
-    @include ave-button-scene-style($palette);
+    //@include ave-button-scene-style($palette);
   }
   .#{$ave-prefix}-button {
-    @include ave-button-scene-style($typography);
+    //@include ave-button-scene-style($typography);
   }
   .#{$ave-prefix}-button {
     @include ave-button-scene-style($shape);
   }
   .#{$ave-prefix}-button {
-    @include ave-elevation(2);
+    //@include ave-elevation(2);
   }
 }
