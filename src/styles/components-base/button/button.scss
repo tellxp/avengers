@@ -14,8 +14,8 @@
 
   // Reset browser <button> styles.
   @include ave-button-reset();
-  background-color: #ffffff;
-  color: #000000;
+  background-color: transparent;
+  color: transparent;
 
   justify-content: center;
   align-items: center;
