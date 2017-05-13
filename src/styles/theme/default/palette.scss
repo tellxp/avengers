@@ -4,8 +4,6 @@
 // Contrast colors are hard-coded because it is too difficult (probably impossible) to
 // calculate them. These contrast colors are pulled from the public Material Design spec swatches.
 // While the contrast colors in the spec are not prescriptive, we use them for convenience.
-
-
 @import "../../core/core";
 
 $ave-palette-red: (
@@ -705,10 +703,9 @@ $ave-palette-black: (
   )
 );
 
-
 @function ave-palette($base-palette, $default: 500, $lighter: 100, $darker: 900, $is-dark: true) {
   $result: ();
-  @if($is-dark) {
+  @if ($is-dark) {
     $result: (
       none:(
         background-color: map-get($base-palette, $default),
@@ -719,7 +716,7 @@ $ave-palette-black: (
         color: map-get($base-palette, $lighter),
       ),
       hover:(
-        background-color: map-get($base-palette, 300),
+        background-color: map-get($base-palette, $darker),
         color: white,
       ),
       focus:(
@@ -728,7 +725,7 @@ $ave-palette-black: (
       ),
       visited:(
         background-color: map-get($base-palette, $darker),
-        color: map-get($base-palette, $lighter)
+        color: map-get($base-palette, $lighter),
       )
     );
   } @else {

@@ -15,11 +15,18 @@ $ave-button-state: (
 );
 
 // Property dictionary
-$ave-button-property: (
+$ave-button-palette-property: (
   background-color,
   color,
+);
+$ave-button-typography-property: (
   font,
+);
+$ave-button-shape-property: (
   padding
+);
+$ave-button-overlay-property: (
+  background-color,
 );
 // Define a theme.
 
@@ -59,9 +66,9 @@ $ave-button-shape-base: (
   link: ave-shape($ave-shape-ratio-1dot618)
 );
 
-$ave-button-palette: ave-component-theme-composer($ave-button-palette-base, $ave-button-state, $ave-button-property);
-$ave-button-typography: ave-component-theme-composer($ave-button-typography-base, $ave-button-state, $ave-button-property);
-$ave-button-shape: ave-component-theme-composer($ave-button-shape-base, $ave-button-state, $ave-button-property);
+$ave-button-palette: ave-component-theme-composer($ave-button-palette-base, $ave-button-state, $ave-button-palette-property);
+$ave-button-typography: ave-component-theme-composer($ave-button-typography-base, $ave-button-state, $ave-button-typography-property);
+$ave-button-shape: ave-component-theme-composer($ave-button-shape-base, $ave-button-state, $ave-button-shape-property);
 
 $ave-button-theme: (
   palette: $ave-button-palette,
@@ -73,18 +80,21 @@ $ave-button-theme: (
     #{$property}: $value;
   }
 }
+
 @mixin ave-button-light-overlay-style($state-style) {
-  $background-color: map_get($state-style, background-color);
-    //background-color: $background-color;
-  $background-image: radial-gradient(circle, rgba(#ffffff,0) 0%, rgba(#bdbdbd,0.4) 100%);
-  background-image: $background-image;
+  .light-overlay {
+    z-index: 0;
+    $base-color: ave-property($ave-button-palette, primary, hover, background-color);
+    background-color: rgba($base-color, 1);
+    filter: blur(5px);
+  }
 }
+
 @mixin ave-button-state-style($scene-style) {
   @each $state, $state-style in $scene-style {
     @if ($state == none) {
       & {
         @include ave-button-property-style($state-style);
-        @include ave-button-light-overlay-style($state-style);
       }
     } @else {
       &:#{$state} {
