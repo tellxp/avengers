@@ -26,7 +26,7 @@ $ave-button-shape-property: (
   padding
 );
 $ave-button-overlay-property: (
-  background-color,
+  backcolor,
 );
 // Define a theme.
 
@@ -86,7 +86,6 @@ $ave-button-theme: (
     z-index: 0;
     $base-color: ave-property($ave-button-palette, primary, hover, background-color);
     background-color: rgba($base-color, 1);
-    filter: blur(5px);
   }
 }
 
