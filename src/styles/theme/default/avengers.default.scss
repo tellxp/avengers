@@ -12,7 +12,7 @@
   //  @include ave-component-style($component-name, $component-theme);
   //}
   @include ave-ripple();
-  @include ave-button-style($ave-button-theme);
+  @include ave-button-style();
 
   @include ave-panelbar-style($ave-panelbar-theme);
   @include ave-panelbar-item-style($ave-panelbar-item-theme);

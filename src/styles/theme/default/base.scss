@@ -62,45 +62,41 @@ $theme-component-state: (
   @return $component-theme-ingredient;
 }
 
-@function ave-property($component-theme, $scene-name, $state-name, $property-name) {
-  $theme-scene: map_get($component-theme, $scene-name);
-  $theme-state: map_get($theme-scene, $state-name);
-  $theme-property: map_get($theme-state, $property-name);
-  @return $theme-property;
+@function ave-property($ingredient-style, $scene-name, $state-name, $property-name) {
+  $scene-style: map_get($ingredient-style, $scene-name);
+  $state-style: map_get($scene-style, $state-name);
+  $property-style: map_get($state-style, $property-name);
+  @return $property-style;
 }
-// Palette
-//@mixin ave-component-property-style($state-style) {
-//  @each $property, $value in $state-style {
-//    #{$property}: $value;
-//  }
-//}
-//
-//@mixin ave-component-state-style($scene-style) {
-//  @each $state, $state-style in $scene-style {
-//    @if ($state == none) {
-//      & {
-//        @include ave-component-property-style($state-style);
-//      }
-//    } @else {
-//      &:#{$state} {
-//        @include ave-component-property-style($state-style);
-//      }
-//    }
-//  }
-//}
-//
-//@mixin ave-component-scene-style($ingredient-style) {
-//  @each $scene, $scene-style in $ingredient-style {
-//    &-#{$scene} {
-//      @include ave-component-state-style($scene-style);
-//    }
-//  }
-//}
-//
-//@mixin ave-component-style($component-name, $component-theme) {
-//  @each $ingredient-style in $component-theme {
-//    .#{$ave-prefix}-#{$component-name} {
-//      @include ave-component-scene-style($ingredient-style);
-//    }
-//  }
-//}
+
+@mixin ave-component-property-style($state-style, $property-map) {
+  @each $property in $property-map {
+    $value: map_get($state-style, $property);
+    #{$property}: $value;
+  }
+}
+
+@mixin ave-component-state-style($scene-style, $state-map, $property-map) {
+  @each $state in $state-map {
+    $state-style: map_get($scene-style, $state);
+    @if ($state == none) {
+      & {
+        @include ave-component-property-style($state-style, $property-map);
+      }
+    } @else {
+      &:#{$state} {
+        @include ave-component-property-style($state-style, $property-map);
+      }
+    }
+  }
+}
+
+@mixin ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map) {
+  @each $scene in $scene-map {
+    &-#{$scene} {
+      $scene-style: map_get($ingredient-style, $scene);
+      @include ave-component-state-style($scene-style, $state-map, $property-map);
+    }
+  }
+}
+
