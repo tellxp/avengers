@@ -19,7 +19,7 @@ $theme-component-scene: (
 );
 
 $theme-component-state: (
-  none,
+  base,
   active,
   hover,
   focus,
@@ -79,7 +79,7 @@ $theme-component-state: (
 @mixin ave-component-state-style($scene-style, $state-map, $property-map) {
   @each $state in $state-map {
     $state-style: map_get($scene-style, $state);
-    @if ($state == none) {
+    @if ($state == base) {
       & {
         @include ave-component-property-style($state-style, $property-map);
       }

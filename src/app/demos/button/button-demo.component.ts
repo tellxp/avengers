@@ -1,18 +1,28 @@
-import {Component, OnInit, Input, ContentChildren, QueryList, ContentChild} from '@angular/core';
-import {ButtonComponent} from "../../../components/button/button.component";
-import {PopupComponent} from "../../../components/popup/popup.component";
+import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {ButtonComponent} from '../../../components/button/button.component';
 
 @Component({
-    templateUrl: './button-demo.component.html',
-    styleUrls: ['./button-demo.component.scss']
+  templateUrl: './button-demo.component.html',
+  styleUrls: ['./button-demo.component.scss']
 })
-export class ButtonDemo implements OnInit {
+export class ButtonDemoComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
-    constructor() {
+  @ViewChild('btn') viewBtn: ButtonComponent;
+  constructor() {
 
-    }
+  }
 
-    ngOnInit() { }
+  ngOnInit() {
+  }
 
+  ngAfterViewInit() {
 
+  }
+
+  ngAfterViewChecked() {
+
+  }
+  onClick() {
+    // console.log(this.viewBtn.elementRef);
+  }
 }

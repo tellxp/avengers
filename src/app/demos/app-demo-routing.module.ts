@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeDemoComponent} from './home/home-demo.component';
 import {TabstripDemo} from './tabstrip/tabstrip-demo.component';
-import {ButtonDemo} from './button/button-demo.component';
+import {ButtonDemoComponent} from './button/button-demo.component';
 import {PopupDemoComponent} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
@@ -23,7 +23,7 @@ const appDemoRoutes: Routes = [
       {path: '', component: HomeDemoComponent},
       {path: 'home', component: HomeDemoComponent},
       {path: 'tabstrip-demo', component: TabstripDemo},
-      {path: 'button-demo', component: ButtonDemo},
+      {path: 'button-demo', component: ButtonDemoComponent},
       {path: 'popup-demo', component: PopupDemoComponent},
       {path: 'dropdown-demo', component: DropdownDemo},
       {path: 'menu-demo', component: MenuDemo},

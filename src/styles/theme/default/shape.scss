@@ -64,7 +64,7 @@ $ave-shape-ratio-2: (
 
 @function ave-shape($base-sizing, $default: 400, $tighter: 200, $looser: 700) {
   $result: (
-    none: (
+    base: (
       padding: map_get($base-sizing, $default)
     ),
     active: (

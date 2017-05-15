@@ -18,7 +18,7 @@ $ave-typography-yahei: (
 
 @function ave-typography($base-typography, $default: 400, $thinner: 200, $thicker: 700) {
   $result: (
-    none: (
+    base: (
       font: map-get($base-typography, $default)
     ),
     active: (

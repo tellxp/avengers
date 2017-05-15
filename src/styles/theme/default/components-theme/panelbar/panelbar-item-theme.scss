@@ -6,7 +6,7 @@
 
 // State dictionary
 $ave-panelbar-item-state: (
-  none,
+  base,
   active,
   hover,
   focus,
@@ -76,7 +76,7 @@ $ave-panelbar-item-theme: (
 
 @mixin ave-panelbar-item-state-style($scene-style) {
   @each $state, $state-style in $scene-style {
-    @if ($state == none) {
+    @if ($state == base) {
       & {
         @include ave-panelbar-item-property-style($state-style);
       }
@@ -124,8 +124,8 @@ $ave-panelbar-item-theme: (
     }
     .v-panelbar-item-panel {
       padding: 0;
-      background-color: ave-property($palette, default, none, background-color);
-      color: ave-property($palette, default, none, color);
+      background-color: ave-property($palette, default, base, background-color);
+      color: ave-property($palette, default, base, color);
     }
   }
 }

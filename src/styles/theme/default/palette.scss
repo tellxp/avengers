@@ -704,11 +704,11 @@ $ave-palette-black: (
 );
 $dark-theme-text-color: #ffffff;
 $light-theme-text-color: #000000;
-@function ave-palette($base-palette, $default: 500, $lighter: 100, $darker: 900, $is-dark: false) {
+@function ave-palette($base-palette, $default: 400, $lighter: 200, $darker: 700, $is-dark: false) {
   $result: ();
   @if ($is-dark) {
     $result: (
-      none:(
+      base:(
         background-color: map-get($base-palette, $default),
         color: $dark-theme-text-color,
       ),
@@ -731,7 +731,7 @@ $light-theme-text-color: #000000;
     );
   } @else {
     $result: (
-      none:(
+      base:(
         background-color: map-get($base-palette, $default),
         color: $light-theme-text-color,
       ),

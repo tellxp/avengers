@@ -6,7 +6,7 @@
 
 // State dictionary
 $ave-panelbar-state: (
-  none,
+  base,
   //active,
   //hover,
   //focus,
@@ -76,7 +76,7 @@ $ave-panelbar-theme: (
 
 @mixin ave-panelbar-state-style($scene-style) {
   @each $state, $state-style in $scene-style {
-    @if ($state == none) {
+    @if ($state == base) {
       & {
         @include ave-panelbar-property-style($state-style);
       }

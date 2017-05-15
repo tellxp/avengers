@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppDemoComponent} from './app-demo.component';
 import {HomeDemoComponent} from './home/home-demo.component';
 import {TabstripDemo} from './tabstrip/tabstrip-demo.component';
-import {ButtonDemo} from './button/button-demo.component';
+import {ButtonDemoComponent} from './button/button-demo.component';
 import {PopupDemoComponent} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
@@ -63,7 +63,7 @@ import {NavbarDemoComponent} from './navbar/navbar-demo.component';
       AppDemoComponent,
       HomeDemoComponent,
       TabstripDemo,
-      ButtonDemo,
+      ButtonDemoComponent,
       PopupDemoComponent,
       DropdownDemo,
       MenuDemo,
