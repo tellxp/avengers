@@ -5,8 +5,7 @@
 @import "../../shape";
 @import "../../elevation";
 
-// TODO 按照container和分层的准则来重构button的theme
-// State dictionary
+// Style dictionary
 $ave-button-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
   state: (base),
@@ -16,12 +15,17 @@ $ave-button-style-map: (
 $ave-button-ground-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
   state: (base),
-  property: (background-color,),
+  property: (background-color),
+);
+$ave-button-light-style-map: (
+  scene: (default, primary, secondary, success, info, warning, danger, link,),
+  state: (active, hover, focus),
+  property: (background-color),
 );
 $ave-button-content-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
-  state: (base, active, hover, focus,),
-  property: (color,),
+  state: (base, active, hover, focus),
+  property: (color),
 );
 // Define a theme.
 
@@ -60,17 +64,40 @@ $ave-button-shape: (
   danger: ave-shape($ave-shape-ratio-1dot618),
   link: ave-shape($ave-shape-ratio-1dot618)
 );
+
 @mixin ave-button-ground-style($palette) {
   $scene-map: map_get($ave-button-ground-style-map, scene);
   $state-map: map_get($ave-button-ground-style-map, state);
   $property-map: map_get($ave-button-ground-style-map, property);
-
+  .ground {
+    background-color: $ave-default-ground-color;
+  }
   @each $scene in $scene-map {
     $scene-style: map_get($palette, $scene);
-
     .#{$ave-prefix}-button-#{$scene} {
       .ground {
         @include ave-component-state-style($scene-style, $state-map, $property-map);
+      }
+    }
+  }
+}
+
+@mixin ave-button-light-style($palette) {
+  $scene-map: map_get($ave-button-light-style-map, scene);
+  $state-map: map_get($ave-button-light-style-map, state);
+  $property-map: map_get($ave-button-light-style-map, property);
+
+  @each $scene in $scene-map {
+    $scene-style: map_get($palette, $scene);
+    .#{$ave-prefix}-button-#{$scene} {
+      @each $state in $state-map {
+        $state-style: map_get($scene-style, $state);
+        &:#{$state} {
+          .light {
+            background-color: rgba($light-color, $golden-ratio);
+            @include ave-component-property-style($state-style, $property-map);
+          }
+        }
       }
     }
   }
@@ -81,6 +108,9 @@ $ave-button-shape: (
   $state-map: map_get($ave-button-content-style-map, state);
   $property-map: map_get($ave-button-content-style-map, property);
 
+  .content {
+    color: $ave-default-content-color;
+  }
   @each $scene in $scene-map {
     $scene-style: map_get($palette, $scene);
     .#{$ave-prefix}-button-#{$scene} {
@@ -98,7 +128,24 @@ $ave-button-shape: (
   .#{$ave-prefix}-button {
     @include ave-component-scene-style($shape, $scene-map, $state-map, $property-map);
     @include ave-elevation(2);
+  }
+}
 
+@mixin ave-button-motion-style() {
+
+  .v-button-primary {
+    .motion {
+      width: 100%;
+      height: 100%;
+      background-color: #bdbdbd;
+      opacity: 0;
+      transition: opacity 1000ms cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+  .v-button-primary:hover {
+    .motion {
+      opacity: 1;
+    }
   }
 }
 
@@ -108,6 +155,8 @@ $ave-button-shape: (
 
   @include ave-button-ground-style($ave-button-palette);
 
+  @include ave-button-light-style($ave-button-palette);
+  @include ave-button-motion-style();
   @include ave-button-content-style($ave-button-palette);
 
 }

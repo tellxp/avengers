@@ -5,6 +5,7 @@
 // calculate them. These contrast colors are pulled from the public Material Design spec swatches.
 // While the contrast colors in the spec are not prescriptive, we use them for convenience.
 @import "../../core/core";
+@import "base";
 
 $ave-palette-red: (
   50: #ffebee,
@@ -704,6 +705,8 @@ $ave-palette-black: (
 );
 $dark-theme-text-color: #ffffff;
 $light-theme-text-color: #000000;
+$light-color: rgba(#ffffff, 0.5);
+
 @function ave-palette($base-palette, $default: 400, $lighter: 200, $darker: 700, $is-dark: false) {
   $result: ();
   @if ($is-dark) {
