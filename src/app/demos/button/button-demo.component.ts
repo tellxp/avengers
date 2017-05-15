@@ -23,6 +23,5 @@ export class ButtonDemoComponent implements OnInit, AfterViewInit, AfterViewChec
 
   }
   onClick() {
-    // console.log(this.viewBtn.elementRef);
   }
 }
