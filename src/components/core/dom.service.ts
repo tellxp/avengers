@@ -1,4 +1,4 @@
-import {Injectable, Renderer2} from "@angular/core";
+import {Injectable, Renderer2} from '@angular/core';
 
 @Injectable()
 export class DomService {

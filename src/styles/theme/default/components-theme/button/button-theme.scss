@@ -25,7 +25,7 @@ $ave-button-light-style-map: (
 $ave-button-content-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
   state: (base, active, hover, focus),
-  property: (color),
+  property: (color, font),
 );
 // Define a theme.
 
@@ -103,7 +103,7 @@ $ave-button-shape: (
   }
 }
 
-@mixin ave-button-content-style($palette) {
+@mixin ave-button-content-style($palette, $typography) {
   $scene-map: map_get($ave-button-content-style-map, scene);
   $state-map: map_get($ave-button-content-style-map, state);
   $property-map: map_get($ave-button-content-style-map, property);
@@ -112,10 +112,12 @@ $ave-button-shape: (
     color: $ave-default-content-color;
   }
   @each $scene in $scene-map {
-    $scene-style: map_get($palette, $scene);
+    $scene-palette-style: map_get($palette, $scene);
+    $scene-typography-style: map_get($typography, $scene);
     .#{$ave-prefix}-button-#{$scene} {
       .content {
-        @include ave-component-state-style($scene-style, $state-map, $property-map);
+        @include ave-component-state-style($scene-palette-style, $state-map, $property-map);
+        @include ave-component-state-style($scene-typography-style, $state-map, $property-map);
       }
     }
   }
@@ -156,7 +158,9 @@ $ave-button-shape: (
   @include ave-button-ground-style($ave-button-palette);
 
   @include ave-button-light-style($ave-button-palette);
+
   @include ave-button-motion-style();
-  @include ave-button-content-style($ave-button-palette);
+
+  @include ave-button-content-style($ave-button-palette, $ave-button-typography);
 
 }
