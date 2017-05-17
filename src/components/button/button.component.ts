@@ -1,6 +1,6 @@
 import {
   Component, ElementRef, AfterViewChecked, HostBinding, OnChanges, OnInit, DoCheck, AfterContentInit,
-  AfterViewInit, OnDestroy, AfterContentChecked, Input, ViewChild
+  AfterViewInit, OnDestroy, AfterContentChecked, Input, ViewChild, HostListener
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -21,7 +21,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   @Input() value;
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-button') buttonClass = 'true';
-@ViewChild('motion') motionLayer: HTMLElement;
+  @ViewChild('motion') motionLayer: ElementRef;
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
@@ -59,11 +59,13 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     // console.log(this.value);
 
   }
-
+  getMotionElement() {
+    return this.motionLayer;
+  }
   ngAfterViewInit() {
     super.ngAfterViewInit();
     this.value = 'ngAfterViewInit';
-    this.motionLayer.addListener(("animationstart", onAnimation, false);
+
     // console.log(this.value);
 
   }
@@ -80,7 +82,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     // console.log(this.value);
 
   }
-  onAnimation() {
-    console.log('animation');
+  onMousedown() {
+    console.log('down');
   }
 }

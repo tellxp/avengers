@@ -2,21 +2,20 @@ import {NgModule} from '@angular/core';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {ButtonComponent} from './button.component';
-import {PopupModule} from '../popup/popup.module';
+import {FadeinDirective} from '../motion/fadein.directive';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    PopupModule
+    BrowserModule
   ],
   declarations: [
-    ButtonComponent
+    ButtonComponent,
+    FadeinDirective
   ],
   exports: [
     ButtonComponent
   ],
-  providers: [
-  ],
+  providers: [],
 })
 export class ButtonModule {
 }
