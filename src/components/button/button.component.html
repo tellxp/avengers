@@ -1,4 +1,7 @@
-<div  class="content"><ng-content></ng-content></div>
-<div #motion aveFadein (mousedown)="onMousedown()" class="motion" ></div>
-<div class="light"></div>
-<div class="ground"></div>
+<div #content class="content">
+  <ng-content></ng-content>
+</div>
+<div #motion aveFadein [trigger]="getHostElement()" class="motion"
+     [ngClass]="{'motion-mousedown': state=='mousedown', 'motion-mouseup': state=='mouseup'}"></div>
+<div #light class="light"></div>
+<div #ground class="ground"></div>

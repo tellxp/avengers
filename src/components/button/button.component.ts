@@ -19,9 +19,18 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() value;
+  state: string;
+
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-button') buttonClass = 'true';
+  @HostListener('mousedown') onMousedown() {
+    this.state = 'mousedown';
+  }
+  @HostListener('mouseup') onMouseup() {
+    this.state = 'mouseup';
+  }
   @ViewChild('motion') motionLayer: ElementRef;
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
@@ -35,6 +44,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   ngOnInit() {
     super.ngOnInit();
     this.value = 'ngOnInit';
+    this.state = 'base';
     // console.log(this.value);
 
   }
@@ -82,7 +92,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     // console.log(this.value);
 
   }
-  onMousedown() {
-    console.log('down');
+  getHostElement() {
+    return this.elementRef.nativeElement;
   }
 }
