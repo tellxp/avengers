@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {ButtonComponent} from './button.component';
-import {FadeinDirective} from '../animation/fadein.directive';
+import {ScaleinDirective} from '../animation/scalein.directive';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import {FadeinDirective} from '../animation/fadein.directive';
   ],
   declarations: [
     ButtonComponent,
-    FadeinDirective
+    ScaleinDirective
   ],
   exports: [
     ButtonComponent
