@@ -32,26 +32,31 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @Input() value;
   @ViewChild('motion') motionLayer: ElementRef;
-  state: string;
+  motionState: string;
   mouseEvent: MouseEvent;
+  offsetX: number;
+  offsetY: number;
+
 
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-button') buttonClass = 'true';
 
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
-    this.state = 'mousedown';
+    this.offsetX = this.mouseEvent.offsetX;
+    this.offsetY = this.mouseEvent.offsetY;
+    this.motionState = 'start';
   }
 
   @HostListener('mouseup') onMouseup() {
-    this.state = 'mouseup';
+    this.motionState = 'end';
   }
-
-
 
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
+    this.motionState = 'none';
   }
+
 
   ngOnChanges() {
     super.ngOnChanges();
@@ -62,7 +67,9 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   ngOnInit() {
     super.ngOnInit();
     this.value = 'ngOnInit';
-    this.state = 'base';
+
+    this.offsetX = 0;
+    this.offsetY = 0;
     // console.log(this.value);
 
   }
@@ -95,20 +102,8 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   ngAfterViewInit() {
     super.ngAfterViewInit();
     this.value = 'ngAfterViewInit';
-    this.motionLayer.nativeElement.addEventListener('animationstart', this.OnAnimationStart.bind(this, this));
-    this.motionLayer.nativeElement.addEventListener('animationend', this.OnAnimationEnd.bind(this, this));
     // console.log(this.value);
 
-  }
-  OnAnimationStart() {
-    const offsetX = this.mouseEvent.offsetX;
-    const offsetY = this.mouseEvent.offsetY;
-    this.render.setStyle(this.motionLayer.nativeElement, 'transform-origin', `${offsetX}px` + ' ' + `${offsetY}px`);
-  }
-  OnAnimationEnd() {
-    if (this.state === 'mouseup') {
-      this.state = 'base';
-    }
   }
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
@@ -120,10 +115,5 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
     this.value = 'ngOnDestroy';
     // console.log(this.value);
-
-  }
-
-  getHostElement() {
-    return this.elementRef.nativeElement;
   }
 }

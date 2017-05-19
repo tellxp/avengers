@@ -44,8 +44,8 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    this.gutter = this.getValidValue(this.gutter, this.config.gutter);
-    this.amount = this.getValidValue(this.amount, this.config.amount);
+    this.gutter = WidgetComponent.getValidValue(this.gutter, this.config.gutter);
+    this.amount = WidgetComponent.getValidValue(this.amount, this.config.amount);
   }
 
   loadColumns() {

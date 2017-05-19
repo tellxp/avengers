@@ -2,7 +2,6 @@
 @import "typography";
 @import "shape";
 @import "palette";
-@import "ripple";
 @import "components-theme/button/button-theme";
 @import "components-theme/panelbar/panelbar-theme";
 @import "components-theme/panelbar/panelbar-item-theme";
@@ -11,7 +10,6 @@
   //@each $component-name, $component-theme in $themes {
   //  @include ave-component-style($component-name, $component-theme);
   //}
-  @include ave-ripple();
   @include ave-button-style();
 
   @include ave-panelbar-style($ave-panelbar-theme);

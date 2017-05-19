@@ -4,7 +4,7 @@
 @import "../../typography";
 @import "../../shape";
 @import "../../elevation";
-@import "../../animation";
+@import "../../animation/base";
 
 // Style dictionary
 $ave-button-style-map: (
@@ -139,28 +139,7 @@ $ave-button-shape: (
 
   }
   .v-button-primary {
-    .motion-mousedown {
-      animation-name: scale-in;
-      animation-duration: 280ms;
-      animation-timing-function: cubic-bezier(0,0,0.2,1);
-      animation-delay: 0s;
-      animation-iteration-count: 1;
-      animation-direction: alternate;
-      animation-play-state: running;
-      animation-fill-mode: forwards;
-      background-color: rgba($light-color, $golden-ratio);
-    }
-    .motion-mouseup {
-      animation-name: fade-out;
-      animation-duration: 560ms;
-      animation-timing-function: cubic-bezier(0,0,0.2,1);
-      animation-delay: 0s;
-      animation-iteration-count: 1;
-      animation-direction: alternate;
-      animation-play-state: running;
-      animation-fill-mode: forwards;
-      background-color: rgba($light-color, $golden-ratio);
-    }
+
   }
 }
 

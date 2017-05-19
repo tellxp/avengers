@@ -99,6 +99,7 @@ $theme-component-state: (
     &-#{$scene} {
       $scene-style: map_get($ingredient-style, $scene);
       @include ave-component-state-style($scene-style, $state-map, $property-map);
+
     }
   }
 }

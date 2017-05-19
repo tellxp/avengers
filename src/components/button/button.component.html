@@ -1,8 +1,10 @@
 <div #content class="content">
   <ng-content></ng-content>
 </div>
-<div #motion aveScalein [host]="this" [ngClass]="{'motion-mousedown': state=='mousedown',
-     'motion-mouseup': state=='mouseup',
-     'motion': state=='mousedown' || state=='mouseup' }"></div>
+<div #motion aveRipple
+     [trigger]="motionState"
+     [offsetX]="offsetX" [offsetY]="offsetY"
+     [width]="style.width" [height]="style.height"
+     class="motion"></div>
 <div #light class="light"></div>
 <div #ground class="ground"></div>

@@ -1,1 +1,29 @@
+.content {
+  display: inline-block;
+  background-color: transparent;
+  z-index: 0;
+}
+.motion {
+  display: block;
+  position: absolute;
+  z-index: -1;
+}
+.light {
+  display: block;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
 
+.ground {
+  display: block;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}

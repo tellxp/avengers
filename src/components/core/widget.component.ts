@@ -23,12 +23,20 @@ export class WidgetComponent implements OnChanges,
   public elementRef: ElementRef;
   public dom: DomService;
 
+
+  static getValidValue<T>(field: T, value: T): T {
+    if (isNullOrUndefined(field)) {
+      return value;
+    } else {
+      return field;
+    }
+  }
+
   constructor(elementRef: ElementRef, domService: DomService) {
 
     this.elementRef = elementRef;
     this.dom = domService;
   }
-
 
   ngOnChanges() {
 
@@ -75,13 +83,7 @@ export class WidgetComponent implements OnChanges,
     this.style.height = this.dom.getBindedElementStyle().height;
   }
 
-  public getValidValue<T>(field: T, value: T): T {
-    if (isNullOrUndefined(field)) {
-      return value;
-    } else {
-      return field;
-    }
-  }
+
 }
 export class WidgetPosition {
   left: number;

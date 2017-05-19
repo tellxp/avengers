@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {ButtonComponent} from './button.component';
-import {ScaleinDirective} from '../animation/scalein.directive';
+import {RippleDirective} from '../animation/ripple.directive';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import {ScaleinDirective} from '../animation/scalein.directive';
   ],
   declarations: [
     ButtonComponent,
-    ScaleinDirective
+    RippleDirective
   ],
   exports: [
     ButtonComponent
