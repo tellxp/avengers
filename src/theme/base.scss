@@ -9,6 +9,12 @@ $ave-default-content-color: #000000;
 // Color
 $base-color: #ffffff;
 $component-back-color: transparentize($base-color, 1);
+$black-87-opacity: rgba(black, 0.87);
+$white-87-opacity: rgba(white, 0.87);
+$black-12-opacity: rgba(black, 0.12);
+$white-12-opacity: rgba(white, 0.12);
+$black-6-opacity: rgba(black, 0.06);
+$white-6-opacity: rgba(white, 0.06);
 
 $theme-component-scene: (
   default,

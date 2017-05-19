@@ -1,18 +1,13 @@
-div {
-  display: block;
-}
+@import "../core/widget.component";
 
-span {
-  display: flex;
-}
-i {
-  display: flex;
-  font-size: 0.5em;
-  margin-left: auto;
-  margin-right: 1em;
-}
-
-ave-panel {
-  display: flex;
+%v-panelbar-item-base {
+  @extend %v-container;
   flex-flow: column;
+  justify-content: flex-start;
+
+}
+.v-panelbar-item {
+  @extend %v-panelbar-item-base;
+  background-color: #ffffff;
+  color: #000000;
 }

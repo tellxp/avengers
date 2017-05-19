@@ -72,7 +72,7 @@ export class RippleDirective implements OnInit, OnChanges {
     this.rippleOutStyles.set('animation-iteration-count', '1');
     this.rippleOutStyles.set('animation-direction', 'alternate');
     this.rippleOutStyles.set('animation-play-state', 'running');
-    this.rippleOutStyles.set('animation-fill-mode', 'forwards');
+    this.rippleOutStyles.set('animation-fill-mode', 'none');
     this.rippleOutStyles.set('background-color', 'rgba(#ffffff, 0.618)');
   }
 

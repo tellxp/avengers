@@ -8,7 +8,7 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy, ViewEncapsulation
 } from '@angular/core';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
@@ -17,6 +17,8 @@ import {DomService} from '../core/dom.service';
   selector: 'ave-tabstrip-addon',
   templateUrl: './tabstrip-addon.component.html',
   styleUrls: ['./tabstrip-addon.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class TabstripAddonComponent extends WidgetComponent implements OnChanges,

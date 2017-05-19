@@ -1,7 +1,7 @@
 import {
   AfterContentChecked,
   AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChildren, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit,
-  QueryList
+  QueryList, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {PopupOrientation} from '../popup/popup.component';
@@ -13,6 +13,8 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class MenuItemComponent extends WidgetComponent implements OnChanges,

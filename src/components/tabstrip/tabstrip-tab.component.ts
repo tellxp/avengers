@@ -9,7 +9,7 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPageComponent} from './tabstrip-page.component';
@@ -21,6 +21,8 @@ import {DomService} from '../core/dom.service';
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
   styleUrls: ['./tabstrip-tab.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class TabstripTabComponent extends WidgetComponent implements OnChanges,

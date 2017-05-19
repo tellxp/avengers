@@ -12,7 +12,7 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  Renderer2
+  Renderer2, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -28,6 +28,8 @@ export const TEXTBOX_VALUE_ACCESSOR: any = {
   selector: 'ave-textbox',
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService, TEXTBOX_VALUE_ACCESSOR]
 })
 

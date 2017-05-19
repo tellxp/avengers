@@ -8,7 +8,7 @@ import {
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  OnDestroy, OnChanges, DoCheck, Renderer2, HostBinding
+  OnDestroy, OnChanges, DoCheck, Renderer2, HostBinding, ViewEncapsulation
 } from '@angular/core';
 import {DomService, ElementPosition, ElementStyle} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -19,6 +19,8 @@ import {isNullOrUndefined} from 'util';
   selector: 'ave-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class PopupComponent extends WidgetComponent implements OnChanges,

@@ -14,7 +14,7 @@ import {
   OnDestroy,
   OnInit,
   QueryList,
-  Renderer2
+  Renderer2, ViewEncapsulation
 } from '@angular/core';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripComponent} from './tabstrip.component';
@@ -29,6 +29,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   selector: 'ave-tabstrip-panel',
   templateUrl: './tabstrip-panel.component.html',
   styleUrls: ['./tabstrip-panel.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   animations: [
     trigger('fadeDown', [
       state('expanded', style({

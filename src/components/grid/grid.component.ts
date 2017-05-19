@@ -9,7 +9,7 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  OnInit, Renderer2
+  OnInit, Renderer2, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -20,6 +20,8 @@ import {isNullOrUndefined} from "util";
   selector: 'ave-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class GridComponent extends WidgetComponent implements OnChanges,

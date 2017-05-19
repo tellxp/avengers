@@ -10,7 +10,7 @@
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList
+  QueryList, ViewEncapsulation
 } from '@angular/core';
 import {MenuBarComponent} from './menu-bar.component';
 import {WidgetComponent} from '../core/widget.component';
@@ -20,6 +20,8 @@ import {DomService} from '../core/dom.service';
   selector: 'ave-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class MenuComponent extends WidgetComponent implements OnChanges,

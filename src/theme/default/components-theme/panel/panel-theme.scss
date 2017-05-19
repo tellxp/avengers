@@ -1,8 +1,8 @@
-@import "../../../../components-base/panel/panel";
-@import "../../base";
-@import "../../palette";
-@import "../../typography";
-@import "../../shape";
+@import "../../../../components/panel/panel.component";
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
 
 // State dictionary
 $ave-panel-state: (

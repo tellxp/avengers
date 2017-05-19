@@ -11,7 +11,7 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList
+  QueryList, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {MenuItemComponent} from './menu-item.component';
@@ -22,6 +22,8 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-menu-entry',
   templateUrl: './menu-entry.component.html',
   styleUrls: ['./menu-entry.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class MenuEntryComponent extends WidgetComponent implements OnChanges,

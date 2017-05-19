@@ -5,10 +5,12 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef,
+  HostBinding,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -18,6 +20,7 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-panelbar',
   templateUrl: './panelbar.component.html',
   styleUrls: ['./panelbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
 export class PanelbarComponent extends WidgetComponent implements OnChanges,

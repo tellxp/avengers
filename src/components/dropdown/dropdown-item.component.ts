@@ -8,7 +8,7 @@ import {
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -18,6 +18,8 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-dropdown-item',
   templateUrl: './dropdown-item.component.html',
   styleUrls: ['./dropdown-item.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class DropdownItemComponent extends WidgetComponent implements OnChanges,

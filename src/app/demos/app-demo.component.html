@@ -1,31 +1,27 @@
-<ave-grid class="container theme-default">
-  <ave-grid-column class="side-menu">
-    <ave-grid-row class="brand">
-      <a routerLink="/"><img src="../../assets/brand.svg" alt="brand"></a>
-    </ave-grid-row>
-    <ave-grid-row>
-      <ave-grid-column>
-        <h3>组件</h3>
-        <a routerLink="./tabstrip-demo" routerLinkActive="active">Tabstrip</a>
-        <a routerLink="./button-demo" routerLinkActive="active">Button</a>
-        <a routerLink="./popup-demo" routerLinkActive="active">Popup</a>
-        <a routerLink="./dropdown-demo" routerLinkActive="active">Dropdown</a>
-        <a routerLink="./menu-demo" routerLinkActive="active">Menu</a>
-        <a routerLink="./megamenu-demo" routerLinkActive="active">Megamenu</a>
-        <a routerLink="./panelbar-demo" routerLinkActive="active">Panelbar</a>
-        <a routerLink="./panel-demo" routerLinkActive="active">Panel</a>
-        <a routerLink="./routebar-demo" routerLinkActive="active">Routebar</a>
-        <a routerLink="./textbox-demo" routerLinkActive="active">Textbox</a>
-        <a routerLink="./checkbox-demo" routerLinkActive="active">Checkbox</a>
-        <a routerLink="./navbar-demo" routerLinkActive="active">Navbar</a>
-        <h3>示例</h3>
-        <a routerLink="/example" routerLinkActive="active" target="_blank">Example</a>
-      </ave-grid-column>
-    </ave-grid-row>
+<ave-grid-row [amount]="4" [gutter]="0" class="container">
+  <ave-grid-column class="side-menu" [span]="1">
+    <ave-panel class="brand">
+    <a routerLink="/"><img src="../../assets/brand.svg" alt="brand"></a>
+    </ave-panel>
+    <ave-panel class="component-list">
+      <h3>组件</h3>
+      <a routerLink="./tabstrip-demo" routerLinkActive="active">Tabstrip</a>
+      <a routerLink="./button-demo" routerLinkActive="active">Button</a>
+      <a routerLink="./popup-demo" routerLinkActive="active">Popup</a>
+      <a routerLink="./dropdown-demo" routerLinkActive="active">Dropdown</a>
+      <a routerLink="./menu-demo" routerLinkActive="active">Menu</a>
+      <a routerLink="./megamenu-demo" routerLinkActive="active">Megamenu</a>
+      <a routerLink="./panelbar-demo" routerLinkActive="active">Panelbar</a>
+      <a routerLink="./panel-demo" routerLinkActive="active">Panel</a>
+      <a routerLink="./routebar-demo" routerLinkActive="active">Routebar</a>
+      <a routerLink="./textbox-demo" routerLinkActive="active">Textbox</a>
+      <a routerLink="./checkbox-demo" routerLinkActive="active">Checkbox</a>
+      <a routerLink="./navbar-demo" routerLinkActive="active">Navbar</a>
+      <h3>示例</h3>
+      <a routerLink="/example" routerLinkActive="active" target="_blank">Example</a>
+    </ave-panel>
   </ave-grid-column>
-  <ave-grid-column class="content">
-    <ave-grid-row class="demo-content">
+  <ave-grid-column class="content" [span]="3">
       <router-outlet></router-outlet>
-    </ave-grid-row>
   </ave-grid-column>
-</ave-grid>
+</ave-grid-row>

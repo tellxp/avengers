@@ -1,0 +1,12 @@
+@import "../core/widget.component";
+
+
+%v-panel-base {
+  @extend %v-container;
+  flex-flow: row;
+  justify-content: flex-start;
+}
+
+.v-panel {
+  @extend %v-panel-base;
+}

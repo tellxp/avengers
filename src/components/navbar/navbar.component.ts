@@ -8,7 +8,7 @@ import {
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -19,6 +19,8 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class NavbarComponent extends WidgetComponent implements OnChanges,

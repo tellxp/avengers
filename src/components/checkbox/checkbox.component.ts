@@ -8,7 +8,7 @@
   ElementRef, forwardRef, HostListener,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -24,6 +24,7 @@ export const CHECKBOX_VALUE_ACCESSOR: any = {
   selector: 'ave-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [DomService, CHECKBOX_VALUE_ACCESSOR]
 })
 export class CheckboxComponent extends WidgetComponent implements OnChanges,

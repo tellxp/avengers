@@ -1,5 +1,4 @@
-@import "../../styles/theme/default/base";
-
+@import "../../theme/base";
 
 .brand {
   width: 100%;
@@ -16,6 +15,10 @@
   a {
     color: white;
   }
+}
+.component-list {
+  display: flex;
+  flex-flow: column;
 }
 h3 {
   background-color: black;

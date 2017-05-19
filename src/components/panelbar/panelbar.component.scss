@@ -1,0 +1,28 @@
+@import "../core/widget.component";
+
+%v-panelbar-base {
+  @extend %v-container;
+  flex-flow: column;
+  justify-content: flex-start;
+  overflow: auto;
+  width: 100%;
+
+  //outline: solid;
+  //outline-width: 1px;
+  //outline-color: #bdbdbd;
+}
+
+
+
+.v-panelbar {
+  @extend %v-panelbar-base;
+  .v-panelbar-item {
+    outline-bottom: solid;
+    outline-width: 1px;
+    outline-color: #bdbdbd;
+  }
+  .v-panelbar-item:last-of-type {
+    outline-bottom: none;
+  }
+}
+

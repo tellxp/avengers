@@ -12,7 +12,7 @@ import {
   OnChanges,
   OnDestroy,
   OnInit, Renderer2,
-  ViewChild
+  ViewChild, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -21,6 +21,7 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
 export class ButtonComponent extends WidgetComponent implements OnChanges,

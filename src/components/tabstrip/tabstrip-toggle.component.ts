@@ -8,7 +8,7 @@ import {
   AfterViewInit,
   OnDestroy,
   AfterContentChecked,
-  AfterViewChecked
+  AfterViewChecked, ViewEncapsulation
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
@@ -20,6 +20,8 @@ import {DomService} from '../core/dom.service';
   selector: 'ave-tabstrip-toggle',
   templateUrl: './tabstrip-toggle.component.html',
   styleUrls: ['./tabstrip-toggle.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class TabstripToggleComponent extends WidgetComponent implements OnChanges,

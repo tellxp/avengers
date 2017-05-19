@@ -5,12 +5,12 @@ import {
   AfterViewInit,
   Component, ContentChildren,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   Input,
   OnChanges,
   OnDestroy,
   OnInit, QueryList,
-  Renderer2
+  Renderer2, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -24,6 +24,8 @@ import {GridComponent} from './grid.component';
   selector: 'ave-grid-column',
   templateUrl: './grid-column.component.html',
   styleUrls: ['./grid-column.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService, GridColumnConfig]
 })
 export class GridColumnComponent extends WidgetComponent implements OnChanges,
@@ -36,6 +38,7 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
   @Input() span: number;
   @Input() offset: number;
 
+  @HostBinding('class.v-grid-column') gridColumnClass = 'true';
   parentRow: GridRowComponent;
 
   init() {

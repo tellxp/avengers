@@ -1,6 +1,6 @@
 import {
   Component, OnInit, ContentChildren, QueryList, AfterContentInit, OnChanges, DoCheck, AfterContentChecked,
-  AfterViewInit, AfterViewChecked, OnDestroy, ElementRef
+  AfterViewInit, AfterViewChecked, OnDestroy, ElementRef, ViewEncapsulation
 } from '@angular/core';
 import {MenuEntryComponent} from './menu-entry.component';
 import {MenuComponent} from './menu.component';
@@ -10,7 +10,10 @@ import {DomService} from '../core/dom.service';
 @Component({
   selector: 'ave-menu-bar',
   templateUrl: './menu-bar.component.html',
-  styleUrls: ['./menu-bar.component.scss']
+  styleUrls: ['./menu-bar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [DomService]
+
 })
 export class MenuBarComponent extends WidgetComponent implements OnChanges,
   OnInit,

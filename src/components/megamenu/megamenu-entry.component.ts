@@ -8,7 +8,7 @@ import {
   ElementRef, Input,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -18,6 +18,8 @@ import {WidgetComponent} from '../core/widget.component';
   selector: 'ave-megamenu-entry',
   templateUrl: './megamenu-entry.component.html',
   styleUrls: ['./megamenu-entry.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class MegamenuEntryComponent extends WidgetComponent implements OnChanges,

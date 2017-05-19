@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate,
-  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges
+  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, ViewEncapsulation
 } from '@angular/core';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {TabstripTabComponent} from './tabstrip-tab.component';
@@ -11,6 +11,8 @@ import {DomService} from '../core/dom.service';
   selector: 'ave-tabstrip-page',
   templateUrl: './tabstrip-page.component.html',
   styleUrls: ['./tabstrip-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class TabstripPageComponent extends WidgetComponent implements OnChanges,

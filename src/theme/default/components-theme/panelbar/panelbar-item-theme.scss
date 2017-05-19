@@ -1,8 +1,8 @@
-@import "../../../../components-base/panelbar/panelbar-item";
-@import "../../base";
-@import "../../palette";
-@import "../../typography";
-@import "../../shape";
+@import "../../../../components/panelbar/panelbar-item.component";
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
 
 // State dictionary
 $ave-panelbar-item-state: (

@@ -11,7 +11,7 @@ import {
   HostListener,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
@@ -23,6 +23,8 @@ import {DomService} from '../core/dom.service';
   selector: 'ave-tabstrip',
   templateUrl: './tabstrip.component.html',
   styleUrls: ['./tabstrip.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService]
 })
 export class TabstripComponent extends WidgetComponent implements OnChanges,

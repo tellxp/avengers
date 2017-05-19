@@ -6,12 +6,12 @@ import {
   Component,
   ContentChildren,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList
+  QueryList, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
@@ -23,6 +23,8 @@ import {GridRowConfig} from './grid-row.config';
   selector: 'ave-grid-row',
   templateUrl: './grid-row.component.html',
   styleUrls: ['./grid-row.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
   providers: [DomService, GridRowConfig]
 })
 export class GridRowComponent extends WidgetComponent implements OnChanges,
@@ -36,6 +38,8 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
   @Input() amount: number;
 
   @ContentChildren(GridColumnComponent) contentColumn: QueryList<GridColumnComponent>;
+
+  @HostBinding('class.v-grid-row') gridRowClass = 'true';
 
   columns: GridColumnComponent[];
 
