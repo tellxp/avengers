@@ -65,19 +65,24 @@ $ave-shape-ratio-2: (
 @function ave-shape($base-sizing, $default: 400, $tighter: 200, $looser: 700) {
   $result: (
     base: (
-      padding: map_get($base-sizing, $default)
+      padding: map_get($base-sizing, $default),
+      outline: none,
     ),
     active: (
-      padding: map_get($base-sizing, $default)
+      padding: map_get($base-sizing, $default),
+      outline: #bdbdbd solid 2px,
     ),
     hover: (
-      padding: map_get($base-sizing, $default)
+      padding: map_get($base-sizing, $default),
+      outline: #bdbdbd solid 2px,
     ),
     focus: (
-      padding: map_get($base-sizing, $default)
+      padding: map_get($base-sizing, $default),
+      outline: #eeeeee solid 2px,
     ),
     visited:(
-      padding: map_get($base-sizing, $default)
+      padding: map_get($base-sizing, $default),
+      outline: #eeeeee solid 2px,
     )
   );
   @return $result;

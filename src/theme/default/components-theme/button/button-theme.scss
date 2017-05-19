@@ -9,8 +9,8 @@
 // Style dictionary
 $ave-button-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
-  state: (base),
-  property: (padding),
+  state: (base, active, hover, focus),
+  property: (padding, outline-color),
 );
 
 $ave-button-ground-style-map: (
@@ -20,7 +20,7 @@ $ave-button-ground-style-map: (
 );
 $ave-button-light-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
-  state: (active, hover, focus),
+  state: (base, active, hover, focus),
   property: (background-color),
 );
 $ave-button-content-style-map: (
@@ -70,9 +70,7 @@ $ave-button-shape: (
   $scene-map: map_get($ave-button-ground-style-map, scene);
   $state-map: map_get($ave-button-ground-style-map, state);
   $property-map: map_get($ave-button-ground-style-map, property);
-  .ground {
-    background-color: $ave-default-ground-color;
-  }
+
   @each $scene in $scene-map {
     $scene-style: map_get($palette, $scene);
     .#{$ave-prefix}-button-#{$scene} {
@@ -96,6 +94,7 @@ $ave-button-shape: (
         &:#{$state} {
           .light {
             background-color: rgba($light-color, $golden-ratio);
+
             @include ave-component-property-style($state-style, $property-map);
           }
         }
@@ -129,17 +128,10 @@ $ave-button-shape: (
   $state-map: map_get($ave-button-style-map, state);
   $property-map: map_get($ave-button-style-map, property);
   .#{$ave-prefix}-button {
+    outline-style: solid;
+    outline-width: 2px;
     @include ave-component-scene-style($shape, $scene-map, $state-map, $property-map);
     @include ave-elevation(2);
-  }
-}
-
-@mixin ave-button-motion-style() {
-  .v-button-primary {
-
-  }
-  .v-button-primary {
-
   }
 }
 
@@ -147,11 +139,11 @@ $ave-button-shape: (
 
   @include ave-button-container-style($ave-button-shape);
 
+  @include ave-button-container-style($ave-button-palette);
+
   @include ave-button-ground-style($ave-button-palette);
 
   @include ave-button-light-style($ave-button-palette);
-
-  @include ave-button-motion-style();
 
   @include ave-button-content-style($ave-button-palette, $ave-button-typography);
 

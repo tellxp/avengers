@@ -737,22 +737,28 @@ $light-color: rgba(#ffffff, 0.5);
       base:(
         background-color: map-get($base-palette, $default),
         color: $light-theme-text-color,
+        outline-color: none,
       ),
       active:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
+        outline-color: map-get($base-palette, $darker),
+
       ),
       hover:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
+        outline-color: map-get($base-palette, $darker),
       ),
       focus:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
+        outline-color: map-get($base-palette, $darker),
       ),
       visited:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
+        outline-color: map-get($base-palette, $darker),
       )
     );
   }
