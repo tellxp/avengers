@@ -10,7 +10,7 @@
 $ave-button-style-map: (
   scene: (default, primary, secondary, success, info, warning, danger, link,),
   state: (base, active, hover, focus),
-  property: (padding, outline-color),
+  property: (padding, outline),
 );
 
 $ave-button-ground-style-map: (
@@ -128,8 +128,6 @@ $ave-button-shape: (
   $state-map: map_get($ave-button-style-map, state);
   $property-map: map_get($ave-button-style-map, property);
   .#{$ave-prefix}-button {
-    outline-style: solid;
-    outline-width: 2px;
     @include ave-component-scene-style($shape, $scene-map, $state-map, $property-map);
     @include ave-elevation(2);
   }

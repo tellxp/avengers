@@ -6,9 +6,9 @@ import {WidgetComponent, WidgetPosition, WidgetStyle} from '../core/widget.compo
     selector: '[aveRipple]',
   }
 )
-export class RippleDirective implements OnInit, OnChanges {
+export class RippleDirective implements OnChanges {
 
-  @Input() trigger: string;
+  @Input() stateTrigger: string;
   @Input() hostStyle: WidgetStyle;
   @Input() rippleStartPosition: WidgetPosition;
 
@@ -22,25 +22,23 @@ export class RippleDirective implements OnInit, OnChanges {
   @HostListener('animationstart') OnAnimationStart() {
   }
   @HostListener('animationend') OnAnimationEnd() {
-    if (this.trigger === 'end') {
+    if (this.stateTrigger === 'end') {
       this.clearStyles();
     }
   }
   constructor(private elementRef: ElementRef, private render: Renderer2) {
 
   }
-  ngOnInit() {
-  }
   ngOnChanges(changes: SimpleChanges) {
-    const triggerState = changes['trigger'];
-    if (triggerState) {
-      if (triggerState.currentValue === 'start') {
+    const state = changes['stateTrigger'];
+    if (state) {
+      if (state.currentValue === 'start') {
         this.rippleRadius = this.calculateRippleElementRadius(this.rippleStartPosition, this.hostStyle);
         this.rippleElementPosition = this.calculateRippleElementPosition(this.rippleStartPosition, this.hostStyle);
         this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
         this.rippleIn();
       }
-      if (triggerState.currentValue === 'end') {
+      if (state.currentValue === 'end') {
         this.rippleOut();
       }
     }
@@ -104,7 +102,6 @@ export class RippleDirective implements OnInit, OnChanges {
   }
   calculateRippleElementRadius(startPosition: WidgetPosition, hostStyle: WidgetStyle): number {
     let radius = 0;
-    // console.log(startPosition);
     if (hostStyle.width > hostStyle.height) {
       if (this.isTopLeft(startPosition, hostStyle)) {
         radius = Math.sqrt(

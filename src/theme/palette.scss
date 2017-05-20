@@ -644,11 +644,11 @@ $ave-palette-white: (
   200: rgba(#ffffff, 0.2),
   300: rgba(#ffffff, 0.3),
   400: rgba(#ffffff, 1.0),
-  500: rgba(#ffffff, 0.5),
-  600: rgba(#ffffff, 0.6),
-  700: rgba(#ffffff, 0.7),
-  800: rgba(#ffffff, 0.8),
-  900: rgba(#ffffff, 1),
+  500: rgba(#000000, 0.5),
+  600: rgba(#000000, 0.6),
+  700: rgba(#000000, 0.7),
+  800: rgba(#000000, 0.8),
+  900: rgba(#000000, 1),
   A100: rgba(#ffffff, 0.5),
   A200: rgba(#ffffff, 1),
   A400: rgba(#000000, 0.5),
@@ -737,28 +737,28 @@ $light-color: rgba(#ffffff, 0.5);
       base:(
         background-color: map-get($base-palette, $default),
         color: $light-theme-text-color,
-        outline-color: none,
+        outline: none,
       ),
       active:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
-        outline-color: map-get($base-palette, $darker),
+        outline: map-get($base-palette, $darker) solid 2px,
 
       ),
       hover:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
-        outline-color: map-get($base-palette, $darker),
+        outline: none,
       ),
       focus:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
-        outline-color: map-get($base-palette, $darker),
+        outline: map-get($base-palette, $darker) solid 2px,
       ),
       visited:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
-        outline-color: map-get($base-palette, $darker),
+        outline: map-get($base-palette, $darker) solid 2px,
       )
     );
   }

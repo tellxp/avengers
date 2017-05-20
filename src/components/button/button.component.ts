@@ -33,11 +33,10 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @Input() value;
   @ViewChild('motion') motionLayer: ElementRef;
-  pointerPosition: WidgetPosition;
+  mousePosition: WidgetPosition;
+  
   motionState: string;
   mouseEvent: MouseEvent;
-  offsetX: number;
-  offsetY: number;
 
 
   @HostBinding('attr.tabindex') tabIndex = '-1';
@@ -45,8 +44,8 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
-    this.pointerPosition.left = this.mouseEvent.offsetX;
-    this.pointerPosition.top = this.mouseEvent.offsetY;
+    this.mousePosition.left = this.mouseEvent.offsetX;
+    this.mousePosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
   }
 
@@ -57,7 +56,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
     this.motionState = 'none';
-    this.pointerPosition = new WidgetPosition();
+    this.mousePosition = new WidgetPosition();
   }
 
 
@@ -71,8 +70,6 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     super.ngOnInit();
     this.value = 'ngOnInit';
 
-    this.offsetX = 0;
-    this.offsetY = 0;
     // console.log(this.value);
 
   }
