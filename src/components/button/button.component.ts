@@ -15,7 +15,7 @@ import {
   ViewChild, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {WidgetComponent, WidgetPosition} from '../core/widget.component';
 
 @Component({
   selector: 'ave-button',
@@ -33,6 +33,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @Input() value;
   @ViewChild('motion') motionLayer: ElementRef;
+  pointerPosition: WidgetPosition;
   motionState: string;
   mouseEvent: MouseEvent;
   offsetX: number;
@@ -44,8 +45,8 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
-    this.offsetX = this.mouseEvent.offsetX;
-    this.offsetY = this.mouseEvent.offsetY;
+    this.pointerPosition.left = this.mouseEvent.offsetX;
+    this.pointerPosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
   }
 
@@ -56,6 +57,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
     this.motionState = 'none';
+    this.pointerPosition = new WidgetPosition();
   }
 
 

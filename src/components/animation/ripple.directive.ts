@@ -9,10 +9,8 @@ import {WidgetComponent, WidgetPosition, WidgetStyle} from '../core/widget.compo
 export class RippleDirective implements OnInit, OnChanges {
 
   @Input() trigger: string;
-  @Input() offsetX: number;
-  @Input() offsetY: number;
-  @Input() width: number;
-  @Input() height: number;
+  @Input() hostStyle: WidgetStyle;
+  @Input() rippleStartPosition: WidgetPosition;
 
   rippleRadius: number;
   rippleElementPosition: WidgetPosition;
@@ -37,8 +35,8 @@ export class RippleDirective implements OnInit, OnChanges {
     const triggerState = changes['trigger'];
     if (triggerState) {
       if (triggerState.currentValue === 'start') {
-        this.rippleRadius = this.calculateRippleElementRadius(this.offsetX, this.offsetY, this.width, this.height);
-        this.rippleElementPosition = this.calculateRippleElementPosition(this.offsetX, this.offsetY, this.width, this.height);
+        this.rippleRadius = this.calculateRippleElementRadius(this.rippleStartPosition, this.hostStyle);
+        this.rippleElementPosition = this.calculateRippleElementPosition(this.rippleStartPosition, this.hostStyle);
         this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
         this.rippleIn();
       }
@@ -104,43 +102,44 @@ export class RippleDirective implements OnInit, OnChanges {
       }
     );
   }
-  calculateRippleElementRadius(offsetX: number, offsetY: number, width: number, height: number): number {
+  calculateRippleElementRadius(startPosition: WidgetPosition, hostStyle: WidgetStyle): number {
     let radius = 0;
-    if (width > height) {
-      if (this.isTopLeft(offsetX, offsetY, width, height)) {
+    // console.log(startPosition);
+    if (hostStyle.width > hostStyle.height) {
+      if (this.isTopLeft(startPosition, hostStyle)) {
         radius = Math.sqrt(
-          Math.pow(width - offsetX, 2) + Math.pow(height - offsetY, 2)
+          Math.pow(hostStyle.width - startPosition.left, 2) + Math.pow(hostStyle.height - startPosition.top, 2)
         );
         return radius;
       }
 
-      if (this.isTopRight(offsetX, offsetY, width, height)) {
+      if (this.isTopRight(startPosition, hostStyle)) {
         radius = Math.sqrt(
-          Math.pow(offsetX, 2) + Math.pow(height - offsetY, 2)
+          Math.pow(startPosition.left, 2) + Math.pow(hostStyle.height - startPosition.top, 2)
         );
         return radius;
       }
 
-      if (this.isBottomLeft(offsetX, offsetY, width, height)) {
+      if (this.isBottomLeft(startPosition, hostStyle)) {
         radius = Math.sqrt(
-          Math.pow(width - offsetX, 2) + Math.pow(offsetY, 2)
+          Math.pow(hostStyle.width - startPosition.left, 2) + Math.pow(startPosition.top, 2)
         );
         return radius;
       }
 
-      if (this.isBottomRight(offsetX, offsetY, width, height)) {
+      if (this.isBottomRight(startPosition, hostStyle)) {
         radius = Math.sqrt(
-          Math.pow(offsetX, 2) + Math.pow(offsetY, 2)
+          Math.pow(startPosition.left, 2) + Math.pow(startPosition.top, 2)
         );
         return radius;
       }
     }
   }
-  calculateRippleElementPosition(offsetX: number, offsetY: number, width: number, height: number): WidgetPosition {
+  calculateRippleElementPosition(startPosition: WidgetPosition, hostStyle: WidgetStyle): WidgetPosition {
     const position: WidgetPosition = new WidgetPosition();
-    const radius = this.calculateRippleElementRadius(offsetX, offsetY, width, height);
-    position.top = - (radius - offsetY);
-    position.left = - (radius - offsetX);
+    const radius = this.calculateRippleElementRadius(startPosition, hostStyle);
+    position.top = startPosition.top - radius;
+    position.left = startPosition.left - radius;
     return position;
   }
   calculateRippleElementStyle(radius: number): WidgetStyle {
@@ -149,29 +148,29 @@ export class RippleDirective implements OnInit, OnChanges {
     style.height = radius * 2;
     return style;
   }
-  isTopLeft(offsetX: number, offsetY: number, width: number, height: number): boolean {
-    if (offsetX < width / 2 && offsetY < height / 2) {
+  isTopLeft(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
       return true;
     } else  {
       return false;
     }
   }
-  isTopRight(offsetX: number, offsetY: number, width: number, height: number): boolean {
-    if (offsetX > width / 2 && offsetY < height / 2) {
+  isTopRight(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left > hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
       return true;
     } else  {
       return false;
     }
   }
-  isBottomLeft(offsetX: number, offsetY: number, width: number, height: number): boolean {
-    if (offsetX < width / 2 && offsetY > height / 2) {
+  isBottomLeft(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top > hostStyle.height / 2) {
       return true;
     } else  {
       return false;
     }
   }
-  isBottomRight(offsetX: number, offsetY: number, width: number, height: number): boolean {
-    if (offsetX > width / 2 && offsetY > height / 2) {
+  isBottomRight(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left > hostStyle.width / 2 && offsetPosition.top > hostStyle.height / 2) {
       return true;
     } else  {
       return false;

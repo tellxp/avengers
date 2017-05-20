@@ -3,8 +3,8 @@
 </div>
 <div #motion aveRipple
      [trigger]="motionState"
-     [offsetX]="offsetX" [offsetY]="offsetY"
-     [width]="style.width" [height]="style.height"
+     [rippleStartPosition]="pointerPosition"
+     [hostStyle]="style"
      class="motion"></div>
 <div #light class="light"></div>
 <div #ground class="ground"></div>
