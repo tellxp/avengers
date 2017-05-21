@@ -54,7 +54,7 @@ $ave-button-typography: (
   link: ave-typography($ave-typography-yahei)
 );
 
-// Frame.
+// Shape.
 $ave-button-shape: (
   default: ave-shape($ave-shape-ratio-2),
   primary: ave-shape($ave-shape-ratio-1dot618),
@@ -64,6 +64,12 @@ $ave-button-shape: (
   warning: ave-shape($ave-shape-ratio-1dot618),
   danger: ave-shape($ave-shape-ratio-1dot618),
   link: ave-shape($ave-shape-ratio-1dot618)
+);
+
+$ave-button-theme: (
+  palette: $ave-button-palette,
+  typography: $ave-button-typography,
+  shape: $ave-button-shape,
 );
 
 @mixin ave-button-ground-style($palette) {
