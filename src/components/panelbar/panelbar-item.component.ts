@@ -6,7 +6,7 @@ import {
   Component, ContentChild,
   ContentChildren,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef, HostBinding, HostListener,
   Input,
   OnChanges,
   OnDestroy,
@@ -39,6 +39,9 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   active: boolean;
 
   @HostBinding('class.v-panelbar-item') panelbarItemClass = 'true';
+  onClick() {
+    this.toggleItem();
+  }
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -104,7 +107,5 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   toggleItem() {
     this.active = !this.active;
   }
-  onClick() {
-    this.toggleItem();
-  }
+
 }

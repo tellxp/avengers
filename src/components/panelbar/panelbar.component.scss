@@ -2,27 +2,49 @@
 
 %v-panelbar-base {
   @extend %v-container;
+
+  background-color: transparent;
+  color: transparent;
+
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
   flex-flow: column;
-  justify-content: flex-start;
-  overflow: auto;
   width: 100%;
-
-  //outline: solid;
-  //outline-width: 1px;
-  //outline-color: #bdbdbd;
 }
-
-
 
 .v-panelbar {
   @extend %v-panelbar-base;
-  .v-panelbar-item {
-    outline-bottom: solid;
-    outline-width: 1px;
-    outline-color: #bdbdbd;
+
+  .content {
+    display: block;
+    background-color: transparent;
+    color: #000000;
+    z-index: 0;
   }
-  .v-panelbar-item:last-of-type {
-    outline-bottom: none;
+  .motion {
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  .light {
+    display: block;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+  }
+
+  .ground {
+    display: block;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
   }
 }
-

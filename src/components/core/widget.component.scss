@@ -1,12 +1,13 @@
 %v-container {
   display: block;
+  position: relative;
 }
 %v-control {
   display: inline-block;
   position: relative;
 }
 
-
 %v-link {
-  display: inline-flex;
+  display: inline-block;
+  position: relative;
 }

@@ -22,6 +22,7 @@ export class RippleDirective implements OnChanges {
   @HostListener('animationstart') OnAnimationStart() {
   }
   @HostListener('animationend') OnAnimationEnd() {
+    console.log('end');
     if (this.stateTrigger === 'end') {
       this.clearStyles();
     }
@@ -104,33 +105,30 @@ export class RippleDirective implements OnChanges {
     let radius = 0;
     if (hostStyle.width > hostStyle.height) {
       if (this.isTopLeft(startPosition, hostStyle)) {
-        radius = Math.sqrt(
-          Math.pow(hostStyle.width - startPosition.left, 2) + Math.pow(hostStyle.height - startPosition.top, 2)
-        );
+        radius = this.calculateHypotenuse(hostStyle.width - startPosition.left, hostStyle.height - startPosition.top);
         return radius;
       }
 
       if (this.isTopRight(startPosition, hostStyle)) {
-        radius = Math.sqrt(
-          Math.pow(startPosition.left, 2) + Math.pow(hostStyle.height - startPosition.top, 2)
-        );
+        radius = this.calculateHypotenuse(startPosition.left, hostStyle.height - startPosition.top);
         return radius;
       }
 
       if (this.isBottomLeft(startPosition, hostStyle)) {
-        radius = Math.sqrt(
-          Math.pow(hostStyle.width - startPosition.left, 2) + Math.pow(startPosition.top, 2)
-        );
+        radius = this.calculateHypotenuse(hostStyle.width - startPosition.left, startPosition.top);
         return radius;
       }
 
       if (this.isBottomRight(startPosition, hostStyle)) {
-        radius = Math.sqrt(
-          Math.pow(startPosition.left, 2) + Math.pow(startPosition.top, 2)
-        );
+        radius = this.calculateHypotenuse(startPosition.left, startPosition.top);
         return radius;
       }
     }
+  }
+  calculateHypotenuse(edge1: number, edge2: number): number {
+    return Math.sqrt(
+      Math.pow(edge1, 2) + Math.pow(edge2, 2)
+    );
   }
   calculateRippleElementPosition(startPosition: WidgetPosition, hostStyle: WidgetStyle): WidgetPosition {
     const position: WidgetPosition = new WidgetPosition();
@@ -139,6 +137,7 @@ export class RippleDirective implements OnChanges {
     position.left = startPosition.left - radius;
     return position;
   }
+
   calculateRippleElementStyle(radius: number): WidgetStyle {
     const style: WidgetStyle = new WidgetStyle();
     style.width = radius * 2;

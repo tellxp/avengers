@@ -1,6 +1,6 @@
 @import "../core/widget.component";
 @import "../utils/utils";
-
+@import "../animation/base";
 // Mixin overriding default button styles like the gray background, the border, and the outline.
 @mixin ave-button-reset {
   @include user-select(none);

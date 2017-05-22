@@ -2,6 +2,12 @@
   <span>{{title}}</span>
   <i class="fa fa-chevron-down" aria-hidden="true" *ngIf="hasChildItem()"></i>
 </div>
-<ave-panel class="v-panelbar-item-panel">
+<div class="v-panelbar-item-panel">
   <ng-content *ngIf="active"></ng-content>
-</ave-panel>
+</div>
+<div #content class="content">
+
+</div>
+<div #motion class="motion"></div>
+<div #light class="light"></div>
+<div #ground class="ground"></div>
