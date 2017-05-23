@@ -31,6 +31,7 @@ export class PanelbarComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @HostBinding('class.v-panelbar') panelbarClass = 'true';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

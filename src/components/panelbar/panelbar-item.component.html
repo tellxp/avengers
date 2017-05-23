@@ -1,13 +1,16 @@
-<div tabindex="-1" (click)="onClick()" class="v-panelbar-item-header">
-  <span>{{title}}</span>
-  <i class="fa fa-chevron-down" aria-hidden="true" *ngIf="hasChildItem()"></i>
+<div class="header">
+  <div #content class="content" (click)="onClick()">
+    <span>{{title}}</span>
+    <i class="fa fa-chevron-down" aria-hidden="true" *ngIf="hasChildItem()"></i>
+  </div>
+  <div #motion
+       class="motion"></div>
+  <div #light class="light"></div>
+  <div #ground class="ground"></div>
 </div>
-<div class="v-panelbar-item-panel">
+<div class="panel">
   <ng-content *ngIf="active"></ng-content>
 </div>
-<div #content class="content">
 
-</div>
-<div #motion class="motion"></div>
-<div #light class="light"></div>
-<div #ground class="ground"></div>
+
+

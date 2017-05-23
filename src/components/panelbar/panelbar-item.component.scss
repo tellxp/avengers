@@ -1,13 +1,50 @@
 @import "../core/widget.component";
 
-%v-panelbar-item-base {
+.v-panelbar-item {
   @extend %v-container;
   flex-flow: column;
   justify-content: flex-start;
 
-}
-.v-panelbar-item {
-  @extend %v-panelbar-item-base;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: transparent;
+  color: transparent;
+  .header {
+    display: block;
+    position: relative;
+
+    .content {
+      display: block;
+      background-color: transparent;
+      color: #000000;
+      z-index: 0;
+    }
+    .motion {
+      display: block;
+      position: absolute;
+      z-index: -1;
+    }
+    .light {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .ground {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+    }
+  }
+
+  .panel {
+    display: block;
+    z-index: 0;
+  }
 }

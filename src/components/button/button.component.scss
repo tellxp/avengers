@@ -9,7 +9,7 @@
   border: none;
 }
 
-%v-button-base {
+.v-button {
   @extend %v-control;
 
   // Reset browser <button> styles.
@@ -26,11 +26,9 @@
   // Make anchors render like buttons.
   white-space: nowrap;
   text-decoration: none;
-}
-.v-button {
-  @extend %v-button-base;
+
   .content {
-    display: inline-block;
+    display: block;
     background-color: transparent;
     color: #000000;
     z-index: 0;
@@ -59,5 +57,4 @@
     height: 100%;
     z-index: -3;
   }
-
 }

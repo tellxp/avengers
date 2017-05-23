@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {PanelbarComponent} from './panelbar.component';
 import {PanelbarItemComponent} from './panelbar-item.component';
@@ -14,13 +14,17 @@ import {PanelModule} from '../panel/panel.module';
   exports: [
     PanelbarComponent,
     PanelbarContentComponent,
-    PanelbarItemComponent
+    PanelbarItemComponent,
+
   ],
   declarations: [
     PanelbarComponent,
     PanelbarContentComponent,
-    PanelbarItemComponent
+    PanelbarItemComponent,
+
+
   ],
   providers: [],
 })
-export class PanelbarModule { }
+export class PanelbarModule {
+}

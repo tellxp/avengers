@@ -11,8 +11,7 @@
   //}
   @include ave-button-style();
 
-  @include ave-panelbar-style($ave-panelbar-theme);
-  @include ave-panelbar-item-style($ave-panelbar-item-theme);
+  @include ave-panelbar-style();
 
 }
 

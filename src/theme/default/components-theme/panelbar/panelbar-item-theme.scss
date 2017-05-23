@@ -5,37 +5,68 @@
 @import "../../../shape";
 
 // State dictionary
-$ave-panelbar-item-state: (
-  base,
-  active,
-  hover,
-  focus,
-  visited
+$ave-panelbar-item-container-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (outline-color,),
+  ),
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (outline-style, outline-width,),
+  ),
 );
 
-// Property dictionary
-$ave-panelbar-item-property: (
-  background-color,
-  color,
-  font,
-  padding
+$ave-panelbar-item-header-ingredient-map: (
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base,),
+    property: (padding,),
+  ),
 );
-// Define a theme.
+
+$ave-panelbar-item-ground-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base),
+    property: (background-color),
+  ),
+);
+$ave-panelbar-item-light-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (background-color),
+  ),
+);
+$ave-panelbar-item-content-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (color,),
+  ),
+  typography: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (font,),
+  ),
+);
 
 // Color
-$ave-panelbar-item-palette-base: (
-  default: ave-palette($ave-palette-white, A200, A700),
-  primary: ave-palette($ave-palette-indigo),
-  secondary: ave-palette($ave-palette-purple),
+$ave-panelbar-item-palette: (
+  default: ave-palette($ave-palette-grey),
+  primary: ave-palette($ave-palette-blue),
+  secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
-  info: ave-palette($ave-palette-blue),
-  warning: ave-palette($ave-palette-yellow),
-  danger: ave-palette($ave-palette-deep-purple),
-  link: ave-palette($ave-palette-black, A200, A700)
+  info: ave-palette($ave-palette-cyan),
+  warning: ave-palette($ave-palette-deep-orange),
+  danger: ave-palette($ave-palette-red),
+  link: ave-palette($ave-palette-white)
 );
 
 // Typography.
-$ave-panelbar-item-typography-base: (
+$ave-panelbar-item-typography: (
   default: ave-typography($ave-typography-yahei),
   primary: ave-typography($ave-typography-yahei),
   secondary: ave-typography($ave-typography-yahei),
@@ -46,21 +77,17 @@ $ave-panelbar-item-typography-base: (
   link: ave-typography($ave-typography-yahei)
 );
 
-// Frame.
-$ave-panelbar-item-shape-base: (
-  default: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  primary: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  secondary: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  success: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  info: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  warning: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  danger: ave-shape($ave-shape-ratio-dot618, 50, 50),
-  link: ave-shape($ave-shape-ratio-dot618, 50, 50)
+// Shape.
+$ave-panelbar-item-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  primary: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  success: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  info: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  warning: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  danger: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  link: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
 );
-
-$ave-panelbar-item-palette: ave-component-theme-composer($ave-panelbar-item-palette-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
-$ave-panelbar-item-typography: ave-component-theme-composer($ave-panelbar-item-typography-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
-$ave-panelbar-item-shape: ave-component-theme-composer($ave-panelbar-item-shape-base, $ave-panelbar-item-state, $ave-panelbar-item-property);
 
 $ave-panelbar-item-theme: (
   palette: $ave-panelbar-item-palette,
@@ -68,65 +95,113 @@ $ave-panelbar-item-theme: (
   shape: $ave-panelbar-item-shape
 );
 
-@mixin ave-panelbar-item-property-style($state-style) {
-  @each $property, $value in $state-style {
-    #{$property}: $value;
-  }
-}
 
-@mixin ave-panelbar-item-state-style($scene-style) {
-  @each $state, $state-style in $scene-style {
-    @if ($state == base) {
-      & {
-        @include ave-panelbar-item-property-style($state-style);
+
+@mixin ave-panelbar-item-ground-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-item-ground-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        & > .header {
+          & > .ground {
+            @include ave-component-state-style($scene-style, $state-map, $property-map);
+          }
+        }
       }
-    } @else {
-      &:#{$state} {
-        @include ave-panelbar-item-property-style($state-style);
+    }
+  }
+}
+
+@mixin ave-panelbar-item-light-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-item-light-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          &:#{$state} {
+            & > .header {
+              & > .light {
+                background-color: rgba($light-color, $golden-ratio);
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
-@mixin ave-panelbar-item-scene-style($ingredient-style) {
-  @each $scene, $scene-style in $ingredient-style {
-    &-#{$scene} {
-      @include ave-panelbar-item-state-style($scene-style);
+@mixin ave-panelbar-item-content-style($theme) {
+  .v-panelbar-item {
+    .content {
+      color: $ave-default-content-color;
+    }
+  }
+  @each $ingredient, $style-map in $ave-panelbar-item-content-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        .content {
+          @include ave-component-state-style($scene-style, $state-map, $property-map);
+        }
+      }
+    }
+  }
+}
+@mixin ave-panelbar-item-header-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-item-header-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        & > .header {
+          @include ave-component-state-style($scene-style, $state-map, $property-map);
+        }
+      }
     }
   }
 }
 
-@mixin ave-panelbar-item-style($component-theme) {
-  $palette: map_get($component-theme, palette);
-  $typography: map_get($component-theme, typography);
-  $shape: map_get($component-theme, shape);
-
-  // Palette
-  .#{$ave-prefix}-panelbar-item {
-    @include ave-panelbar-item-scene-style($palette);
-  }
-
-  // Typography
-  .#{$ave-prefix}-panelbar-item {
-    @include ave-panelbar-item-scene-style($typography);
-  }
-
-  // Shape
-  .#{$ave-prefix}-panelbar-item {
-    @include ave-panelbar-item-scene-style($shape);
-    .v-panelbar-item-header {
-      display: flex;
-      height: 100%;
-      justify-content: flex-start;
-      align-items: center;
-      outline: none;
-      padding: 0.618em 0.5em;
-    }
-    .v-panelbar-item-panel {
-      padding: 0;
-      background-color: ave-property($palette, default, base, background-color);
-      color: ave-property($palette, default, base, color);
+@mixin ave-panelbar-item-container-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-item-container-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+    .#{$ave-prefix}-panelbar-item {
+      @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
     }
   }
+}
+
+@mixin ave-panelbar-style() {
+  @include ave-panelbar-item-container-style($ave-panelbar-item-theme);
+@include ave-panelbar-item-header-style($ave-panelbar-item-theme);
+  @include ave-panelbar-item-ground-style($ave-panelbar-item-theme);
+
+  @include ave-panelbar-item-light-style($ave-panelbar-item-theme);
+
+  @include ave-panelbar-item-content-style($ave-panelbar-item-theme);
 }
 

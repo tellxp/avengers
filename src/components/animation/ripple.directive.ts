@@ -22,7 +22,6 @@ export class RippleDirective implements OnChanges {
   @HostListener('animationstart') OnAnimationStart() {
   }
   @HostListener('animationend') OnAnimationEnd() {
-    console.log('end');
     if (this.stateTrigger === 'end') {
       this.clearStyles();
     }
