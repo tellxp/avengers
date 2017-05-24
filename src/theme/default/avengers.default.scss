@@ -4,14 +4,14 @@
 @import "components-theme/button/button-theme";
 @import "components-theme/panelbar/panelbar-theme";
 @import "components-theme/panelbar/panelbar-item-theme";
+@import "components-theme/panelbar/panelbar-header-theme";
 
 @mixin avengers-theme-loader() {
-  //@each $component-name, $component-theme in $themes {
-  //  @include ave-component-style($component-name, $component-theme);
-  //}
   @include ave-button-style();
 
   @include ave-panelbar-style();
+  @include ave-panelbar-item-style();
+  @include ave-panelbar-header-style();
 
 }
 

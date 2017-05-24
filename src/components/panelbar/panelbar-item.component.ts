@@ -39,6 +39,7 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   active: boolean;
 
   @HostBinding('class.v-panelbar-item') panelbarItemClass = 'true';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
   onClick() {
     this.toggleItem();
   }

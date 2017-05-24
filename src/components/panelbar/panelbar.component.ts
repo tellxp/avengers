@@ -18,8 +18,8 @@ import {WidgetComponent} from '../core/widget.component';
 
 @Component({
   selector: 'ave-panelbar',
-  templateUrl: './panelbar.component.html',
-  styleUrls: ['./panelbar.component.scss'],
+  templateUrl: 'panelbar.component.html',
+  styleUrls: ['panelbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })

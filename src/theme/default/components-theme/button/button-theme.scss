@@ -29,7 +29,7 @@ $ave-button-ground-ingredient-map: (
 $ave-button-light-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
+    state: (active, hover, focus),
     property: (background-color),
   ),
 );
@@ -124,7 +124,7 @@ $ave-button-theme: (
             .light {
               background-color: rgba($light-color, $golden-ratio);
 
-              @include ave-component-property-style($state-style, $property-map);
+              //@include ave-component-property-style($state-style, $property-map);
             }
           }
         }

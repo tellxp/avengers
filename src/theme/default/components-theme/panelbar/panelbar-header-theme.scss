@@ -1,0 +1,224 @@
+@import "../../../../components/panelbar/panelbar-header.component";
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
+
+// State dictionary
+$ave-panelbar-header-container-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (outline-color,),
+  ),
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (padding),
+  ),
+);
+
+$ave-panelbar-header-ground-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base),
+    property: (background-color),
+  ),
+);
+$ave-panelbar-header-light-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (active, hover, focus),
+    property: (background-color),
+  ),
+);
+$ave-panelbar-header-content-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (color,),
+  ),
+  typography: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (font,),
+  ),
+);
+
+// Color
+$ave-panelbar-header-palette: (
+  default: ave-palette($ave-palette-grey),
+  primary: ave-palette($ave-palette-blue),
+  secondary: ave-palette($ave-palette-pink),
+  success: ave-palette($ave-palette-green),
+  info: ave-palette($ave-palette-cyan),
+  warning: ave-palette($ave-palette-deep-orange),
+  danger: ave-palette($ave-palette-red),
+  link: ave-palette($ave-palette-white)
+);
+// Typography.
+$ave-panelbar-header-typography: (
+  default: ave-typography($ave-typography-yahei),
+  primary: ave-typography($ave-typography-yahei),
+  secondary: ave-typography($ave-typography-yahei),
+  success: ave-typography($ave-typography-yahei),
+  info: ave-typography($ave-typography-yahei),
+  warning: ave-typography($ave-typography-yahei),
+  danger: ave-typography($ave-typography-yahei),
+  link: ave-typography($ave-typography-yahei)
+);
+// Shape.
+$ave-panelbar-header-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  primary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  success: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  info: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  warning: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  danger: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  link: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+);
+
+$ave-panelbar-header-theme: (
+  palette: $ave-panelbar-header-palette,
+  typography: $ave-panelbar-header-typography,
+  shape: $ave-panelbar-header-shape
+);
+@mixin ave-panelbar-header-ground-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-header-ground-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-panelbar-header {
+              & > .ground {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          } @else {
+            &:#{$state} > .v-panelbar-header {
+              & > .ground {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@mixin ave-panelbar-header-light-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-header-light-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-panelbar-header {
+              & > .light {
+                background-color: transparent;
+              }
+            }
+          } @else {
+            &:#{$state} > .v-panelbar-header {
+              & > .light {
+                background-color: rgba($light-color, $golden-ratio);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-panelbar-header-content-style($theme) {
+  .v-panelbar-header {
+    &>.content {
+      color: $ave-default-content-color;
+    }
+  }
+  @each $ingredient, $style-map in $ave-panelbar-header-content-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-panelbar-header {
+              & > .content {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          } @else {
+            &:#{$state} > .v-panelbar-header {
+              & > .content {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-panelbar-header-container-style($theme) {
+  @each $ingredient, $style-map in $ave-panelbar-header-container-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-panelbar-item-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-panelbar-header {
+              @include ave-component-property-style($state-style, $property-map);
+            }
+          } @else {
+            &:#{$state} > .v-panelbar-header {
+              @include ave-component-property-style($state-style, $property-map);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-panelbar-header-style() {
+
+  @include ave-panelbar-header-container-style($ave-panelbar-header-theme);
+
+  @include ave-panelbar-header-content-style($ave-panelbar-header-theme);
+
+  @include ave-panelbar-header-ground-style($ave-panelbar-header-theme);
+
+  @include ave-panelbar-header-light-style($ave-panelbar-header-theme);
+
+}
+

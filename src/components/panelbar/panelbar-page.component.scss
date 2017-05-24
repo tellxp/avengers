@@ -1,0 +1,8 @@
+@import "../core/widget.component";
+
+.v-panelbar-page {
+  @extend %v-container;
+
+  color: transparent;
+  background-color: transparent;
+}

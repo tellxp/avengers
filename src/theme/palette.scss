@@ -748,7 +748,7 @@ $light-color: rgba(#ffffff, 0.5);
       hover:(
         background-color: map-get($base-palette, $lighter),
         color: $light-theme-text-color,
-        outline-color: transparent,
+        outline-color: map-get($base-palette, $darker),
       ),
       focus:(
         background-color: map-get($base-palette, $lighter),
