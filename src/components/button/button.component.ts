@@ -34,7 +34,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   @Input() value;
   @ViewChild('motion') motionLayer: ElementRef;
   mousePosition: WidgetPosition;
-  
+
   motionState: string;
   mouseEvent: MouseEvent;
 

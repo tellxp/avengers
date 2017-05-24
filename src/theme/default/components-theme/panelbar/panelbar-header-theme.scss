@@ -6,11 +6,11 @@
 
 // State dictionary
 $ave-panelbar-header-container-ingredient-map: (
-  palette: (
-    scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
-    property: (outline-color,),
-  ),
+  //palette: (
+  //  scene: (default, primary, secondary, success, info, warning, danger, link,),
+  //  state: (base, active, hover, focus),
+  //  property: (outline-color,),
+  //),
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base, active, hover, focus),
@@ -103,7 +103,7 @@ $ave-panelbar-header-theme: (
               }
             }
           } @else {
-            &:#{$state} > .v-panelbar-header {
+            & > .v-panelbar-header:#{$state} {
               & > .ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -135,7 +135,7 @@ $ave-panelbar-header-theme: (
               }
             }
           } @else {
-            &:#{$state} > .v-panelbar-header {
+            & > .v-panelbar-header:#{$state} {
               & > .light {
                 background-color: rgba($light-color, $golden-ratio);
               }
@@ -171,7 +171,7 @@ $ave-panelbar-header-theme: (
               }
             }
           } @else {
-            &:#{$state} > .v-panelbar-header {
+            & > .v-panelbar-header:#{$state} {
               & > .content {
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -200,7 +200,7 @@ $ave-panelbar-header-theme: (
               @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
-            &:#{$state} > .v-panelbar-header {
+            & > .v-panelbar-header:#{$state} {
               @include ave-component-property-style($state-style, $property-map);
             }
           }

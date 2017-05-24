@@ -3,19 +3,24 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component, ContentChild,
+  Component,
+  ContentChild,
   ContentChildren,
   DoCheck,
-  ElementRef, HostBinding, HostListener,
+  ElementRef,
+  HostBinding,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList
+  QueryList,
+  ViewChild
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
 import {PanelbarContentComponent} from './panelbar-content.component';
+import {PanelbarHeaderComponent} from './panelbar-header.component';
+import {PanelbarPageComponent} from './panelbar-page.component';
 
 
 @Component({
@@ -34,18 +39,25 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   @Input() title: string;
   @ContentChildren(PanelbarItemComponent) contentItems: QueryList<PanelbarItemComponent>;
   @ContentChild(PanelbarContentComponent) container;
+  @ViewChild(PanelbarHeaderComponent) viewHeader;
+  @ViewChild(PanelbarPageComponent) viewPage;
+
+  header: PanelbarHeaderComponent;
+  page: PanelbarPageComponent;
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
   active: boolean;
 
+  motionState: string;
   @HostBinding('class.v-panelbar-item') panelbarItemClass = 'true';
-  @HostBinding('attr.tabindex') tabIndex = '-1';
+
   onClick() {
     this.toggleItem();
   }
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
+    this.motionState = 'none';
   }
 
   ngOnChanges() {
@@ -73,6 +85,9 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
+
+    this.loadHeader();
+    this.loadPage();
   }
 
   ngAfterViewChecked() {
@@ -82,9 +97,11 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+
   init() {
     this.active = false;
   }
+
   initChildItems() {
     const contentItemsLength = this.contentItems.toArray().length;
     this.childItems = this.contentItems.toArray().slice(1, contentItemsLength);
@@ -105,8 +122,21 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
       return false;
     }
   }
+
+  loadHeader() {
+    this.header = this.viewHeader;
+    this.header.setParentItem(this);
+  }
+  loadPage() {
+    this.page = this.viewPage;
+  }
   toggleItem() {
     this.active = !this.active;
+    if (this.motionState === 'none') {
+      this.motionState = 'start';
+    } else {
+      this.motionState = 'none';
+    }
   }
 
 }

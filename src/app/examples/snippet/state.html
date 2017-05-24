@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>state</title>
+  <style>
+    .header {
+      background-color: grey;
+    }
+
+    .container {
+      background-color: yellow;
+      height: 300px;
+      width: 200px;
+    }
+
+    .container:hover {
+      background-color: green;
+    }
+
+    .container > .header:hover {
+      background-color: blue;
+    }
+
+    .content > .header:hover {
+      background-color: purple;
+    }
+
+    .content {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header" tabindex="-1">Header1</div>
+  <div class="content">
+    <div class="header" tabindex="-1">Header2</div>
+  </div>
+</div>
+</body>
+</html>

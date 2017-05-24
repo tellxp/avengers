@@ -2,15 +2,15 @@ import {NgModule} from '@angular/core';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {ButtonComponent} from './button.component';
-import {RippleDirective} from '../animation/ripple.directive';
+import {AnimationModule} from '../animation/animation.module';
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    AnimationModule,
   ],
   declarations: [
     ButtonComponent,
-    RippleDirective
   ],
   exports: [
     ButtonComponent

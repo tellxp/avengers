@@ -1,17 +1,22 @@
 @import "../core/widget.component";
-
+@import "../animation/base";
 
 .v-panelbar-header {
   @extend %v-container;
 
   box-sizing: border-box;
   overflow: hidden;
-
+  border-bottom: black solid 1px;
   .content {
     display: block;
+    position: relative;
     background-color: transparent;
     color: #000000;
     z-index: 0;
+    .v-icon {
+      position: absolute;
+      right: 0;
+    }
   }
   .motion {
     display: block;

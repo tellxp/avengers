@@ -1,8 +1,11 @@
-<div #content class="content" (click)="onClick()">
+<div #content class="content">
   <span><ng-content></ng-content></span>
-  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+  <i class="fa fa-chevron-down v-icon" aria-hidden="true" *ngIf="showArrow"></i>
 </div>
-<div #motion
+<div #motion aveRipple
+     [stateTrigger]="motionState"
+     [rippleStartPosition]="mousePosition"
+     [hostStyle]="style"
      class="motion"></div>
 <div #light class="light"></div>
 <div #ground class="ground"></div>

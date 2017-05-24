@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding, Input,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -29,8 +29,12 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
+  @Input() motionState;
+  @HostBinding('class.v-panelbar-page') panelbarPageClass = 'true';
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
+    this.motionState = 'none';
   }
 
   ngOnChanges() {
@@ -47,6 +51,7 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+
   }
 
   ngAfterContentChecked() {
@@ -59,10 +64,12 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
+
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
+    this.motionState = 'end';
   }
 
 }

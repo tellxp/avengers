@@ -5,11 +5,14 @@ import {PanelbarItemComponent} from './panelbar-item.component';
 import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelbarHeaderComponent} from './panelbar-header.component';
 import {PanelbarPageComponent} from './panelbar-page.component';
+import {AnimationModule} from '../animation/animation.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
+    AnimationModule,
+
   ],
   exports: [
     PanelbarComponent,
