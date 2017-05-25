@@ -36,6 +36,11 @@ export class WidgetComponent implements OnChanges,
 
     this.elementRef = elementRef;
     this.dom = domService;
+
+    this.position = new WidgetPosition();
+    this.style = new WidgetStyle();
+    this.dom.bindElement(this.elementRef.nativeElement);
+
   }
 
   ngOnChanges() {
@@ -43,9 +48,7 @@ export class WidgetComponent implements OnChanges,
   }
 
   ngOnInit() {
-    this.position = new WidgetPosition();
-    this.style = new WidgetStyle();
-    this.dom.bindElement(this.elementRef.nativeElement);
+
   }
 
   ngDoCheck() {
@@ -61,7 +64,8 @@ export class WidgetComponent implements OnChanges,
   }
 
   ngAfterViewInit() {
-
+    this.checkPosition();
+    this.checkStyle();
   }
 
   ngAfterViewChecked() {

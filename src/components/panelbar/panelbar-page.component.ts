@@ -2,17 +2,22 @@ import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit,
+  AfterViewInit, ChangeDetectorRef,
   Component,
   DoCheck,
-  ElementRef, HostBinding, HostListener, Input,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
   OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, Renderer2, ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {WidgetComponent, WidgetStyle} from '../core/widget.component';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 
 @Component({
@@ -29,21 +34,26 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() motionState;
+  @ViewChild('motion') motionLayer: ElementRef;
+  motionStyle: WidgetStyle;
+
+  @Input() motionState: Subject<string> = new BehaviorSubject('none');
   @HostBinding('class.v-panelbar-page') panelbarPageClass = 'true';
+
   @HostListener('click') onClick() {
-    // console.log(this.elementRef);
 
   }
-  constructor(elementRef: ElementRef, domService: DomService) {
+
+  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2, private detector: ChangeDetectorRef) {
     super(elementRef, domService);
-    this.motionState = 'none';
-    console.log(this.elementRef);
+    console.log(this.motionState);
+
 
   }
 
   ngOnChanges() {
     super.ngOnChanges();
+    this.motionState.next('none');
   }
 
   ngOnInit() {
@@ -52,10 +62,12 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngDoCheck() {
     super.ngDoCheck();
+
   }
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+
 
   }
 
@@ -65,7 +77,11 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
-
+    this.motionStyle = new WidgetStyle();
+    this.motionStyle.height = this.style.height;
+    this.motionStyle.width = this.style.width;
+    this.render.setStyle(this.motionLayer.nativeElement, 'height', '0px');
+    this.motionState.next('start');
 
   }
 
@@ -76,7 +92,8 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngOnDestroy() {
     super.ngOnDestroy();
-    this.motionState = 'end';
+    this.motionState.next('end');
+
   }
 
 }

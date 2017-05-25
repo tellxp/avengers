@@ -19,24 +19,19 @@ export class SpreadDirective implements OnChanges {
 
   }
   composeSpreadInStyles() {
-    this.spreadInStyles.set('animation-name', 'expand-down');
-    this.spreadInStyles.set('animation-duration', '10s');
-    this.spreadInStyles.set('animation-timing-function', 'cubic-bezier(0,0,0.2,1)');
-    this.spreadInStyles.set('animation-delay', '0s');
-    this.spreadInStyles.set('animation-iteration-count', '1');
-    this.spreadInStyles.set('animation-direction', 'alternate');
-    this.spreadInStyles.set('animation-play-state', 'running');
-    this.spreadInStyles.set('animation-fill-mode', 'forwards');
+    this.spreadInStyles.set('height', `${this.hostStyle.height}px`);
+
+    this.spreadInStyles.set('transition-property', 'height');
+    this.spreadInStyles.set('transition-duration', '0.5s');
+    this.spreadInStyles.set('transition-timing-function', 'cubic-bezier(0,0,0.2,1)');
+    this.spreadInStyles.set('transition-delay', '0s');
   }
   composeSpreadOutStyles() {
-    this.spreadOutStyles.set('animation-name', 'collapse-up');
-    this.spreadOutStyles.set('animation-duration', '560ms');
-    this.spreadOutStyles.set('animation-timing-function', 'cubic-bezier(0,0,0.2,1)');
-    this.spreadOutStyles.set('animation-delay', '0s');
-    this.spreadOutStyles.set('animation-iteration-count', '1');
-    this.spreadOutStyles.set('animation-direction', 'alternate');
-    this.spreadOutStyles.set('animation-play-state', 'running');
-    this.spreadOutStyles.set('animation-fill-mode', 'none');
+    this.spreadInStyles.set('transition-property', 'height');
+    this.spreadInStyles.set('transition-duration', '10s');
+    this.spreadInStyles.set('transition-timing-function', 'cubic-bezier(0,0,0.2,1)');
+    this.spreadInStyles.set('transition-delay', '0s');
+    this.spreadInStyles.set('height', '0');
   }
   spreadIn() {
     this.composeSpreadInStyles();
@@ -51,6 +46,7 @@ export class SpreadDirective implements OnChanges {
     if (state) {
       if (state.currentValue === 'start') {
         this.spreadIn();
+
       } else {
         this.clearStyles();
       }

@@ -17,22 +17,3 @@
   }
 }
 
-@keyframes expand-down {
-  0% {
-    height: 0;
-  }
-
-  100% {
-    height: 200px;
-  }
-}
-
-@keyframes collapse-up {
-  0% {
-    height: auto;
-  }
-
-  100% {
-    height: 0;
-  }
-}

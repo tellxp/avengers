@@ -1,3 +1,5 @@
-<div class="motion">
+<div #motion class="motion"
+     aveSpread
+     [stateTrigger]="motionState | async" [hostStyle]="motionStyle">
   <ng-content></ng-content>
 </div>
