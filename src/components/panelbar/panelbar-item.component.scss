@@ -5,13 +5,8 @@
   @extend %v-container;
   flex-flow: column;
   justify-content: flex-start;
-  overflow: hidden;
 
   background-color: transparent;
   color: transparent;
-
-  .motion {
-    position: relative;
-  }
-
+  overflow: hidden;
 }

@@ -11,7 +11,6 @@ export class SpreadDirective implements OnChanges {
   @Input() hostStyle: WidgetStyle;
 
   @HostListener('animationstart') onAnimationStart() {
-    console.log(this.hostStyle);
   }
   spreadInStyles = new Map<string, string>();
   spreadOutStyles = new Map<string, string>();

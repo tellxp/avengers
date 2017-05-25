@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding, Input,
+  ElementRef, HostBinding, HostListener, Input,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -31,10 +31,15 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   @Input() motionState;
   @HostBinding('class.v-panelbar-page') panelbarPageClass = 'true';
+  @HostListener('click') onClick() {
+    // console.log(this.elementRef);
 
+  }
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
     this.motionState = 'none';
+    console.log(this.elementRef);
+
   }
 
   ngOnChanges() {
@@ -60,6 +65,8 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
+
+
   }
 
   ngAfterViewChecked() {

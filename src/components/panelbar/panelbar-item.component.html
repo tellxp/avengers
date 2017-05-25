@@ -1,4 +1,4 @@
 <ave-panelbar-header (click)="onClick()" [showArrow]="hasChildItem()">{{title}}</ave-panelbar-header>
-<ave-panelbar-page class="motion" aveSpread [stateTrigger]="motionState" [hostStyle]="style" *ngIf="active">
-  <ng-content ></ng-content>
+<ave-panelbar-page *ngIf="active">
+  <ng-content></ng-content>
 </ave-panelbar-page>

@@ -88,10 +88,12 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
 
     this.loadHeader();
     this.loadPage();
+
   }
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
+
   }
 
   ngOnDestroy() {
