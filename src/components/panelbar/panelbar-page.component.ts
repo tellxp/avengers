@@ -34,10 +34,6 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ViewChild('motion') motionLayer: ElementRef;
-  motionStyle: WidgetStyle;
-
-  @Input() motionState: Subject<string> = new BehaviorSubject('none');
   @HostBinding('class.v-panelbar-page') panelbarPageClass = 'true';
 
   @HostListener('click') onClick() {
@@ -46,14 +42,12 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2, private detector: ChangeDetectorRef) {
     super(elementRef, domService);
-    console.log(this.motionState);
-
 
   }
 
   ngOnChanges() {
     super.ngOnChanges();
-    this.motionState.next('none');
+
   }
 
   ngOnInit() {
@@ -77,23 +71,15 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
-    this.motionStyle = new WidgetStyle();
-    this.motionStyle.height = this.style.height;
-    this.motionStyle.width = this.style.width;
-    this.render.setStyle(this.motionLayer.nativeElement, 'height', '0px');
-    this.motionState.next('start');
 
   }
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
-
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
-    this.motionState.next('end');
-
   }
 
 }

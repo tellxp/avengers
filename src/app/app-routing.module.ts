@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'material-design-zh/guidelines', pathMatch: 'full'},
+  {path: '', redirectTo: 'demos', pathMatch: 'full'},
 
 ];
 

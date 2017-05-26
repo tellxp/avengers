@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RippleDirective} from './ripple.directive';
-import {SpreadDirective} from './spread.directive';
+import {ExpandComponent} from './slide.component';
 
 
 @NgModule({
@@ -10,12 +10,13 @@ import {SpreadDirective} from './spread.directive';
     ],
     exports: [
       RippleDirective,
-      SpreadDirective,
+      ExpandComponent,
+
 
     ],
     declarations: [
       RippleDirective,
-      SpreadDirective,
+      ExpandComponent,
     ],
     providers: [
     ],

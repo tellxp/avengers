@@ -34,7 +34,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   animations: [
     trigger('fadeDown', [
       state('expanded', style({
-          opacity: 100
+          opacity: 1
         })
       ),
       state('collapsed', style({
