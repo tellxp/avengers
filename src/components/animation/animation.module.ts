@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {RippleDirective} from './ripple.directive';
-import {ExpandComponent} from './slide.component';
+import {RippleComponent} from './ripple.component';
+import {SlideDownComponent} from './slidedown.component';
 
 
 @NgModule({
@@ -9,14 +9,14 @@ import {ExpandComponent} from './slide.component';
       BrowserModule
     ],
     exports: [
-      RippleDirective,
-      ExpandComponent,
+      RippleComponent,
+      SlideDownComponent,
 
 
     ],
     declarations: [
-      RippleDirective,
-      ExpandComponent,
+      RippleComponent,
+      SlideDownComponent,
     ],
     providers: [
     ],

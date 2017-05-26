@@ -19,8 +19,8 @@ import {WidgetComponent, WidgetPosition} from '../core/widget.component';
 
 @Component({
   selector: 'ave-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  templateUrl: 'button.component.html',
+  styleUrls: ['button.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })

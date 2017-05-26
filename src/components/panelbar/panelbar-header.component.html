@@ -2,10 +2,10 @@
   <span><ng-content></ng-content></span>
   <i class="fa fa-chevron-down v-icon" aria-hidden="true" *ngIf="showArrow"></i>
 </div>
-<div #motion aveRipple
+<ave-ripple #motion
      [stateTrigger]="motionState"
      [rippleStartPosition]="mousePosition"
      [hostStyle]="style"
-     class="motion"></div>
+     class="motion"></ave-ripple>
 <div #light class="light"></div>
 <div #ground class="ground"></div>

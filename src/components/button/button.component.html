@@ -1,10 +1,9 @@
 <div #content class="content">
   <ng-content></ng-content>
 </div>
-<div #motion aveRipple
-     [stateTrigger]="motionState"
-     [rippleStartPosition]="mousePosition"
-     [hostStyle]="style"
-     class="motion"></div>
+<ave-ripple #motion
+            [stateTrigger]="motionState"
+            [rippleStartPosition]="mousePosition"
+            [hostStyle]="style"></ave-ripple>
 <div #light class="light"></div>
 <div #ground class="ground"></div>

@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
@@ -19,8 +19,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'ave-slide',
-  templateUrl: 'slide.component.html',
-  styleUrls: ['slide.component.scss'],
+  templateUrl: 'slidedown.component.html',
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('slideDown', [
@@ -35,28 +34,18 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         animate('1s ease', style({height: 0}))
       ])
     ]),
-    trigger('slideUp', [
-      state('in', style({height: '*'})),
-      transition('void => *', [
-        style({height: '0'}),
-        animate('1s ease', style({height: '*'}))
-      ]),
-      transition('* => void', [
-        style({height: '*'}),
-        animate('1s ease', style({height: 0}))
-      ])
-    ]),
   ],
   providers: [DomService]
 })
-export class ExpandComponent extends WidgetComponent implements OnChanges,
+export class SlideDownComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() active: boolean;
+  @Input() expanded: boolean;
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }

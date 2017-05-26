@@ -1,12 +1,19 @@
-import {AfterViewChecked, Directive, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges} from '@angular/core';
+import {
+  AfterViewChecked, Component, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnInit, Renderer2,
+  SimpleChanges, ViewEncapsulation
+} from '@angular/core';
 import {WidgetComponent, WidgetPosition, WidgetStyle} from '../core/widget.component';
+import {DomService} from '../core/dom.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
-@Directive(
-  {
-    selector: '[aveRipple]',
-  }
-)
-export class RippleDirective implements OnChanges {
+@Component({
+  selector: 'ave-ripple',
+  templateUrl: 'ripple.component.html',
+  styleUrls: ['ripple.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [DomService]
+})
+export class RippleComponent implements OnChanges {
 
   @Input() stateTrigger: string;
   @Input() hostStyle: WidgetStyle;
@@ -18,7 +25,7 @@ export class RippleDirective implements OnChanges {
 
   rippleInStyles = new Map<string, string>();
   rippleOutStyles = new Map<string, string>();
-
+  @HostBinding('class.v-ripple') rippleCssClass = 'true';
   @HostListener('animationstart') OnAnimationStart() {
   }
   @HostListener('animationend') OnAnimationEnd() {
