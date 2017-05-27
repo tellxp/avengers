@@ -1,6 +1,6 @@
 import {
   AfterViewChecked, Component, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnInit, Renderer2,
-  SimpleChanges, ViewEncapsulation
+  SimpleChanges, ViewChild, ViewEncapsulation
 } from '@angular/core';
 import {WidgetComponent, WidgetPosition, WidgetStyle} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
@@ -19,12 +19,14 @@ export class RippleComponent implements OnChanges {
   @Input() hostStyle: WidgetStyle;
   @Input() rippleStartPosition: WidgetPosition;
 
+  @ViewChild('motion') motionLayer: ElementRef;
   rippleRadius: number;
   rippleElementPosition: WidgetPosition;
   rippleElementStyle: WidgetStyle;
 
   rippleInStyles = new Map<string, string>();
   rippleOutStyles = new Map<string, string>();
+
   @HostBinding('class.v-ripple') rippleCssClass = 'true';
   @HostListener('animationstart') OnAnimationStart() {
   }
@@ -83,7 +85,7 @@ export class RippleComponent implements OnChanges {
     this.composeRippleInStyles();
     this.rippleInStyles.forEach(
       (value, name) => {
-        this.render.setStyle(this.elementRef.nativeElement, name, value);
+        this.render.setStyle(this.motionLayer.nativeElement, name, value);
       }
     );
   }
@@ -91,19 +93,19 @@ export class RippleComponent implements OnChanges {
     this.composeRippleOutStyles();
     this.rippleOutStyles.forEach(
       (value, name) => {
-        this.render.setStyle(this.elementRef.nativeElement, name, value);
+        this.render.setStyle(this.motionLayer.nativeElement, name, value);
       }
     );
   }
   clearStyles() {
     this.rippleInStyles.forEach(
       (value, name) => {
-        this.render.removeStyle(this.elementRef.nativeElement, name);
+        this.render.removeStyle(this.motionLayer.nativeElement, name);
       }
     );
     this.rippleOutStyles.forEach(
       (value, name) => {
-        this.render.removeStyle(this.elementRef.nativeElement, name);
+        this.render.removeStyle(this.motionLayer.nativeElement, name);
       }
     );
   }

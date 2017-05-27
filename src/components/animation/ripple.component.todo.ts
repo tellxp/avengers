@@ -21,15 +21,27 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('ripple', [
-      state('inactive', style({})),
-      state('active', style({})),
+      state('inactive', style({
+
+      })),
+      state('active', style({
+
+      })),
       transition('inactive => active',
         [
           style({
+            top: '*',
+            left: '*',
+            height: '*',
+            width: '*',
             transform: 'scale(0)'
           }),
           animate('200ms cubic-bezier(0,0,0.2,1)',
             style({
+              top: '*',
+              left: '*',
+              height: '*',
+              width: '*',
               transform: 'scale(1)'
             }))
         ]),
@@ -72,7 +84,15 @@ export class RippleComponent implements OnChanges {
   constructor(private elementRef: ElementRef, private render: Renderer2) {
 
   }
-
+  rippleStyle: {};
+  setRippleStyle() {
+    this.rippleStyle = {
+      'top': this.rippleState === 'active' ? `${this.rippleElementPosition.top}px` : '0px',
+      'left': this.rippleState === 'active' ? `${this.rippleElementPosition.left}px` : '0px',
+      'width': this.rippleState === 'active' ? `${this.rippleElementStyle.width}px` : '0px',
+      'height': this.rippleState === 'active' ? `${this.rippleElementStyle.height}px` : '0px',
+    }
+  }
   ngOnChanges(changes: SimpleChanges) {
     const state = changes['stateTrigger'];
     if (state) {
@@ -80,12 +100,10 @@ export class RippleComponent implements OnChanges {
         this.rippleRadius = this.calculateRippleElementRadius(this.rippleStartPosition, this.hostStyle);
         this.rippleElementPosition = this.calculateRippleElementPosition(this.rippleStartPosition, this.hostStyle);
         this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
-        this.render.setStyle(this.motionLayer.nativeElement, 'top', `${this.rippleElementPosition.top}px`);
-        this.render.setStyle(this.motionLayer.nativeElement, 'left', `${this.rippleElementPosition.left}px`);
-        this.render.setStyle(this.motionLayer.nativeElement, 'width', `${this.rippleElementStyle.width}px`);
-        this.render.setStyle(this.motionLayer.nativeElement, 'height', `${this.rippleElementStyle.height}px`);
         this.rippleState = 'active';
 
+        this.setRippleStyle();
+        console.log(this.rippleStyle);
 
       }
       if (state.currentValue === 'end') {

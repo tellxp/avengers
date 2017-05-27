@@ -27,11 +27,11 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       state('in', style({height: '*'})),
       transition('void => *', [
         style({height: '0'}),
-        animate('1s ease', style({height: '*'}))
+        animate('280ms cubic-bezier(0,0,0.2,1)', style({height: '*'}))
       ]),
       transition('* => void', [
         style({height: '*'}),
-        animate('1s ease', style({height: 0}))
+        animate('280ms cubic-bezier(0,0,0.2,1)', style({height: 0}))
       ])
     ]),
   ],
