@@ -32,8 +32,8 @@ export class DomService {
 
   public getElementStyle(el: HTMLElement): ElementStyle {
     const style: ElementStyle = new ElementStyle();
-    style.height = el.clientHeight;
-    style.width = el.clientWidth;
+    style.height = el.offsetHeight;
+    style.width = el.offsetWidth;
     return style;
   }
 

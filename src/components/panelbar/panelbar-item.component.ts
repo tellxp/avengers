@@ -20,13 +20,12 @@ import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
 import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelbarHeaderComponent} from './panelbar-header.component';
-import {PanelbarPageComponent} from './panelbar-page.component';
 
 
 @Component({
   selector: 'ave-panelbar-item',
-  templateUrl: './panelbar-item.component.html',
-  styleUrls: ['./panelbar-item.component.scss'],
+  templateUrl: 'panelbar-item.component.html',
+  styleUrls: ['panelbar-item.component.scss'],
   providers: [DomService]
 })
 export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
@@ -40,10 +39,8 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   @ContentChildren(PanelbarItemComponent) contentItems: QueryList<PanelbarItemComponent>;
   @ContentChild(PanelbarContentComponent) container;
   @ViewChild(PanelbarHeaderComponent) viewHeader;
-  @ViewChild(PanelbarPageComponent) viewPage;
 
   header: PanelbarHeaderComponent;
-  page: PanelbarPageComponent;
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
   active: boolean;
@@ -87,7 +84,6 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
     super.ngAfterViewInit();
 
     this.loadHeader();
-    this.loadPage();
 
   }
 
@@ -128,9 +124,6 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   loadHeader() {
     this.header = this.viewHeader;
     this.header.setParentItem(this);
-  }
-  loadPage() {
-    this.page = this.viewPage;
   }
   toggleItem() {
     this.active = !this.active;

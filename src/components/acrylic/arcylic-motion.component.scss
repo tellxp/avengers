@@ -1,0 +1,6 @@
+@import "../core/widget.component";
+
+.v-arcylic-motion {
+  @extend %v-acrylic;
+  z-index: 0;
+}

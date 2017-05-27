@@ -2,52 +2,39 @@ import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit, ChangeDetectorRef,
+  AfterViewInit,
   Component,
   DoCheck,
   ElementRef,
-  HostBinding,
-  HostListener,
-  Input,
   OnChanges,
   OnDestroy,
-  OnInit, Renderer2, ViewChild,
+  OnInit,
   ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent, WidgetStyle} from '../core/widget.component';
-import {Subject} from 'rxjs/Subject';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {WidgetComponent} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-panelbar-page',
-  templateUrl: 'panelbar-page.component.html',
-  styleUrls: ['panelbar-page.component.scss'],
+  selector: 'ave-ground',
+  templateUrl: './arcylic-ground.component.html',
+  styleUrls: ['./arcylic-ground.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
-export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
+export class GroundComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-panelbar-page') panelbarPageClass = 'true';
-
-  @HostListener('click') onClick() {
-
-  }
-
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2, private detector: ChangeDetectorRef) {
+  constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
-
   }
 
   ngOnChanges() {
     super.ngOnChanges();
-
   }
 
   ngOnInit() {
@@ -56,13 +43,10 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngDoCheck() {
     super.ngDoCheck();
-
   }
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-
-
   }
 
   ngAfterContentChecked() {
@@ -71,7 +55,6 @@ export class PanelbarPageComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
-
   }
 
   ngAfterViewChecked() {
