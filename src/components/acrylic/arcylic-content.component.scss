@@ -1,7 +1,8 @@
 @import "../core/widget.component";
 
 .v-arcylic-content {
-  display: block;
+  @extend %v-acrylic;
+
   z-index: 1;
   color: black;
 }

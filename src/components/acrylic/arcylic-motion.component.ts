@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -16,18 +16,20 @@ import {WidgetComponent} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-motion',
+  selector: 'ave-arcylic-motion',
   templateUrl: './arcylic-motion.component.html',
   styleUrls: ['./arcylic-motion.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
-export class MotionComponent extends WidgetComponent implements OnChanges,
+export class ArcylicMotionComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+
+  @HostBinding('class.v-arcylic-motion') arcylicMotionCssClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

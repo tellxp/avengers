@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -16,18 +16,19 @@ import {WidgetComponent} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-ground',
+  selector: 'ave-arcylic-ground',
   templateUrl: './arcylic-ground.component.html',
   styleUrls: ['./arcylic-ground.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
-export class GroundComponent extends WidgetComponent implements OnChanges,
+export class ArcylicGroundComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+  @HostBinding('class.v-arcylic-ground') arcylicGroundCssClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

@@ -99,7 +99,7 @@ $ave-button-theme: (
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-button-#{$scene} {
-        .ground {
+        .v-arcylic-ground {
           @include ave-component-state-style($scene-style, $state-map, $property-map);
         }
       }
@@ -121,7 +121,7 @@ $ave-button-theme: (
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
-            .light {
+            .v-arcylic-light {
               background-color: rgba($light-color, $golden-ratio);
 
               //@include ave-component-property-style($state-style, $property-map);
@@ -135,7 +135,7 @@ $ave-button-theme: (
 
 @mixin ave-button-content-style($theme) {
   .v-button {
-    .content {
+    .v-arcylic-content {
       color: $ave-default-content-color;
     }
   }
@@ -148,7 +148,7 @@ $ave-button-theme: (
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-button-#{$scene} {
-        .content {
+        .v-arcylic-content {
           @include ave-component-state-style($scene-style, $state-map, $property-map);
         }
       }

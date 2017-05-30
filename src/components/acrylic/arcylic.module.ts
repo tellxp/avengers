@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ArcylicContentComponent} from './arcylic-content.component';
-import {GroundComponent} from './arcylic-ground.component';
-import {MotionComponent} from './arcylic-motion.component';
-import {LightComponent} from './arcylic-light.component';
+import {ArcylicGroundComponent} from './arcylic-ground.component';
+import {ArcylicMotionComponent} from './arcylic-motion.component';
+import {ArcylicLightComponent} from './arcylic-light.component';
 
 
 @NgModule({
@@ -12,15 +12,15 @@ import {LightComponent} from './arcylic-light.component';
     ],
     exports: [
       ArcylicContentComponent,
-      MotionComponent,
-      LightComponent,
-      GroundComponent,
+      ArcylicMotionComponent,
+      ArcylicLightComponent,
+      ArcylicGroundComponent,
     ],
     declarations: [
       ArcylicContentComponent,
-      MotionComponent,
-      LightComponent,
-      GroundComponent,
+      ArcylicMotionComponent,
+      ArcylicLightComponent,
+      ArcylicGroundComponent,
     ],
     providers: [
     ],

@@ -30,6 +30,7 @@ export class ArcylicContentComponent extends WidgetComponent implements OnChange
   OnDestroy {
 
   @HostBinding('class.v-arcylic-content') arcylicContentCssClass = 'true';
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }

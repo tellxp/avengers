@@ -130,13 +130,13 @@ $ave-panelbar-header-theme: (
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
             & > .v-panelbar-header {
-              & > .light {
+              & > .v-arcylic-light {
                 background-color: transparent;
               }
             }
           } @else {
             & > .v-panelbar-header:#{$state} {
-              & > .light {
+              & > .v-arcylic-light {
                 background-color: rgba($light-color, $golden-ratio);
               }
             }

@@ -16,20 +16,21 @@ import {WidgetComponent} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-light',
+  selector: 'ave-arcylic-light',
   templateUrl: './arcylic-light.component.html',
   styleUrls: ['./arcylic-light.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
-export class LightComponent extends WidgetComponent implements OnChanges,
+export class ArcylicLightComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-light') lightCssClass = 'true';
+  @HostBinding('class.v-arcylic-light') arcylicLightCssClass = 'true';
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
