@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RippleComponent} from './ripple.component';
 import {SlideDownComponent} from './slidedown.component';
 import {ArcylicModule} from '../acrylic/arcylic.module';
+import {RippleTodoComponent} from './ripple-todo.component';
 
 
 @NgModule({
@@ -12,12 +13,14 @@ import {ArcylicModule} from '../acrylic/arcylic.module';
     ],
     exports: [
       RippleComponent,
+      RippleTodoComponent,
       SlideDownComponent,
 
 
     ],
     declarations: [
       RippleComponent,
+      RippleTodoComponent,
       SlideDownComponent,
 
     ],

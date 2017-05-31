@@ -1,48 +1,79 @@
 import {Component, ElementRef, HostBinding, Input, OnChanges, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation} from '@angular/core';
 import {WidgetPosition, WidgetStyle} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
-import {animate, AnimationEvent, keyframes, state, style, transition, trigger} from '@angular/animations';
+import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'ave-ripple-todo',
-  templateUrl: 'ripple.component.html',
-  styleUrls: ['ripple.component.scss'],
+  templateUrl: './ripple-todo.component.html',
+  styleUrls: ['./ripple-todo.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('ripple', [
-      state('inactive', style({
-        top: '0',
-        left: '0',
-        width: '0',
-        height: '0',
-        // transform: 'scale(0.000001)'
-        opacity: '0',
+      state('none', style({
+        // top: '*',
+        // left: '*',
+        // width: '*',
+        // height: '*',
+        transform: 'scale(0)',
+        opacity: 0,
       })),
-      state('active', style({
-        top: `${this.rippleElementPosition.top}px`,
-        left: `${this.rippleElementPosition.left}px`,
-        width: `${this.rippleElementStyle.width}px`,
-        height: `${this.rippleElementStyle.height}px`,
-        // transform: 'scale(1.3)'
-        opacity: '1',
+      state('rippleIn', style({
+        // top: '*',
+        // left: '*',
+        // width: '*',
+        // height: '*',
+        transform: 'scale(1)',
+        opacity: 1,
 
       })),
-      transition('inactive => active',
+      state('fadeOut', style({
+        // top: '*',
+        // left: '*',
+        // width: '*',
+        // height: '*',
+        transform: 'scale(0)',
+        opacity: 1,
+
+
+      })),
+      transition('none => rippleIn',
         [
-          animate('5000ms cubic-bezier(0,0,0.2,1)',
-            keyframes([
-              style({transform: 'scale(0.1)', offset: 0}),
-              style({transform: 'scale(1)', offset: 1}),
-            ])
+          style({
+            transform: 'scale(0)',
+            opacity: 1,
+          }),
+          animate('300ms cubic-bezier(0,0,0.2,1)',
+            style({
+              transform: 'scale(1)',
+              opacity: 1,
+            }),
           )
         ]),
-      transition('active => inactive',
+      transition('rippleIn => fadeOut',
         [
-          animate('5000ms cubic-bezier(0,0,0.2,1)',
-            keyframes([
-              style({transform: 'scale(1)', offset: 0}),
-              style({transform: 'scale(0.1)', offset: 1}),
-            ])
+          style({
+            transform: 'scale(1)',
+            opacity: 1,
+          }),
+          animate('1ms',
+            style({
+              transform: 'scale(0)',
+              opacity: 1,
+            }),
+          )
+        ]),
+      transition('fadeOut => none',
+        [
+          style({
+            // transform: 'scale(0)',
+            opacity: '1',
+          }),
+          animate('500ms cubic-bezier(0,0,0.2,1)',
+            style({
+              // transform: 'scale(1)',
+              opacity: '0'
+            }),
           )
         ])
     ]),
@@ -59,60 +90,32 @@ export class RippleTodoComponent implements OnChanges {
 
   rippleRadius: number;
   rippleElementPosition: WidgetPosition = new WidgetPosition();
-  rippleElementStyle: WidgetStyle;
+  rippleElementStyle: WidgetStyle = new WidgetStyle();
 
   rippleState = 'none';
-  fadeState = 'none';
   @HostBinding('class.v-ripple') rippleCssClass = 'true';
 
   constructor(private elementRef: ElementRef, private render: Renderer2) {
-    this.rippleState = 'inactive';
-    this.fadeState = 'fadeOut';
+    this.rippleState = 'none';
   }
 
   rippleStart($event: AnimationEvent) {
-    if ($event.fromState === 'inactive') {
-      this.render.setStyle(this.motionLayer.nativeElement, 'top', `${this.rippleElementPosition.top}px`);
-      this.render.setStyle(this.motionLayer.nativeElement, 'left', `${this.rippleElementPosition.left}px`);
-      this.render.setStyle(this.motionLayer.nativeElement, 'width', `${this.rippleElementStyle.width}px`);
-      this.render.setStyle(this.motionLayer.nativeElement, 'height', `${this.rippleElementStyle.height}px`);
+    if ($event.fromState === 'rippleIn') {
 
     }
     if ($event.fromState === 'active') {
-      // this.render.setStyle(this.motionLayer.nativeElement, 'top', `${this.rippleElementPosition.top}px`);
-      // this.render.setStyle(this.motionLayer.nativeElement, 'left', `${this.rippleElementPosition.left}px`);
-      // this.render.setStyle(this.motionLayer.nativeElement, 'width', `${this.rippleElementStyle.width}px`);
-      // this.render.setStyle(this.motionLayer.nativeElement, 'height', `${this.rippleElementStyle.height}px`);
+
     }
-    console.log($event);
   }
 
   rippleDone($event: AnimationEvent) {
-    if ($event.fromState === 'active') {
+    if ($event.fromState === 'rippleIn') {
+      this.rippleState = 'none';
 
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'top');
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'left');
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'width');
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'height');
     }
-    if ($event.fromState === 'inactive') {
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'top');
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'left');
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'width');
-      // this.render.removeStyle(this.motionLayer.nativeElement, 'height');
-    }
-    console.log($event);
+    if ($event.fromState === 'fadeOut') {
 
-  }
 
-  rippleStyle: {};
-
-  setRippleStyle() {
-    this.rippleStyle = {
-      'top': this.rippleState === 'active' ? `${this.rippleElementPosition.top}px` : '0px',
-      'left': this.rippleState === 'active' ? `${this.rippleElementPosition.left}px` : '0px',
-      'width': this.rippleState === 'active' ? `${this.rippleElementStyle.width}px` : '0px',
-      'height': this.rippleState === 'active' ? `${this.rippleElementStyle.height}px` : '0px',
     }
   }
 
@@ -123,12 +126,14 @@ export class RippleTodoComponent implements OnChanges {
         this.rippleRadius = this.calculateRippleElementRadius(this.rippleStartPosition, this.hostStyle);
         this.rippleElementPosition = this.calculateRippleElementPosition(this.rippleStartPosition, this.hostStyle);
         this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
-        this.rippleState = 'active';
-
+        this.rippleState = 'rippleIn';
 
       }
       if (state.currentValue === 'end') {
-        this.rippleState = 'inactive';
+        // this.rippleElementPosition = new WidgetPosition();
+        // this.rippleElementStyle = new WidgetStyle();
+        this.rippleState = 'fadeOut';
+
       }
     }
 

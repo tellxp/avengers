@@ -23,7 +23,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('slideDown', [
-
       state('in', style({height: '*'})),
       transition('void => *', [
         style({height: '0'}),
