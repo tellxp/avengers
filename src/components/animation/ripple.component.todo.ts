@@ -15,7 +15,7 @@ import {DomService} from '../core/dom.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
-  selector: 'ave-ripple',
+  selector: 'ave-ripple-todo',
   templateUrl: 'ripple.component.html',
   styleUrls: ['ripple.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -30,18 +30,10 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       transition('inactive => active',
         [
           style({
-            top: '*',
-            left: '*',
-            height: '*',
-            width: '*',
             transform: 'scale(0)'
           }),
-          animate('200ms cubic-bezier(0,0,0.2,1)',
+          animate('11100ms cubic-bezier(0,0,0.2,1)',
             style({
-              top: '*',
-              left: '*',
-              height: '*',
-              width: '*',
               transform: 'scale(1)'
             }))
         ]),
@@ -59,7 +51,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ],
   providers: [DomService]
 })
-export class RippleComponent implements OnChanges {
+export class RippleTodoComponent implements OnChanges {
 
   @Input() stateTrigger: string;
   @Input() hostStyle: WidgetStyle;
@@ -74,17 +66,41 @@ export class RippleComponent implements OnChanges {
   rippleState = 'none';
   @HostBinding('class.v-ripple') rippleCssClass = 'true';
 
-  @HostListener('animationstart') OnAnimationStart() {
-  }
-
-  @HostListener('animationend') OnAnimationEnd() {
-
-  }
-
   constructor(private elementRef: ElementRef, private render: Renderer2) {
 
   }
+
+  rippleStart() {
+    if (this.rippleState === 'active') {
+
+      this.render.setStyle(this.motionLayer.nativeElement, 'top', `${this.rippleElementPosition.top}px`);
+      this.render.setStyle(this.motionLayer.nativeElement, 'left', `${this.rippleElementPosition.left}px`);
+      this.render.setStyle(this.motionLayer.nativeElement, 'width', `${this.rippleElementStyle.width}px`);
+      this.render.setStyle(this.motionLayer.nativeElement, 'height', `${this.rippleElementStyle.height}px`);
+      console.log('active start');
+    }
+    if (this.rippleState === 'inactive') {
+      console.log('inactive start');
+
+    }
+  }
+  rippleDone() {
+    if (this.rippleState === 'active') {
+      console.log('active done');
+
+
+    }
+    if (this.rippleState === 'inactive') {
+      console.log('inactive done');
+
+      this.render.removeStyle(this.motionLayer.nativeElement, 'top');
+      this.render.removeStyle(this.motionLayer.nativeElement, 'left');
+      this.render.removeStyle(this.motionLayer.nativeElement, 'width');
+      this.render.removeStyle(this.motionLayer.nativeElement, 'height');
+    }
+  }
   rippleStyle: {};
+
   setRippleStyle() {
     this.rippleStyle = {
       'top': this.rippleState === 'active' ? `${this.rippleElementPosition.top}px` : '0px',
@@ -93,6 +109,7 @@ export class RippleComponent implements OnChanges {
       'height': this.rippleState === 'active' ? `${this.rippleElementStyle.height}px` : '0px',
     }
   }
+
   ngOnChanges(changes: SimpleChanges) {
     const state = changes['stateTrigger'];
     if (state) {
@@ -102,17 +119,11 @@ export class RippleComponent implements OnChanges {
         this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
         this.rippleState = 'active';
 
-        this.setRippleStyle();
-        console.log(this.rippleStyle);
-
       }
       if (state.currentValue === 'end') {
 
         this.rippleState = 'inactive';
-        this.render.removeStyle(this.motionLayer.nativeElement, 'top');
-        this.render.removeStyle(this.motionLayer.nativeElement, 'left');
-        this.render.removeStyle(this.motionLayer.nativeElement, 'width');
-        this.render.removeStyle(this.motionLayer.nativeElement, 'height');
+
 
       }
     }

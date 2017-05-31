@@ -1,1 +1,3 @@
-<div #motion></div>
+<div #motion [@ripple]="rippleState"
+     (@ripple.start)="rippleStart()"
+     (@ripple.done)="rippleDone()"></div>
