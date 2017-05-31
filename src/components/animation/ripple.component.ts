@@ -1,10 +1,18 @@
 import {
-  AfterViewChecked, Component, Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, OnInit, Renderer2,
-  SimpleChanges, ViewChild, ViewEncapsulation
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnChanges,
+  Renderer2,
+  SimpleChanges,
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import {WidgetComponent, WidgetPosition, WidgetStyle} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {ArcylicMotionComponent} from '../acrylic/arcylic-motion.component';
 
 @Component({
   selector: 'ave-ripple',
@@ -19,7 +27,7 @@ export class RippleComponent implements OnChanges {
   @Input() hostStyle: WidgetStyle;
   @Input() rippleStartPosition: WidgetPosition;
 
-  @ViewChild('motion') motionLayer: ElementRef;
+  @ViewChild(ArcylicMotionComponent) viewArcylicMotion: ArcylicMotionComponent;
   rippleRadius: number;
   rippleElementPosition: WidgetPosition;
   rippleElementStyle: WidgetStyle;
@@ -28,23 +36,27 @@ export class RippleComponent implements OnChanges {
   rippleOutStyles = new Map<string, string>();
 
   @HostBinding('class.v-ripple') rippleCssClass = 'true';
+
   @HostListener('animationstart') OnAnimationStart() {
   }
+
   @HostListener('animationend') OnAnimationEnd() {
     if (this.stateTrigger === 'end') {
       this.clearStyles();
     }
   }
+
   constructor(private elementRef: ElementRef, private render: Renderer2) {
 
   }
+
   ngOnChanges(changes: SimpleChanges) {
     const state = changes['stateTrigger'];
     if (state) {
       if (state.currentValue === 'start') {
-        this.rippleRadius = this.calculateRippleElementRadius(this.rippleStartPosition, this.hostStyle);
-        this.rippleElementPosition = this.calculateRippleElementPosition(this.rippleStartPosition, this.hostStyle);
-        this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
+        this.rippleRadius = WidgetComponent.calculateIntersectCircleRadius(this.rippleStartPosition, this.hostStyle);
+        this.rippleElementPosition = WidgetComponent.calculateIntersectCirclePosition(this.rippleStartPosition, this.hostStyle);
+        this.rippleElementStyle = new WidgetStyle(this.rippleRadius * 2, this.rippleRadius * 2);
         this.rippleIn();
       }
       if (state.currentValue === 'end') {
@@ -53,6 +65,7 @@ export class RippleComponent implements OnChanges {
     }
 
   }
+
   composeRippleInStyles() {
     this.rippleInStyles.set('top', `${this.rippleElementPosition.top}px`);
     this.rippleInStyles.set('left', `${this.rippleElementPosition.left}px`);
@@ -69,6 +82,7 @@ export class RippleComponent implements OnChanges {
     this.rippleInStyles.set('background-color', 'rgba(255, 255, 255, 0.618)');
     this.rippleInStyles.set('border-radius', '50%');
   }
+
   composeRippleOutStyles() {
     this.rippleOutStyles.set('animation-name', 'fade-out');
     this.rippleOutStyles.set('animation-duration', '560ms');
@@ -85,99 +99,32 @@ export class RippleComponent implements OnChanges {
     this.composeRippleInStyles();
     this.rippleInStyles.forEach(
       (value, name) => {
-        this.render.setStyle(this.motionLayer.nativeElement, name, value);
+        this.render.setStyle(this.viewArcylicMotion.elementRef.nativeElement, name, value);
       }
     );
   }
+
   rippleOut() {
     this.composeRippleOutStyles();
+
     this.rippleOutStyles.forEach(
       (value, name) => {
-        this.render.setStyle(this.motionLayer.nativeElement, name, value);
+        this.render.setStyle(this.viewArcylicMotion.elementRef.nativeElement, name, value);
       }
     );
   }
+
   clearStyles() {
     this.rippleInStyles.forEach(
       (value, name) => {
-        this.render.removeStyle(this.motionLayer.nativeElement, name);
+        this.render.removeStyle(this.viewArcylicMotion.elementRef.nativeElement, name);
       }
     );
     this.rippleOutStyles.forEach(
       (value, name) => {
-        this.render.removeStyle(this.motionLayer.nativeElement, name);
+        this.render.removeStyle(this.viewArcylicMotion.elementRef.nativeElement, name);
       }
     );
   }
-  calculateRippleElementRadius(startPosition: WidgetPosition, hostStyle: WidgetStyle): number {
-    let radius = 0;
-    if (hostStyle.width > hostStyle.height) {
-      if (this.isTopLeft(startPosition, hostStyle)) {
-        radius = this.calculateHypotenuse(hostStyle.width - startPosition.left, hostStyle.height - startPosition.top);
-        return radius;
-      }
 
-      if (this.isTopRight(startPosition, hostStyle)) {
-        radius = this.calculateHypotenuse(startPosition.left, hostStyle.height - startPosition.top);
-        return radius;
-      }
-
-      if (this.isBottomLeft(startPosition, hostStyle)) {
-        radius = this.calculateHypotenuse(hostStyle.width - startPosition.left, startPosition.top);
-        return radius;
-      }
-
-      if (this.isBottomRight(startPosition, hostStyle)) {
-        radius = this.calculateHypotenuse(startPosition.left, startPosition.top);
-        return radius;
-      }
-    }
-  }
-  calculateHypotenuse(edge1: number, edge2: number): number {
-    return Math.sqrt(
-      Math.pow(edge1, 2) + Math.pow(edge2, 2)
-    );
-  }
-  calculateRippleElementPosition(startPosition: WidgetPosition, hostStyle: WidgetStyle): WidgetPosition {
-    const position: WidgetPosition = new WidgetPosition();
-    const radius = this.calculateRippleElementRadius(startPosition, hostStyle);
-    position.top = startPosition.top - radius;
-    position.left = startPosition.left - radius;
-    return position;
-  }
-
-  calculateRippleElementStyle(radius: number): WidgetStyle {
-    const style: WidgetStyle = new WidgetStyle();
-    style.width = radius * 2;
-    style.height = radius * 2;
-    return style;
-  }
-  isTopLeft(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
-    if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
-      return true;
-    } else  {
-      return false;
-    }
-  }
-  isTopRight(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
-    if (offsetPosition.left > hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
-      return true;
-    } else  {
-      return false;
-    }
-  }
-  isBottomLeft(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
-    if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top > hostStyle.height / 2) {
-      return true;
-    } else  {
-      return false;
-    }
-  }
-  isBottomRight(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
-    if (offsetPosition.left > hostStyle.width / 2 && offsetPosition.top > hostStyle.height / 2) {
-      return true;
-    } else  {
-      return false;
-    }
-  }
 }

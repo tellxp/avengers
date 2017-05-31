@@ -31,6 +31,75 @@ export class WidgetComponent implements OnChanges,
       return field;
     }
   }
+  public static isTopLeft(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static isTopRight(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left > hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static isBottomLeft(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top > hostStyle.height / 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static isBottomRight(offsetPosition: WidgetPosition, hostStyle: WidgetStyle): boolean {
+    if (offsetPosition.left > hostStyle.width / 2 && offsetPosition.top > hostStyle.height / 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static calculateHypotenuse(edge1: number, edge2: number): number {
+    return Math.sqrt(
+      Math.pow(edge1, 2) + Math.pow(edge2, 2)
+    );
+  }
+
+  public static calculateIntersectCircleRadius(startPosition: WidgetPosition, hostStyle: WidgetStyle): number {
+    let radius = 0;
+    if (hostStyle.width > hostStyle.height) {
+      if (WidgetComponent.isTopLeft(startPosition, hostStyle)) {
+        radius = WidgetComponent.calculateHypotenuse(hostStyle.width - startPosition.left, hostStyle.height - startPosition.top);
+        return radius;
+      }
+
+      if (WidgetComponent.isTopRight(startPosition, hostStyle)) {
+        radius = WidgetComponent.calculateHypotenuse(startPosition.left, hostStyle.height - startPosition.top);
+        return radius;
+      }
+
+      if (WidgetComponent.isBottomLeft(startPosition, hostStyle)) {
+        radius = WidgetComponent.calculateHypotenuse(hostStyle.width - startPosition.left, startPosition.top);
+        return radius;
+      }
+
+      if (WidgetComponent.isBottomRight(startPosition, hostStyle)) {
+        radius = WidgetComponent.calculateHypotenuse(startPosition.left, startPosition.top);
+        return radius;
+      }
+    }
+  }
+  public static calculateIntersectCirclePosition(startPosition: WidgetPosition, hostStyle: WidgetStyle): WidgetPosition {
+    const position: WidgetPosition = new WidgetPosition();
+    const radius = WidgetComponent.calculateIntersectCircleRadius(startPosition, hostStyle);
+    position.top = startPosition.top - radius;
+    position.left = startPosition.left - radius;
+    return position;
+  }
 
   constructor(elementRef: ElementRef, domService: DomService) {
 
@@ -90,21 +159,21 @@ export class WidgetComponent implements OnChanges,
 
 }
 export class WidgetPosition {
-  left: number;
   top: number;
+  left: number;
 
-  constructor() {
-    this.left = 0;
-    this.top = 0;
+  constructor(top?: number, left?: number) {
+    this.top = WidgetComponent.getValidValue(left, 0);
+    this.left = WidgetComponent.getValidValue(top, 0);
   }
 }
 
 export class WidgetStyle {
-  height: number;
   width: number;
+  height: number;
 
-  constructor() {
-    this.height = 0;
-    this.width = 0;
+  constructor(width?: number, height?: number) {
+    this.width = WidgetComponent.getValidValue(width, 0);
+    this.height = WidgetComponent.getValidValue(height, 0);
   }
 }

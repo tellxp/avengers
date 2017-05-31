@@ -34,6 +34,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @Input() value;
   @ViewChild(ArcylicMotionComponent) viewArcylicMotion: ElementRef;
+
   mousePosition: WidgetPosition;
 
   motionState: string;
