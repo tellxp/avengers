@@ -1,18 +1,7 @@
-import {
-  Component,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  Input,
-  OnChanges,
-  Renderer2,
-  SimpleChanges,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input, OnChanges, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation} from '@angular/core';
 import {WidgetPosition, WidgetStyle} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, AnimationEvent, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'ave-ripple-todo',
@@ -22,30 +11,39 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   animations: [
     trigger('ripple', [
       state('inactive', style({
-
+        top: '0',
+        left: '0',
+        width: '0',
+        height: '0',
+        // transform: 'scale(0.000001)'
+        opacity: '0',
       })),
       state('active', style({
+        top: `${this.rippleElementPosition.top}px`,
+        left: `${this.rippleElementPosition.left}px`,
+        width: `${this.rippleElementStyle.width}px`,
+        height: `${this.rippleElementStyle.height}px`,
+        // transform: 'scale(1.3)'
+        opacity: '1',
 
       })),
       transition('inactive => active',
         [
-          style({
-            transform: 'scale(0)'
-          }),
-          animate('11100ms cubic-bezier(0,0,0.2,1)',
-            style({
-              transform: 'scale(1)'
-            }))
+          animate('5000ms cubic-bezier(0,0,0.2,1)',
+            keyframes([
+              style({transform: 'scale(0.1)', offset: 0}),
+              style({transform: 'scale(1)', offset: 1}),
+            ])
+          )
         ]),
       transition('active => inactive',
         [
-          style({
-            opacity: '1'
-          }),
-          animate('560ms cubic-bezier(0,0,0.2,1)',
-            style({
-              opacity: '0'
-            }))
+          animate('5000ms cubic-bezier(0,0,0.2,1)',
+            keyframes([
+              style({transform: 'scale(1)', offset: 0}),
+              style({transform: 'scale(0.1)', offset: 1}),
+            ])
+          )
         ])
     ]),
   ],
@@ -64,41 +62,49 @@ export class RippleTodoComponent implements OnChanges {
   rippleElementStyle: WidgetStyle;
 
   rippleState = 'none';
+  fadeState = 'none';
   @HostBinding('class.v-ripple') rippleCssClass = 'true';
 
   constructor(private elementRef: ElementRef, private render: Renderer2) {
-
+    this.rippleState = 'inactive';
+    this.fadeState = 'fadeOut';
   }
 
-  rippleStart() {
-    if (this.rippleState === 'active') {
-
+  rippleStart($event: AnimationEvent) {
+    if ($event.fromState === 'inactive') {
       this.render.setStyle(this.motionLayer.nativeElement, 'top', `${this.rippleElementPosition.top}px`);
       this.render.setStyle(this.motionLayer.nativeElement, 'left', `${this.rippleElementPosition.left}px`);
       this.render.setStyle(this.motionLayer.nativeElement, 'width', `${this.rippleElementStyle.width}px`);
       this.render.setStyle(this.motionLayer.nativeElement, 'height', `${this.rippleElementStyle.height}px`);
-      console.log('active start');
-    }
-    if (this.rippleState === 'inactive') {
-      console.log('inactive start');
 
     }
+    if ($event.fromState === 'active') {
+      // this.render.setStyle(this.motionLayer.nativeElement, 'top', `${this.rippleElementPosition.top}px`);
+      // this.render.setStyle(this.motionLayer.nativeElement, 'left', `${this.rippleElementPosition.left}px`);
+      // this.render.setStyle(this.motionLayer.nativeElement, 'width', `${this.rippleElementStyle.width}px`);
+      // this.render.setStyle(this.motionLayer.nativeElement, 'height', `${this.rippleElementStyle.height}px`);
+    }
+    console.log($event);
   }
-  rippleDone() {
-    if (this.rippleState === 'active') {
-      console.log('active done');
 
+  rippleDone($event: AnimationEvent) {
+    if ($event.fromState === 'active') {
 
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'top');
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'left');
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'width');
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'height');
     }
-    if (this.rippleState === 'inactive') {
-      console.log('inactive done');
-
-      this.render.removeStyle(this.motionLayer.nativeElement, 'top');
-      this.render.removeStyle(this.motionLayer.nativeElement, 'left');
-      this.render.removeStyle(this.motionLayer.nativeElement, 'width');
-      this.render.removeStyle(this.motionLayer.nativeElement, 'height');
+    if ($event.fromState === 'inactive') {
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'top');
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'left');
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'width');
+      // this.render.removeStyle(this.motionLayer.nativeElement, 'height');
     }
+    console.log($event);
+
   }
+
   rippleStyle: {};
 
   setRippleStyle() {
@@ -119,12 +125,10 @@ export class RippleTodoComponent implements OnChanges {
         this.rippleElementStyle = this.calculateRippleElementStyle(this.rippleRadius);
         this.rippleState = 'active';
 
+
       }
       if (state.currentValue === 'end') {
-
         this.rippleState = 'inactive';
-
-
       }
     }
 
