@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-import {TabstripComponent} from "../../../components/tabstrip/tabstrip.component";
+import {Component} from '@angular/core';
 
 
 @Component({
   templateUrl: './tabstrip-demo.component.html',
-  styleUrls:['./tabstrip-demo.component.scss']
+  styleUrls: ['./tabstrip-demo.component.scss']
 })
-export class TabstripDemo {
-
+export class TabstripDemoComponent {
+  public id: string;
 }

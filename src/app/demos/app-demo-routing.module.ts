@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeDemoComponent} from './home/home-demo.component';
-import {TabstripDemo} from './tabstrip/tabstrip-demo.component';
+import {TabstripDemoComponent} from './tabstrip/tabstrip-demo.component';
 import {ButtonDemoComponent} from './button/button-demo.component';
 import {PopupDemoComponent} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
@@ -22,7 +22,7 @@ const appDemoRoutes: Routes = [
     children: [
       {path: '', component: HomeDemoComponent},
       {path: 'home', component: HomeDemoComponent},
-      {path: 'tabstrip-demo', component: TabstripDemo},
+      {path: 'tabstrip-demo', component: TabstripDemoComponent},
       {path: 'button-demo', component: ButtonDemoComponent},
       {path: 'popup-demo', component: PopupDemoComponent},
       {path: 'dropdown-demo', component: DropdownDemo},

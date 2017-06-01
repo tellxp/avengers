@@ -5,16 +5,12 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   Input,
   OnChanges,
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {TabstripBarComponent} from './tabstrip-bar.component';
-import {TabstripPageComponent} from './tabstrip-page.component';
-import {isNullOrUndefined} from 'util';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
 @Component({
@@ -32,13 +28,8 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() public attachedPage: TabstripPageComponent;
+  @HostBinding('class.v-tabstrip-tab') tabstripTabCssClass = 'true';
 
-  @Input() public active: boolean;
-
-  private parentBar: TabstripBarComponent;
-
-  public attachedPanel: TabstripPanelComponent;
 
 
   ngOnChanges() {
@@ -47,7 +38,6 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
 
   ngOnInit() {
     super.ngOnInit();
-    this.init();
   }
 
   ngDoCheck() {
@@ -57,7 +47,6 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   ngAfterContentInit() {
     super.ngAfterContentInit();
 
-    this.attachPage();
   }
 
   ngAfterContentChecked() {
@@ -80,58 +69,4 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
     super(elementRef, domService);
   }
 
-  init() {
-    this.parentBar = null;
-    this.attachedPanel = null;
-  }
-
-  public setParentBar(bar: TabstripBarComponent) {
-    this.parentBar = bar;
-  }
-
-  public attachPanel(panel: TabstripPanelComponent) {
-    this.attachedPanel = panel;
-  }
-
-  public attachPage() {
-    if (isNullOrUndefined(this.attachedPage)) {
-      // do nothing
-    } else {
-      this.attachedPage.bindTab(this);
-    }
-
-  }
-
-  public isActive(): boolean {
-    if (this.active) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public deactivate() {
-    this.active = false;
-    this.attachedPage.deactivate();
-    this.attachedPanel.activePage = null;
-    this.parentBar.setActiveTab(null);
-  }
-
-  public activate() {
-    this.active = true;
-    this.attachedPage.activate();
-    this.attachedPanel.activePage = this.attachedPage;
-    this.parentBar.setActiveTab(this);
-  }
-
-  onClick() {
-    const currentActiveTab: TabstripTabComponent = this.parentBar.getActiveTab();
-    if (isNullOrUndefined(currentActiveTab)) {
-      this.activate();
-    } else {
-      currentActiveTab.deactivate();
-      this.activate();
-    }
-    this.attachedPanel.expand();
-  }
 }

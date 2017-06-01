@@ -1,0 +1,7 @@
+<div (click)="onClick()">
+  <i *ngIf="!(attachedPanel.expanded && !attachedPanel.docked)"
+     [ngClass]="{'fa': true, 'fa-chevron-up': attachedPanel.expanded, 'fa-chevron-down': !attachedPanel.expanded}"
+     aria-hidden="true"></i>
+  <i *ngIf="attachedPanel.expanded && !attachedPanel.docked" class="fa fa-thumb-tack" aria-hidden="true"></i>
+</div>
+

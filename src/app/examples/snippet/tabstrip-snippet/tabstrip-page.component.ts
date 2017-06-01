@@ -1,50 +1,33 @@
 import {
-  AfterContentChecked,
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  ContentChild, ContentChildren,
-  DoCheck,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  OnChanges,
-  OnDestroy,
-  OnInit, QueryList, ViewEncapsulation
+  Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate,
+  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, ViewEncapsulation
 } from '@angular/core';
-import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
+import {TabstripTabComponent} from './tabstrip-tab.component';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
-import {TabstripPageComponent} from './tabstrip-page.component';
-
 
 @Component({
-  selector: 'ave-tabstrip',
-  templateUrl: './tabstrip.component.html',
-  styleUrls: ['./tabstrip.component.scss'],
+  selector: 'ave-tabstrip-page',
+  templateUrl: './tabstrip-page.component.html',
+  styleUrls: ['./tabstrip-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
   providers: [DomService]
 })
-export class TabstripComponent extends WidgetComponent implements OnChanges,
+export class TabstripPageComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ContentChildren(TabstripPageComponent) contentPages: QueryList<TabstripPageComponent>;
+  @Input() title: string;
+  private bindedTab: TabstripTabComponent;
 
-  @HostBinding('attr.tabindex') tabIndex = '-1';
-  @HostBinding('class.v-tabstrip') tabstripCssClass = 'true';
+  private parentPanel: TabstripPanelComponent;
 
-  public pages: TabstripPageComponent[];
-
-  @HostListener('blur') onBlur() {
-
-  }
+  public active: boolean;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -56,6 +39,7 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   ngOnInit() {
     super.ngOnInit();
+    this.init();
   }
 
   ngDoCheck() {
@@ -64,7 +48,6 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.loadPages();
   }
 
   ngAfterContentChecked() {
@@ -83,8 +66,21 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
-  loadPages() {
-    this.pages = this.contentPages.toArray();
+  init() {
+    this.active = false;
+  }
+
+  activate() {
+    this.active = true;
+  }
+  deactivate() {
+    this.active = false;
+  }
+  public bindTab(tab: TabstripTabComponent) {
+    this.bindedTab = tab;
+  }
+
+  public setParentPanel(panel: TabstripPanelComponent) {
+    this.parentPanel = panel;
   }
 }
-

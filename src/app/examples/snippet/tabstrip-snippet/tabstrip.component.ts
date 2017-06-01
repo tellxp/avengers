@@ -4,20 +4,19 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
-  ContentChild, ContentChildren,
+  ContentChild,
   DoCheck,
   ElementRef,
   HostBinding,
   HostListener,
   OnChanges,
   OnDestroy,
-  OnInit, QueryList, ViewEncapsulation
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
-import {TabstripPageComponent} from './tabstrip-page.component';
 
 
 @Component({
@@ -35,15 +34,20 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ContentChildren(TabstripPageComponent) contentPages: QueryList<TabstripPageComponent>;
+  @ContentChild(TabstripBarComponent) private contentBar: TabstripBarComponent;
+  @ContentChild(TabstripPanelComponent) private contentPanel: TabstripPanelComponent;
 
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-tabstrip') tabstripCssClass = 'true';
 
-  public pages: TabstripPageComponent[];
+  public id: string;
+  private bar: TabstripBarComponent;
+  private panel: TabstripPanelComponent;
 
   @HostListener('blur') onBlur() {
-
+    if (!this.panel.docked) {
+      this.panel.collapse();
+    }
   }
 
   constructor(elementRef: ElementRef, domService: DomService) {
@@ -64,7 +68,7 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.loadPages();
+    this.init();
   }
 
   ngAfterContentChecked() {
@@ -83,8 +87,31 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
-  loadPages() {
-    this.pages = this.contentPages.toArray();
+  private init() {
+    this.loadBar();
+    this.loadPanel();
+    this.bindBarAndPanel();
   }
+
+  private loadBar() {
+    this.bar = this.contentBar;
+    this.bar.setParentTabstrip(this);
+  }
+
+  private loadPanel() {
+    this.panel = this.contentPanel;
+    this.panel.setParentTabstrip(this);
+  }
+
+  private bindBarAndPanel() {
+    this.bar.attachPanel(this.panel);
+    this.bar.attachPanelToTab(this.panel);
+    this.bar.attachPanelToToggle(this.panel);
+
+    this.panel.bindBar(this.bar);
+
+    this.bar.setDefaultActiveTab();
+  }
+
 }
 

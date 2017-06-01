@@ -69,7 +69,12 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   @Input() public expanded: boolean;
 
   @ContentChildren(TabstripPageComponent) private contentPages: QueryList<TabstripPageComponent>;
+  private pages: TabstripPageComponent[];
+  public activePage: TabstripPageComponent;
 
+  private parentTabstrip: TabstripComponent;
+
+  private bindedBar: TabstripBarComponent;
 
   public docked: boolean;
 
@@ -87,6 +92,19 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
     }
   }
 
+  @HostListener('@fadeDown.done') animationDone() {
+    if (!this.expanded) {
+      this.style.width = 0;
+      this.style.height = 0;
+      this.dom.setBindedElementStyle(this.style, this.render);
+    }
+
+    if (!this.docked) {
+      this.style.width = 0;
+      const positionType = PositioningType.Absolute;
+      this.dom.setBindedElementPositioningType(positionType, this.render);
+    }
+  }
 
   constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer2) {
     super(elementRef, domService);
@@ -100,6 +118,8 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   ngOnInit() {
     super.ngOnInit();
+
+    this.init();
   }
 
   ngDoCheck() {
@@ -108,6 +128,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+    this.loadPages();
   }
 
   ngAfterContentChecked() {
@@ -129,4 +150,80 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   }
 
 
+  init() {
+    this.activePage = null;
+    this.docked = false;
+    this.state = 'collapsed';
+    if (isNullOrUndefined(this.height)) {
+      this.height = 60;
+    }
+  }
+
+  public setParentTabstrip(tabstrip: TabstripComponent) {
+    this.parentTabstrip = tabstrip;
+  }
+
+  public bindBar(bar: TabstripBarComponent) {
+    this.bindedBar = bar;
+  }
+
+  private loadPages() {
+    this.pages = this.contentPages.toArray();
+
+    for (let i = 0; i < this.pages.length; i++) {
+      this.pages[i].setParentPanel(this);
+    }
+  }
+
+  public isExpanded() {
+    if (this.expanded) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  dock() {
+    const positionType = PositioningType.Static;
+    this.dom.setBindedElementPositioningType(positionType, this.render);
+    this.docked = true;
+  }
+
+  undock() {
+
+    this.docked = false;
+  }
+
+  setPosition() {
+    this.position = this.dom.getBindedElementPosition();
+    this.position.left = this.bindedBar.dom.getBindedElementPosition().left;
+    this.position.top = this.bindedBar.dom.getBindedElementPosition().top + this.bindedBar.dom.getBindedElementStyle().height;
+
+    let positionType;
+    if (this.docked) {
+      positionType = PositioningType.Static;
+    } else {
+      positionType = PositioningType.Absolute;
+    }
+    this.dom.setBindedElementPositioningType(positionType, this.render);
+    this.dom.setBindedElementPosition(this.position, this.render);
+  }
+
+  setStyle() {
+    this.style.width = this.bindedBar.dom.getBindedElementStyle().width;
+    this.style.height = this.height;
+    this.dom.setBindedElementStyle(this.style, this.render);
+  }
+
+  public expand() {
+    this.setStyle();
+    this.setPosition();
+    this.expanded = true;
+    this.state = 'expanded';
+  }
+
+  public collapse() {
+    this.expanded = false;
+    this.state = 'collapsed';
+  }
 }

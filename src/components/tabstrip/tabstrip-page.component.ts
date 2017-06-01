@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate,
-  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, ViewEncapsulation
+  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, ViewEncapsulation, HostBinding
 } from '@angular/core';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {TabstripTabComponent} from './tabstrip-tab.component';
@@ -22,11 +22,9 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  private bindedTab: TabstripTabComponent;
+  @Input() title: string;
 
-  private parentPanel: TabstripPanelComponent;
-
-  public active: boolean;
+  @HostBinding('class.v-tabstrip-page') tabstripPageCssClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -38,7 +36,6 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
 
   ngOnInit() {
     super.ngOnInit();
-    this.init();
   }
 
   ngDoCheck() {
@@ -65,21 +62,5 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
-  init() {
-    this.active = false;
-  }
 
-  activate() {
-    this.active = true;
-  }
-  deactivate() {
-    this.active = false;
-  }
-  public bindTab(tab: TabstripTabComponent) {
-    this.bindedTab = tab;
-  }
-
-  public setParentPanel(panel: TabstripPanelComponent) {
-    this.parentPanel = panel;
-  }
 }
