@@ -1,17 +1,19 @@
 import {
-  Component,
-  OnInit,
-  ContentChildren,
-  QueryList,
-  AfterContentInit,
-  ContentChild,
-  ElementRef,
-  DoCheck,
   AfterContentChecked,
-  AfterViewInit,
+  AfterContentInit,
   AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  ContentChildren,
+  DoCheck,
+  ElementRef,
+  HostBinding,
+  OnChanges,
   OnDestroy,
-  OnChanges, ViewEncapsulation, HostBinding
+  OnInit,
+  QueryList,
+  ViewEncapsulation
 } from '@angular/core';
 import {TabstripTabComponent} from './tabstrip-tab.component';
 import {isNullOrUndefined} from 'util';
@@ -45,13 +47,12 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   @ContentChild(TabstripToggleComponent) private contentToggle: TabstripToggleComponent;
   private toggle: TabstripToggleComponent;
 
-  private _parentTabstrip: TabstripComponent;
+  private parentTabstrip: TabstripComponent;
 
-  private _attachedPanel: TabstripPanelComponent;
+  private attachedPanel: TabstripPanelComponent;
 
 
   private activeTab: TabstripTabComponent;
-
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -98,17 +99,17 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   init() {
     this.tabs = null;
     this.toggle = null;
-    this._parentTabstrip = null;
-    this._attachedPanel = null;
+    this.parentTabstrip = null;
+    this.attachedPanel = null;
     this.activeTab = null;
   }
 
   public setParentTabstrip(tabstrip: TabstripComponent) {
-    this._parentTabstrip = tabstrip;
+    this.parentTabstrip = tabstrip;
   }
 
   public attachPanel(panel: TabstripPanelComponent) {
-    this._attachedPanel = panel;
+    this.attachedPanel = panel;
   }
 
   private loadTabs() {
