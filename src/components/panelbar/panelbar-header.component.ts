@@ -31,6 +31,8 @@ export class PanelbarHeaderComponent extends WidgetComponent implements OnChange
   OnDestroy {
 
   @Input() showArrow: boolean;
+  @Input() expanded: boolean;
+
   @HostBinding('class.v-panelbar-header') panelbarHeaderClass = 'true';
   @HostBinding('attr.tabindex') tabIndex = '-1';
   motionState: string;
@@ -87,5 +89,4 @@ export class PanelbarHeaderComponent extends WidgetComponent implements OnChange
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-
 }

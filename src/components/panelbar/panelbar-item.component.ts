@@ -43,9 +43,8 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   header: PanelbarHeaderComponent;
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
-  active: boolean;
+  expanded: boolean;
 
-  motionState: string;
   @HostBinding('class.v-panelbar-item') panelbarItemClass = 'true';
 
   onClick() {
@@ -54,7 +53,7 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
-    this.motionState = 'none';
+    this.expanded = false;
   }
 
   ngOnChanges() {
@@ -97,7 +96,7 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    this.active = false;
+    this.expanded = false;
   }
 
   initChildItems() {
@@ -126,12 +125,7 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
     this.header.setParentItem(this);
   }
   toggleItem() {
-    this.active = !this.active;
-    if (this.motionState === 'none') {
-      this.motionState = 'start';
-    } else {
-      this.motionState = 'none';
-    }
+    this.expanded = !this.expanded;
   }
 
 }

@@ -1,11 +1,14 @@
-<div #content class="content">
+<ave-arcylic-content>
   <span><ng-content></ng-content></span>
-  <i class="fa fa-chevron-down v-icon" aria-hidden="true" *ngIf="showArrow"></i>
-</div>
+  <i class="fa v-icon"
+     [ngClass]="{'fa-chevron-down': !expanded, 'fa-chevron-up': expanded}"
+     aria-hidden="true"
+     *ngIf="showArrow"></i>
+</ave-arcylic-content>
 <ave-ripple #motion
-     [stateTrigger]="motionState"
+     [stateTriggerKey]="motionState"
      [rippleStartPosition]="mousePosition"
      [hostStyle]="style"
-     class="motion"></ave-ripple>
-<div #light class="v-arcylic-light"></div>
-<div #ground class="ground"></div>
+     ></ave-ripple>
+<ave-arcylic-light></ave-arcylic-light>
+<ave-arcylic-ground></ave-arcylic-ground>

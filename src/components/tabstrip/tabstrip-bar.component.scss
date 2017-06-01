@@ -1,13 +1,7 @@
-@import "../../theme/base";
+@import "../core/widget.component";
 
-:host {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-flow: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-  height: 3em;
+.v-tabstrip-bar {
+  @extend %v-container;
   width: 100%;
 }
 

@@ -1,4 +1,6 @@
-<ave-panelbar-header (click)="onClick()" [showArrow]="hasChildItem()">{{title}}</ave-panelbar-header>
-<ave-slide *ngIf="hasChildItem()" [expanded]="active">
+<ave-panelbar-header (click)="onClick()" [showArrow]="hasChildItem()" [expanded]="expanded">
+  {{title}}
+</ave-panelbar-header>
+<ave-slide *ngIf="hasChildItem()" [expanded]="expanded">
   <ng-content></ng-content>
 </ave-slide>

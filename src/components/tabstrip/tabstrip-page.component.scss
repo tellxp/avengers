@@ -1,3 +1,6 @@
-:host {
-  display: flex;
+@import "../core/widget.component";
+
+.v-tabstrip-page {
+  @extend %v-container;
+  width: 100%;
 }

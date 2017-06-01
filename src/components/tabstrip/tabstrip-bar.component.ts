@@ -11,7 +11,7 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
-  OnChanges, ViewEncapsulation
+  OnChanges, ViewEncapsulation, HostBinding
 } from '@angular/core';
 import {TabstripTabComponent} from './tabstrip-tab.component';
 import {isNullOrUndefined} from 'util';
@@ -35,6 +35,8 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+
+  @HostBinding('class.v-tabstrip-bar') tabstripBarCssClass = 'true';
 
   @ContentChildren(TabstripTabComponent) private contentTabs: QueryList<TabstripTabComponent>;
   private tabs: TabstripTabComponent[];

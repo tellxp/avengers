@@ -1,11 +1,7 @@
-@import "../../theme/base";
+@import "../core/widget.component";
 
-:host {
-  display: inline-flex;
-  flex-flow: column;
-  background-color: $component-back-color;
-  outline: none;
+.v-tabstrip {
+  @extend %v-container;
+  background-color: transparent;
   width: 100%;
 }
-
-

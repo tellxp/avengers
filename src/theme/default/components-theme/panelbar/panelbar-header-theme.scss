@@ -98,13 +98,13 @@ $ave-panelbar-header-theme: (
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
             & > .v-panelbar-header {
-              & > .ground {
+              & > .v-arcylic-ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
             & > .v-panelbar-header:#{$state} {
-              & > .ground {
+              & > .v-arcylic-ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
@@ -166,13 +166,13 @@ $ave-panelbar-header-theme: (
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
             & > .v-panelbar-header {
-              & > .content {
+              & > .v-arcylic-content {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
             & > .v-panelbar-header:#{$state} {
-              & > .content {
+              & > .v-arcylic-content {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }

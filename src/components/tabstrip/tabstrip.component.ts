@@ -37,7 +37,8 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
   @ContentChild(TabstripBarComponent) private contentBar: TabstripBarComponent;
   @ContentChild(TabstripPanelComponent) private contentPanel: TabstripPanelComponent;
 
-  @HostBinding('attr.tabindex') '-1';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-tabstrip') tabstripCssClass = 'true';
 
 
   private bar: TabstripBarComponent;
