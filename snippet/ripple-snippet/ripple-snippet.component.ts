@@ -10,14 +10,14 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import {WidgetComponent, WidgetPosition, WidgetStyle} from '../../../../components/core/widget.component';
-import {DomService} from '../../../../components/core/dom.service';
-import {ArcylicMotionComponent} from '../../../../components/acrylic/arcylic-motion.component';
+import {WidgetComponent, WidgetPosition, WidgetStyle} from '../../components/core/widget.component';
+import {DomService} from '../../components/core/dom.service';
+import {ArcylicMotionComponent} from '../../components/acrylic/arcylic-motion.component';
 
 @Component({
   selector: 'ave-ripple',
-  templateUrl: 'src/app/examples/snippet/ripple-snippet/ripple.component.html',
-  styleUrls: ['src/app/examples/snippet/ripple-snippet/ripple.component.scss'],
+  templateUrl: 'src/snippet/ripple-snippet/ripple.component.html',
+  styleUrls: ['src/snippet/ripple-snippet/ripple.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
