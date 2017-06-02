@@ -4,16 +4,16 @@ $font-family-google: DroidSans, "Helvetica Neue", sans-serif;
 $font-family-apple: STHeiti, "Helvetica Neue", sans-serif;
 
 $ave-typography-yahei: (
-  50: normal 100 1em/1em $font-family-yahei-thin,
-  100: normal 100 1em/1em $font-family-yahei,
-  200: normal 200 1em/1em $font-family-yahei,
-  300: normal 300 1em/1em $font-family-yahei,
-  400: normal 400 1em/1em $font-family-yahei,
-  500: normal 500 1em/1em $font-family-yahei,
-  600: normal 600 1em/1em $font-family-yahei,
-  700: normal 700 1em/1em $font-family-yahei,
-  800: normal 800 1em/1em $font-family-yahei,
-  900: normal 900 1em/1em $font-family-yahei
+  50: normal 100  1rem/1 $font-family-yahei-thin,
+  100: normal 100 1rem/1 $font-family-yahei,
+  200: normal 200 1rem/1 $font-family-yahei,
+  300: normal 300 1rem/1 $font-family-yahei,
+  400: normal 400 1rem/1 $font-family-yahei,
+  500: normal 500 1rem/1 $font-family-yahei,
+  600: normal 600 1rem/1 $font-family-yahei,
+  700: normal 700 1rem/1 $font-family-yahei,
+  800: normal 800 1rem/1 $font-family-yahei,
+  900: normal 900 1rem/1 $font-family-yahei
 );
 
 @function ave-typography($base-typography, $default: 400, $thinner: 200, $thicker: 700) {

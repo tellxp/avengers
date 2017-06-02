@@ -5,13 +5,13 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef, HostBinding, HostListener,
   Input,
   OnChanges,
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {WidgetComponent} from '../core/widget.component';
+import {WidgetComponent, WidgetPosition} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
 @Component({
   selector: 'ave-tabstrip-tab',
@@ -30,7 +30,21 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
 
   @HostBinding('class.v-tabstrip-tab') tabstripTabCssClass = 'true';
 
+  mousePosition: WidgetPosition;
 
+  motionState: string;
+  mouseEvent: MouseEvent;
+  @HostListener('mousedown', ['$event']) onMousedown($event) {
+    this.mouseEvent = $event;
+    this.mousePosition = new WidgetPosition();
+    this.mousePosition.left = this.mouseEvent.offsetX;
+    this.mousePosition.top = this.mouseEvent.offsetY;
+    this.motionState = 'start';
+  }
+
+  @HostListener('mouseup') onMouseup() {
+    this.motionState = 'end';
+  }
 
   ngOnChanges() {
     super.ngOnChanges();

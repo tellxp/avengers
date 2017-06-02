@@ -37,12 +37,9 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   motionState: string;
   mouseEvent: MouseEvent;
-
-  @HostBinding('attr.tabindex') tabIndex = '-1';
-  @HostBinding('class.v-button') buttonClass = 'true';
-
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
+    this.mousePosition = new WidgetPosition();
     this.mousePosition.left = this.mouseEvent.offsetX;
     this.mousePosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
@@ -52,10 +49,13 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     this.motionState = 'end';
   }
 
+  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-button') buttonClass = 'true';
+
+
+
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
-    this.motionState = 'none';
-    this.mousePosition = new WidgetPosition();
   }
 
 
