@@ -39,6 +39,7 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-tabstrip') tabstripCssClass = 'true';
+  @HostBinding('class.v-tabstrip-default') tabstripDefaultCssClass = 'true';
 
   public pages: TabstripPageComponent[];
 

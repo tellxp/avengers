@@ -1,0 +1,219 @@
+@import "../../../../components/tabstrip/tabstrip-panel.component";
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
+
+// State dictionary
+$ave-tabstrip-panel-container-ingredient-map: (
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (padding),
+  ),
+);
+
+$ave-tabstrip-panel-ground-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base),
+    property: (background-color),
+  ),
+);
+$ave-tabstrip-panel-light-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (active, hover, focus),
+    property: (background-color),
+  ),
+);
+$ave-tabstrip-panel-content-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (color,),
+  ),
+  typography: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (font,),
+  ),
+);
+
+// Color
+$ave-tabstrip-panel-palette: (
+  default: ave-palette($ave-palette-white),
+  primary: ave-palette($ave-palette-white),
+  secondary: ave-palette($ave-palette-white),
+  success: ave-palette($ave-palette-white),
+  info: ave-palette($ave-palette-white),
+  warning: ave-palette($ave-palette-white),
+  danger: ave-palette($ave-palette-white),
+  link: ave-palette($ave-palette-white)
+);
+// Typography.
+$ave-tabstrip-panel-typography: (
+  default: ave-typography($ave-typography-yahei),
+  primary: ave-typography($ave-typography-yahei),
+  secondary: ave-typography($ave-typography-yahei),
+  success: ave-typography($ave-typography-yahei),
+  info: ave-typography($ave-typography-yahei),
+  warning: ave-typography($ave-typography-yahei),
+  danger: ave-typography($ave-typography-yahei),
+  link: ave-typography($ave-typography-yahei)
+);
+// Shape.
+$ave-tabstrip-panel-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  primary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  success: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  info: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  warning: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  danger: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  link: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+);
+
+$ave-tabstrip-panel-theme: (
+  palette: $ave-tabstrip-panel-palette,
+  typography: $ave-tabstrip-panel-typography,
+  shape: $ave-tabstrip-panel-shape
+);
+@mixin ave-tabstrip-panel-ground-style($theme) {
+  @each $ingredient, $style-map in $ave-tabstrip-panel-ground-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-tabstrip-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-tabstrip-panel {
+              & > .v-arcylic-ground {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          } @else {
+            & > .v-tabstrip-panel:#{$state} {
+              & > .v-arcylic-ground {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@mixin ave-tabstrip-panel-light-style($theme) {
+  @each $ingredient, $style-map in $ave-tabstrip-panel-light-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-tabstrip-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-tabstrip-panel {
+              & > .v-arcylic-light {
+                background-color: transparent;
+              }
+            }
+          } @else {
+            & > .v-tabstrip-panel:#{$state} {
+              & > .v-arcylic-light {
+                background-color: rgba($light-color, $golden-ratio);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-tabstrip-panel-content-style($theme) {
+  .v-tabstrip-panel {
+    &>.v-arcylic-content {
+      color: $ave-default-content-color;
+    }
+  }
+  @each $ingredient, $style-map in $ave-tabstrip-panel-content-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-tabstrip-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-tabstrip-panel {
+              & > .v-arcylic-content {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          } @else {
+            & > .v-tabstrip-panel:#{$state} {
+              & > .v-arcylic-content {
+                @include ave-component-property-style($state-style, $property-map);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-tabstrip-panel-container-style($theme) {
+  @each $ingredient, $style-map in $ave-tabstrip-panel-container-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-tabstrip-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            & > .v-tabstrip-panel {
+              @include ave-component-property-style($state-style, $property-map);
+            }
+          } @else {
+            & > .v-tabstrip-panel:#{$state} {
+              @include ave-component-property-style($state-style, $property-map);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-tabstrip-panel-style() {
+
+  @include ave-tabstrip-panel-container-style($ave-tabstrip-panel-theme);
+
+  @include ave-tabstrip-panel-content-style($ave-tabstrip-panel-theme);
+
+  @include ave-tabstrip-panel-ground-style($ave-tabstrip-panel-theme);
+
+  @include ave-tabstrip-panel-light-style($ave-tabstrip-panel-theme);
+
+}
+

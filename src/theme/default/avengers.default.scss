@@ -1,10 +1,14 @@
 @import "../typography";
 @import "../shape";
 @import "../palette";
-@import "components-theme/button/button-theme";
-@import "components-theme/panelbar/panelbar-theme";
-@import "components-theme/panelbar/panelbar-item-theme";
-@import "components-theme/panelbar/panelbar-header-theme";
+@import "components-theme/button/button.theme";
+@import "components-theme/panelbar/panelbar.theme";
+@import "components-theme/panelbar/panelbar-item.theme";
+@import "components-theme/panelbar/panelbar-header.theme";
+@import "components-theme/tabstrip/tabstrip.theme";
+@import "components-theme/tabstrip/tabstrip-bar.theme";
+@import "components-theme/tabstrip/tabstrip-panel.theme";
+@import "components-theme/tabstrip/tabstrip-tab.theme";
 
 @mixin avengers-theme-loader() {
   @include ave-button-style();
@@ -13,6 +17,10 @@
   @include ave-panelbar-item-style();
   @include ave-panelbar-header-style();
 
+  @include ave-tabstrip-style();
+  @include ave-tabstrip-bar-style();
+  @include ave-tabstrip-panel-style();
+  @include ave-tabstrip-tab-style();
 }
 
 

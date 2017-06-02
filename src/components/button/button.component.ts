@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent, WidgetPosition} from '../core/widget.component';
-import {ArcylicMotionComponent} from '../acrylic/arcylic-motion.component';
 
 @Component({
   selector: 'ave-button',
@@ -33,13 +32,11 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() value;
-  @ViewChild(ArcylicMotionComponent) viewArcylicMotion: ElementRef;
 
   mousePosition: WidgetPosition;
 
   motionState: string;
   mouseEvent: MouseEvent;
-
 
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-button') buttonClass = 'true';
@@ -97,9 +94,6 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   }
 
-  getMotionElement() {
-    return this.viewArcylicMotion;
-  }
 
   ngAfterViewInit() {
     super.ngAfterViewInit();

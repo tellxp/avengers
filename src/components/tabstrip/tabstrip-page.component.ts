@@ -23,7 +23,7 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() title: string;
-
+  @Input() active: boolean;
   @HostBinding('class.v-tabstrip-page') tabstripPageCssClass = 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {

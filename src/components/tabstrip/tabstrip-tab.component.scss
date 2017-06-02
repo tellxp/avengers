@@ -1,6 +1,8 @@
 @import "../core/widget.component";
+@import "../utils/utils";
 
 .v-tabstrip-tab {
   @extend %v-control;
-  min-width: 2rem;
+  @include user-select(none);
+  cursor: pointer;
 }

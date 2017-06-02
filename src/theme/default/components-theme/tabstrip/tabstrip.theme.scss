@@ -1,0 +1,50 @@
+@import "../../../../components/tabstrip/tabstrip.component";
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
+
+// State dictionary
+$ave-tabstrip-container-ingredient-map: (
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger,),
+    state: (base,),
+    property: (padding,),
+  ),
+);
+
+
+// Color
+
+// Typography.
+
+// Shape.
+$ave-tabstrip-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  primary: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-dot5),
+  success: ave-shape($ave-shape-ratio-dot5),
+  info: ave-shape($ave-shape-ratio-dot5),
+  warning: ave-shape($ave-shape-ratio-dot5),
+  danger: ave-shape($ave-shape-ratio-1dot618),
+);
+
+$ave-tabstrip-theme: (
+  shape: $ave-tabstrip-shape
+);
+
+@mixin ave-tabstrip-container-style($theme) {
+  @each $ingredient, $style-map in $ave-tabstrip-container-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+    .#{$ave-prefix}-tabstrip {
+      @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
+    }
+  }
+}
+@mixin ave-tabstrip-style() {
+  @include ave-tabstrip-container-style($ave-tabstrip-theme);
+}
+

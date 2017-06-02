@@ -74,25 +74,7 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
     super(elementRef, domService);
   }
 
-  public setParentBar(bar: TabstripBarComponent) {
-    this.parentBar = bar;
-  }
-
-  public bindPanel(panel: TabstripPanelComponent) {
-    this.attachedPanel = panel;
-  }
-
-  private togglePanel() {
-    if (this.attachedPanel.docked) {
-      this.attachedPanel.undock();
-      this.attachedPanel.collapse();
-    } else {
-      this.attachedPanel.dock();
-      this.attachedPanel.expand();
-    }
-  }
 
   onClick() {
-    this.togglePanel();
   }
 }
