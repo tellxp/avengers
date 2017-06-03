@@ -13,6 +13,8 @@ import {
 } from '@angular/core';
 import {WidgetComponent, WidgetPosition} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
+import {TabstripPageComponent} from './tabstrip-page.component';
+import {TabstripComponent} from './tabstrip.component';
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
@@ -29,8 +31,11 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @HostBinding('class.v-tabstrip-tab') tabstripTabCssClass = 'true';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
 
+  @Input() bindedPage: TabstripPageComponent;
   mousePosition: WidgetPosition;
+  @Input() parentTabstrip: TabstripComponent;
 
   motionState: string;
   mouseEvent: MouseEvent;
@@ -46,6 +51,9 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
     this.motionState = 'end';
   }
 
+  @HostListener('click') onClick() {
+    this.parentTabstrip.activatePage(this.bindedPage);
+  }
   ngOnChanges() {
     super.ngOnChanges();
   }

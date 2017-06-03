@@ -1,8 +1,7 @@
-@import "../../theme/base";
+@import "../core/widget.component";
 
-:host {
-  display: flex;
-  position: absolute;
+.v-popup {
+  @extend %v-popover;
   background-color: transparent;
   overflow: visible;
 }

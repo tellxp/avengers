@@ -4,20 +4,21 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
-  ContentChild, ContentChildren,
+  ContentChildren,
   DoCheck,
   ElementRef,
   HostBinding,
   HostListener,
   OnChanges,
   OnDestroy,
-  OnInit, QueryList, ViewEncapsulation
+  OnInit,
+  QueryList, ViewChildren,
+  ViewEncapsulation
 } from '@angular/core';
-import {TabstripBarComponent} from './tabstrip-bar.component';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
 import {TabstripPageComponent} from './tabstrip-page.component';
+import {TabstripTabComponent} from './tabstrip-tab.component';
 
 
 @Component({
@@ -37,10 +38,14 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   @ContentChildren(TabstripPageComponent) contentPages: QueryList<TabstripPageComponent>;
 
+  @ViewChildren(TabstripTabComponent) viewTabs: QueryList<TabstripTabComponent>;
+
   @HostBinding('attr.tabindex') tabIndex = '-1';
   @HostBinding('class.v-tabstrip') tabstripCssClass = 'true';
 
   public pages: TabstripPageComponent[];
+  public tabs: TabstripTabComponent[];
+  public activePage: TabstripPageComponent;
 
   @HostListener('blur') onBlur() {
 
@@ -65,6 +70,11 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
   ngAfterContentInit() {
     super.ngAfterContentInit();
     this.loadPages();
+    if (!this.hasActivePage()) {
+      this.setDefaultActivePage();
+    } else {
+      this.setCustomActivePage();
+    }
   }
 
   ngAfterContentChecked() {
@@ -73,6 +83,7 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
+    this.loadTabs();
   }
 
   ngAfterViewChecked() {
@@ -85,6 +96,47 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   loadPages() {
     this.pages = this.contentPages.toArray();
+  }
+  loadTabs() {
+    this.tabs = this.viewTabs.toArray();
+  }
+  hasActivePage(): boolean {
+    let hasActivePage = false;
+    const length = this.pages.length;
+    for (let i = 0; i < length; i++) {
+      if (hasActivePage) {
+        if (this.pages[i].active) {
+          throw Error('too many active pages');
+        }
+      }
+      hasActivePage = hasActivePage || this.pages[i].active;
+
+    }
+    if (hasActivePage) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  setCustomActivePage() {
+    const length = this.pages.length;
+    for (let i = 0; i < length; i++) {
+      if (this.pages[i].active) {
+        this.activePage = this.pages[i];
+      }
+    }
+  }
+  setDefaultActivePage() {
+    if (this.pages.length > 0) {
+      this.pages[0].active = true;
+      this.activePage = this.pages[0];
+    }
+  }
+
+  activatePage(page: TabstripPageComponent) {
+    this.activePage.active = false;
+    page.active = true;
+    this.activePage = page;
   }
 }
 

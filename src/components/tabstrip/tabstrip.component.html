@@ -1,5 +1,7 @@
 <ave-tabstrip-bar>
-  <ave-tabstrip-tab *ngFor="let page of pages">{{page.title}}</ave-tabstrip-tab>
+  <ave-tabstrip-tab
+    [parentTabstrip]="this"
+    *ngFor="let page of pages" [bindedPage]="page">{{page.title}}</ave-tabstrip-tab>
 </ave-tabstrip-bar>
 <ave-tabstrip-panel>
   <ng-content></ng-content>
