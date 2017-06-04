@@ -31,6 +31,7 @@ import {CheckboxModule} from '../../components/checkbox/checkbox.module';
 import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
 import {NavbarModule} from '../../components/navbar/navbar.module';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
+import {MarkdownModule} from '../../components/markdown/markdown.module';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {NavbarDemoComponent} from './navbar/navbar-demo.component';
       TextboxModule,
       CheckboxModule,
       NavbarModule,
+      MarkdownModule,
     ],
     exports: [
       AppDemoComponent

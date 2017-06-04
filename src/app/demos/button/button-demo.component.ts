@@ -1,5 +1,6 @@
 import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ButtonComponent} from '../../../components/button/button.component';
+import {markdown} from 'markdown';
 
 @Component({
   templateUrl: './button-demo.component.html',
@@ -13,6 +14,7 @@ export class ButtonDemoComponent implements OnInit, AfterViewInit, AfterViewChec
   }
 
   ngOnInit() {
+    console.log( markdown.toHTML( "Hello *World*!" ) );
   }
 
   ngAfterViewInit() {
@@ -23,5 +25,6 @@ export class ButtonDemoComponent implements OnInit, AfterViewInit, AfterViewChec
 
   }
   onClick() {
+
   }
 }
