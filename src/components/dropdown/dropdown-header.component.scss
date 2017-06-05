@@ -1,10 +1,11 @@
 @import "../core/widget.component";
 @import "../utils/utils";
 
-.v-dropdown {
+.v-dropdown-header {
   @extend %v-control;
   @include user-select(none);
   cursor: pointer;
-  position: static;
-  outline: grey solid 1px;
+  overflow: hidden;
+  vertical-align: bottom;
+  border-right: solid #bdbdbd 1px;
 }

@@ -1,11 +1,16 @@
-@import "../../../../components/tabstrip/tabstrip-tab.component";
+@import "../../../../components/dropdown/dropdown-header.component";
 @import "../../../base";
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
 
 // State dictionary
-$ave-tabstrip-tab-container-ingredient-map: (
+$ave-dropdown-header-container-ingredient-map: (
+  //palette: (
+  //  scene: (default, primary, secondary, success, info, warning, danger, link,),
+  //  state: (base, active, hover, focus),
+  //  property: (outline-color,),
+  //),
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base, active, hover, focus),
@@ -13,21 +18,21 @@ $ave-tabstrip-tab-container-ingredient-map: (
   ),
 );
 
-$ave-tabstrip-tab-ground-ingredient-map: (
+$ave-dropdown-header-ground-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base),
     property: (background-color),
   ),
 );
-$ave-tabstrip-tab-light-ingredient-map: (
+$ave-dropdown-header-light-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (active, hover, focus),
     property: (background-color),
   ),
 );
-$ave-tabstrip-tab-content-ingredient-map: (
+$ave-dropdown-header-content-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base, active, hover, focus),
@@ -41,18 +46,18 @@ $ave-tabstrip-tab-content-ingredient-map: (
 );
 
 // Color
-$ave-tabstrip-tab-palette: (
-  default: ave-palette($ave-palette-white),
-  primary: ave-palette($ave-palette-white),
-  secondary: ave-palette($ave-palette-white),
-  success: ave-palette($ave-palette-white),
-  info: ave-palette($ave-palette-white),
-  warning: ave-palette($ave-palette-white),
-  danger: ave-palette($ave-palette-white),
+$ave-dropdown-header-palette: (
+  default: ave-palette($ave-palette-grey),
+  primary: ave-palette($ave-palette-blue),
+  secondary: ave-palette($ave-palette-pink),
+  success: ave-palette($ave-palette-green),
+  info: ave-palette($ave-palette-cyan),
+  warning: ave-palette($ave-palette-deep-orange),
+  danger: ave-palette($ave-palette-red),
   link: ave-palette($ave-palette-white)
 );
 // Typography.
-$ave-tabstrip-tab-typography: (
+$ave-dropdown-header-typography: (
   default: ave-typography($ave-typography-yahei),
   primary: ave-typography($ave-typography-yahei),
   secondary: ave-typography($ave-typography-yahei),
@@ -63,9 +68,9 @@ $ave-tabstrip-tab-typography: (
   link: ave-typography($ave-typography-yahei)
 );
 // Shape.
-$ave-tabstrip-tab-shape: (
-  default: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
-  primary: ave-shape($ave-shape-ratio-dot618, 400, 50, 400),
+$ave-dropdown-header-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  primary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
   secondary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
   success: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
   info: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
@@ -74,13 +79,13 @@ $ave-tabstrip-tab-shape: (
   link: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
 );
 
-$ave-tabstrip-tab-theme: (
-  palette: $ave-tabstrip-tab-palette,
-  typography: $ave-tabstrip-tab-typography,
-  shape: $ave-tabstrip-tab-shape
+$ave-dropdown-header-theme: (
+  palette: $ave-dropdown-header-palette,
+  typography: $ave-dropdown-header-typography,
+  shape: $ave-dropdown-header-shape
 );
-@mixin ave-tabstrip-tab-ground-style($theme) {
-  @each $ingredient, $style-map in $ave-tabstrip-tab-ground-ingredient-map {
+@mixin ave-dropdown-header-ground-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-header-ground-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -88,17 +93,17 @@ $ave-tabstrip-tab-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-tabstrip-#{$scene} {
+      .#{$ave-prefix}-dropdown-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & > .v-tabstrip-tab {
+            & > .v-dropdown-header {
               & > .v-arcylic-ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
-            & > .v-tabstrip-tab:#{$state} {
+            & > .v-dropdown-header:#{$state} {
               & > .v-arcylic-ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -111,8 +116,8 @@ $ave-tabstrip-tab-theme: (
 
 }
 
-@mixin ave-tabstrip-tab-light-style($theme) {
-  @each $ingredient, $style-map in $ave-tabstrip-tab-light-ingredient-map {
+@mixin ave-dropdown-header-light-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-header-light-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -120,27 +125,21 @@ $ave-tabstrip-tab-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-tabstrip-#{$scene} {
-        & .v-tabstrip-tab-active {
-          & > .v-arcylic-light {
-            background-color: rgba($light-color, $golden-ratio);
-          }
-        }
+      .#{$ave-prefix}-dropdown-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & .v-tabstrip-tab {
+            & > .v-dropdown-header {
               & > .v-arcylic-light {
                 background-color: transparent;
               }
             }
           } @else {
-            & .v-tabstrip-tab:#{$state} {
+            & > .v-dropdown-header:#{$state} {
               & > .v-arcylic-light {
                 background-color: rgba($light-color, $golden-ratio);
               }
             }
-
           }
         }
       }
@@ -148,13 +147,13 @@ $ave-tabstrip-tab-theme: (
   }
 }
 
-@mixin ave-tabstrip-tab-content-style($theme) {
-  .v-tabstrip-tab {
-    & > .v-arcylic-content {
+@mixin ave-dropdown-header-content-style($theme) {
+  .v-dropdown-header {
+    &>.content {
       color: $ave-default-content-color;
     }
   }
-  @each $ingredient, $style-map in $ave-tabstrip-tab-content-ingredient-map {
+  @each $ingredient, $style-map in $ave-dropdown-header-content-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -162,17 +161,17 @@ $ave-tabstrip-tab-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-tabstrip-#{$scene} {
+      .#{$ave-prefix}-dropdown-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & .v-tabstrip-tab {
+            & > .v-dropdown-header {
               & > .v-arcylic-content {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
-            & .v-tabstrip-tab:#{$state} {
+            & > .v-dropdown-header:#{$state} {
               & > .v-arcylic-content {
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -184,8 +183,8 @@ $ave-tabstrip-tab-theme: (
   }
 }
 
-@mixin ave-tabstrip-tab-container-style($theme) {
-  @each $ingredient, $style-map in $ave-tabstrip-tab-container-ingredient-map {
+@mixin ave-dropdown-header-container-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-header-container-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -193,15 +192,15 @@ $ave-tabstrip-tab-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-tabstrip-#{$scene} {
+      .#{$ave-prefix}-dropdown-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & .v-tabstrip-tab {
+            & > .v-dropdown-header {
               @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
-            & .v-tabstrip-tab:#{$state} {
+            & > .v-dropdown-header:#{$state} {
               @include ave-component-property-style($state-style, $property-map);
             }
           }
@@ -211,15 +210,15 @@ $ave-tabstrip-tab-theme: (
   }
 }
 
-@mixin ave-tabstrip-tab-style() {
+@mixin ave-dropdown-header-style() {
 
-  @include ave-tabstrip-tab-container-style($ave-tabstrip-tab-theme);
+  @include ave-dropdown-header-container-style($ave-dropdown-header-theme);
 
-  @include ave-tabstrip-tab-content-style($ave-tabstrip-tab-theme);
+  @include ave-dropdown-header-content-style($ave-dropdown-header-theme);
 
-  @include ave-tabstrip-tab-ground-style($ave-tabstrip-tab-theme);
+  @include ave-dropdown-header-ground-style($ave-dropdown-header-theme);
 
-  @include ave-tabstrip-tab-light-style($ave-tabstrip-tab-theme);
+  @include ave-dropdown-header-light-style($ave-dropdown-header-theme);
 
 }
 

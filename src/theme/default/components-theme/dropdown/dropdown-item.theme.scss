@@ -1,0 +1,174 @@
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
+@import "../../../elevation";
+
+// Style dictionary
+$ave-dropdown-item-container-ingredient-map: (
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (padding, ),
+  ),
+);
+
+$ave-dropdown-item-ground-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base),
+    property: (background-color),
+  ),
+);
+$ave-dropdown-item-light-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (active, hover, focus),
+    property: (background-color),
+  ),
+);
+$ave-dropdown-item-content-ingredient-map: (
+  palette: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (color,),
+  ),
+  typography: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, active, hover, focus),
+    property: (font,),
+  ),
+);
+
+// Color
+$ave-dropdown-item-palette: (
+  default: ave-palette($ave-palette-grey),
+  primary: ave-palette($ave-palette-blue),
+  secondary: ave-palette($ave-palette-pink),
+  success: ave-palette($ave-palette-green),
+  info: ave-palette($ave-palette-cyan),
+  warning: ave-palette($ave-palette-deep-orange),
+  danger: ave-palette($ave-palette-red),
+  link: ave-palette($ave-palette-white)
+);
+
+// Typography.
+$ave-dropdown-item-typography: (
+  default: ave-typography($ave-typography-yahei),
+  primary: ave-typography($ave-typography-yahei),
+  secondary: ave-typography($ave-typography-yahei),
+  success: ave-typography($ave-typography-yahei),
+  info: ave-typography($ave-typography-yahei),
+  warning: ave-typography($ave-typography-yahei),
+  danger: ave-typography($ave-typography-yahei),
+  link: ave-typography($ave-typography-yahei)
+);
+
+// Shape.
+$ave-dropdown-item-shape: (
+  default: ave-shape($ave-shape-ratio-2),
+  primary: ave-shape($ave-shape-ratio-1dot618),
+  secondary: ave-shape($ave-shape-ratio-1dot618),
+  success: ave-shape($ave-shape-ratio-1dot618),
+  info: ave-shape($ave-shape-ratio-1dot618),
+  warning: ave-shape($ave-shape-ratio-1dot618),
+  danger: ave-shape($ave-shape-ratio-1dot618),
+  link: ave-shape($ave-shape-ratio-1dot618)
+);
+
+//Define a theme
+$ave-dropdown-item-theme: (
+  palette: $ave-dropdown-item-palette,
+  typography: $ave-dropdown-item-typography,
+  shape: $ave-dropdown-item-shape,
+);
+
+@mixin ave-dropdown-item-ground-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-item-ground-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-dropdown-item-#{$scene} {
+        .v-arcylic-ground {
+          @include ave-component-state-style($scene-style, $state-map, $property-map);
+        }
+      }
+    }
+  }
+
+}
+
+@mixin ave-dropdown-item-light-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-item-light-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-dropdown-item-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          &:#{$state} {
+            .v-arcylic-light {
+              background-color: rgba($light-color, $golden-ratio);
+              //@include ave-component-property-style($state-style, $property-map);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-dropdown-item-content-style($theme) {
+  .v-dropdown-item {
+    .v-arcylic-content {
+      color: $ave-default-content-color;
+    }
+  }
+  @each $ingredient, $style-map in $ave-dropdown-item-content-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-dropdown-item-#{$scene} {
+        .v-arcylic-content {
+          @include ave-component-state-style($scene-style, $state-map, $property-map);
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-dropdown-item-container-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-item-container-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+    .#{$ave-prefix}-dropdown-item {
+      @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
+    }
+  }
+}
+
+@mixin ave-dropdown-item-style() {
+
+  @include ave-dropdown-item-container-style($ave-dropdown-item-theme);
+
+  @include ave-dropdown-item-ground-style($ave-dropdown-item-theme);
+
+  @include ave-dropdown-item-light-style($ave-dropdown-item-theme);
+
+  @include ave-dropdown-item-content-style($ave-dropdown-item-theme);
+
+}

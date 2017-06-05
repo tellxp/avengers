@@ -5,49 +5,46 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding,
-  Input,
+  ElementRef, HostBinding, HostListener,
   OnChanges,
   OnDestroy,
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {isNullOrUndefined} from 'util';
+import {WidgetComponent, WidgetPosition} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-slidedown',
-  templateUrl: 'slidedown.component.html',
-  styleUrls: ['./slidedown.component.scss'],
+  selector: 'ave-dropdown-icon',
+  templateUrl: './dropdown-icon.component.html',
+  styleUrls: ['./dropdown-icon.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: [
-    trigger('slideDown', [
-      state('in', style({height: '*'})),
-      transition('void => *', [
-        style({height: '0'}),
-        animate('280ms cubic-bezier(0,0,0.2,1)', style({height: '*'}))
-      ]),
-      transition('* => void', [
-        style({height: '*'}),
-        animate('280ms cubic-bezier(0,0,0.2,1)', style({height: 0}))
-      ])
-    ]),
-  ],
   providers: [DomService]
 })
-export class SlideDownComponent extends WidgetComponent implements OnChanges,
+export class DropdownIconComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-
-  @HostBinding('class.v-slidedown') slideDownCssClass = 'true';
-  @Input() active: boolean;
-
+  @HostBinding('class.v-dropdown-icon') dropdownIconCssClass = 'true';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
+  // mousePosition: WidgetPosition;
+  //
+  // motionState: string;
+  // mouseEvent: MouseEvent;
+  // @HostListener('mousedown', ['$event']) onMousedown($event) {
+  //   this.mouseEvent = $event;
+  //   this.mousePosition = new WidgetPosition();
+  //   this.mousePosition.left = this.mouseEvent.offsetX;
+  //   this.mousePosition.top = this.mouseEvent.offsetY;
+  //   this.motionState = 'start';
+  // }
+  //
+  // @HostListener('mouseup') onMouseup() {
+  //   this.motionState = 'end';
+  // }
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }

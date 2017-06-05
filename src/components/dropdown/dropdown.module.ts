@@ -3,25 +3,34 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {DropdownComponent} from '../dropdown/dropdown.component';
 import {PopupModule} from '../popup/popup.module';
-import {ButtonModule} from '../button/button.module';
 import {DropdownGroupComponent} from './dropdown-group.component';
 import {DropdownItemComponent} from './dropdown-item.component';
+import {DropdownHeaderComponent} from './dropdown-header.component';
+import {DropdownIconComponent} from './dropdown-icon.component';
+import {AnimationModule} from '../animation/animation.module';
+import {ArcylicModule} from '../acrylic/arcylic.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     PopupModule,
-    ButtonModule
+    AnimationModule,
+    ArcylicModule,
   ],
   declarations: [
     DropdownComponent,
+
     DropdownGroupComponent,
-    DropdownItemComponent
+    DropdownItemComponent,
+    DropdownHeaderComponent,
+    DropdownIconComponent,
   ],
   exports: [
     DropdownComponent,
     DropdownGroupComponent,
-    DropdownItemComponent
+    DropdownItemComponent,
+    DropdownHeaderComponent,
+    DropdownIconComponent,
   ],
   providers: [],
 })

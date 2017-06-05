@@ -1,7 +1,8 @@
-<ave-button #anchor>{{title}}</ave-button>
-<ave-button (blur)="onBlur()" (click)="onClick()">
-  <i class="fa fa-caret-down" aria-hidden="true"></i>
-</ave-button>
-<ave-popup [anchor]="anchor" *ngIf="expanded">
-  <ng-content></ng-content>
+<ave-dropdown-header #anchor class="v-dropdown-header">{{title}}</ave-dropdown-header>
+<ave-dropdown-icon class="v-dropdown-icon" (blur)="onBlur()" (click)="onClick()"></ave-dropdown-icon>
+<ave-popup [anchor]="anchor">
+  <ave-slidedown [active]="expanded">
+    <ng-content></ng-content>
+  </ave-slidedown>
+  <ave-arcylic-ground></ave-arcylic-ground>
 </ave-popup>

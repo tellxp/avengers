@@ -9,6 +9,11 @@
 @import "components-theme/tabstrip/tabstrip-bar.theme";
 @import "components-theme/tabstrip/tabstrip-panel.theme";
 @import "components-theme/tabstrip/tabstrip-tab.theme";
+@import "components-theme/dropdown/dropdown.theme";
+@import "components-theme/dropdown/dropdown-header.theme";
+@import "components-theme/dropdown/dropdown-icon.theme";
+@import "components-theme/dropdown/dropdown-group.theme";
+@import "components-theme/dropdown/dropdown-item.theme";
 
 @mixin avengers-theme-loader() {
   @include ave-button-style();
@@ -21,6 +26,12 @@
   @include ave-tabstrip-bar-style();
   @include ave-tabstrip-panel-style();
   @include ave-tabstrip-tab-style();
+
+  @include ave-dropdown-style();
+  @include ave-dropdown-header-style();
+  @include ave-dropdown-icon-style();
+  @include ave-dropdown-group-style();
+  @include ave-dropdown-item-style();
 }
 
 

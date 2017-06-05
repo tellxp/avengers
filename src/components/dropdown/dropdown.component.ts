@@ -1,6 +1,6 @@
 import {
   AfterContentChecked,
-  AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnDestroy,
+  AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
@@ -24,6 +24,7 @@ export class DropdownComponent extends WidgetComponent implements OnChanges,
   @Input() title: string;
   @Input() expanded: boolean;
 
+  @HostBinding('class.v-dropdown') dropdownCssClass = 'true';
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
@@ -65,6 +66,6 @@ export class DropdownComponent extends WidgetComponent implements OnChanges,
   }
 
   onBlur() {
-    // this.active = false;
+    // this.expanded = false;
   }
 }

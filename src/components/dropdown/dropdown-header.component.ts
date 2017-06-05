@@ -5,31 +5,47 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef, HostBinding, HostListener, Input,
   OnChanges,
   OnDestroy,
-  OnInit, ViewEncapsulation
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {WidgetComponent, WidgetPosition} from '../core/widget.component';
 
 
 @Component({
-  selector: 'ave-dropdown-group',
-  templateUrl: './dropdown-group.component.html',
-  styleUrls: ['./dropdown-group.component.scss'],
+  selector: 'ave-dropdown-header',
+  templateUrl: './dropdown-header.component.html',
+  styleUrls: ['./dropdown-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
   providers: [DomService]
 })
-export class DropdownGroupComponent extends WidgetComponent implements OnChanges,
+export class DropdownHeaderComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-  @HostBinding('class.v-dropdown-group') dropdownGroupCssClass = 'true';
 
+  @Input() title: string;
+  @HostBinding('class.v-dropdown-header') dropdownHeaderCssClass = 'true';
+  mousePosition: WidgetPosition;
+
+  motionState: string;
+  mouseEvent: MouseEvent;
+  @HostListener('mousedown', ['$event']) onMousedown($event) {
+    this.mouseEvent = $event;
+    this.mousePosition = new WidgetPosition();
+    this.mousePosition.left = this.mouseEvent.offsetX;
+    this.mousePosition.top = this.mouseEvent.offsetY;
+    this.motionState = 'start';
+  }
+
+  @HostListener('mouseup') onMouseup() {
+    this.motionState = 'end';
+  }
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }
@@ -65,4 +81,5 @@ export class DropdownGroupComponent extends WidgetComponent implements OnChanges
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+
 }

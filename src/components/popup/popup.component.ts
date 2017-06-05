@@ -35,7 +35,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
 
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
+  constructor(elementRef: ElementRef, domService: DomService, public render: Renderer2) {
     super(elementRef, domService);
 
   }
@@ -55,6 +55,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   }
   ngAfterContentInit() {
     super.ngAfterContentInit();
+
   }
   ngAfterContentChecked() {
     super.ngAfterContentChecked();

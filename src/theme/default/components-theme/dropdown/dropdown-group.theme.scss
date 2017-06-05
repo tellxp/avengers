@@ -1,0 +1,69 @@
+@import "../../../base";
+@import "../../../palette";
+@import "../../../typography";
+@import "../../../shape";
+
+// State dictionary
+$ave-dropdown-group-container-ingredient-map: (
+  //palette: (
+  //  scene: (default, primary, secondary, success, info, warning, danger, link,),
+  //  state: (base, active, hover, focus),
+  //  property: (outline-color,),
+  //),
+  shape: (
+    scene: (default, primary, secondary, success, info, warning, danger, link,),
+    state: (base, ),
+    property: (padding),
+  ),
+);
+
+
+// Shape.
+$ave-dropdown-group-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  primary: ave-shape($ave-shape-ratio-dot618, 50, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  success: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  info: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  warning: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  danger: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  link: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+);
+
+$ave-dropdown-group-theme: (
+  shape: $ave-dropdown-group-shape
+);
+
+@mixin ave-dropdown-group-container-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-group-container-ingredient-map {
+    $ingredient-style: map_get($theme, $ingredient);
+    $scene-map: map_get($style-map, scene);
+    $state-map: map_get($style-map, state);
+    $property-map: map_get($style-map, property);
+
+    @each $scene in $scene-map {
+      $scene-style: map_get($ingredient-style, $scene);
+      .#{$ave-prefix}-dropdown-#{$scene} {
+        @each $state in $state-map {
+          $state-style: map_get($scene-style, $state);
+          @if ($state == base) {
+            &  .v-dropdown-group {
+              @include ave-component-property-style($state-style, $property-map);
+            }
+          } @else {
+            & .v-dropdown-group:#{$state} {
+              @include ave-component-property-style($state-style, $property-map);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ave-dropdown-group-style() {
+
+  @include ave-dropdown-group-container-style($ave-dropdown-group-theme);
+
+}
+

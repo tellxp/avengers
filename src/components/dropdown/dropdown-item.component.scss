@@ -1,0 +1,7 @@
+@import "../core/widget.component";
+
+.v-dropdown-item {
+  @extend %v-container;
+  background-color: transparent;
+  color: transparent;
+}

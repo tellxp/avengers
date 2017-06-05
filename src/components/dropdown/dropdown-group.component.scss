@@ -1,0 +1,7 @@
+@import "../core/widget.component";
+
+.v-dropdown-group {
+  @extend %v-control;
+  vertical-align: top;
+  height: 100%;
+}
