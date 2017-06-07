@@ -11,7 +11,7 @@ import {
   OnDestroy, OnChanges, DoCheck, Renderer2, HostBinding, ViewEncapsulation
 } from '@angular/core';
 import {DomService, ElementPosition, ElementStyle} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {WidgetComponent, WidgetStyle} from '../core/widget.component';
 import {isNullOrUndefined} from 'util';
 
 
@@ -62,12 +62,19 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   }
   ngAfterViewInit() {
     super.ngAfterViewInit();
+
   }
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
     this.setPosition();
+    this.setStyle();
   }
-
+  setStyle() {
+    const style = new WidgetStyle();
+    style.width = this.elementRef.nativeElement.clientWidth;
+    style.height = this.elementRef.nativeElement.clientHeight;
+    this.dom.setElementStyle(style, this.elementRef.nativeElement, this.render);
+  }
   setPosition() {
     let anchorPosition: ElementPosition = new ElementPosition();
     let anchorStyle: ElementStyle = new ElementStyle();

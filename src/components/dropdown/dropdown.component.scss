@@ -6,5 +6,12 @@
   @include user-select(none);
   cursor: pointer;
   position: static;
-  outline: grey solid 1px;
+}
+.v-dropdown {
+  .v-dropdown-group {
+    margin-left: -0.3rem;
+  }
+  .v-dropdown-group:first-of-type {
+    margin-left: 0;
+  }
 }

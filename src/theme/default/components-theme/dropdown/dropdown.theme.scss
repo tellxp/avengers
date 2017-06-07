@@ -13,7 +13,7 @@ $ave-dropdown-container-ingredient-map: (
   ),
 );
 
-$ave-dropdown-panel-ingredient-map: (
+$ave-dropdown-slidedown-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base),
@@ -61,8 +61,8 @@ $ave-dropdown-theme: (
   }
 }
 
-@mixin ave-dropdown-panel-style($theme) {
-  @each $ingredient, $style-map in $ave-dropdown-panel-ingredient-map {
+@mixin ave-dropdown-slidedown-style($theme) {
+  @each $ingredient, $style-map in $ave-dropdown-slidedown-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -74,15 +74,15 @@ $ave-dropdown-theme: (
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            ave-popup {
-              & > .v-arcylic-ground {
+           .v-slidedown {
+              div > .v-arcylic-ground {
                 z-index: -3;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
-            ave-popup {
-              & > .v-arcylic-ground:#{$state} {
+            .v-slidedown {
+              div > .v-arcylic-ground:#{$state} {
                 z-index: -3;
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -96,6 +96,6 @@ $ave-dropdown-theme: (
 
 @mixin ave-dropdown-style() {
   @include ave-dropdown-container-style($ave-dropdown-theme);
-  @include ave-dropdown-panel-style($ave-dropdown-theme);
+  @include ave-dropdown-slidedown-style($ave-dropdown-theme);
 }
 

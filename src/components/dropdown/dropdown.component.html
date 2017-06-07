@@ -1,8 +1,8 @@
 <ave-dropdown-header #anchor class="v-dropdown-header">{{title}}</ave-dropdown-header>
 <ave-dropdown-icon class="v-dropdown-icon" (blur)="onBlur()" (click)="onClick()"></ave-dropdown-icon>
-<ave-popup [anchor]="anchor">
+<ave-popup *ngIf="expanded" [anchor]="anchor">
   <ave-slidedown [active]="expanded">
     <ng-content></ng-content>
+    <ave-arcylic-ground></ave-arcylic-ground>
   </ave-slidedown>
-  <ave-arcylic-ground></ave-arcylic-ground>
 </ave-popup>
