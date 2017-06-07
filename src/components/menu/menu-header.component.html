@@ -1,0 +1,9 @@
+<ave-arcylic-content>
+  <span><ng-content></ng-content></span>
+  <i *ngIf="hasChildItem"
+     class="fa"
+     [ngClass]="{'fa-chevron-down': isEntryItem, 'fa-chevron-right': !isEntryItem}"
+     aria-hidden="true"></i>
+</ave-arcylic-content>
+<ave-arcylic-light></ave-arcylic-light>
+<ave-arcylic-ground></ave-arcylic-ground>

@@ -1,13 +1,24 @@
 import {
   AfterContentChecked,
-  AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChildren, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit,
-  QueryList, ViewEncapsulation
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  DoCheck,
+  ElementRef, HostBinding,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
-import {MenuEntryComponent} from './menu-entry.component';
 import {WidgetComponent} from '../core/widget.component';
+import {MenuComponent} from './menu.component';
 
 @Component({
   selector: 'ave-menu-item',
@@ -24,6 +35,8 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
+  @HostBinding('class.v-menu-item') menuItemCssClass = 'true';
+  @HostBinding('attr.tabindex') tabIndex = '-1';
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
@@ -54,7 +67,9 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-
+    if (this.title === '2.1') {
+      // console.log(this.contentItems);
+    }
     this.init();
   }
 
@@ -73,14 +88,12 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+
   init() {
     this.orientation = PopupOrientation.Right;
     this.active = false;
     this.initChildItems();
 
-  }
-  setParent(parent: any) {
-    this.parent = parent;
   }
 
   initChildItems() {
@@ -119,7 +132,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
 
   deactivateChildItem(): boolean {
     if (this.childItems.length > 0) {
-      let length = this.childItems.length;
+      const length = this.childItems.length;
       for (let i = 0; i < length; i++) {
         this.childItems[i].deactivate();
         this.childItems[i].deactivateChildItem();
@@ -137,8 +150,8 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     this.active = false;
   }
 
-  onMouseOver() {
-    if (this.parent instanceof MenuEntryComponent) {
+  onClick() {
+    if (this.parent instanceof MenuComponent) {
       this.parent.activateItem(this);
     }
     if (this.parent instanceof MenuItemComponent) {
@@ -151,7 +164,18 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onBlur() {
-
+    // this.parent.deactivateChildItem();
   }
-
+  isEntryItem(): boolean {
+    if (this.parent instanceof MenuComponent) {
+      return true;
+    } else if (this.parent instanceof MenuItemComponent) {
+      return false;
+    } else {
+      throw Error('Unknown parent of MenuItem');
+    }
+  }
+  setParent(parent: any) {
+    this.parent = parent;
+  }
 }

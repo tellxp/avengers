@@ -1,9 +1,6 @@
-﻿//@import "../../theme/base";
-//
-//:host {
-//  display: flex;
-//  flex-flow: row;
-//  background-color: $component-back-color;
-//  outline: none;
-//
-//}
+﻿@import "../core/widget.component";
+
+.v-menu {
+  @extend %v-container;
+  outline: none;
+}

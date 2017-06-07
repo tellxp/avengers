@@ -1,7 +1,9 @@
-﻿<div #anchor tabindex="-1" (blur)="onBlur()" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
-  <span>{{title}}</span>
-  <i class="fa fa-chevron-right" aria-hidden="true" *ngIf="hasChildItem()"></i>
-</div>
+﻿<ave-menu-header [isEntryItem]="isEntryItem()" [hasChildrenItem]="hasChildItem()"
+                 (click)="onClick()" (blur)="onBlur()">
+  {{title}}
+</ave-menu-header>
 <ave-popup *ngIf="active" [anchor]="anchor" [orientation]="orientation">
   <ng-content></ng-content>
 </ave-popup>
+
+

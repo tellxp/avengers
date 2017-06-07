@@ -6,15 +6,16 @@
   Component,
   ContentChildren,
   DoCheck,
-  ElementRef,
+  ElementRef, HostBinding,
   OnChanges,
   OnDestroy,
   OnInit,
   QueryList, ViewEncapsulation
 } from '@angular/core';
-import {MenuBarComponent} from './menu-bar.component';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
+import {MenuItemComponent} from './menu-item.component';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'ave-menu',
@@ -31,9 +32,10 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ContentChildren(MenuBarComponent) contentBars: QueryList<MenuBarComponent>;
-  bars: MenuBarComponent[];
-
+  @HostBinding('class.v-menu') menuCssClass = 'true';
+  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
+  items: MenuItemComponent[];
+  activeItem: MenuItemComponent;
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
 
@@ -54,7 +56,7 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   ngAfterContentInit() {
     super.ngAfterContentInit();
 
-    this.initBars();
+    this.initItems();
   }
 
   ngAfterContentChecked() {
@@ -72,12 +74,31 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+  activateItem(item: MenuItemComponent) {
+    if (isNullOrUndefined(this.activeItem)) {
+      this.activeItem = item;
+      this.activeItem.activate();
+    } else {
+      this.activeItem.deactivate();
+      this.activeItem = item;
+      this.activeItem.activate();
+    }
+  }
 
-  initBars() {
-    this.bars = this.contentBars.toArray();
-    const length = this.bars.length;
+  deactivateItem() {
+    const length = this.items.length;
     for (let i = 0; i < length; i++) {
-      this.bars[i].setParentMenu(this);
+      this.items[i].deactivate();
+      this.items[i].deactivateChildItem();
+
+    }
+  }
+
+  initItems() {
+    this.items = this.contentItems.toArray();
+    const length = this.items.length;
+    for (let i = 0; i < length; i++) {
+      this.items[i].setParent(this);
     }
   }
 }
