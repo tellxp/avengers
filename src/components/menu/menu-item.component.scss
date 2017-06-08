@@ -1,6 +1,10 @@
 @import "../core/widget.component";
 
 .v-menu-item {
-  @extend %v-control;
+  @extend %v-container;
   outline: none;
+  cursor: pointer;
+  min-width: 6rem;
+  overflow: hidden;
+  vertical-align: bottom;
 }

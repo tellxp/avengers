@@ -5,14 +5,15 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding, Input,
+  ElementRef, HostBinding, HostListener, Input,
   OnChanges,
   OnDestroy,
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {WidgetComponent, WidgetPosition} from '../core/widget.component';
+import {PanelbarItemComponent} from '../panelbar/panelbar-item.component';
 
 
 @Component({
@@ -34,8 +35,25 @@ export class MenuHeaderComponent extends WidgetComponent implements OnChanges,
 
   @HostBinding('class.v-menu-header') menuHeaderCssClass = 'true';
   @HostBinding('attr.tabindex') tabIndex = '-1';
+
+  motionState: string;
+  mouseEvent: MouseEvent;
+  mousePosition: WidgetPosition;
+
+  @HostListener('mousedown', ['$event']) onMousedown($event) {
+    this.mouseEvent = $event;
+    this.mousePosition.left = this.mouseEvent.offsetX;
+    this.mousePosition.top = this.mouseEvent.offsetY;
+    this.motionState = 'start';
+  }
+
+  @HostListener('mouseup') onMouseup() {
+    this.motionState = 'end';
+  }
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
+    this.mousePosition = new WidgetPosition();
   }
 
   ngOnChanges() {

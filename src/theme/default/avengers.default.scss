@@ -16,6 +16,7 @@
 @import "components-theme/dropdown/dropdown-item.theme";
 @import "components-theme/menu/menu.theme";
 @import "components-theme/menu/menu-item.theme";
+@import "components-theme/menu/menu-header.theme";
 
 @mixin avengers-theme-loader() {
   @include ave-button-style();
@@ -37,6 +38,7 @@
 
   @include ave-menu-style();
   @include ave-menu-item-style();
+  @include ave-menu-header-style();
 }
 
 

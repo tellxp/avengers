@@ -3,4 +3,24 @@
 .v-menu {
   @extend %v-container;
   outline: none;
+  cursor: pointer;
+}
+
+.v-menu {
+  & > .v-menu-item {
+    display: inline-block;
+    position: static;
+    margin-left: -0.3rem;
+
+  }
+  & > .v-menu-item:first-of-type {
+    display: inline-block;
+    position: static;
+    margin-left: 0;
+    & > .v-menu-header {
+      & > .v-arcylic-content {
+        text-align: center;
+      }
+    }
+  }
 }

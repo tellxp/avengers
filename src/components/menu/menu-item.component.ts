@@ -6,7 +6,8 @@ import {
   Component,
   ContentChildren,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef,
+  HostBinding,
   Input,
   OnChanges,
   OnDestroy,
@@ -101,9 +102,9 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
 
 
     this.childItems = this.contentItems.toArray().slice(1, contentLength);
-    // if (this.title == '1.1') {
-    //   console.log(this.childItems);
-    // }
+    if (this.title === '1.1') {
+      console.log(this.hasChildItem());
+    }
     const length = this.childItems.length;
     for (let i = 0; i < length; i++) {
       this.childItems[i].setParent(this);
@@ -151,11 +152,20 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onClick() {
-    if (this.parent instanceof MenuComponent) {
-      this.parent.activateItem(this);
-    }
-    if (this.parent instanceof MenuItemComponent) {
-      this.parent.activateChildItem(this);
+    if (this.active) {
+      if (this.parent instanceof MenuComponent) {
+        this.parent.deactivateItem();
+      }
+      if (this.parent instanceof MenuItemComponent) {
+        this.parent.deactivateChildItem();
+      }
+    } else {
+      if (this.parent instanceof MenuComponent) {
+        this.parent.activateItem(this);
+      }
+      if (this.parent instanceof MenuItemComponent) {
+        this.parent.activateChildItem(this);
+      }
     }
   }
 
@@ -166,6 +176,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   onBlur() {
     // this.parent.deactivateChildItem();
   }
+
   isEntryItem(): boolean {
     if (this.parent instanceof MenuComponent) {
       return true;
@@ -175,6 +186,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
       throw Error('Unknown parent of MenuItem');
     }
   }
+
   setParent(parent: any) {
     this.parent = parent;
   }

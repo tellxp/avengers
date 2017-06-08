@@ -1,4 +1,3 @@
-@import "../../../../components/menu/menu.component";
 @import "../../../base";
 @import "../../../palette";
 @import "../../../typography";
@@ -20,6 +19,7 @@ $ave-menu-slidedown-ingredient-map: (
     property: (background-color),
   ),
 );
+
 // Color
 $ave-menu-palette: (
   default: ave-palette($ave-palette-grey),
@@ -61,7 +61,7 @@ $ave-menu-theme: (
   }
 }
 
-@mixin ave-menu-slidedown-style($theme) {
+@mixin ave-menu-ground-style($theme) {
   @each $ingredient, $style-map in $ave-menu-slidedown-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
@@ -74,18 +74,12 @@ $ave-menu-theme: (
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            .v-slidedown {
-              div > .v-arcylic-ground {
-                z-index: -3;
-                @include ave-component-property-style($state-style, $property-map);
-              }
+            & > .v-arcylic-ground {
+              @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
-            .v-slidedown {
-              div > .v-arcylic-ground:#{$state} {
-                z-index: -3;
-                @include ave-component-property-style($state-style, $property-map);
-              }
+            & > .v-arcylic-ground {
+              @include ave-component-property-style($state-style, $property-map);
             }
           }
         }
@@ -96,6 +90,6 @@ $ave-menu-theme: (
 
 @mixin ave-menu-style() {
   @include ave-menu-container-style($ave-menu-theme);
-  @include ave-menu-slidedown-style($ave-menu-theme);
+  @include ave-menu-ground-style($ave-menu-theme);
 }
 

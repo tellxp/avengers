@@ -1,6 +1,8 @@
 @import "../core/widget.component";
 
 .v-menu-header {
-  @extend %v-control;
-  outline: none;
+  @extend %v-container;
+  span {
+
+  }
 }

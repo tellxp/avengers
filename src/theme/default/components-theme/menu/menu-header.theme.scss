@@ -4,12 +4,7 @@
 @import "../../../shape";
 
 // State dictionary
-$ave-dropdown-header-container-ingredient-map: (
-  //palette: (
-  //  scene: (default, primary, secondary, success, info, warning, danger, link,),
-  //  state: (base, active, hover, focus),
-  //  property: (outline-color,),
-  //),
+$ave-menu-header-container-ingredient-map: (
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base, active, hover, focus),
@@ -17,21 +12,21 @@ $ave-dropdown-header-container-ingredient-map: (
   ),
 );
 
-$ave-dropdown-header-ground-ingredient-map: (
+$ave-menu-header-ground-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base),
     property: (background-color),
   ),
 );
-$ave-dropdown-header-light-ingredient-map: (
+$ave-menu-header-light-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (active, hover, focus),
     property: (background-color),
   ),
 );
-$ave-dropdown-header-content-ingredient-map: (
+$ave-menu-header-content-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
     state: (base, active, hover, focus),
@@ -45,7 +40,7 @@ $ave-dropdown-header-content-ingredient-map: (
 );
 
 // Color
-$ave-dropdown-header-palette: (
+$ave-menu-header-palette: (
   default: ave-palette($ave-palette-grey),
   primary: ave-palette($ave-palette-blue),
   secondary: ave-palette($ave-palette-pink),
@@ -56,7 +51,7 @@ $ave-dropdown-header-palette: (
   link: ave-palette($ave-palette-white)
 );
 // Typography.
-$ave-dropdown-header-typography: (
+$ave-menu-header-typography: (
   default: ave-typography($ave-typography-yahei),
   primary: ave-typography($ave-typography-yahei),
   secondary: ave-typography($ave-typography-yahei),
@@ -67,24 +62,24 @@ $ave-dropdown-header-typography: (
   link: ave-typography($ave-typography-yahei)
 );
 // Shape.
-$ave-dropdown-header-shape: (
-  default: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  primary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  secondary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  success: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  info: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  warning: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  danger: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  link: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+$ave-menu-header-shape: (
+  default: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  primary: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  secondary: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  success: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  info: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  warning: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  danger: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
+  link: ave-shape($ave-shape-ratio-dot618, 400, 50, 700),
 );
 
-$ave-dropdown-header-theme: (
-  palette: $ave-dropdown-header-palette,
-  typography: $ave-dropdown-header-typography,
-  shape: $ave-dropdown-header-shape
+$ave-menu-header-theme: (
+  palette: $ave-menu-header-palette,
+  typography: $ave-menu-header-typography,
+  shape: $ave-menu-header-shape
 );
-@mixin ave-dropdown-header-ground-style($theme) {
-  @each $ingredient, $style-map in $ave-dropdown-header-ground-ingredient-map {
+@mixin ave-menu-header-ground-style($theme) {
+  @each $ingredient, $style-map in $ave-menu-header-ground-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -92,17 +87,17 @@ $ave-dropdown-header-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-dropdown-#{$scene} {
+      .#{$ave-prefix}-menu-item-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & > .v-dropdown-header {
+            & > .v-menu-header {
               & > .v-arcylic-ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
-            & > .v-dropdown-header:#{$state} {
+            & > .v-menu-header:#{$state} {
               & > .v-arcylic-ground {
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -115,8 +110,8 @@ $ave-dropdown-header-theme: (
 
 }
 
-@mixin ave-dropdown-header-light-style($theme) {
-  @each $ingredient, $style-map in $ave-dropdown-header-light-ingredient-map {
+@mixin ave-menu-header-light-style($theme) {
+  @each $ingredient, $style-map in $ave-menu-header-light-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -124,17 +119,17 @@ $ave-dropdown-header-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-dropdown-#{$scene} {
+      .#{$ave-prefix}-menu-item-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & > .v-dropdown-header {
+            & > .v-menu-header {
               & > .v-arcylic-light {
                 background-color: transparent;
               }
             }
           } @else {
-            & > .v-dropdown-header:#{$state} {
+            & > .v-menu-header:#{$state} {
               & > .v-arcylic-light {
                 background-color: rgba($light-color, $golden-ratio);
               }
@@ -146,8 +141,8 @@ $ave-dropdown-header-theme: (
   }
 }
 
-@mixin ave-dropdown-header-content-style($theme) {
-  @each $ingredient, $style-map in $ave-dropdown-header-content-ingredient-map {
+@mixin ave-menu-header-content-style($theme) {
+  @each $ingredient, $style-map in $ave-menu-header-content-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -155,17 +150,17 @@ $ave-dropdown-header-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-dropdown-#{$scene} {
+      .#{$ave-prefix}-menu-item-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & > .v-dropdown-header {
+            & > .v-menu-header {
               & > .v-arcylic-content {
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
-            & > .v-dropdown-header:#{$state} {
+            & > .v-menu-header:#{$state} {
               & > .v-arcylic-content {
                 @include ave-component-property-style($state-style, $property-map);
               }
@@ -177,8 +172,8 @@ $ave-dropdown-header-theme: (
   }
 }
 
-@mixin ave-dropdown-header-container-style($theme) {
-  @each $ingredient, $style-map in $ave-dropdown-header-container-ingredient-map {
+@mixin ave-menu-header-container-style($theme) {
+  @each $ingredient, $style-map in $ave-menu-header-container-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
     $state-map: map_get($style-map, state);
@@ -186,15 +181,15 @@ $ave-dropdown-header-theme: (
 
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
-      .#{$ave-prefix}-dropdown-#{$scene} {
+      .#{$ave-prefix}-menu-item-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-            & > .v-dropdown-header {
+            & > .v-menu-header {
               @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
-            & > .v-dropdown-header:#{$state} {
+            & > .v-menu-header:#{$state} {
               @include ave-component-property-style($state-style, $property-map);
             }
           }
@@ -204,15 +199,15 @@ $ave-dropdown-header-theme: (
   }
 }
 
-@mixin ave-dropdown-header-style() {
+@mixin ave-menu-header-style() {
 
-  @include ave-dropdown-header-container-style($ave-dropdown-header-theme);
+  @include ave-menu-header-container-style($ave-menu-header-theme);
 
-  @include ave-dropdown-header-content-style($ave-dropdown-header-theme);
+  @include ave-menu-header-content-style($ave-menu-header-theme);
 
-  @include ave-dropdown-header-ground-style($ave-dropdown-header-theme);
+  @include ave-menu-header-ground-style($ave-menu-header-theme);
 
-  @include ave-dropdown-header-light-style($ave-dropdown-header-theme);
+  @include ave-menu-header-light-style($ave-menu-header-theme);
 
 }
 
