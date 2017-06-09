@@ -20,6 +20,7 @@ import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
 import {WidgetComponent} from '../core/widget.component';
 import {MenuComponent} from './menu.component';
+import {MenuEntryComponent} from './menu-entry.component';
 
 @Component({
   selector: 'ave-menu-item',
@@ -38,16 +39,16 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
 
   @HostBinding('class.v-menu-item') menuItemCssClass = 'true';
   @HostBinding('attr.tabindex') tabIndex = '-1';
+
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
-  parent: any;
+  parent: MenuEntryComponent | MenuComponent;
 
   childItems: MenuItemComponent[];
   activeChildItem: MenuItemComponent;
   active: boolean;
   orientation: PopupOrientation;
-  public domService: DomService;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -91,10 +92,9 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    this.orientation = PopupOrientation.Right;
+    this.orientation = PopupOrientation.Bottom;
     this.active = false;
     this.initChildItems();
-
   }
 
   initChildItems() {
@@ -152,6 +152,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onClick() {
+
     if (this.active) {
       if (this.parent instanceof MenuComponent) {
         this.parent.deactivateItem();
@@ -175,16 +176,6 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
 
   onBlur() {
     // this.parent.deactivateChildItem();
-  }
-
-  isEntryItem(): boolean {
-    if (this.parent instanceof MenuComponent) {
-      return true;
-    } else if (this.parent instanceof MenuItemComponent) {
-      return false;
-    } else {
-      throw Error('Unknown parent of MenuItem');
-    }
   }
 
   setParent(parent: any) {

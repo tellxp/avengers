@@ -7,6 +7,7 @@ import {PopupModule} from '../popup/popup.module';
 import {ArcylicModule} from '../acrylic/arcylic.module';
 import {MenuHeaderComponent} from './menu-header.component';
 import {AnimationModule} from '../animation/animation.module';
+import {MenuEntryComponent} from './menu-entry.component';
 
 @NgModule({
   imports: [
@@ -17,11 +18,13 @@ import {AnimationModule} from '../animation/animation.module';
   ],
   exports: [
     MenuComponent,
+    MenuEntryComponent,
     MenuItemComponent,
     MenuHeaderComponent,
   ],
   declarations: [
     MenuComponent,
+    MenuEntryComponent,
     MenuItemComponent,
     MenuHeaderComponent,
 

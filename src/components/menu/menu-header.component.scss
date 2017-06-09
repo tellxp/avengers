@@ -2,6 +2,7 @@
 
 .v-menu-header {
   @extend %v-container;
+  overflow: hidden;
   span {
 
   }

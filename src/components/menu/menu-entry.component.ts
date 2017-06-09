@@ -5,9 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
-  HostBinding,
-  Input,
+  ElementRef, HostBinding,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -15,51 +13,29 @@ import {
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MenuComponent} from './menu.component';
+import {MenuItemComponent} from './menu-item.component';
 
 
 @Component({
-  selector: 'ave-slidedown',
-  templateUrl: 'slidedown.component.html',
-  styleUrls: ['./slidedown.component.scss'],
+  selector: 'ave-menu-entry',
+  templateUrl: './menu-entry.component.html',
+  styleUrls: ['./menu-entry.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: [
-    trigger('slideDown', [
-      state('in', style({
-        overflow: 'visible',
-        height: '*',
-      })),
-      transition('void => *', [
-        style({
-          overflow: 'hidden',
-          height: '0'
-        }),
-        animate('280ms cubic-bezier(0,0,0.2,1)', style({
-          height: '*'
-        }))
-      ]),
-      transition('* => void', [
-        style({
-          overflow: 'visible',
-          height: '*'
-        }),
-        animate('280ms cubic-bezier(0,0,0.2,1)', style({
-          height: 0
-        }))
-      ])
-    ]),
-  ],
   providers: [DomService]
 })
-export class SlideDownComponent extends WidgetComponent implements OnChanges,
+export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-slidedown') slideDownCssClass = 'true';
-  @Input() active: boolean;
+  @HostBinding('class.v-menu-entry') menuEntryCssClass = 'true';
+
+  parent: MenuComponent;
+  childItems: MenuItemComponent[];
+  activeChildItem: MenuItemComponent;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

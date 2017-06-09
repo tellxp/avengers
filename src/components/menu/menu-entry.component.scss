@@ -1,0 +1,6 @@
+@import "../core/widget.component";
+
+.v-menu-entry {
+  @extend %v-control;
+  position: static;
+}
