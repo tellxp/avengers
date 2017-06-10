@@ -2,8 +2,6 @@
 
 .v-panelbar-item {
   @extend %v-container;
-  flex-flow: column;
-  justify-content: flex-start;
 
   background-color: transparent;
   color: transparent;

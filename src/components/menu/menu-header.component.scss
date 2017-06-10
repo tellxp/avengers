@@ -3,7 +3,10 @@
 .v-menu-header {
   @extend %v-container;
   overflow: hidden;
+  outline: none;
+
   span {
+    word-break:keep-all;
 
   }
 }

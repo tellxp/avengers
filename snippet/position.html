@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <title>Position</title>
   <style>
-    .static
+    .container {
+      display: inline-block;
+      position: relative;
+      background-color: blue;
+    }
+    .item {
+      display: block;
+      position: relative;
+      background-color: red;
+    }
   </style>
 </head>
 <body>
-<div>Static</div>
+<div class="container">
+  <div class="item">11111111111111111111</div>
+  <div class="item">111111111</div>
+  <div class="item">1111111111</div>
+  <div class="item">1111111111</div>
+</div>
 </body>
 </html>

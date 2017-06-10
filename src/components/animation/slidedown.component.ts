@@ -26,7 +26,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   animations: [
     trigger('slideDown', [
       state('in', style({
-        overflow: 'visible',
         height: '*',
       })),
       transition('void => *', [

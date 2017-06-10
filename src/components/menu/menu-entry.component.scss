@@ -2,5 +2,6 @@
 
 .v-menu-entry {
   @extend %v-control;
-  position: static;
+  min-width: 6rem;
+  vertical-align: bottom;
 }

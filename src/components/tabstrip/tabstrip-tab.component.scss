@@ -4,7 +4,7 @@
 .v-tabstrip-tab {
   @extend %v-control;
   @include user-select(none);
-  vertical-align: middle;
+  vertical-align: bottom;
   cursor: pointer;
   overflow: hidden;
   outline: none;

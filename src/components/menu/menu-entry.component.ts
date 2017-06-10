@@ -101,4 +101,7 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   onClick() {
     this.active = !this.active;
   }
+  onBlur() {
+
+  }
 }
