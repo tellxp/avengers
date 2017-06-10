@@ -6,10 +6,14 @@ import {PopupComponent, PopupOrientation} from "../../../components/popup/popup.
   styleUrls: ['./popup-demo.component.scss']
 })
 export class PopupDemoComponent implements OnInit {
-  orientation = PopupOrientation.Bottom;
+  down = PopupOrientation.Bottom;
+  up = PopupOrientation.Top;
+  right = PopupOrientation.Right;
   constructor() {
   }
   public showPopup: boolean;
+  public showNested1: boolean;
+  public showNested2: boolean;
   @ContentChild(PopupComponent) popup: PopupComponent;
 
   ngOnInit() {
@@ -17,5 +21,8 @@ export class PopupDemoComponent implements OnInit {
 
   onClick() {
     this.showPopup = !this.showPopup;
+  }
+  onClickNested() {
+    this.showNested1 = !this.showNested1;
   }
 }

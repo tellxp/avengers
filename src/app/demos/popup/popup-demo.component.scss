@@ -1,0 +1,14 @@
+.item {
+  display: inline-block;
+  position: relative;
+}
+.container {
+  display: inline-block;
+  position: relative;
+  background-color: blue;
+}
+.main-container {
+  display: block;
+  position: relative;
+  background-color: green;
+}

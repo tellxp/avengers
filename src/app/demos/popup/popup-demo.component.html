@@ -1,16 +1,21 @@
 <h3>弹出层</h3>
-<ave-button class="v-button-primary" #anchor (click)="onClick()">弹出</ave-button>
-<ave-popup [anchor]="anchor" [orientation]="orientation" *ngIf="showPopup">
+<ave-button class="v-button-primary" #popdownAnchor (click)="onClick()">弹出</ave-button>
+<ave-popup [anchor]="popdownAnchor" [orientation]="down" *ngIf="showPopup">
   <h1>这是一个弹出层</h1>
 </ave-popup>
 
-<code>
-  <h1>1</h1>
-  <h1>2</h1>
-  <h1>3</h1>
-  <h1>4</h1>
-  <h1>5</h1>
-  <h1>6</h1>
-  <h1>7</h1>
-  <h1>8</h1>
-</code>
+<h3>嵌套的弹出层</h3>
+<div class="main-container">
+  <div class="container">
+    <ave-button class="v-button-primary" #nestedAnchor (click)="onClickNested()">弹出</ave-button>
+    <ave-popup [anchor]="nestedAnchor" [orientation]="down" *ngIf="showNested1">
+      <ave-button class="v-button-secondary item">111111-----------------------</ave-button>
+      <ave-button class="v-button-secondary item">1111111111</ave-button>
+      <ave-button class="v-button-secondary item">111111</ave-button>
+      <ave-button class="v-button-secondary item">11111111122221111</ave-button>
+    </ave-popup>
+  </div>
+</div>
+<pre>
+  <h1>dddd</h1>
+</pre>

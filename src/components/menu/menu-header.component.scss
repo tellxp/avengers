@@ -1,12 +1,15 @@
 @import "../core/widget.component";
 
 .v-menu-header {
-  @extend %v-container;
+  @extend %v-control;
+  box-sizing: border-box;
   overflow: hidden;
   outline: none;
 
+  // Make anchors render like buttons.
+  white-space: nowrap;
+  text-decoration: none;
   span {
-    word-break:keep-all;
 
   }
 }

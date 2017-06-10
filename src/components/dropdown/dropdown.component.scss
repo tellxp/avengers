@@ -2,10 +2,11 @@
 @import "../utils/utils";
 
 .v-dropdown {
-  @extend %v-control;
+  //@extend %v-control;
   @include user-select(none);
   cursor: pointer;
-  position: static;
+  display: block;
+  float: left;
 }
 .v-dropdown {
   .v-dropdown-group {

@@ -67,7 +67,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
     this.setPosition();
-    this.setStyle();
+    // this.setStyle();
   }
   setStyle() {
     const style = new WidgetStyle();

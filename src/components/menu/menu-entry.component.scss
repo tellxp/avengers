@@ -1,7 +1,9 @@
 @import "../core/widget.component";
 
 .v-menu-entry {
-  @extend %v-control;
+  display: inline-block;
+  position: relative;
+  //float: left;
   min-width: 6rem;
   vertical-align: bottom;
 }

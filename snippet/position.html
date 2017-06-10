@@ -4,24 +4,35 @@
     <meta charset="UTF-8">
     <title>Position</title>
   <style>
-    .container {
-      display: inline-block;
-      position: relative;
+    .container1 {
+      display: block;
+      float: left;
       background-color: blue;
+    }
+    .container2 {
+      display: block;
+      position: absolute;
+      background-color: yellow;
+      overflow: visible;
+      top:0;
+      left: 200px;
     }
     .item {
       display: block;
-      position: relative;
       background-color: red;
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="item">11111111111111111111</div>
-  <div class="item">111111111</div>
-  <div class="item">1111111111</div>
-  <div class="item">1111111111</div>
+<div class="container1">
+  dddddddd
+  <div class="container2">
+    <div class="item">1111--------------</div>
+    <div class="item">111111111</div>
+    <div class="item">1111111111</div>
+    <div class="item">1111111111</div>
+  </div>
+
 </div>
 </body>
 </html>

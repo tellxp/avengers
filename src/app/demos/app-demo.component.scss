@@ -24,11 +24,12 @@ h3 {
   background-color: black;
   color: white;
   padding: 1em;
-} 
+}
 .content {
   position: relative;
   width: 70%;
   height: 100%;
+  overflow: auto;
 }
 .content-ground {
   position: absolute;

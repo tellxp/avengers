@@ -4,6 +4,8 @@
   @extend %v-container;
   outline: none;
   cursor: pointer;
+  zoom:1;
+  background-color: green;
 }
 
 .v-menu {
