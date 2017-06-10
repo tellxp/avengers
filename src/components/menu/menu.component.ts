@@ -16,6 +16,7 @@ import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
 import {MenuItemComponent} from './menu-item.component';
 import {isNullOrUndefined} from 'util';
+import {MenuEntryComponent} from './menu-entry.component';
 
 @Component({
   selector: 'ave-menu',
@@ -32,10 +33,12 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-menu') menuCssClass = 'true';
-  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
-  items: MenuItemComponent[];
-  activeItem: MenuItemComponent;
+  @HostBinding('class.v-menu') 'true';
+  @ContentChildren(MenuEntryComponent) contentEntries: QueryList<MenuEntryComponent>;
+
+  entries: MenuEntryComponent[];
+  activeEnrty: MenuEntryComponent;
+
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
 
@@ -55,8 +58,7 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-
-    this.initItems();
+    this.loadEntries();
   }
 
   ngAfterContentChecked() {
@@ -74,31 +76,12 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-  activateItem(item: MenuItemComponent) {
-    if (isNullOrUndefined(this.activeItem)) {
-      this.activeItem = item;
-      this.activeItem.activate();
-    } else {
-      this.activeItem.deactivate();
-      this.activeItem = item;
-      this.activeItem.activate();
-    }
-  }
 
-  deactivateItem() {
-    const length = this.items.length;
+  loadEntries() {
+    this.entries = this.contentEntries.toArray();
+    const length = this.entries.length;
     for (let i = 0; i < length; i++) {
-      this.items[i].deactivate();
-      this.items[i].deactivateChildItem();
-
-    }
-  }
-
-  initItems() {
-    this.items = this.contentItems.toArray();
-    const length = this.items.length;
-    for (let i = 0; i < length; i++) {
-      this.items[i].setParent(this);
+      this.entries[i].setParentMenu(this);
     }
   }
 }

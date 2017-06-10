@@ -43,7 +43,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
-  parent: MenuEntryComponent | MenuComponent;
+  parent: MenuEntryComponent | MenuItemComponent;
 
   childItems: MenuItemComponent[];
   activeChildItem: MenuItemComponent;
@@ -92,19 +92,14 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   init() {
-    this.orientation = PopupOrientation.Bottom;
+    this.orientation = PopupOrientation.Right;
     this.active = false;
-    this.initChildItems();
+    this.loadChildItems();
   }
 
-  initChildItems() {
+  loadChildItems() {
     const contentLength = this.contentItems.toArray().length;
-
-
     this.childItems = this.contentItems.toArray().slice(1, contentLength);
-    if (this.title === '1.1') {
-      console.log(this.hasChildItem());
-    }
     const length = this.childItems.length;
     for (let i = 0; i < length; i++) {
       this.childItems[i].setParent(this);
@@ -120,16 +115,6 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     }
   }
 
-  activateChildItem(childItem: MenuItemComponent) {
-    if (isNullOrUndefined(this.parent.activeChildItem)) {
-      this.parent.activeChildItem = childItem;
-      this.parent.activeChildItem.activate();
-    } else {
-      this.parent.activeChildItem.deactivate();
-      this.parent.activeChildItem = childItem;
-      this.parent.activeChildItem.activate();
-    }
-  }
 
   deactivateChildItem(): boolean {
     if (this.childItems.length > 0) {
@@ -152,22 +137,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onClick() {
-
-    if (this.active) {
-      if (this.parent instanceof MenuComponent) {
-        this.parent.deactivateItem();
-      }
-      if (this.parent instanceof MenuItemComponent) {
-        this.parent.deactivateChildItem();
-      }
-    } else {
-      if (this.parent instanceof MenuComponent) {
-        this.parent.activateItem(this);
-      }
-      if (this.parent instanceof MenuItemComponent) {
-        this.parent.activateChildItem(this);
-      }
-    }
+    this.active = !this.active;
   }
 
   onMouseOut() {
@@ -178,7 +148,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     // this.parent.deactivateChildItem();
   }
 
-  setParent(parent: any) {
+  setParent(parent: MenuEntryComponent | MenuItemComponent) {
     this.parent = parent;
   }
 }

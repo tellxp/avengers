@@ -1,4 +1,4 @@
-<ave-menu-header #anchor [hasChildrenItem]="hasChildItem()"
+<ave-menu-header #anchor [isEntry]="true" [hasChild]="hasChildItem()"
                  (click)="onClick()" (blur)="onBlur()">
   {{title}}
 </ave-menu-header>

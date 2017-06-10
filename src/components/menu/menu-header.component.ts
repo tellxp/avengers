@@ -30,11 +30,11 @@ export class MenuHeaderComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() isEntryItem: boolean;
-  @Input() hasChildrenItem: boolean;
+  @Input() isEntry: boolean;
+  @Input() hasChild: boolean;
 
-  @HostBinding('class.v-menu-header') menuHeaderCssClass = 'true';
-  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-menu-header') 'true';
+  @HostBinding('attr.tabindex') '-1';
 
   motionState: string;
   mouseEvent: MouseEvent;

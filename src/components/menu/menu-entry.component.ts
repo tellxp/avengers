@@ -3,18 +3,19 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component,
+  Component, ContentChildren,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef, HostBinding, Input,
   OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, QueryList,
   ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
 import {MenuComponent} from './menu.component';
 import {MenuItemComponent} from './menu-item.component';
+import {PopupOrientation} from '../popup/popup.component';
 
 
 @Component({
@@ -31,14 +32,19 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-menu-entry') menuEntryCssClass = 'true';
+  @HostBinding('class.v-menu-entry') 'true';
+  @Input() title: string;
 
-  parent: MenuComponent;
+  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
+
+  parentMenu: MenuComponent;
   childItems: MenuItemComponent[];
-  activeChildItem: MenuItemComponent;
+  orientation: PopupOrientation;
+  active: boolean;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
+    this.orientation = PopupOrientation.Bottom;
   }
 
   ngOnChanges() {
@@ -55,6 +61,8 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+
+    this.loadItems();
   }
 
   ngAfterContentChecked() {
@@ -73,4 +81,24 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
+  loadItems() {
+    this.childItems = this.contentItems.toArray();
+    const length = this.childItems.length;
+    for (let i = 0; i < length; i++) {
+      this.childItems[i].setParent(this);
+    }
+  }
+  setParentMenu(menu: MenuComponent) {
+    this.parentMenu = menu;
+  }
+  hasChildItem() {
+    if (this.childItems.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  onClick() {
+    this.active = !this.active;
+  }
 }

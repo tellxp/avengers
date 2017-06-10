@@ -1,8 +1,8 @@
 <ave-arcylic-content>
   <span><ng-content></ng-content></span>
-  <i *ngIf="hasChildrenItem"
+  <i *ngIf="hasChild"
      class="fa"
-     [ngClass]="{'fa-chevron-down': isEntryItem, 'fa-chevron-right': !isEntryItem}"
+     [ngClass]="{'fa-chevron-down': isEntry, 'fa-chevron-right': !isEntry}"
      aria-hidden="true"></i>
 </ave-arcylic-content>
 <ave-ripple #motion
