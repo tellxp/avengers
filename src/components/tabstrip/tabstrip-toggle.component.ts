@@ -31,7 +31,7 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-tabstrip-toggle') tabstripToggleCssClass = 'true';
+  @HostBinding('class.v-tabstrip-toggle') 'true';
 
   private parentBar: TabstripBarComponent;
 

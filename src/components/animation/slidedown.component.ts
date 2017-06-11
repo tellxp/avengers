@@ -57,7 +57,7 @@ export class SlideDownComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-slidedown') slideDownCssClass = 'true';
+  @HostBinding('class.v-slidedown') 'true';
   @Input() active: boolean;
 
   constructor(elementRef: ElementRef, domService: DomService) {

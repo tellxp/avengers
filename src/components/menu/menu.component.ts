@@ -6,7 +6,7 @@
   Component,
   ContentChildren,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef, HostBinding, HostListener,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -34,8 +34,8 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @HostBinding('class.v-menu') 'true';
+  @HostBinding('attr.tabindex') '-1';
   @ContentChildren(MenuEntryComponent) contentEntries: QueryList<MenuEntryComponent>;
-
   entries: MenuEntryComponent[];
   activeEnrty: MenuEntryComponent;
 

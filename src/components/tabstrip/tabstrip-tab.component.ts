@@ -30,8 +30,8 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-tabstrip-tab') tabstripTabCssClass = 'true';
-  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-tabstrip-tab') 'true';
+  @HostBinding('attr.tabindex') '-1';
 
   @Input() bindedPage: TabstripPageComponent;
   mousePosition: WidgetPosition;

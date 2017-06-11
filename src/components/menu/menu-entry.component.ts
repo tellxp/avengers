@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component, ContentChildren,
   DoCheck,
-  ElementRef, HostBinding, Input,
+  ElementRef, HostBinding, HostListener, Input,
   OnChanges,
   OnDestroy,
   OnInit, QueryList,
@@ -33,6 +33,7 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @HostBinding('class.v-menu-entry') 'true';
+  @HostBinding('attr.tabindex') '-1';
   @Input() title: string;
 
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
@@ -98,10 +99,30 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
       return false;
     }
   }
-  onClick() {
-    this.active = !this.active;
+  deactivateChildItems() {
+    const length = this.childItems.length;
+    for (let i = 0; i < length; i++) {
+      this.childItems[i].deactivateChildItem();
+      this.childItems[i].deactivate();
+    }
   }
-  onBlur() {
-
+  activate() {
+    this.active = true;
+  }
+  deactivate() {
+    this.active = false;
+  }
+  onClick() {
+    if (this.active) {
+      this.deactivateChildItems();
+      this.deactivate();
+    } else {
+      this.activate();
+    }
+  }
+  @HostListener('focus') onFocus() {
+    console.log('blur');
+    this.deactivateChildItems();
+    this.deactivate();
   }
 }

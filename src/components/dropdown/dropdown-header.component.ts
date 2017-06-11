@@ -30,7 +30,7 @@ export class DropdownHeaderComponent extends WidgetComponent implements OnChange
   OnDestroy {
 
   @Input() title: string;
-  @HostBinding('class.v-dropdown-header') dropdownHeaderCssClass = 'true';
+  @HostBinding('class.v-dropdown-header') 'true';
   mousePosition: WidgetPosition;
 
   motionState: string;

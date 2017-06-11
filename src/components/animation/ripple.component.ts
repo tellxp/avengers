@@ -70,7 +70,7 @@ export class RippleComponent implements OnChanges {
   rippleElementStyle: WidgetStyle = new WidgetStyle();
 
   rippleState: string;
-  @HostBinding('class.v-ripple') rippleCssClass = 'true';
+  @HostBinding('class.v-ripple') 'true';
 
   constructor(private elementRef: ElementRef, private render: Renderer2) {
     this.rippleState = 'inactive';

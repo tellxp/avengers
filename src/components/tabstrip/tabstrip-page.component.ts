@@ -24,7 +24,7 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
 
   @Input() title: string;
   @Input() active: boolean;
-  @HostBinding('class.v-tabstrip-page') tabstripPageCssClass = 'true';
+  @HostBinding('class.v-tabstrip-page') 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

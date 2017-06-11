@@ -24,7 +24,7 @@ export class DropdownComponent extends WidgetComponent implements OnChanges,
   @Input() title: string;
   @Input() expanded: boolean;
 
-  @HostBinding('class.v-dropdown') dropdownCssClass = 'true';
+  @HostBinding('class.v-dropdown') 'true';
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }

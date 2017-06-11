@@ -37,8 +37,8 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-menu-item') menuItemCssClass = 'true';
-  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-menu-item') 'true';
+  @HostBinding('attr.tabindex') '-1';
 
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
@@ -120,8 +120,8 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     if (this.childItems.length > 0) {
       const length = this.childItems.length;
       for (let i = 0; i < length; i++) {
-        this.childItems[i].deactivate();
         this.childItems[i].deactivateChildItem();
+        this.childItems[i].deactivate();
       }
     } else {
       return true;

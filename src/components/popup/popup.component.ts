@@ -30,7 +30,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-popup') popupCssClass = 'true';
+  @HostBinding('class.v-popup') 'true';
   @Input() anchor: any;
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;

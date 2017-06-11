@@ -28,7 +28,7 @@ export class ArcylicGroundComponent extends WidgetComponent implements OnChanges
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-  @HostBinding('class.v-arcylic-ground') arcylicGroundCssClass = 'true';
+  @HostBinding('class.v-arcylic-ground') 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

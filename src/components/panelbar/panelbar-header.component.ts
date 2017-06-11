@@ -33,8 +33,8 @@ export class PanelbarHeaderComponent extends WidgetComponent implements OnChange
   @Input() showArrow: boolean;
   @Input() expanded: boolean;
 
-  @HostBinding('class.v-panelbar-header') panelbarHeaderClass = 'true';
-  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-panelbar-header') 'true';
+  @HostBinding('attr.tabindex') '-1';
   motionState: string;
   mouseEvent: MouseEvent;
   mousePosition: WidgetPosition;

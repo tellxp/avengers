@@ -49,8 +49,8 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     this.motionState = 'end';
   }
 
-  @HostBinding('attr.tabindex') tabIndex = '-1';
-  @HostBinding('class.v-button') buttonClass = 'true';
+  @HostBinding('attr.tabindex') '-1';
+  @HostBinding('class.v-button') 'true';
 
 
 

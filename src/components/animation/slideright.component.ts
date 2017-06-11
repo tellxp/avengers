@@ -59,7 +59,7 @@ export class SlideRightComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-slideright') slideRightCssClass = 'true';
+  @HostBinding('class.v-slideright') 'true';
 
   @Input() active: boolean;
 

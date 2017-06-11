@@ -40,8 +40,8 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   @ViewChildren(TabstripTabComponent) viewTabs: QueryList<TabstripTabComponent>;
 
-  @HostBinding('attr.tabindex') tabIndex = '-1';
-  @HostBinding('class.v-tabstrip') tabstripCssClass = 'true';
+  @HostBinding('attr.tabindex') '-1';
+  @HostBinding('class.v-tabstrip') 'true';
 
   public pages: TabstripPageComponent[];
   public tabs: TabstripTabComponent[];

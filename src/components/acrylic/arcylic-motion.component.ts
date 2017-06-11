@@ -29,7 +29,7 @@ export class ArcylicMotionComponent extends WidgetComponent implements OnChanges
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-arcylic-motion') arcylicMotionCssClass = 'true';
+  @HostBinding('class.v-arcylic-motion') 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

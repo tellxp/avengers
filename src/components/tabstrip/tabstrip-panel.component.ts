@@ -68,7 +68,7 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   @Input() public height: number;
   @Input() public expanded: boolean;
 
-  @HostBinding('class.v-tabstrip-panel') tabstripPanelCssClass = 'true';
+  @HostBinding('class.v-tabstrip-panel') 'true';
 
   @ContentChildren(TabstripPageComponent) private contentPages: QueryList<TabstripPageComponent>;
 

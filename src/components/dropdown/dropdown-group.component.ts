@@ -28,7 +28,7 @@ export class DropdownGroupComponent extends WidgetComponent implements OnChanges
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-  @HostBinding('class.v-dropdown-group') dropdownGroupCssClass = 'true';
+  @HostBinding('class.v-dropdown-group') 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);

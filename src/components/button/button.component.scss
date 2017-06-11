@@ -5,7 +5,7 @@
 @mixin ave-button-reset {
   @include user-select(none);
   cursor: pointer;
-  //outline: none;
+  outline: none;
   border: none;
 }
 

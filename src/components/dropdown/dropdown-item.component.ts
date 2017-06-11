@@ -29,7 +29,7 @@ export class DropdownItemComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-dropdown-item') dropdownItemCssClass = 'true';
+  @HostBinding('class.v-dropdown-item') 'true';
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
   }

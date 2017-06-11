@@ -28,8 +28,8 @@ export class DropdownIconComponent extends WidgetComponent implements OnChanges,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-  @HostBinding('class.v-dropdown-icon') dropdownIconCssClass = 'true';
-  @HostBinding('attr.tabindex') tabIndex = '-1';
+  @HostBinding('class.v-dropdown-icon') 'true';
+  @HostBinding('attr.tabindex') '-1';
   // mousePosition: WidgetPosition;
   //
   // motionState: string;

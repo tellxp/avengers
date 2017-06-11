@@ -38,7 +38,7 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-tabstrip-bar') tabstripBarCssClass = 'true';
+  @HostBinding('class.v-tabstrip-bar') 'true';
 
   @ContentChildren(TabstripTabComponent) private contentTabs: QueryList<TabstripTabComponent>;
 

@@ -29,7 +29,7 @@ export class ArcylicLightComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @HostBinding('class.v-arcylic-light') arcylicLightCssClass = 'true';
+  @HostBinding('class.v-arcylic-light') 'true';
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
