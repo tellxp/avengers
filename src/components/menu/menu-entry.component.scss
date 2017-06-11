@@ -3,7 +3,8 @@
 .v-menu-entry {
   display: inline-block;
   position: relative;
-  //float: left;
+  cursor: pointer;
+  outline: none;
   min-width: 6rem;
   vertical-align: bottom;
 }

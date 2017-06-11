@@ -3,11 +3,11 @@
 .v-menu {
   @extend %v-container;
   outline: none;
-  cursor: pointer;
-  zoom:1;
-  background-color: green;
+  .v-menu-entry {
+    margin-left: -0.3rem;
+  }
+  .v-menu-entry:first-of-type {
+    margin-left: 0;
+  }
 }
 
-.v-menu {
-
-}

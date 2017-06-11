@@ -1,15 +1,26 @@
 @import "../core/widget.component";
 
 .v-menu-header {
-  @extend %v-control;
+  display: block;
+  position: relative;
   box-sizing: border-box;
   overflow: hidden;
   outline: none;
-
-  // Make anchors render like buttons.
   white-space: nowrap;
   text-decoration: none;
-  span {
+  i {
 
+  }
+  .v-arcylic-ground {
+    z-index: 1;
+  }
+  .v-arcylic-light {
+    z-index: 2;
+  }
+  .v-ripple {
+    z-index: 3;
+  }
+  .v-arcylic-content {
+    z-index: 4;
   }
 }
