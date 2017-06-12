@@ -1,4 +1,5 @@
 @import "../core/widget.component";
+@import "../utils/utils";
 
 .v-menu-header {
   display: block;
@@ -8,6 +9,7 @@
   outline: none;
   white-space: nowrap;
   text-decoration: none;
+  @include user-select(none);
   i {
 
   }

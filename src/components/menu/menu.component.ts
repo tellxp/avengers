@@ -60,6 +60,7 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   ngAfterContentInit() {
     super.ngAfterContentInit();
     this.loadEntries();
+
   }
 
   ngAfterContentChecked() {
@@ -83,12 +84,13 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
     const length = this.entries.length;
     for (let i = 0; i < length; i++) {
       this.entries[i].setParentMenu(this);
+      this.entries[i].loadItems();
     }
   }
 
   activateEntry(entry: MenuEntryComponent) {
     if (!isNullOrUndefined(this.activeEntry)) {
-      this.activeEntry.deactivateChildItems();
+      this.activeEntry.deactivateRootItem();
       this.activeEntry.deactivate();
     }
     entry.activate();
@@ -96,7 +98,7 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   }
 
   deactivateEntry(entry: MenuEntryComponent) {
-    entry.deactivateChildItems();
+    entry.deactivateRootItem();
     entry.deactivate();
     this.activeEntry = null;
   }

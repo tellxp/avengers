@@ -57,6 +57,8 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
 
+    this.orientation = PopupOrientation.Right;
+    this.active = false;
   }
 
   ngOnChanges() {
@@ -76,7 +78,6 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     if (this.title === '2.1') {
       // console.log(this.contentItems);
     }
-    this.init();
   }
 
   ngAfterContentChecked() {
@@ -95,21 +96,19 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
-  init() {
-    this.orientation = PopupOrientation.Right;
-    this.active = false;
-    this.loadChildItems();
-  }
-
   loadChildItems() {
+
     const contentLength = this.contentItems.toArray().length;
     this.childItems = this.contentItems.toArray().slice(1, contentLength);
     const length = this.childItems.length;
-    for (let i = 0; i < length; i++) {
-      this.childItems[i].setParentItem(this);
-      this.childItems[i].setRootEntry(this.rootEntry);
-      this.childItems[i].setRootItem(this.rootItem);
-      this.childItems[i].setRootMenu(this.rootMenu);
+    if (this.hasChildItem()) {
+      for (let i = 0; i < length; i++) {
+        this.childItems[i].setParentItem(this);
+        this.childItems[i].setRootEntry(this.rootEntry);
+        this.childItems[i].setRootItem(this.rootItem);
+        this.childItems[i].setRootMenu(this.rootMenu);
+        this.childItems[i].loadChildItems();
+      }
     }
   }
 
@@ -159,8 +158,12 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     this.active = false;
   }
 
-  onClick() {
-    this.parentItem.activateChildItem(this);
+  onMousedown() {
+    if (this.isRootItem()) {
+      this.rootEntry.activateRootItem(this);
+    } else {
+      this.parentItem.activateChildItem(this);
+    }
   }
 
   onMouseOut() {
@@ -168,18 +171,23 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onBlur() {
-
+    if (this.active && isNullOrUndefined(this.activeChildItem)) {
+      this.rootMenu.deactivateEntry(this.rootEntry);
+    }
   }
 
   setRootEntry(entry: MenuEntryComponent) {
     this.rootEntry = entry;
   }
+
   setRootItem(item: MenuItemComponent) {
     this.rootItem = item;
   }
+
   setParentItem(item: MenuItemComponent) {
     this.parentItem = item;
   }
+
   setRootMenu(menu: MenuComponent) {
     this.rootMenu = menu;
   }

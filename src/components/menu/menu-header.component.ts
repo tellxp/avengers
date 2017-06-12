@@ -49,7 +49,9 @@ export class MenuHeaderComponent extends WidgetComponent implements OnChanges,
   @HostListener('mouseup') onMouseup() {
     this.motionState = 'end';
   }
-
+  @HostListener('mouseleave') onMouseleave() {
+    this.motionState = 'end';
+  }
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
     this.mousePosition = new WidgetPosition();

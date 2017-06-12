@@ -20,7 +20,6 @@ import {WidgetComponent} from '../core/widget.component';
 import {MenuComponent} from './menu.component';
 import {MenuItemComponent} from './menu-item.component';
 import {PopupOrientation} from '../popup/popup.component';
-import {isNodeFlagSet} from 'tslint';
 import {isNullOrUndefined} from 'util';
 
 
@@ -44,9 +43,9 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
 
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
-  parentMenu: MenuComponent;
-  childItems: MenuItemComponent[];
-  activeChildItem: MenuItemComponent;
+  rootMenu: MenuComponent;
+  rootItems: MenuItemComponent[];
+  activeRootItem: MenuItemComponent;
   orientation: PopupOrientation;
   active: boolean;
 
@@ -70,7 +69,6 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   ngAfterContentInit() {
     super.ngAfterContentInit();
 
-    this.loadItems();
   }
 
   ngAfterContentChecked() {
@@ -90,33 +88,36 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   }
 
   loadItems() {
-    this.childItems = this.contentItems.toArray();
-    const length = this.childItems.length;
-    for (let i = 0; i < length; i++) {
-      this.childItems[i].setRootMenu(this.parentMenu);
-      this.childItems[i].setRootEntry(this);
-      this.childItems[i].setRootItem(this.childItems[i]);
-      this.childItems[i].setParentItem(this.childItems[i]);
+    this.rootItems = this.contentItems.toArray();
+    const length = this.rootItems.length;
+    if (this.hasRootItem()) {
+      for (let i = 0; i < length; i++) {
+        this.rootItems[i].setRootMenu(this.rootMenu);
+        this.rootItems[i].setRootEntry(this);
+        this.rootItems[i].setRootItem(this.rootItems[i]);
+        this.rootItems[i].setParentItem(this.rootItems[i]);
+        this.rootItems[i].loadChildItems();
+      }
     }
   }
 
   setParentMenu(menu: MenuComponent) {
-    this.parentMenu = menu;
+    this.rootMenu = menu;
   }
 
-  hasChildItem() {
-    if (this.childItems.length > 0) {
+  hasRootItem() {
+    if (this.rootItems.length > 0) {
       return true;
     } else {
       return false;
     }
   }
 
-  deactivateChildItems() {
-    const length = this.childItems.length;
+  deactivateRootItem() {
+    const length = this.rootItems.length;
     for (let i = 0; i < length; i++) {
-      this.childItems[i].deactivateChildItem();
-      this.childItems[i].deactivate();
+      this.rootItems[i].deactivateChildItem();
+      this.rootItems[i].deactivate();
     }
   }
 
@@ -128,18 +129,20 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
     this.active = false;
   }
 
-  activateItem(item: MenuItemComponent) {
-    if (!isNullOrUndefined(this.activeChildItem)) {
-      this.activeChildItem.deactivateChildItem();
+  activateRootItem(item: MenuItemComponent) {
+    if (!isNullOrUndefined(this.activeRootItem)) {
+      this.activeRootItem.deactivateChildItem();
+      this.activeRootItem.deactivate();
     }
-    this.activeChildItem = item;
-    this.activeChildItem.activate();
+    this.activeRootItem = item;
+    this.activeRootItem.activate();
   }
+
   onHeaderClick() {
     if (this.active) {
-      this.parentMenu.deactivateEntry(this);
+      this.rootMenu.deactivateEntry(this);
     } else {
-      this.parentMenu.activateEntry(this);
+      this.rootMenu.activateEntry(this);
     }
   }
 
