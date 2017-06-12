@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent, WidgetPosition} from '../core/widget.component';
-import {PanelbarItemComponent} from '../panelbar/panelbar-item.component';
 
 
 @Component({

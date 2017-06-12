@@ -6,15 +6,16 @@
   Component,
   ContentChildren,
   DoCheck,
-  ElementRef, HostBinding, HostListener,
+  ElementRef,
+  HostBinding,
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList, ViewEncapsulation
+  QueryList,
+  ViewEncapsulation
 } from '@angular/core';
 import {WidgetComponent} from '../core/widget.component';
 import {DomService} from '../core/dom.service';
-import {MenuItemComponent} from './menu-item.component';
 import {isNullOrUndefined} from 'util';
 import {MenuEntryComponent} from './menu-entry.component';
 
@@ -37,7 +38,7 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   @HostBinding('attr.tabindex') '-1';
   @ContentChildren(MenuEntryComponent) contentEntries: QueryList<MenuEntryComponent>;
   entries: MenuEntryComponent[];
-  activeEnrty: MenuEntryComponent;
+  activeEntry: MenuEntryComponent;
 
   constructor(elementRef: ElementRef, domService: DomService) {
     super(elementRef, domService);
@@ -83,5 +84,20 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
     for (let i = 0; i < length; i++) {
       this.entries[i].setParentMenu(this);
     }
+  }
+
+  activateEntry(entry: MenuEntryComponent) {
+    if (!isNullOrUndefined(this.activeEntry)) {
+      this.activeEntry.deactivateChildItems();
+      this.activeEntry.deactivate();
+    }
+    entry.activate();
+    this.activeEntry = entry;
+  }
+
+  deactivateEntry(entry: MenuEntryComponent) {
+    entry.deactivateChildItems();
+    entry.deactivate();
+    this.activeEntry = null;
   }
 }

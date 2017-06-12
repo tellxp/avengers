@@ -14,7 +14,7 @@ export class ButtonDemoComponent implements OnInit, AfterViewInit, AfterViewChec
   }
 
   ngOnInit() {
-    console.log( markdown.toHTML( "Hello *World*!" ) );
+    // console.log( markdown.toHTML( "Hello *World*!" ) );
   }
 
   ngAfterViewInit() {

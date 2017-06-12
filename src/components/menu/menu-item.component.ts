@@ -43,7 +43,11 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   @Input() title: string;
   @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
-  parent: MenuEntryComponent | MenuItemComponent;
+  rootItem: MenuItemComponent;
+  rootEntry: MenuEntryComponent;
+  rootMenu: MenuComponent;
+
+  parentItem: MenuItemComponent;
 
   childItems: MenuItemComponent[];
   activeChildItem: MenuItemComponent;
@@ -102,7 +106,10 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     this.childItems = this.contentItems.toArray().slice(1, contentLength);
     const length = this.childItems.length;
     for (let i = 0; i < length; i++) {
-      this.childItems[i].setParent(this);
+      this.childItems[i].setParentItem(this);
+      this.childItems[i].setRootEntry(this.rootEntry);
+      this.childItems[i].setRootItem(this.rootItem);
+      this.childItems[i].setRootMenu(this.rootMenu);
     }
   }
 
@@ -115,6 +122,14 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     }
   }
 
+  activateChildItem(item: MenuItemComponent) {
+    if (!isNullOrUndefined(this.activeChildItem)) {
+      this.activeChildItem.deactivateChildItem();
+      this.activeChildItem.deactivate();
+    }
+    this.activeChildItem = item;
+    this.activeChildItem.activate();
+  }
 
   deactivateChildItem(): boolean {
     if (this.childItems.length > 0) {
@@ -128,6 +143,14 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
     }
   }
 
+  isRootItem(): boolean {
+    if (this.rootItem === this) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   activate() {
     this.active = true;
   }
@@ -137,7 +160,7 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onClick() {
-    this.active = !this.active;
+    this.parentItem.activateChildItem(this);
   }
 
   onMouseOut() {
@@ -145,10 +168,19 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   }
 
   onBlur() {
-    // this.parent.deactivateChildItem();
+
   }
 
-  setParent(parent: MenuEntryComponent | MenuItemComponent) {
-    this.parent = parent;
+  setRootEntry(entry: MenuEntryComponent) {
+    this.rootEntry = entry;
+  }
+  setRootItem(item: MenuItemComponent) {
+    this.rootItem = item;
+  }
+  setParentItem(item: MenuItemComponent) {
+    this.parentItem = item;
+  }
+  setRootMenu(menu: MenuComponent) {
+    this.rootMenu = menu;
   }
 }
