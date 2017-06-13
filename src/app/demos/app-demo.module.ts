@@ -11,7 +11,6 @@ import {PopupDemoComponent} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
-import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
 import {RoutebarDemoComponent} from './routebar/routebar-demo.component';
 
@@ -24,7 +23,6 @@ import {PopupModule} from '../../components/popup/popup.module';
 import {DropdownModule} from '../../components/dropdown/dropdown.module';
 import {MenuModule} from '../../components/menu/menu.module';
 import {MegamenuModule} from '../../components/megamenu/megamenu.module';
-import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 import {PanelModule} from '../../components/panel/panel.module';
 import {RoutebarModule} from '../../components/routebar/routebar.module';
 import {AppDemoRoutingModule} from './app-demo-routing.module';
@@ -36,53 +34,55 @@ import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
 import {NavbarModule} from '../../components/navbar/navbar.module';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {MarkdownModule} from '../../components/markdown/markdown.module';
+import {PanelbarModule} from '../../components/panelbar/panelbar.module';
+import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
 
 
 @NgModule({
-    imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      FormsModule,
-      AppDemoRoutingModule,
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AppDemoRoutingModule,
 
-      // Avengers Component
-      WidgetModule,
-      GridModule,
-      TabstripModule,
-      ButtonModule,
-      PopupModule,
-      DropdownModule,
-      MenuModule,
-      MegamenuModule,
-      // PanelbarModule,
-      PanelModule,
-      RoutebarModule,
-      TextboxModule,
-      CheckboxModule,
-      NavbarModule,
-      MarkdownModule,
-      TreeviewModule
-    ],
-    exports: [
-      AppDemoComponent
-    ],
-    declarations: [
-      AppDemoComponent,
-      HomeDemoComponent,
-      TabstripDemoComponent,
-      ButtonDemoComponent,
-      PopupDemoComponent,
-      DropdownDemo,
-      MenuDemo,
-      MegamenuDemo,
-      // PanelbarDemoComponent,
-      PanelDemoComponent,
-      RoutebarDemoComponent,
-      TextboxDemoComponent,
-      CheckboxDemoComponent,
-      NavbarDemoComponent,
-    ],
-    providers: [
-    ],
+    // Avengers Component
+    WidgetModule,
+    GridModule,
+    TabstripModule,
+    ButtonModule,
+    PopupModule,
+    DropdownModule,
+    MenuModule,
+    MegamenuModule,
+    PanelbarModule,
+    PanelModule,
+    RoutebarModule,
+    TextboxModule,
+    CheckboxModule,
+    NavbarModule,
+    MarkdownModule,
+    TreeviewModule
+  ],
+  exports: [
+    AppDemoComponent
+  ],
+  declarations: [
+    AppDemoComponent,
+    HomeDemoComponent,
+    TabstripDemoComponent,
+    ButtonDemoComponent,
+    PopupDemoComponent,
+    DropdownDemo,
+    MenuDemo,
+    MegamenuDemo,
+    PanelbarDemoComponent,
+    PanelDemoComponent,
+    RoutebarDemoComponent,
+    TextboxDemoComponent,
+    CheckboxDemoComponent,
+    NavbarDemoComponent,
+  ],
+  providers: [],
 })
-export class AppDemoModule { }
+export class AppDemoModule {
+}

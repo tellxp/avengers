@@ -1,14 +1,18 @@
 import {
-  Component,
-  Input,
-  ElementRef,
-  Renderer,
-  AfterViewChecked,
-  OnInit,
-  AfterContentInit,
   AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
   AfterViewInit,
-  OnDestroy, OnChanges, DoCheck, Renderer2, HostBinding, ViewEncapsulation
+  Component,
+  DoCheck,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewEncapsulation
 } from '@angular/core';
 import {DomService, ElementPosition, ElementStyle} from '../core/dom.service';
 import {WidgetComponent, WidgetStyle} from '../core/widget.component';
@@ -20,7 +24,6 @@ import {isNullOrUndefined} from 'util';
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
   providers: [DomService]
 })
 export class PopupComponent extends WidgetComponent implements OnChanges,
@@ -39,6 +42,7 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
     super(elementRef, domService);
 
   }
+
   ngOnChanges() {
     super.ngOnChanges();
   }
@@ -50,31 +54,38 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
     }
     this.offset = new ElementPosition();
   }
+
   ngDoCheck() {
     super.ngDoCheck();
   }
+
   ngAfterContentInit() {
     super.ngAfterContentInit();
 
   }
+
   ngAfterContentChecked() {
     super.ngAfterContentChecked();
   }
+
   ngAfterViewInit() {
     super.ngAfterViewInit();
 
   }
+
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
     this.setPosition();
     // this.setStyle();
   }
+
   setStyle() {
     const style = new WidgetStyle();
     style.width = this.elementRef.nativeElement.clientWidth;
     style.height = this.elementRef.nativeElement.clientHeight;
     this.dom.setElementStyle(style, this.elementRef.nativeElement, this.render);
   }
+
   setPosition() {
     let anchorPosition: ElementPosition = new ElementPosition();
     let anchorStyle: ElementStyle = new ElementStyle();
