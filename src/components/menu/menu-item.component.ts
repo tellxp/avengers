@@ -41,16 +41,16 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   @HostBinding('attr.tabindex') '-1';
 
   @Input() title: string;
-  // @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
+  @ContentChildren(MenuItemComponent) contentItems: QueryList<MenuItemComponent>;
 
-  // rootItem: MenuItemComponent;
-  // rootEntry: MenuEntryComponent;
-  // rootMenu: MenuComponent;
+  rootItem: MenuItemComponent;
+  rootEntry: MenuEntryComponent;
+  rootMenu: MenuComponent;
 
-  // parentItem: MenuItemComponent;
+  parentItem: MenuItemComponent;
 
-  // childItems: MenuItemComponent[];
-  // activeChildItem: MenuItemComponent;
+  childItems: MenuItemComponent[];
+  activeChildItem: MenuItemComponent;
   active: boolean;
   orientation: PopupOrientation;
 
@@ -95,101 +95,100 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-  //
-  // loadChildItems() {
-  //
-  //   const contentLength = this.contentItems.toArray().length;
-  //   this.childItems = this.contentItems.toArray().slice(1, contentLength);
-  //   const length = this.childItems.length;
-  //   if (this.hasChildItem()) {
-  //     for (let i = 0; i < length; i++) {
-  //       // this.childItems[i].setParentItem(this);
-  //       // this.childItems[i].setRootEntry(this.rootEntry);
-  //       // this.childItems[i].setRootItem(this.rootItem);
-  //       // this.childItems[i].setRootMenu(this.rootMenu);
-  //       // this.childItems[i].loadChildItems();
-  //     }
-  //   }
-  // }
-  //
-  //
-  hasChildItem() {
-    // if (this.childItems.length > 0) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-    return false;
+
+  loadChildItems() {
+
+    const contentLength = this.contentItems.toArray().length;
+    this.childItems = this.contentItems.toArray().slice(1, contentLength);
+    const length = this.childItems.length;
+    if (this.hasChildItem()) {
+      for (let i = 0; i < length; i++) {
+        this.childItems[i].setParentItem(this);
+        this.childItems[i].setRootEntry(this.rootEntry);
+        this.childItems[i].setRootItem(this.rootItem);
+        this.childItems[i].setRootMenu(this.rootMenu);
+        this.childItems[i].loadChildItems();
+      }
+    }
   }
-  //
-  // activateChildItem(item: MenuItemComponent) {
-  //   if (!isNullOrUndefined(this.activeChildItem)) {
-  //     this.activeChildItem.deactivateChildItem();
-  //     this.activeChildItem.deactivate();
-  //   }
-  //   this.activeChildItem = item;
-  //   this.activeChildItem.activate();
-  // }
-  //
-  // deactivateChildItem(): boolean {
-  //   if (this.childItems.length > 0) {
-  //     const length = this.childItems.length;
-  //     for (let i = 0; i < length; i++) {
-  //       this.childItems[i].deactivateChildItem();
-  //       this.childItems[i].deactivate();
-  //     }
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
-  // isRootItem(): boolean {
-  //   // if (this.rootItem === this) {
-  //   //   return true;
-  //   // } else {
-  //   //   return false;
-  //   // }
-  // }
 
-  // activate() {
-  //   this.active = true;
-  // }
-  //
-  // deactivate() {
-  //   this.active = false;
-  // }
-  //
-  // onMousedown() {
-  //   // if (this.isRootItem()) {
-  //   //   this.rootEntry.activateRootItem(this);
-  //   // } else {
-  //   //   this.parentItem.activateChildItem(this);
-  //   // }
-  // }
-  //
-  // onMouseOut() {
-  //
-  // }
-  //
-  // onBlur() {
-  //   if (this.active && isNullOrUndefined(this.activeChildItem)) {
-  //     // this.rootMenu.deactivateEntry(this.rootEntry);
-  //   }
-  // }
+  hasChildItem(): boolean {
+    if (this.childItems.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  // setRootEntry(entry: MenuEntryComponent) {
-  //   this.rootEntry = entry;
-  // }
-  //
-  // setRootItem(item: MenuItemComponent) {
-  //   this.rootItem = item;
-  // }
-  //
-  // setParentItem(item: MenuItemComponent) {
-  //   this.parentItem = item;
-  // }
-  //
-  // setRootMenu(menu: MenuComponent) {
-  //   this.rootMenu = menu;
-  // }
+  activateChildItem(item: MenuItemComponent) {
+    if (!isNullOrUndefined(this.activeChildItem)) {
+      this.activeChildItem.deactivateChildItem();
+      this.activeChildItem.deactivate();
+    }
+    this.activeChildItem = item;
+    this.activeChildItem.activate();
+  }
+
+  deactivateChildItem(): boolean {
+    if (this.childItems.length > 0) {
+      const length = this.childItems.length;
+      for (let i = 0; i < length; i++) {
+        this.childItems[i].deactivateChildItem();
+        this.childItems[i].deactivate();
+      }
+    } else {
+      return true;
+    }
+  }
+
+  isRootItem(): boolean {
+    if (this.rootItem === this) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  activate() {
+    this.active = true;
+  }
+
+  deactivate() {
+    this.active = false;
+  }
+
+  onHeaderMousedown() {
+    if (this.isRootItem()) {
+      this.rootEntry.activateRootItem(this);
+    } else {
+      this.parentItem.activateChildItem(this);
+    }
+  }
+
+  onMouseOut() {
+
+  }
+
+  onHeaderBlur() {
+    if (this.active && isNullOrUndefined(this.activeChildItem)) {
+      this.rootMenu.deactivateEntry(this.rootEntry);
+    }
+  }
+
+  setRootEntry(entry: MenuEntryComponent) {
+    this.rootEntry = entry;
+  }
+
+  setRootItem(item: MenuItemComponent) {
+    this.rootItem = item;
+  }
+
+  setParentItem(item: MenuItemComponent) {
+    this.parentItem = item;
+  }
+
+  setRootMenu(menu: MenuComponent) {
+    this.rootMenu = menu;
+  }
 }

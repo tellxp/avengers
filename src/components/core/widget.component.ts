@@ -2,16 +2,23 @@ import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit,
+  AfterViewInit, Component, ContentChild,
   DoCheck,
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from './dom.service';
 import {isNullOrUndefined} from 'util';
 
+@Component({
+  selector: 'ave-widget',
+  templateUrl: './widget.component.html',
+  styleUrls: ['./widget.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [DomService]
+})
 export class WidgetComponent implements OnChanges,
   OnInit,
   DoCheck,
@@ -22,7 +29,6 @@ export class WidgetComponent implements OnChanges,
   public style: WidgetStyle;
   public elementRef: ElementRef;
   public dom: DomService;
-
 
   static getValidValue<T>(field: T, value: T): T {
     if (isNullOrUndefined(field)) {

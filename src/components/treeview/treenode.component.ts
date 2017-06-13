@@ -1,56 +1,69 @@
-import {Component, Input} from '@angular/core';
-import {TreeNode} from './treenode'
-import {TreeView} from "./treeview";
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component, ContentChild,
+  DoCheck,
+  ElementRef,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
+import {DomService} from '../core/dom.service';
+import {WidgetComponent} from '../core/widget.component';
+
 
 @Component({
-  selector: 'ave-treenode',
-  template: `
-      <li>
-        <div (click)="onNodeClick($event)" (dblclick)="onNodeDblClick($event)">
-          <i 
-            *ngIf="node.children"
-            [ngClass]="{'fa': true, 'fa-chevron-circle-down ': node.expanded, 'fa-chevron-circle-right': !node.expanded}" 
-            (click)="onDirectionIconClick($event)" 
-            aria-hidden="true">
-          </i>
-          <span></span>
-          {{node.text}}
-        </div>
-        <ul *ngIf="node.children && node.expanded">
-          <ave-treenode *ngFor="let child of node.children" [node]="child" [container]="container"></ave-treenode>
-        </ul>
-      </li>
-  `,
-  styles: [`
-      li {
-        list-style: none;
-        font-size: x-large;
-        cursor: default;
-      }
-      div:hover {
-        background-color: red;
-      }
-      ul {
-        margin: .04em;
-      }
-      i {
-        cursor: pointer;
-      }
-  `]
+  selector: 'ave-treeview',
+  templateUrl: './treeview.component.html',
+  styleUrls: ['./treeview.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [DomService]
 })
-export class TreeNodeComponent {
-  @Input() node: TreeNode;
-  @Input() container: TreeView;
-  constructor() {
+export class TreenodeComponent extends WidgetComponent implements OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked,
+  OnDestroy {
 
+  @ContentChild(TreenodeComponent) node;
+  constructor(elementRef: ElementRef, domService: DomService) {
+    super(elementRef, domService);
   }
-  onDirectionIconClick(event: MouseEvent) {
-    this.node.expanded = !this.node.expanded;
+
+  ngOnChanges() {
+    super.ngOnChanges();
   }
-  onNodeClick(event: MouseEvent) {
-    console.log(this.node.text);
+
+  ngOnInit() {
+    super.ngOnInit();
   }
-  onNodeDblClick(event: MouseEvent) {
-    this.node.expanded = !this.node.expanded;
+
+  ngDoCheck() {
+    super.ngDoCheck();
   }
+
+  ngAfterContentInit() {
+    super.ngAfterContentInit();
+  }
+
+  ngAfterContentChecked() {
+    super.ngAfterContentChecked();
+  }
+
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  ngAfterViewChecked() {
+    super.ngAfterViewChecked();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
 }

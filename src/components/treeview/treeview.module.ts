@@ -1,31 +1,33 @@
-import { NgModule} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 
-import {TreeViewComponent} from "./treeview.component";
-import {TreeNodeComponent} from "./treenode.component";
-import {TreeViewConfig} from "./treeview-confg";
-import {Styles} from "./treeview-styles";
-
+import {TreeviewComponent} from './treeview.component';
+import {TreenodeComponent} from './treenode.component';
+import {TreeViewConfig} from './treeview-confg';
+import {Styles} from './treeview-styles';
+import {WidgetModule} from '../core/widget.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    WidgetModule,
   ],
   declarations: [
-    TreeViewComponent,
-    TreeNodeComponent
+    TreeviewComponent,
+    TreenodeComponent
   ],
   exports: [
-    TreeViewComponent
+    TreeviewComponent,
+    TreenodeComponent
   ],
   providers: [
     TreeViewConfig,
     Styles
   ]
 })
-export class TreeViewModule {
+export class TreeviewModule {
 
 }

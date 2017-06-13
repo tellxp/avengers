@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
-import {markdown} from 'markdown';
 
 @Component({
   selector: 'ave-markdown',
