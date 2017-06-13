@@ -59,7 +59,7 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.loadEntries();
+    // this.loadEntries();
 
   }
 
@@ -79,27 +79,27 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
-  loadEntries() {
-    this.entries = this.contentEntries.toArray();
-    const length = this.entries.length;
-    for (let i = 0; i < length; i++) {
-      this.entries[i].setParentMenu(this);
-      this.entries[i].loadItems();
-    }
-  }
-
-  activateEntry(entry: MenuEntryComponent) {
-    if (!isNullOrUndefined(this.activeEntry)) {
-      this.activeEntry.deactivateRootItem();
-      this.activeEntry.deactivate();
-    }
-    entry.activate();
-    this.activeEntry = entry;
-  }
-
-  deactivateEntry(entry: MenuEntryComponent) {
-    entry.deactivateRootItem();
-    entry.deactivate();
-    this.activeEntry = null;
-  }
+  // loadEntries() {
+  //   this.entries = this.contentEntries.toArray();
+  //   const length = this.entries.length;
+  //   for (let i = 0; i < length; i++) {
+  //     this.entries[i].setParentMenu(this);
+  //     this.entries[i].loadItems();
+  //   }
+  // }
+  //
+  // activateEntry(entry: MenuEntryComponent) {
+  //   if (!isNullOrUndefined(this.activeEntry)) {
+  //     this.activeEntry.deactivateRootItem();
+  //     this.activeEntry.deactivate();
+  //   }
+  //   entry.activate();
+  //   this.activeEntry = entry;
+  // }
+  //
+  // deactivateEntry(entry: MenuEntryComponent) {
+  //   entry.deactivateRootItem();
+  //   entry.deactivate();
+  //   this.activeEntry = null;
+  // }
 }

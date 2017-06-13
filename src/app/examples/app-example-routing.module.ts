@@ -11,10 +11,10 @@ const appExampleRoutes: Routes = [
   {
     path: 'example', component: AppExampleComponent,
     children: [
-      {path: '', component: HomeExampleComponent},
-      {path: 'login', component: LoginExampleComponent},
-      {path: 'grid', component: GridExampleComponent},
-      {path: 'dashboard', component: DashboardExampleComponent},
+      // {path: '', component: HomeExampleComponent},
+      // {path: 'login', component: LoginExampleComponent},
+      // {path: 'grid', component: GridExampleComponent},
+      // {path: 'dashboard', component: DashboardExampleComponent},
     ]
   }
 ];

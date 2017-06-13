@@ -13,6 +13,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
     ],
 })
-export class CommonModule {
+export class WidgetModule {
 
 }
