@@ -73,15 +73,15 @@ $ave-dropdown-theme: (
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
-           .v-slidedown {
-              div > .v-arcylic-ground {
+           .v-popup {
+              .v-arcylic-ground {
                 z-index: -3;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
-            .v-slidedown {
-              div > .v-arcylic-ground:#{$state} {
+            .v-popup {
+              .v-arcylic-ground:#{$state} {
                 z-index: -3;
                 @include ave-component-property-style($state-style, $property-map);
               }

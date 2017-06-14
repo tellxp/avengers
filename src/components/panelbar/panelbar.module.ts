@@ -6,6 +6,7 @@ import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelbarHeaderComponent} from './panelbar-header.component';
 import {AnimationModule} from '../animation/animation.module';
 import {ArcylicModule} from '../acrylic/arcylic.module';
+import {PanelModule} from '../panel/panel.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {ArcylicModule} from '../acrylic/arcylic.module';
     BrowserModule,
     AnimationModule,
     ArcylicModule,
+    PanelModule,
 
   ],
   exports: [

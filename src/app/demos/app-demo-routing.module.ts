@@ -7,7 +7,7 @@ import {PopupDemoComponent} from './popup/popup-demo.component';
 import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
-// import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
+import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
 import {RoutebarDemoComponent} from './routebar/routebar-demo.component';
 import {TextboxDemoComponent} from './textbox/textbox-demo.component';
@@ -29,7 +29,7 @@ const appDemoRoutes: Routes = [
       {path: 'dropdown-demo', component: DropdownDemo},
       {path: 'menu-demo', component: MenuDemo},
       {path: 'megamenu-demo', component: MegamenuDemo},
-      // {path: 'panelbar-demo', component: PanelbarDemoComponent},
+      {path: 'panelbar-demo', component: PanelbarDemoComponent},
       {path: 'panel-demo', component: PanelDemoComponent},
       {path: 'routebar-demo', component: RoutebarDemoComponent},
       {path: 'textbox-demo', component: TextboxDemoComponent},

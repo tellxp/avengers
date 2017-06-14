@@ -1,11 +1,12 @@
 import {Component, ContentChild, OnInit} from '@angular/core';
 import {PopupComponent, PopupOrientation} from '../../../components/popup/popup.component';
-import {fadeAnimation} from '../../../components/animation/fadein.component';
+import {fadeAnimations} from '../../../components/animation/fade-animations';
+import {expandAnimations} from '../../../components/animation/expand-animations';
 
 @Component({
   templateUrl: './popup-demo.component.html',
   styleUrls: ['./popup-demo.component.scss'],
-  animations: [fadeAnimation]
+  animations: [expandAnimations]
 })
 export class PopupDemoComponent implements OnInit {
   down = PopupOrientation.Bottom;
@@ -29,7 +30,7 @@ export class PopupDemoComponent implements OnInit {
   onClick() {
     this.showPopup = !this.showPopup;
     this.exp = 'out';
-    console.log(this.exp);
+    // console.log(this.exp);
 
   }
 
@@ -37,6 +38,6 @@ export class PopupDemoComponent implements OnInit {
     this.showNested1 = !this.showNested1;
 
     this.exp = 'in';
-    console.log(this.exp);
+    // console.log(this.exp);
   }
 }

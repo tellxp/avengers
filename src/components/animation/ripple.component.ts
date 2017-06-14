@@ -91,12 +91,6 @@ export class RippleComponent implements OnChanges {
   }
 
   rippleDone($event: AnimationEvent) {
-    if ($event.toState === 'inactive') {
-      // this.rippleElementPosition.top = 0;
-      // this.rippleElementPosition.left = 0;
-      // this.rippleElementStyle.width = 0;
-      // this.rippleElementStyle.height = 0;
-    }
 
     if ($event.toState === 'active') {
       if (this.stateTriggerValue.currentValue === 'start') {

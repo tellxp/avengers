@@ -20,12 +20,14 @@ import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
 import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelbarHeaderComponent} from './panelbar-header.component';
+import {expandAnimations} from '../animation/expand-animations';
 
 
 @Component({
   selector: 'ave-panelbar-item',
   templateUrl: 'panelbar-item.component.html',
   styleUrls: ['panelbar-item.component.scss'],
+  animations: [expandAnimations],
   providers: [DomService]
 })
 export class PanelbarItemComponent extends WidgetComponent implements OnChanges,

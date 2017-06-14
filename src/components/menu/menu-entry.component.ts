@@ -21,12 +21,14 @@ import {MenuComponent} from './menu.component';
 import {MenuItemComponent} from './menu-item.component';
 import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
+import {expandAnimations} from '../animation/expand-animations';
 
 
 @Component({
   selector: 'ave-menu-entry',
   templateUrl: './menu-entry.component.html',
   styleUrls: ['./menu-entry.component.scss'],
+  animations: [expandAnimations],
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })

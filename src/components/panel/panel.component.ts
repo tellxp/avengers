@@ -5,14 +5,13 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, Input,
+  ElementRef, HostBinding, Input,
   OnChanges,
   OnDestroy,
   OnInit, Renderer2, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent} from '../core/widget.component';
-import {isNullOrUndefined} from 'util';
 
 
 @Component({
@@ -29,6 +28,8 @@ export class PanelComponent extends WidgetComponent implements OnChanges,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+
+  @HostBinding('class.v-panel') 'true';
 
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
     super(elementRef, domService);
@@ -60,14 +61,10 @@ export class PanelComponent extends WidgetComponent implements OnChanges,
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
-
-    this.setAlignment();
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
-  }
-  setAlignment() {
   }
 }
 
