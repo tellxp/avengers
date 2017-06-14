@@ -1,6 +1,6 @@
 <h3>弹出层</h3>
 <ave-button class="v-button-primary" #popdownAnchor (click)="onClick()">弹出</ave-button>
-<ave-popup [@expand] [anchor]="popdownAnchor" [orientation]="down" *ngIf="showPopup">
+<ave-popup [@ripple] [anchor]="popdownAnchor" [orientation]="down" *ngIf="showPopup">
   <div >
     <h1>这是一个弹出层</h1>
   </div>
