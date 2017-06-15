@@ -47,8 +47,6 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     this.mousePosition.left = this.mouseEvent.offsetX;
     this.mousePosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
-    const rippleElementItem = new RippleElementItem();
-    this.ripple.rippleElementItems.push(rippleElementItem);
   }
 
   @HostListener('mouseup') onMouseup() {

@@ -107,7 +107,7 @@ export class WidgetComponent implements OnChanges,
     return position;
   }
 
-  constructor(@Optional() elementRef: ElementRef, @Optional() domService: DomService) {
+  constructor(elementRef: ElementRef, domService: DomService) {
 
     this.elementRef = elementRef;
     this.dom = domService;

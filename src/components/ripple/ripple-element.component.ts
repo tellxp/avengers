@@ -1,18 +1,6 @@
-import {
-  AfterContentChecked,
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  DoCheck,
-  ElementRef,
-  OnChanges,
-  OnDestroy,
-  OnInit, Optional,
-  ViewEncapsulation
-} from '@angular/core';
+import {Component, ElementRef, HostBinding, OnChanges, Optional, ViewEncapsulation} from '@angular/core';
 import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {AnimationPlayer} from '@angular/animations';
 
 
 @Component({
@@ -22,47 +10,16 @@ import {WidgetComponent} from '../core/widget.component';
   encapsulation: ViewEncapsulation.None,
   providers: [DomService]
 })
-export class RippleElementComponent extends WidgetComponent implements OnChanges,
-  OnInit,
-  DoCheck,
-  AfterContentInit, AfterContentChecked,
-  AfterViewInit, AfterViewChecked,
-  OnDestroy {
+export class RippleElementComponent implements OnChanges {
+  public player: AnimationPlayer;
 
-  constructor(@Optional() elementRef: ElementRef, @Optional() domService: DomService) {
-    super(elementRef, domService);
+  @HostBinding('class.v-ripple-element') 'true';
+  constructor(public elementRef: ElementRef, domService: DomService) {
   }
 
   ngOnChanges() {
-    super.ngOnChanges();
+
   }
 
-  ngOnInit() {
-    super.ngOnInit();
-  }
-
-  ngDoCheck() {
-    super.ngDoCheck();
-  }
-
-  ngAfterContentInit() {
-    super.ngAfterContentInit();
-  }
-
-  ngAfterContentChecked() {
-    super.ngAfterContentChecked();
-  }
-
-  ngAfterViewInit() {
-    super.ngAfterViewInit();
-  }
-
-  ngAfterViewChecked() {
-    super.ngAfterViewChecked();
-  }
-
-  ngOnDestroy() {
-    super.ngOnDestroy();
-  }
 
 }
