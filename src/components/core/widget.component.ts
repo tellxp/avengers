@@ -7,7 +7,7 @@ import {
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit, ViewEncapsulation
+  OnInit, Optional, ViewEncapsulation
 } from '@angular/core';
 import {DomService} from './dom.service';
 import {isNullOrUndefined} from 'util';
@@ -107,7 +107,7 @@ export class WidgetComponent implements OnChanges,
     return position;
   }
 
-  constructor(elementRef: ElementRef, domService: DomService) {
+  constructor(@Optional() elementRef: ElementRef, @Optional() domService: DomService) {
 
     this.elementRef = elementRef;
     this.dom = domService;

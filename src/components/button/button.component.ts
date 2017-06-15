@@ -11,11 +11,14 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  OnInit, Renderer2,
-  ViewChild, ViewEncapsulation
+  OnInit,
+  Renderer2,
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent, WidgetPosition} from '../core/widget.component';
+import {RippleComponent, RippleElementItem} from '../ripple/ripple.component';
 
 @Component({
   selector: 'ave-button',
@@ -31,18 +34,21 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
+  @ViewChild(RippleComponent) ripple;
   @Input() value;
-
   mousePosition: WidgetPosition;
 
   motionState: string;
   mouseEvent: MouseEvent;
+
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
     this.mousePosition = new WidgetPosition();
     this.mousePosition.left = this.mouseEvent.offsetX;
     this.mousePosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
+    const rippleElementItem = new RippleElementItem();
+    this.ripple.rippleElementItems.push(rippleElementItem);
   }
 
   @HostListener('mouseup') onMouseup() {
@@ -51,7 +57,6 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
 
   @HostBinding('attr.tabindex') '-1';
   @HostBinding('class.v-button') 'true';
-
 
 
   constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
@@ -101,6 +106,7 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
     // console.log(this.value);
 
   }
+
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
     this.value = 'ngAfterViewChecked';

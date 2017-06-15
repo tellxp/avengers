@@ -1,27 +1,12 @@
 import {Component, ContentChild, OnInit} from '@angular/core';
 import {PopupComponent, PopupOrientation} from '../../../components/popup/popup.component';
-import {rippleIn, rippleOut} from '../../../components/animation/ripple-animations';
-import {transition, trigger, useAnimation} from '@angular/animations';
+import {fadeAnimations} from '../../../components/animation/fade-animations';
+import {scaleAnimations} from '../../../components/animation/scale-animations';
 
 @Component({
   templateUrl: './popup-demo.component.html',
   styleUrls: ['./popup-demo.component.scss'],
-  animations: [trigger('ripple', [
-    transition('void => *',
-      useAnimation(rippleIn,
-        {
-          params: {
-            time: '4s',
-            start: this.exp + 'px',
-            end: 200 + 300 + 'px'
-          }
-        }
-      )
-    ),
-    transition('* => void',
-      useAnimation(rippleOut)
-    )
-  ])]
+  animations: [scaleAnimations]
 })
 export class PopupDemoComponent implements OnInit {
   down = PopupOrientation.Bottom;

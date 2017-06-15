@@ -1,34 +1,31 @@
 import {animate, animation, style, transition, trigger, useAnimation} from '@angular/animations';
-
-export const expandIn = animation(
+export const scaleIn = animation(
   [
     style({
-      height: '{{start}}',
-      overflow: 'hidden'
+      transform: '{{start}}',
     }),
     animate('{{duration}}',
       style({
-        height: '{{end}}'
+        transform: '{{end}}'
       })
     )
   ],
   {
     params: {
-      start: '0',
+      start: 'scale(0)',
       duration: '280ms',
-      end: '*'
+      end: 'scale(1)'
     }
   }
 );
-export const expandOut = animation(
+export const scaleOut = animation(
   [
     style({
-      height: '{{start}}',
-      overflow: 'hidden'
+      transform: '{{start}}',
     }),
     animate('{{duration}}',
       style({
-        height: '{{end}}'
+        transform: '{{end}}'
       })
     )
   ],
@@ -36,15 +33,15 @@ export const expandOut = animation(
     params: {
       start: '*',
       duration: '280ms',
-      end: '0'
+      end: 'scale(0)'
     }
   }
 );
-export const expandAnimations = trigger('expand', [
+export const scaleAnimations = trigger('scale', [
   transition('void => *',
-    useAnimation(expandIn)
+    useAnimation(scaleIn)
   ),
   transition('* => void',
-    useAnimation(expandOut)
+    useAnimation(scaleOut)
   )
 ]);
