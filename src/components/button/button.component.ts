@@ -18,7 +18,6 @@ import {
 } from '@angular/core';
 import {DomService} from '../core/dom.service';
 import {WidgetComponent, WidgetPosition} from '../core/widget.component';
-import {RippleComponent, RippleElementItem} from '../ripple/ripple.component';
 
 @Component({
   selector: 'ave-button',
@@ -34,7 +33,6 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @ViewChild(RippleComponent) ripple;
   @Input() value;
   mousePosition: WidgetPosition;
 

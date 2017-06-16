@@ -1,4 +1,6 @@
-<ave-ripple-element [@ripple] *ngFor="let rippleElementItem of rippleElementItems"></ave-ripple-element>
+<ave-ripple-element *ngFor="let rippleElementRef of rippleElementRefs"
+                    [ripplePosition]="rippleElementRef.ripplePosition"
+                    [rippleStyle]="rippleElementRef.rippleStyle"></ave-ripple-element>
 
 <!--[@ripple]="rippleState"-->
 <!--(@ripple.start)="rippleStart($event)"-->
