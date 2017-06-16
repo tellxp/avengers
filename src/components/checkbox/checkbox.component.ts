@@ -10,8 +10,8 @@
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 export const CHECKBOX_VALUE_ACCESSOR: any = {
@@ -25,9 +25,9 @@ export const CHECKBOX_VALUE_ACCESSOR: any = {
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DomService, CHECKBOX_VALUE_ACCESSOR]
+  providers: [CHECKBOX_VALUE_ACCESSOR]
 })
-export class CheckboxComponent extends WidgetComponent implements OnChanges,
+export class CheckboxComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -44,8 +44,8 @@ export class CheckboxComponent extends WidgetComponent implements OnChanges,
   init() {
     this.checked = false;
   }
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

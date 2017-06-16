@@ -11,18 +11,16 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Widget} from '../core/widget';
 
 
 @Component({
   selector: 'ave-arcylic-ground',
   templateUrl: './arcylic-ground.component.html',
   styleUrls: ['./arcylic-ground.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class ArcylicGroundComponent extends WidgetComponent implements OnChanges,
+export class ArcylicGroundComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -30,8 +28,8 @@ export class ArcylicGroundComponent extends WidgetComponent implements OnChanges
   OnDestroy {
   @HostBinding('class.v-arcylic-ground') 'true';
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

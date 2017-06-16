@@ -10,25 +10,24 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 
 
 @Component({
   selector: 'ave-panelbar-content',
   templateUrl: './panelbar-content.component.html',
   styleUrls: ['./panelbar-content.component.scss'],
-  providers: [DomService]
 })
-export class PanelbarContentComponent extends WidgetComponent implements OnChanges,
+export class PanelbarContentComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

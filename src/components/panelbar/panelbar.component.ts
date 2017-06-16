@@ -12,18 +12,17 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 
 
 @Component({
   selector: 'ave-panelbar',
   templateUrl: 'panelbar.component.html',
   styleUrls: ['panelbar.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class PanelbarComponent extends WidgetComponent implements OnChanges,
+export class PanelbarComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -32,8 +31,8 @@ export class PanelbarComponent extends WidgetComponent implements OnChanges,
 
   @HostBinding('class.v-panelbar') panelbarClass = 'true';
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

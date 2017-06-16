@@ -13,20 +13,18 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
-  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent, WidgetPosition} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget, ElementPosition, ElementStyle} from '../core/widget';
 
 @Component({
   selector: 'ave-button',
   templateUrl: 'button.component.html',
   styleUrls: ['button.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
 })
-export class ButtonComponent extends WidgetComponent implements OnChanges,
+export class ButtonComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -34,16 +32,17 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @Input() value;
-  mousePosition: WidgetPosition;
-
+  mousePosition: ElementPosition;
+  hostStyle: ElementStyle;
   motionState: string;
   mouseEvent: MouseEvent;
 
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
-    this.mousePosition = new WidgetPosition();
+    this.mousePosition = new ElementPosition();
     this.mousePosition.left = this.mouseEvent.offsetX;
     this.mousePosition.top = this.mouseEvent.offsetY;
+    this.hostStyle = Dom.getElementStyle(this.elementRef.nativeElement);
     this.motionState = 'start';
   }
 
@@ -55,8 +54,8 @@ export class ButtonComponent extends WidgetComponent implements OnChanges,
   @HostBinding('class.v-button') 'true';
 
 
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef, private render: Renderer2) {
+    super(elementRef);
   }
 
 

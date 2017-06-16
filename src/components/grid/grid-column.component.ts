@@ -12,8 +12,8 @@ import {
   OnInit, QueryList,
   Renderer2, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {GridRowComponent} from './grid-row.component';
 import {isNullOrUndefined} from 'util';
 import {GridColumnConfig} from './grid-column.config';
@@ -26,9 +26,9 @@ import {GridComponent} from './grid.component';
   styleUrls: ['./grid-column.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService, GridColumnConfig]
+  providers: [GridColumnConfig]
 })
-export class GridColumnComponent extends WidgetComponent implements OnChanges,
+export class GridColumnComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -85,8 +85,8 @@ export class GridColumnComponent extends WidgetComponent implements OnChanges,
   }
 
 
-  constructor(elementRef: ElementRef, domService: DomService, private config: GridColumnConfig, public render: Renderer2) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef, private config: GridColumnConfig, public render: Renderer2) {
+    super(elementRef);
   }
 
   ngOnChanges() {

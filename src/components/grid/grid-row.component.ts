@@ -13,8 +13,8 @@ import {
   OnInit,
   QueryList, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {GridColumnComponent} from './grid-column.component';
 import {GridRowConfig} from './grid-row.config';
 
@@ -25,9 +25,9 @@ import {GridRowConfig} from './grid-row.config';
   styleUrls: ['./grid-row.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService, GridRowConfig]
+  providers: [GridRowConfig]
 })
-export class GridRowComponent extends WidgetComponent implements OnChanges,
+export class GridRowComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -43,13 +43,13 @@ export class GridRowComponent extends WidgetComponent implements OnChanges,
 
   columns: GridColumnComponent[];
 
-  constructor(elementRef: ElementRef, domService: DomService, private config: GridRowConfig) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef, private config: GridRowConfig) {
+    super(elementRef);
   }
 
   init() {
-    this.gutter = WidgetComponent.getValidValue(this.gutter, this.config.gutter);
-    this.amount = WidgetComponent.getValidValue(this.amount, this.config.amount);
+    this.gutter = Widget.getValidValue(this.gutter, this.config.gutter);
+    this.amount = Widget.getValidValue(this.amount, this.config.amount);
   }
 
   loadColumns() {

@@ -14,8 +14,8 @@ import {
   OnInit,
   Renderer2, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 export const TEXTBOX_VALUE_ACCESSOR: any = {
@@ -30,10 +30,10 @@ export const TEXTBOX_VALUE_ACCESSOR: any = {
   styleUrls: ['./textbox.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService, TEXTBOX_VALUE_ACCESSOR]
+  providers: [TEXTBOX_VALUE_ACCESSOR]
 })
 
-export class TextboxComponent extends WidgetComponent implements OnChanges,
+export class TextboxComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -49,8 +49,8 @@ export class TextboxComponent extends WidgetComponent implements OnChanges,
   updateModelOnTouched: Function = () => void {};
 
 
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef, private render: Renderer2) {
+    super(elementRef);
   }
 
   ngOnChanges() {

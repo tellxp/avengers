@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import {TabstripBarComponent} from './tabstrip-bar.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {WidgetComponent} from '../core/widget.component';
-import {DomService} from '../core/dom.service';
+import {Widget} from '../core/widget';
+import {Dom} from '../core/dom';
 
 
 @Component({
@@ -21,10 +21,8 @@ import {DomService} from '../core/dom.service';
   templateUrl: './tabstrip-toggle.component.html',
   styleUrls: ['./tabstrip-toggle.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
-  providers: [DomService]
 })
-export class TabstripToggleComponent extends WidgetComponent implements OnChanges,
+export class TabstripToggleComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -70,8 +68,8 @@ export class TabstripToggleComponent extends WidgetComponent implements OnChange
   }
 
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
 

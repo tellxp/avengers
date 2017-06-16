@@ -14,14 +14,12 @@ import {
   OnDestroy,
   OnInit,
   QueryList,
-  Renderer2, ViewEncapsulation
+  Renderer2,
+  ViewEncapsulation
 } from '@angular/core';
 import {TabstripPageComponent} from './tabstrip-page.component';
-import {TabstripComponent} from './tabstrip.component';
-import {TabstripBarComponent} from './tabstrip-bar.component';
-import {WidgetComponent} from '../core/widget.component';
-import {DomService, PositioningType} from '../core/dom.service';
-import {isNullOrUndefined} from 'util';
+import {Widget} from '../core/widget';
+import {Dom} from '../core/dom';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
@@ -56,9 +54,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       ])
     ])
   ],
-  providers: [DomService]
 })
-export class TabstripPanelComponent extends WidgetComponent implements OnChanges,
+export class TabstripPanelComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -90,8 +87,8 @@ export class TabstripPanelComponent extends WidgetComponent implements OnChanges
   }
 
 
-  constructor(elementRef: ElementRef, domService: DomService, renderer: Renderer2) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef, renderer: Renderer2) {
+    super(elementRef);
 
     this.render = renderer;
   }

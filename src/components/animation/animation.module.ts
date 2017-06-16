@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ArcylicModule} from '../acrylic/arcylic.module';
-import {RippleComponent} from '../ripple/ripple.component';
 import {SlideRightComponent} from './slideright.component';
 
 

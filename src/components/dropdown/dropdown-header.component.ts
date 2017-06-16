@@ -11,18 +11,17 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent, WidgetPosition} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget, ElementPosition} from '../core/widget';
 
 
 @Component({
   selector: 'ave-dropdown-header',
   templateUrl: './dropdown-header.component.html',
   styleUrls: ['./dropdown-header.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class DropdownHeaderComponent extends WidgetComponent implements OnChanges,
+export class DropdownHeaderComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -31,13 +30,13 @@ export class DropdownHeaderComponent extends WidgetComponent implements OnChange
 
   @Input() title: string;
   @HostBinding('class.v-dropdown-header') 'true';
-  mousePosition: WidgetPosition;
+  mousePosition: ElementPosition;
 
   motionState: string;
   mouseEvent: MouseEvent;
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
-    this.mousePosition = new WidgetPosition();
+    this.mousePosition = new ElementPosition();
     this.mousePosition.left = this.mouseEvent.offsetX;
     this.mousePosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
@@ -46,8 +45,8 @@ export class DropdownHeaderComponent extends WidgetComponent implements OnChange
   @HostListener('mouseup') onMouseup() {
     this.motionState = 'end';
   }
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

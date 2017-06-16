@@ -11,8 +11,7 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Widget} from '../core/widget';
 
 
 @Component({
@@ -20,9 +19,8 @@ import {WidgetComponent} from '../core/widget.component';
   templateUrl: './arcylic-content.component.html',
   styleUrls: ['./arcylic-content.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
 })
-export class ArcylicContentComponent extends WidgetComponent implements OnChanges,
+export class ArcylicContentComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -31,8 +29,8 @@ export class ArcylicContentComponent extends WidgetComponent implements OnChange
 
   @HostBinding('class.v-arcylic-content') 'true';
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

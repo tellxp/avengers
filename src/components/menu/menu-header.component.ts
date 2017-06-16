@@ -11,18 +11,17 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent, WidgetPosition} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget, ElementPosition} from '../core/widget';
 
 
 @Component({
   selector: 'ave-menu-header',
   templateUrl: './menu-header.component.html',
   styleUrls: ['./menu-header.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class MenuHeaderComponent extends WidgetComponent implements OnChanges,
+export class MenuHeaderComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -37,7 +36,7 @@ export class MenuHeaderComponent extends WidgetComponent implements OnChanges,
 
   motionState: string;
   mouseEvent: MouseEvent;
-  mousePosition: WidgetPosition;
+  mousePosition: ElementPosition;
 
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
@@ -52,9 +51,9 @@ export class MenuHeaderComponent extends WidgetComponent implements OnChanges,
   @HostListener('mouseleave') onMouseleave() {
     this.motionState = 'end';
   }
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
-    this.mousePosition = new WidgetPosition();
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
+    this.mousePosition = new ElementPosition();
   }
 
   ngOnChanges() {

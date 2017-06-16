@@ -6,14 +6,12 @@ import {TreeviewComponent} from './treeview.component';
 import {TreenodeComponent} from './treenode.component';
 import {TreeViewConfig} from './treeview-confg';
 import {Styles} from './treeview-styles';
-import {WidgetModule} from '../core/widget.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    WidgetModule,
   ],
   declarations: [
     TreeviewComponent,

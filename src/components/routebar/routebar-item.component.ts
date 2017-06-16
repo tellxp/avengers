@@ -10,8 +10,8 @@ import {
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 
 
 @Component({
@@ -19,10 +19,8 @@ import {WidgetComponent} from '../core/widget.component';
   templateUrl: './routebar-item.component.html',
   styleUrls: ['./routebar-item.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
-  providers: [DomService]
 })
-export class RoutebarItemComponent extends WidgetComponent implements OnChanges,
+export class RoutebarItemComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -31,8 +29,8 @@ export class RoutebarItemComponent extends WidgetComponent implements OnChanges,
 
   @Input() title;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

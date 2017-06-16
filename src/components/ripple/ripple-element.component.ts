@@ -2,9 +2,9 @@ import {
   Component, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
+import {Dom} from '../core/dom';
 import {AnimationPlayer, transition, trigger, useAnimation} from '@angular/animations';
-import {WidgetPosition, WidgetStyle} from '../core/widget.component';
+import {ElementPosition, ElementStyle} from '../core/widget';
 import {scaleIn} from '../animation/scale-animations';
 import {fadeout} from '../animation/fade-animations';
 
@@ -36,16 +36,15 @@ import {fadeout} from '../animation/fade-animations';
       )
     ])
   ],
-  providers: [DomService]
 })
 export class RippleElementComponent implements OnInit, OnDestroy {
 
   @HostBinding('class.v-ripple-element') 'true';
   @HostBinding('@ripple') rippleAnimations = 'true';
-  @Input() ripplePosition: WidgetPosition;
-  @Input() rippleStyle: WidgetStyle;
+  @Input() ripplePosition: ElementPosition;
+  @Input() rippleStyle: ElementStyle;
 
-  constructor(public elementRef: ElementRef, domService: DomService, private render: Renderer2) {
+  constructor(public elementRef: ElementRef, private render: Renderer2) {
 
   }
 

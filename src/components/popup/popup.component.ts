@@ -14,8 +14,8 @@ import {
   Renderer2,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService, ElementPosition, ElementStyle} from '../core/dom.service';
-import {WidgetComponent, WidgetStyle} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget, ElementPosition, ElementStyle} from '../core/widget';
 import {isNullOrUndefined} from 'util';
 
 
@@ -23,10 +23,9 @@ import {isNullOrUndefined} from 'util';
   selector: 'ave-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class PopupComponent extends WidgetComponent implements OnChanges,
+export class PopupComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -38,9 +37,10 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   @Input() orientation: PopupOrientation;
   @Input() offset: ElementPosition;
 
-  constructor(elementRef: ElementRef, domService: DomService, public render: Renderer2) {
-    super(elementRef, domService);
-
+  position: ElementPosition;
+  constructor(elementRef: ElementRef, public render: Renderer2) {
+    super(elementRef);
+    this.position = new ElementPosition();
   }
 
   ngOnChanges() {
@@ -80,28 +80,28 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
   }
 
   setStyle() {
-    const style = new WidgetStyle();
+    const style = new ElementStyle();
     style.width = this.elementRef.nativeElement.clientWidth;
     style.height = this.elementRef.nativeElement.clientHeight;
-    this.dom.setElementStyle(style, this.elementRef.nativeElement, this.render);
+    Dom.setElementStyle(style, this.elementRef.nativeElement, this.render);
   }
 
   setPosition() {
     let anchorPosition: ElementPosition = new ElementPosition();
     let anchorStyle: ElementStyle = new ElementStyle();
-    if (this.anchor instanceof WidgetComponent) {
-      anchorPosition.left = this.anchor.position.left;
-      anchorPosition.top = this.anchor.position.top;
-      anchorStyle.width = this.anchor.style.width;
-      anchorStyle.height = this.anchor.style.height;
+    if (this.anchor instanceof Widget) {
+      anchorPosition = Dom.getElementPosition(this.anchor.elementRef.nativeElement);
+
+      anchorStyle = Dom.getElementStyle(this.anchor.elementRef.nativeElement);
+
       this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
     }
     if (this.anchor instanceof HTMLElement) {
-      anchorPosition = this.dom.getElementPosition(this.anchor);
-      anchorStyle = this.dom.getElementStyle(this.anchor);
+      anchorPosition = Dom.getElementPosition(this.anchor);
+      anchorStyle = Dom.getElementStyle(this.anchor);
       this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
     }
-    this.dom.setElementPosition(this.position, this.elementRef.nativeElement, this.render);
+    Dom.setElementPosition(this.position, this.elementRef.nativeElement, this.render);
 
   }
 
@@ -131,14 +131,6 @@ export class PopupComponent extends WidgetComponent implements OnChanges,
     return position;
   }
 
-  // @HostListener('window:scroll', [])
-  // onWindowScroll() {
-  //   this.anchorBtn = <ButtonComponent>this.parent;
-  //   let styles = {
-  //     'left': true ? this.anchorBtn.left + 'px' : '0px',
-  //     'top': true ? this.anchorBtn.top + 'px' : '0px'
-  //   };
-  // }
 }
 export enum PopupOrientation {
   Left,

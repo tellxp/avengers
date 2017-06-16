@@ -15,10 +15,10 @@ import {
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
+import {Dom} from '../core/dom';
 import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
-import {WidgetComponent} from '../core/widget.component';
+import {Widget} from '../core/widget';
 import {MenuComponent} from './menu.component';
 import {MenuEntryComponent} from './menu-entry.component';
 
@@ -26,11 +26,9 @@ import {MenuEntryComponent} from './menu-entry.component';
   selector: 'ave-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class MenuItemComponent extends WidgetComponent implements OnChanges,
+export class MenuItemComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -54,8 +52,8 @@ export class MenuItemComponent extends WidgetComponent implements OnChanges,
   active: boolean;
   orientation: PopupOrientation;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
 
     this.orientation = PopupOrientation.Right;
     this.active = false;

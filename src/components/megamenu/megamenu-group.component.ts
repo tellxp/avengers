@@ -10,8 +10,8 @@ import {
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 
 
 @Component({
@@ -20,17 +20,17 @@ import {WidgetComponent} from '../core/widget.component';
   styleUrls: ['./megamenu-group.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService]
+  providers: [Dom]
 })
-export class MegamenuGroupComponent extends WidgetComponent implements OnChanges,
+export class MegamenuGroupComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

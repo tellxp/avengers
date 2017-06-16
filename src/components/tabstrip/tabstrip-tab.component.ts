@@ -11,8 +11,8 @@ import {
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {WidgetComponent, WidgetPosition} from '../core/widget.component';
-import {DomService} from '../core/dom.service';
+import {Widget, ElementPosition} from '../core/widget';
+import {Dom} from '../core/dom';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripComponent} from './tabstrip.component';
 @Component({
@@ -21,9 +21,8 @@ import {TabstripComponent} from './tabstrip.component';
   styleUrls: ['./tabstrip-tab.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService]
 })
-export class TabstripTabComponent extends WidgetComponent implements OnChanges,
+export class TabstripTabComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -34,14 +33,14 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
   @HostBinding('attr.tabindex') '-1';
 
   @Input() bindedPage: TabstripPageComponent;
-  mousePosition: WidgetPosition;
+  mousePosition: ElementPosition;
   @Input() parentTabstrip: TabstripComponent;
 
   motionState: string;
   mouseEvent: MouseEvent;
   @HostListener('mousedown', ['$event']) onMousedown($event) {
     this.mouseEvent = $event;
-    this.mousePosition = new WidgetPosition();
+    this.mousePosition = new ElementPosition();
     this.mousePosition.left = this.mouseEvent.offsetX;
     this.mousePosition.top = this.mouseEvent.offsetY;
     this.motionState = 'start';
@@ -87,8 +86,8 @@ export class TabstripTabComponent extends WidgetComponent implements OnChanges,
     super.ngOnDestroy();
   }
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
 }

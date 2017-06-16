@@ -20,18 +20,16 @@ import {isNullOrUndefined} from 'util';
 import {TabstripToggleComponent} from './tabstrip-toggle.component';
 import {TabstripComponent} from './tabstrip.component';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {WidgetComponent} from '../core/widget.component';
-import {DomService} from '../core/dom.service';
+import {Widget} from '../core/widget';
+import {Dom} from '../core/dom';
 
 @Component({
   selector: 'ave-tabstrip-bar',
   templateUrl: './tabstrip-bar.component.html',
   styleUrls: ['./tabstrip-bar.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
-  providers: [DomService]
 })
-export class TabstripBarComponent extends WidgetComponent implements OnChanges,
+export class TabstripBarComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -42,8 +40,8 @@ export class TabstripBarComponent extends WidgetComponent implements OnChanges,
 
   @ContentChildren(TabstripTabComponent) private contentTabs: QueryList<TabstripTabComponent>;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

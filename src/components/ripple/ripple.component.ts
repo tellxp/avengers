@@ -1,12 +1,12 @@
 import {Component, Input, OnChanges, SimpleChange, SimpleChanges, ViewEncapsulation} from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent, WidgetPosition, WidgetStyle} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget, ElementPosition, ElementStyle} from '../core/widget';
 
 export class RippleElementRef {
-  ripplePosition: WidgetPosition;
-  rippleStyle: WidgetStyle;
+  ripplePosition: ElementPosition;
+  rippleStyle: ElementStyle;
 
-  constructor(position: WidgetPosition, style: WidgetStyle) {
+  constructor(position: ElementPosition, style: ElementStyle) {
     this.ripplePosition = position;
     this.rippleStyle = style;
   }
@@ -15,27 +15,26 @@ export class RippleElementRef {
   selector: 'ave-ripple',
   templateUrl: './ripple.component.html',
   styleUrls: ['./ripple.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
 export class RippleComponent implements OnChanges {
 
   @Input() stateTriggerKey: string;
-  @Input() hostStyle: WidgetStyle;
-  @Input() rippleStartPosition: WidgetPosition;
+  @Input() hostStyle: ElementStyle;
+  @Input() rippleStartPosition: ElementPosition;
 
 
   stateTriggerValue: SimpleChange;
   rippleRadius: number;
-  rippleElementPosition: WidgetPosition = new WidgetPosition();
-  rippleElementStyle: WidgetStyle = new WidgetStyle();
+  rippleElementPosition: ElementPosition = new ElementPosition();
+  rippleElementStyle: ElementStyle = new ElementStyle();
 
   rippleElementRefs: RippleElementRef[];
 
   constructor() {
     this.rippleElementRefs = [];
-    this.rippleElementPosition = new WidgetPosition();
-    this.rippleElementStyle = new WidgetStyle();
+    this.rippleElementPosition = new ElementPosition();
+    this.rippleElementStyle = new ElementStyle();
 
   }
 
@@ -44,7 +43,7 @@ export class RippleComponent implements OnChanges {
     if (this.stateTriggerValue) {
       if (this.stateTriggerValue.currentValue === 'start') {
 
-        this.setRipplePositonAndStyle();
+        this.setRipplePositionAndStyle();
 
         this.renderRippleElements();
 
@@ -55,9 +54,9 @@ export class RippleComponent implements OnChanges {
     }
   }
 
-  private setRipplePositonAndStyle() {
-    this.rippleRadius = WidgetComponent.calculateIntersectCircleRadius(this.rippleStartPosition, this.hostStyle);
-    this.rippleElementPosition = WidgetComponent.calculateIntersectCirclePosition(this.rippleStartPosition, this.hostStyle);
+  private setRipplePositionAndStyle() {
+    this.rippleRadius = Widget.calculateIntersectCircleRadius(this.rippleStartPosition, this.hostStyle);
+    this.rippleElementPosition = Widget.calculateIntersectCirclePosition(this.rippleStartPosition, this.hostStyle);
     this.rippleElementStyle.width = this.rippleRadius * 2;
     this.rippleElementStyle.height = this.rippleRadius * 2;
   }

@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import {TabstripPanelComponent} from './tabstrip-panel.component';
 import {TabstripTabComponent} from './tabstrip-tab.component';
-import {WidgetComponent} from '../core/widget.component';
-import {DomService} from '../core/dom.service';
+import {Widget} from '../core/widget';
+import {Dom} from '../core/dom';
 
 @Component({
   selector: 'ave-tabstrip-page',
@@ -13,9 +13,8 @@ import {DomService} from '../core/dom.service';
   styleUrls: ['./tabstrip-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService]
 })
-export class TabstripPageComponent extends WidgetComponent implements OnChanges,
+export class TabstripPageComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -26,8 +25,8 @@ export class TabstripPageComponent extends WidgetComponent implements OnChanges,
   @Input() active: boolean;
   @HostBinding('class.v-tabstrip-page') 'true';
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

@@ -16,8 +16,8 @@ import {
   QueryList,
   ViewChild
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelbarHeaderComponent} from './panelbar-header.component';
 import {expandAnimations} from '../animation/expand-animations';
@@ -28,9 +28,8 @@ import {expandAnimations} from '../animation/expand-animations';
   templateUrl: 'panelbar-item.component.html',
   styleUrls: ['panelbar-item.component.scss'],
   animations: [expandAnimations],
-  providers: [DomService]
 })
-export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
+export class PanelbarItemComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -53,8 +52,8 @@ export class PanelbarItemComponent extends WidgetComponent implements OnChanges,
     this.toggleItem();
   }
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
     this.expanded = false;
   }
 

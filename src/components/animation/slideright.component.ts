@@ -12,8 +12,7 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Widget} from '../core/widget';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
@@ -50,9 +49,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       ])
     ]),
   ],
-  providers: [DomService]
 })
-export class SlideRightComponent extends WidgetComponent implements OnChanges,
+export class SlideRightComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -63,8 +61,8 @@ export class SlideRightComponent extends WidgetComponent implements OnChanges,
 
   @Input() active: boolean;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

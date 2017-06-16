@@ -11,18 +11,16 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Widget} from '../core/widget';
 
 
 @Component({
   selector: 'ave-arcylic-motion',
   templateUrl: './arcylic-motion.component.html',
   styleUrls: ['./arcylic-motion.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class ArcylicMotionComponent extends WidgetComponent implements OnChanges,
+export class ArcylicMotionComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -31,8 +29,8 @@ export class ArcylicMotionComponent extends WidgetComponent implements OnChanges
 
   @HostBinding('class.v-arcylic-motion') 'true';
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

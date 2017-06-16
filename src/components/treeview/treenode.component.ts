@@ -11,8 +11,8 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 
 
 @Component({
@@ -20,9 +20,8 @@ import {WidgetComponent} from '../core/widget.component';
   templateUrl: './treeview.component.html',
   styleUrls: ['./treeview.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
 })
-export class TreenodeComponent extends WidgetComponent implements OnChanges,
+export class TreenodeComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -30,8 +29,8 @@ export class TreenodeComponent extends WidgetComponent implements OnChanges,
   OnDestroy {
 
   @ContentChild(TreenodeComponent) node;
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

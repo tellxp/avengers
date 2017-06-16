@@ -11,8 +11,8 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent, WidgetPosition} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget, ElementPosition} from '../core/widget';
 import {PanelbarItemComponent} from './panelbar-item.component';
 
 
@@ -21,9 +21,8 @@ import {PanelbarItemComponent} from './panelbar-item.component';
   templateUrl: 'panelbar-header.component.html',
   styleUrls: ['panelbar-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
 })
-export class PanelbarHeaderComponent extends WidgetComponent implements OnChanges,
+export class PanelbarHeaderComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -37,7 +36,7 @@ export class PanelbarHeaderComponent extends WidgetComponent implements OnChange
   @HostBinding('attr.tabindex') '-1';
   motionState: string;
   mouseEvent: MouseEvent;
-  mousePosition: WidgetPosition;
+  mousePosition: ElementPosition;
   parentItem: PanelbarItemComponent;
 
   @HostListener('mousedown', ['$event']) onMousedown($event) {
@@ -50,10 +49,10 @@ export class PanelbarHeaderComponent extends WidgetComponent implements OnChange
   @HostListener('mouseup') onMouseup() {
     this.motionState = 'end';
   }
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
     this.motionState = 'none';
-    this.mousePosition = new WidgetPosition();
+    this.mousePosition = new ElementPosition();
   }
   setParentItem(item: PanelbarItemComponent) {
     this.parentItem = item;

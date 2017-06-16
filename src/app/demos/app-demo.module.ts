@@ -15,7 +15,6 @@ import {PanelDemoComponent} from './panel/panel-demo.component';
 import {RoutebarDemoComponent} from './routebar/routebar-demo.component';
 
 
-import {WidgetModule} from '../../components/core/widget.module';
 import {GridModule} from '../../components/grid/grid.module';
 import {TabstripModule} from '../../components/tabstrip/tabstrip.module';
 import {ButtonModule} from '../../components/button/button.module';
@@ -46,7 +45,6 @@ import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
     AppDemoRoutingModule,
 
     // Avengers Component
-    WidgetModule,
     GridModule,
     TabstripModule,
     ButtonModule,

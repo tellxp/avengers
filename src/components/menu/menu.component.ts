@@ -14,8 +14,8 @@
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {WidgetComponent} from '../core/widget.component';
-import {DomService} from '../core/dom.service';
+import {Widget} from '../core/widget';
+import {Dom} from '../core/dom';
 import {isNullOrUndefined} from 'util';
 import {MenuEntryComponent} from './menu-entry.component';
 
@@ -23,11 +23,9 @@ import {MenuEntryComponent} from './menu-entry.component';
   selector: 'ave-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class MenuComponent extends WidgetComponent implements OnChanges,
+export class MenuComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -40,8 +38,8 @@ export class MenuComponent extends WidgetComponent implements OnChanges,
   entries: MenuEntryComponent[];
   activeEntry: MenuEntryComponent;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
 
   }
 

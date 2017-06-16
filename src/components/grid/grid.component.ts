@@ -11,20 +11,17 @@ import {
   OnDestroy,
   OnInit, Renderer2, ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
-import {isNullOrUndefined} from "util";
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 
 
 @Component({
   selector: 'ave-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class GridComponent extends WidgetComponent implements OnChanges,
+export class GridComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -55,8 +52,8 @@ export class GridComponent extends WidgetComponent implements OnChanges,
       throw Error('gutter is not valid!');
     }
   }
-  constructor(elementRef: ElementRef, domService: DomService, private render: Renderer2) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef, private render: Renderer2) {
+    super(elementRef);
   }
   ngOnChanges() {
     super.ngOnChanges();

@@ -15,8 +15,8 @@ import {
   QueryList, ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
-import {WidgetComponent} from '../core/widget.component';
-import {DomService} from '../core/dom.service';
+import {Widget} from '../core/widget';
+import {Dom} from '../core/dom';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripTabComponent} from './tabstrip-tab.component';
 
@@ -27,9 +27,8 @@ import {TabstripTabComponent} from './tabstrip-tab.component';
   styleUrls: ['./tabstrip.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
-  providers: [DomService]
 })
-export class TabstripComponent extends WidgetComponent implements OnChanges,
+export class TabstripComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -51,8 +50,8 @@ export class TabstripComponent extends WidgetComponent implements OnChanges,
 
   }
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges() {

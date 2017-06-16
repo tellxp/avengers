@@ -15,8 +15,8 @@ import {
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {DomService} from '../core/dom.service';
-import {WidgetComponent} from '../core/widget.component';
+import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {MenuComponent} from './menu.component';
 import {MenuItemComponent} from './menu-item.component';
 import {PopupOrientation} from '../popup/popup.component';
@@ -29,10 +29,9 @@ import {expandAnimations} from '../animation/expand-animations';
   templateUrl: './menu-entry.component.html',
   styleUrls: ['./menu-entry.component.scss'],
   animations: [expandAnimations],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DomService]
+  encapsulation: ViewEncapsulation.None
 })
-export class MenuEntryComponent extends WidgetComponent implements OnChanges,
+export class MenuEntryComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
@@ -51,8 +50,8 @@ export class MenuEntryComponent extends WidgetComponent implements OnChanges,
   orientation: PopupOrientation;
   active: boolean;
 
-  constructor(elementRef: ElementRef, domService: DomService) {
-    super(elementRef, domService);
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
     this.orientation = PopupOrientation.Bottom;
   }
 
