@@ -7,22 +7,22 @@ import {ArcylicLightComponent} from './arcylic-light.component';
 
 
 @NgModule({
-    imports: [
-      BrowserModule
-    ],
-    exports: [
-      ArcylicContentComponent,
-      ArcylicMotionComponent,
-      ArcylicLightComponent,
-      ArcylicGroundComponent,
-    ],
-    declarations: [
-      ArcylicContentComponent,
-      ArcylicMotionComponent,
-      ArcylicLightComponent,
-      ArcylicGroundComponent,
-    ],
-    providers: [
-    ],
+  imports: [
+    BrowserModule
+  ],
+  exports: [
+    ArcylicContentComponent,
+    ArcylicMotionComponent,
+    ArcylicLightComponent,
+    ArcylicGroundComponent,
+  ],
+  declarations: [
+    ArcylicContentComponent,
+    ArcylicMotionComponent,
+    ArcylicLightComponent,
+    ArcylicGroundComponent,
+  ],
+  providers: [],
 })
-export class ArcylicModule { }
+export class ArcylicModule {
+}

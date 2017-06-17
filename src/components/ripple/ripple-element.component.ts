@@ -39,8 +39,9 @@ import {fadeout} from '../animation/fade-animations';
 })
 export class RippleElementComponent implements OnInit, OnDestroy {
 
-  @HostBinding('class.v-ripple-element') 'true';
-  @HostBinding('@ripple') rippleAnimations = 'true';
+  @HostBinding('class.v-ripple-element')
+  @HostBinding('@ripple')
+
   @Input() ripplePosition: ElementPosition;
   @Input() rippleStyle: ElementStyle;
 

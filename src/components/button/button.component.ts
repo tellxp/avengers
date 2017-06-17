@@ -16,7 +16,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {Dom} from '../core/dom';
-import {Widget, ElementPosition, ElementStyle} from '../core/widget';
+import {ElementPosition, ElementStyle, Widget} from '../core/widget';
 
 @Component({
   selector: 'ave-button',

@@ -1,6 +1,5 @@
-import {Component, Input, OnChanges, SimpleChange, SimpleChanges, ViewEncapsulation} from '@angular/core';
-import {Dom} from '../core/dom';
-import {Widget, ElementPosition, ElementStyle} from '../core/widget';
+import {Component, HostBinding, Input, OnChanges, SimpleChange, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {ElementPosition, ElementStyle, Widget} from '../core/widget';
 
 export class RippleElementRef {
   ripplePosition: ElementPosition;
@@ -18,6 +17,8 @@ export class RippleElementRef {
   encapsulation: ViewEncapsulation.None
 })
 export class RippleComponent implements OnChanges {
+
+  @HostBinding('class.v-ripple')
 
   @Input() stateTriggerKey: string;
   @Input() hostStyle: ElementStyle;

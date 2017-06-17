@@ -5,17 +5,17 @@ import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-    imports: [
-      BrowserModule,
-      FormsModule
-    ],
-    exports: [
-      CheckboxComponent
-    ],
-    declarations: [
-      CheckboxComponent
-    ],
-    providers: [
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  exports: [
+    CheckboxComponent
+  ],
+  declarations: [
+    CheckboxComponent
+  ],
+  providers: [],
 })
-export class CheckboxModule { }
+export class CheckboxModule {
+}

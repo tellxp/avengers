@@ -5,17 +5,17 @@ import {SlideRightComponent} from './slideright.component';
 
 
 @NgModule({
-    imports: [
-      BrowserModule,
-      ArcylicModule,
-    ],
-    exports: [
-      SlideRightComponent,
-    ],
-    declarations: [
-      SlideRightComponent,
-    ],
-    providers: [
-    ],
+  imports: [
+    BrowserModule,
+    ArcylicModule,
+  ],
+  exports: [
+    SlideRightComponent,
+  ],
+  declarations: [
+    SlideRightComponent,
+  ],
+  providers: [],
 })
-export class AnimationModule { }
+export class AnimationModule {
+}

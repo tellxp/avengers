@@ -2,14 +2,13 @@ import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit, Component, ContentChild,
+  AfterViewInit,
   DoCheck,
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit, Optional, ViewEncapsulation
+  OnInit
 } from '@angular/core';
-import {Dom} from './dom';
 import {isNullOrUndefined} from 'util';
 
 export class Widget implements OnChanges,
@@ -27,6 +26,7 @@ export class Widget implements OnChanges,
       return field;
     }
   }
+
   public static isTopLeft(offsetPosition: ElementPosition, hostStyle: ElementStyle): boolean {
     if (offsetPosition.left < hostStyle.width / 2 && offsetPosition.top < hostStyle.height / 2) {
       return true;
@@ -89,6 +89,7 @@ export class Widget implements OnChanges,
       }
     }
   }
+
   public static calculateIntersectCirclePosition(startPosition: ElementPosition, hostStyle: ElementStyle): ElementPosition {
     const position: ElementPosition = new ElementPosition();
     const radius = Widget.calculateIntersectCircleRadius(startPosition, hostStyle);

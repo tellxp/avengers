@@ -1,9 +1,18 @@
 import {
   AfterContentChecked,
-  AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy,
-  OnInit, ViewEncapsulation
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 import {expandAnimations} from '../animation/expand-animations';
 
@@ -25,6 +34,7 @@ export class DropdownComponent extends Widget implements OnChanges,
   @Input() expanded: boolean;
 
   @HostBinding('class.v-dropdown') 'true';
+
   constructor(elementRef: ElementRef) {
     super(elementRef);
   }

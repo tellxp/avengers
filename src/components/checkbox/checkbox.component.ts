@@ -5,12 +5,13 @@
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, forwardRef, HostListener,
+  ElementRef,
+  forwardRef,
   OnChanges,
   OnDestroy,
-  OnInit, ViewEncapsulation
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -44,6 +45,7 @@ export class CheckboxComponent extends Widget implements OnChanges,
   init() {
     this.checked = false;
   }
+
   constructor(elementRef: ElementRef) {
     super(elementRef);
   }
