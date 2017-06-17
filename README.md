@@ -3,11 +3,19 @@
 Avengers is a UI library powered by [Angular 2](https://angular.io).
 
 Avengers is developed by native typescript and sass.
-This project is in progress now.
+
+This project is in developing now.
+
+# Progress
+Components | Status
+---|---
+Button      | beta
+SplitButton | beta
+Tabstrip    | beta
 
 # Run the project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
