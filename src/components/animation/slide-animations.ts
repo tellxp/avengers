@@ -12,9 +12,9 @@ export const slideDown = animation(
   ],
   {
     params: {
-      start: 'scale(0)',
+      start: 'translateY(-100%)',
       duration: '280ms',
-      end: 'scale(1)'
+      end: 'translateY(0%)'
     }
   }
 );
@@ -31,9 +31,9 @@ export const slideUp = animation(
   ],
   {
     params: {
-      start: '*',
+      start: 'translateY(0%)',
       duration: '280ms',
-      end: 'scale(0)'
+      end: 'translateY(-100%)'
     }
   }
 );
@@ -51,14 +51,14 @@ export const slideLeft = animation(
   ],
   {
     params: {
-      start: '*',
+      start: 'translateX(-100%)',
       duration: '280ms',
-      end: 'scale(0)'
+      end: 'translateX(0%)'
     }
   }
 );
 
-export const slideRight = animation(
+export const slideRightIn = animation(
   [
     style({
       transform: '{{start}}',
@@ -71,17 +71,36 @@ export const slideRight = animation(
   ],
   {
     params: {
-      start: '*',
+      start: 'translateX(-100%)',
       duration: '280ms',
-      end: 'scale(0)'
+      end: 'translateX(0%)'
     }
   }
 );
-export const slideAnimations = trigger('scale', [
+export const slideRightOut = animation(
+  [
+    style({
+      transform: '{{start}}',
+    }),
+    animate('{{duration}}',
+      style({
+        transform: '{{end}}'
+      })
+    )
+  ],
+  {
+    params: {
+      start: 'translateX(0%)',
+      duration: '280ms',
+      end: 'translateX(100%)'
+    }
+  }
+);
+export const slideRightAnimations = trigger('slideRight', [
   transition('void => *',
-    useAnimation(slideDown)
+    useAnimation(slideRightIn)
   ),
   transition('* => void',
-    useAnimation(slideUp)
+    useAnimation(slideRightOut)
   )
 ]);

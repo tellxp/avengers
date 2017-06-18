@@ -15,17 +15,18 @@ import {
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {PopupOrientation} from '../popup/popup.component';
 import {isNullOrUndefined} from 'util';
 import {Widget} from '../core/widget';
 import {MenuComponent} from './menu.component';
 import {MenuEntryComponent} from './menu-entry.component';
+import {slideRightAnimations} from '../animation/slide-animations';
 
 @Component({
   selector: 'ave-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
+  animations: [slideRightAnimations],
   encapsulation: ViewEncapsulation.None
 })
 export class MenuItemComponent extends Widget implements OnChanges,

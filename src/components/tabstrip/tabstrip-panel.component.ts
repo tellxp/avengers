@@ -19,41 +19,13 @@ import {
 } from '@angular/core';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {Widget} from '../core/widget';
-import {Dom} from '../core/dom';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
 @Component({
   selector: 'ave-tabstrip-panel',
   templateUrl: './tabstrip-panel.component.html',
   styleUrls: ['./tabstrip-panel.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-
-  animations: [
-    trigger('fadeDown', [
-      state('expanded', style({
-          opacity: 1
-        })
-      ),
-      state('collapsed', style({
-          opacity: 0
-        })
-      ),
-      transition('collapsed => expanded', [
-        style({
-          opacity: 0,
-          height: 0
-        }),
-        animate('1s ease')
-      ]),
-      transition('expanded => collapsed', [
-        animate('1s ease', style({
-          opacity: 0,
-          height: 0
-        }))
-      ])
-    ])
-  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class TabstripPanelComponent extends Widget implements OnChanges,
   OnInit,
@@ -65,10 +37,11 @@ export class TabstripPanelComponent extends Widget implements OnChanges,
   @Input() public height: number;
   @Input() public expanded: boolean;
 
-  @HostBinding('class.v-tabstrip-panel') 'true';
+  @HostBinding('class.v-tabstrip-panel')
 
   @ContentChildren(TabstripPageComponent) private contentPages: QueryList<TabstripPageComponent>;
 
+  pages: TabstripPageComponent[];
 
   public docked: boolean;
 
@@ -76,15 +49,6 @@ export class TabstripPanelComponent extends Widget implements OnChanges,
 
   public state: string;
 
-  @HostBinding('@fadeDown') get fadeDown() {
-    return this.state;
-  }
-
-  @HostListener('@fadeDown.start') animationStart() {
-    if (!this.expanded) {
-
-    }
-  }
 
 
   constructor(elementRef: ElementRef, renderer: Renderer2) {
@@ -107,6 +71,7 @@ export class TabstripPanelComponent extends Widget implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+    this.loadPages();
   }
 
   ngAfterContentChecked() {
@@ -127,5 +92,8 @@ export class TabstripPanelComponent extends Widget implements OnChanges,
     super.ngOnDestroy();
   }
 
+  loadPages() {
+    this.pages = this.contentPages.toArray();
+  }
 
 }

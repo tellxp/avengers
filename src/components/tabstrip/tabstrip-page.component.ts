@@ -1,16 +1,26 @@
 import {
-  Component, OnInit, Input, AfterContentInit, trigger, transition, style, animate,
-  ElementRef, DoCheck, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, ViewEncapsulation, HostBinding
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
-import {TabstripPanelComponent} from './tabstrip-panel.component';
-import {TabstripTabComponent} from './tabstrip-tab.component';
 import {Widget} from '../core/widget';
-import {Dom} from '../core/dom';
+import {slideRightAnimations} from '../animation/slide-animations';
 
 @Component({
   selector: 'ave-tabstrip-page',
   templateUrl: './tabstrip-page.component.html',
   styleUrls: ['./tabstrip-page.component.scss'],
+  animations: [slideRightAnimations],
   encapsulation: ViewEncapsulation.None,
 
 })
