@@ -3,4 +3,5 @@
 .v-tabstrip {
   @extend %v-container;
   background-color: transparent;
+  outline: none;
 }
