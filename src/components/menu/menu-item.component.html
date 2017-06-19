@@ -2,6 +2,6 @@
                  (blur)="onHeaderBlur()" (mousedown)="onHeaderMousedown()">
   {{title}}
 </ave-menu-header>
-<ave-popup [@slideRight] *ngIf="active" [anchor]="anchor" [orientation]="orientation">
+<ave-popup [@slideRtl] *ngIf="active" [anchor]="anchor" [orientation]="orientation">
     <ng-content></ng-content>
 </ave-popup>

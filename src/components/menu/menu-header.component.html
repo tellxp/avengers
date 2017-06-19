@@ -5,10 +5,7 @@
      [ngClass]="{'fa-chevron-down': isEntry, 'fa-chevron-right': !isEntry}"
      aria-hidden="true"></i>
 </ave-arcylic-content>
-<!--<ave-ripple #motion-->
-            <!--[stateTriggerKey]="motionState"-->
-            <!--[rippleStartPosition]="mousePosition"-->
-            <!--[hostStyle]="style"-->
-<!--&gt;</ave-ripple>-->
+<ave-ripple [trigger]="elementRef.nativeElement"></ave-ripple>
+
 <ave-arcylic-light></ave-arcylic-light>
 <ave-arcylic-ground></ave-arcylic-ground>

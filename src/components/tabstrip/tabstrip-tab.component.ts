@@ -5,14 +5,16 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding, HostListener,
+  ElementRef,
+  HostBinding,
+  HostListener,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit, ViewEncapsulation
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
-import {Widget, ElementPosition} from '../core/widget';
-import {Dom} from '../core/dom';
+import {Widget} from '../core/widget';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripComponent} from './tabstrip.component';
 @Component({
@@ -33,26 +35,13 @@ export class TabstripTabComponent extends Widget implements OnChanges,
   @HostBinding('attr.tabindex') '-1';
 
   @Input() bindedPage: TabstripPageComponent;
-  mousePosition: ElementPosition;
   @Input() parentTabstrip: TabstripComponent;
 
-  motionState: string;
-  mouseEvent: MouseEvent;
-  @HostListener('mousedown', ['$event']) onMousedown($event) {
-    this.mouseEvent = $event;
-    this.mousePosition = new ElementPosition();
-    this.mousePosition.left = this.mouseEvent.offsetX;
-    this.mousePosition.top = this.mouseEvent.offsetY;
-    this.motionState = 'start';
-  }
-
-  @HostListener('mouseup') onMouseup() {
-    this.motionState = 'end';
-  }
 
   @HostListener('click') onClick() {
     this.parentTabstrip.activatePage(this.bindedPage);
   }
+
   ngOnChanges() {
     super.ngOnChanges();
   }

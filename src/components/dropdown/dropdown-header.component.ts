@@ -30,21 +30,7 @@ export class DropdownHeaderComponent extends Widget implements OnChanges,
 
   @Input() title: string;
   @HostBinding('class.v-dropdown-header') 'true';
-  mousePosition: ElementPosition;
 
-  motionState: string;
-  mouseEvent: MouseEvent;
-  @HostListener('mousedown', ['$event']) onMousedown($event) {
-    this.mouseEvent = $event;
-    this.mousePosition = new ElementPosition();
-    this.mousePosition.left = this.mouseEvent.offsetX;
-    this.mousePosition.top = this.mouseEvent.offsetY;
-    this.motionState = 'start';
-  }
-
-  @HostListener('mouseup') onMouseup() {
-    this.motionState = 'end';
-  }
   constructor(elementRef: ElementRef) {
     super(elementRef);
   }

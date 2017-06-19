@@ -10,6 +10,7 @@ import {TabstripToggleComponent} from './tabstrip-toggle.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AnimationModule} from '../animation/animation.module';
 import {ArcylicModule} from '../acrylic/arcylic.module';
+import {RippleModule} from '../ripple/ripple.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import {ArcylicModule} from '../acrylic/arcylic.module';
     BrowserAnimationsModule,
     AnimationModule,
     ArcylicModule,
+    RippleModule,
   ],
   declarations: [
     TabstripComponent,

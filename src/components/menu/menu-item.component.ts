@@ -20,13 +20,13 @@ import {isNullOrUndefined} from 'util';
 import {Widget} from '../core/widget';
 import {MenuComponent} from './menu.component';
 import {MenuEntryComponent} from './menu-entry.component';
-import {slideRightAnimations} from '../animation/slide-animations';
+import {slideRtlAnimations} from '../animation/slide-animations';
 
 @Component({
   selector: 'ave-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
-  animations: [slideRightAnimations],
+  animations: [slideRtlAnimations],
   encapsulation: ViewEncapsulation.None
 })
 export class MenuItemComponent extends Widget implements OnChanges,

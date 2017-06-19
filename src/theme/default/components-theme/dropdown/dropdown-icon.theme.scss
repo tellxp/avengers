@@ -70,12 +70,12 @@ $ave-dropdown-icon-typography: (
 $ave-dropdown-icon-shape: (
   default: ave-shape($ave-shape-ratio-1, 200, 50, 400),
   primary: ave-shape($ave-shape-ratio-1, 200, 50, 400),
-  secondary: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  success: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  info: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  warning: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  danger: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
-  link: ave-shape($ave-shape-ratio-dot618, 200, 50, 400),
+  secondary: ave-shape($ave-shape-ratio-1, 200, 50, 400),
+  success: ave-shape($ave-shape-ratio-1, 200, 50, 400),
+  info: ave-shape($ave-shape-ratio-1, 200, 50, 400),
+  warning: ave-shape($ave-shape-ratio-1, 200, 50, 400),
+  danger: ave-shape($ave-shape-ratio-1, 200, 50, 400),
+  link: ave-shape($ave-shape-ratio-1, 200, 50, 400),
 );
 
 $ave-dropdown-icon-theme: (

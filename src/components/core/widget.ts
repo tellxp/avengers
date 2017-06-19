@@ -59,7 +59,7 @@ export class Widget implements OnChanges,
     }
   }
 
-  public static calculateHypotenuse(edge1: number, edge2: number): number {
+  public static   calculateHypotenuse(edge1: number, edge2: number): number {
     return Math.sqrt(
       Math.pow(edge1, 2) + Math.pow(edge2, 2)
     );
@@ -67,26 +67,24 @@ export class Widget implements OnChanges,
 
   public static calculateIntersectCircleRadius(startPosition: ElementPosition, hostStyle: ElementStyle): number {
     let radius = 0;
-    if (hostStyle.width > hostStyle.height) {
-      if (Widget.isTopLeft(startPosition, hostStyle)) {
-        radius = Widget.calculateHypotenuse(hostStyle.width - startPosition.left, hostStyle.height - startPosition.top);
-        return radius;
-      }
+    if (Widget.isTopLeft(startPosition, hostStyle)) {
+      radius = Widget.calculateHypotenuse(hostStyle.width - startPosition.left, hostStyle.height - startPosition.top);
+      return radius;
+    }
 
-      if (Widget.isTopRight(startPosition, hostStyle)) {
-        radius = Widget.calculateHypotenuse(startPosition.left, hostStyle.height - startPosition.top);
-        return radius;
-      }
+    if (Widget.isTopRight(startPosition, hostStyle)) {
+      radius = Widget.calculateHypotenuse(startPosition.left, hostStyle.height - startPosition.top);
+      return radius;
+    }
 
-      if (Widget.isBottomLeft(startPosition, hostStyle)) {
-        radius = Widget.calculateHypotenuse(hostStyle.width - startPosition.left, startPosition.top);
-        return radius;
-      }
+    if (Widget.isBottomLeft(startPosition, hostStyle)) {
+      radius = Widget.calculateHypotenuse(hostStyle.width - startPosition.left, startPosition.top);
+      return radius;
+    }
 
-      if (Widget.isBottomRight(startPosition, hostStyle)) {
-        radius = Widget.calculateHypotenuse(startPosition.left, startPosition.top);
-        return radius;
-      }
+    if (Widget.isBottomRight(startPosition, hostStyle)) {
+      radius = Widget.calculateHypotenuse(startPosition.left, startPosition.top);
+      return radius;
     }
   }
 
@@ -96,6 +94,22 @@ export class Widget implements OnChanges,
     position.top = startPosition.top - radius;
     position.left = startPosition.left - radius;
     return position;
+  }
+  public static getViewportScrollPosition(documentRect: ClientRect) {
+
+    // The top-left-corner of the viewport is determined by the scroll position of the document
+    // body, normally just (scrollLeft, scrollTop). However, Chrome and Firefox disagree about
+    // whether `document.body` or `document.documentElement` is the scrolled element, so reading
+    // `scrollTop` and `scrollLeft` is inconsistent. However, using the bounding rect of
+    // `document.documentElement` works consistently, where the `top` and `left` values will
+    // equal negative the scroll position.
+    const top = -documentRect.top || document.body.scrollTop || window.scrollY ||
+      document.documentElement.scrollTop || 0;
+
+    const left = -documentRect.left || document.body.scrollLeft || window.scrollX ||
+      document.documentElement.scrollLeft || 0;
+
+    return {top, left};
   }
 
   constructor(elementRef?: ElementRef) {

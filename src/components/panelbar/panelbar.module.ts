@@ -7,6 +7,7 @@ import {PanelbarHeaderComponent} from './panelbar-header.component';
 import {AnimationModule} from '../animation/animation.module';
 import {ArcylicModule} from '../acrylic/arcylic.module';
 import {PanelModule} from '../panel/panel.module';
+import {RippleModule} from '../ripple/ripple.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {PanelModule} from '../panel/panel.module';
     AnimationModule,
     ArcylicModule,
     PanelModule,
+    RippleModule,
 
   ],
   exports: [

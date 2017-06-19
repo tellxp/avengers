@@ -20,7 +20,7 @@ import {fadeout} from '../animation/fade-animations';
         useAnimation(scaleIn, {
           params: {
             start: 'scale(0)',
-            duration: '560ms',
+            duration: '280ms',
             end: 'scale(1)'
           }
         })
@@ -29,7 +29,7 @@ import {fadeout} from '../animation/fade-animations';
         useAnimation(fadeout, {
           params: {
             start: '1',
-            duration: '560ms',
+            duration: '280ms',
             end: '0'
           }
         })

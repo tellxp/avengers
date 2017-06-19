@@ -9,6 +9,7 @@ import {DropdownHeaderComponent} from './dropdown-header.component';
 import {DropdownIconComponent} from './dropdown-icon.component';
 import {AnimationModule} from '../animation/animation.module';
 import {ArcylicModule} from '../acrylic/arcylic.module';
+import {RippleModule} from '../ripple/ripple.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import {ArcylicModule} from '../acrylic/arcylic.module';
     PopupModule,
     AnimationModule,
     ArcylicModule,
+    RippleModule,
   ],
   declarations: [
     DropdownComponent,

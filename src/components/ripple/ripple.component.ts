@@ -18,15 +18,15 @@ export class RippleElementRef {
 })
 export class RippleComponent implements OnChanges {
 
-  @HostBinding('class.v-ripple')
+  @HostBinding('class.v-ripple') 'true';
 
-  @Input() stateTriggerKey: string;
+  @Input() trigger: HTMLElement;
   @Input() hostStyle: ElementStyle;
-  @Input() rippleStartPosition: ElementPosition;
+  @Input() startPosition: ElementPosition;
 
+  private triggerEvents = new Map<string, any>();
+  private triggerElement: HTMLElement;
 
-  stateTriggerValue: SimpleChange;
-  rippleRadius: number;
   rippleElementPosition: ElementPosition = new ElementPosition();
   rippleElementStyle: ElementStyle = new ElementStyle();
 
@@ -37,29 +37,64 @@ export class RippleComponent implements OnChanges {
     this.rippleElementPosition = new ElementPosition();
     this.rippleElementStyle = new ElementStyle();
 
+    this.triggerEvents.set('mousedown', this.onMousedown.bind(this));
+    this.triggerEvents.set('mouseup', this.onMouseup.bind(this));
+    this.triggerEvents.set('mouseleave', this.onMouseLeave.bind(this));
+
+  }
+
+  onMousedown(event: MouseEvent) {
+    this.setRipplePositionAndStyle(event.pageX, event.pageY);
+    this.renderRippleElements();
+  }
+
+  onMouseup() {
+    this.rippleElementRefs = [];
+  }
+
+  onMouseLeave() {
+    this.onMouseup();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.stateTriggerValue = changes['stateTriggerKey'];
-    if (this.stateTriggerValue) {
-      if (this.stateTriggerValue.currentValue === 'start') {
-
-        this.setRipplePositionAndStyle();
-
-        this.renderRippleElements();
-
-      }
-      if (this.stateTriggerValue.currentValue === 'end') {
-        this.rippleElementRefs = [];
-      }
+    if (changes['trigger'] && this.trigger) {
+      this.setTriggerElement(this.trigger);
     }
+
   }
 
-  private setRipplePositionAndStyle() {
-    this.rippleRadius = Widget.calculateIntersectCircleRadius(this.rippleStartPosition, this.hostStyle);
-    this.rippleElementPosition = Widget.calculateIntersectCirclePosition(this.rippleStartPosition, this.hostStyle);
-    this.rippleElementStyle.width = this.rippleRadius * 2;
-    this.rippleElementStyle.height = this.rippleRadius * 2;
+  setTriggerElement(element: HTMLElement) {
+    // Remove all previously register event listeners from the trigger element.
+    if (this.triggerElement) {
+      this.triggerEvents.forEach((fn, type) => this.triggerElement.removeEventListener(type, fn));
+    }
+
+    if (element) {
+      // If the element is not null, register all event listeners on the trigger element.
+      this.triggerEvents.forEach((fn, type) => element.addEventListener(type, fn));
+    }
+
+    this.triggerElement = element;
+  }
+  private distanceToFurthestCorner(x: number, y: number, rect: ClientRect): number {
+    const distX = Math.max(Math.abs(x - rect.left), Math.abs(x - rect.right));
+    const distY = Math.max(Math.abs(y - rect.top), Math.abs(y - rect.bottom));
+    return Math.sqrt(distX * distX + distY * distY);
+  }
+  private setRipplePositionAndStyle(pageX: number, pageY: number) {
+    const containerRect = this.triggerElement.getBoundingClientRect();
+
+    const scrollPosition = Widget.getViewportScrollPosition(document.documentElement.getBoundingClientRect());
+    pageX -= scrollPosition.left;
+    pageY -= scrollPosition.top;
+    const radius = this.distanceToFurthestCorner(pageX, pageY, containerRect);
+    const offsetX = pageX - containerRect.left;
+    const offsetY = pageY - containerRect.top;
+    this.rippleElementPosition.top = offsetY - radius;
+    this.rippleElementPosition.left = offsetX - radius;
+
+    this.rippleElementStyle.width = radius * 2;
+    this.rippleElementStyle.height = radius * 2;
   }
 
   private renderRippleElements() {

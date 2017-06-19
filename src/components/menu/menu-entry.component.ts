@@ -15,7 +15,6 @@ import {
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 import {MenuComponent} from './menu.component';
 import {MenuItemComponent} from './menu-item.component';

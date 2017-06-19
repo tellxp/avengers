@@ -32,23 +32,6 @@ export class ButtonComponent extends Widget implements OnChanges,
   OnDestroy {
 
   @Input() value;
-  mousePosition: ElementPosition;
-  hostStyle: ElementStyle;
-  motionState: string;
-  mouseEvent: MouseEvent;
-
-  @HostListener('mousedown', ['$event']) onMousedown($event) {
-    this.mouseEvent = $event;
-    this.mousePosition = new ElementPosition();
-    this.mousePosition.left = this.mouseEvent.offsetX;
-    this.mousePosition.top = this.mouseEvent.offsetY;
-    this.hostStyle = Dom.getElementStyle(this.elementRef.nativeElement);
-    this.motionState = 'start';
-  }
-
-  @HostListener('mouseup') onMouseup() {
-    this.motionState = 'end';
-  }
 
   @HostBinding('attr.tabindex') '-1';
   @HostBinding('class.v-button') 'true';

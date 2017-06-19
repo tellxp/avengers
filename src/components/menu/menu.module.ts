@@ -8,6 +8,7 @@ import {AnimationModule} from '../animation/animation.module';
 import {MenuEntryComponent} from './menu-entry.component';
 import {MenuHeaderComponent} from './menu-header.component';
 import {MenuItemComponent} from './menu-item.component';
+import {RippleModule} from '../ripple/ripple.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import {MenuItemComponent} from './menu-item.component';
     PopupModule,
     ArcylicModule,
     AnimationModule,
+    RippleModule,
+
   ],
   exports: [
     MenuComponent,

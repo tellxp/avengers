@@ -14,13 +14,13 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {Widget} from '../core/widget';
-import {slideRightAnimations} from '../animation/slide-animations';
+import {slideRtrAnimations} from '../animation/slide-animations';
 
 @Component({
   selector: 'ave-tabstrip-page',
   templateUrl: './tabstrip-page.component.html',
   styleUrls: ['./tabstrip-page.component.scss'],
-  animations: [slideRightAnimations],
+  animations: [slideRtrAnimations],
   encapsulation: ViewEncapsulation.None,
 
 })
