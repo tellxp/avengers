@@ -5,12 +5,14 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, HostBinding, Input,
+  ElementRef,
+  HostBinding,
   OnChanges,
   OnDestroy,
-  OnInit, Renderer2, ViewEncapsulation
+  OnInit,
+  Renderer2,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 
 

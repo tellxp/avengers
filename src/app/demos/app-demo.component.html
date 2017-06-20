@@ -1,5 +1,5 @@
 <ave-grid-row [amount]="4" [gutter]="0" class="container">
-  <ave-grid-column class="side-menu" [span]="1">
+  <ave-grid-column class="side-menu" [md]="1">
     <ave-panel class="brand">
     <a routerLink="/"><img src="../../assets/brand.svg" alt="brand"></a>
     </ave-panel>
@@ -22,7 +22,7 @@
       <a routerLink="/material-design-zh/guidelines" routerLinkActive="active" target="_blank">Material Design</a>
     </ave-panel>
   </ave-grid-column>
-  <ave-grid-column class="content" [span]="3">
+  <ave-grid-column class="content" [md]="3">
       <router-outlet></router-outlet>
     <div class="content-ground"></div>
   </ave-grid-column>

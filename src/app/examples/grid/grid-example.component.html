@@ -43,25 +43,25 @@
   <p>12个column, gutter为默认值，即1%</p>
 
   <ave-grid-row [amount]="24" [gutter]="1">
-    <ave-grid-column [span]="18"><span>col 18</span></ave-grid-column>
-    <ave-grid-column [span]="6"><span>col 6</span></ave-grid-column>
+    <ave-grid-column [md]="18"><span>col 18</span></ave-grid-column>
+    <ave-grid-column [md]="6"><span>col 6</span></ave-grid-column>
   </ave-grid-row>
   <p>24个column, gutter为1，即1%，其中第一个span是18，第二个span是6</p>
   <ave-grid-row id="third" [amount]="12">
-    <ave-grid-column [span]="2">
+    <ave-grid-column [md]="2">
       <span>col 2</span>
     </ave-grid-column>
-    <ave-grid-column [span]="2"><span>col 2</span></ave-grid-column>
-    <ave-grid-column [span]="2"><span>col 2</span></ave-grid-column>
-    <ave-grid-column [span]="4"><span>col 4</span></ave-grid-column>
+    <ave-grid-column [md]="2"><span>col 2</span></ave-grid-column>
+    <ave-grid-column [md]="2"><span>col 2</span></ave-grid-column>
+    <ave-grid-column [md]="4"><span>col 4</span></ave-grid-column>
   </ave-grid-row>
   <p>12个column, gutter为默认值，即1%，column分布为2-2-2-4</p>
 
   <ave-grid-row id="fourth" [amount]="12" [gutter]="5">
-    <ave-grid-column [span]="4"><span>col 4</span></ave-grid-column>
-    <ave-grid-column [span]="2"><span>col 2</span></ave-grid-column>
-    <ave-grid-column [span]="2"><span>col 2</span></ave-grid-column>
-    <ave-grid-column [span]="4"><span>col 4</span></ave-grid-column>
+    <ave-grid-column [md]="4"><span>col 4</span></ave-grid-column>
+    <ave-grid-column [md]="2"><span>col 2</span></ave-grid-column>
+    <ave-grid-column [md]="2"><span>col 2</span></ave-grid-column>
+    <ave-grid-column [md]="4"><span>col 4</span></ave-grid-column>
   </ave-grid-row>
   <p>12个column, gutter为5%，column分布为4-2-2-4</p>
 </ave-grid>

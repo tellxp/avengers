@@ -40,14 +40,14 @@ $ave-panelbar-header-content-ingredient-map: (
   ),
   typography: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
+    state: (base,),
     property: (font,),
   ),
 );
 
 // Color
 $ave-panelbar-header-palette: (
-  default: ave-palette($ave-palette-grey),
+  default: ave-palette($ave-palette-white),
   primary: ave-palette($ave-palette-blue),
   secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),

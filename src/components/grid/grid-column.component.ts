@@ -3,30 +3,43 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component, ContentChildren,
+  Component,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef,
+  HostBinding,
+  HostListener,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit, QueryList,
-  Renderer2, ViewEncapsulation
+  OnInit,
+  Renderer2,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 import {GridRowComponent} from './grid-row.component';
 import {isNullOrUndefined} from 'util';
-import {GridColumnConfig} from './grid-column.config';
 import {GridComponent} from './grid.component';
+import {BreakPoints, Dom} from '../core/dom';
 
-
+export class GridColumnConfig {
+  span: number;
+  offset: number;
+  //
+  // xs: number;
+  // sm: number;
+  // md: number;
+  // lg: number;
+  // xl: number;
+  constructor() {
+    this.span = 1;
+    this.offset = 0;
+  }
+}
 @Component({
   selector: 'ave-grid-column',
   templateUrl: './grid-column.component.html',
   styleUrls: ['./grid-column.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
-  providers: [GridColumnConfig]
 })
 export class GridColumnComponent extends Widget implements OnChanges,
   OnInit,
@@ -35,18 +48,70 @@ export class GridColumnComponent extends Widget implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-  @Input() span: number;
-  @Input() offset: number;
-
-  @HostBinding('class.v-grid-column') gridColumnClass = 'true';
   parentRow: GridRowComponent;
 
+  @Input() md: number;
+  @Input() offset: number;
+
+  xsConfig: GridColumnConfig = new GridColumnConfig();
+  smConfig: GridColumnConfig = new GridColumnConfig();
+  mdConfig: GridColumnConfig = new GridColumnConfig();
+  lgConfig: GridColumnConfig = new GridColumnConfig();
+  xlConfig: GridColumnConfig = new GridColumnConfig();
+
+  @Input('xs.span') set xsSpan(val) {
+    this.xsConfig.span = val
+  }
+
+  @Input('xs.offset') set xsOffset(val) {
+    this.xsConfig.offset = val
+  }
+
+  @Input('sm.span') set smSpan(val) {
+    this.smConfig.span = val
+  }
+
+  @Input('sm.offset') set smOffset(val) {
+    this.smConfig.offset = val
+  }
+
+  @Input('md.span') set mdSpan(val) {
+    this.mdConfig.span = val
+  }
+
+  @Input('md.offset') set mdOffset(val) {
+    this.mdConfig.offset = val
+  }
+
+  @Input('lg.span') set lgSpan(val) {
+    this.lgConfig.span = val
+  }
+
+  @Input('lg.offset') set lgOffset(val) {
+    this.lgConfig.offset = val
+  }
+
+  @Input('xl.span') set xlSpan(val) {
+    this.xlConfig.span = val
+  }
+
+  @Input('xl.offset') set xlOffset(val) {
+    this.xlConfig.offset = val
+  }
+
+  @HostBinding('class.v-grid-column') gridColumnClass = 'true';
+
+  @HostListener('window: resize', ['$event']) onWindowResize(e) {
+    console.log(e);
+    console.log(BreakPoints.xl);
+  }
+
   init() {
-    if (isNullOrUndefined(this.span)) {
-      this.span = this.config.span;
+    if (isNullOrUndefined(this.md)) {
+      // this.span = this.config.span;
     }
     if (isNullOrUndefined(this.offset)) {
-      this.offset = this.config.offset;
+      // this.offset = this.config.offset;
     }
   }
 
@@ -57,7 +122,7 @@ export class GridColumnComponent extends Widget implements OnChanges,
   setWidthStyle() {
     const amount = this.parentRow.amount;
     const gutter = this.parentRow.gutter;
-    const span = this.span;
+    const span = this.md;
 
     const width = GridComponent.calculateColumnWidth(amount, gutter, span);
 
@@ -85,7 +150,7 @@ export class GridColumnComponent extends Widget implements OnChanges,
   }
 
 
-  constructor(elementRef: ElementRef, private config: GridColumnConfig, public render: Renderer2) {
+  constructor(elementRef: ElementRef, public render: Renderer2) {
     super(elementRef);
   }
 

@@ -149,6 +149,7 @@ export class Widget implements OnChanges,
   }
 
 }
+
 export class ElementPosition {
   top: number;
   left: number;

@@ -1,136 +1,157 @@
-<ave-panel class="container">
-  <ave-panel class="left-panel">
-    <a href="/demo" class="brand">
-      <img src="/assets/material-design.svg" alt="material-design">
-    </a>
-    <ave-panelbar class="v-panelbar-default">
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Material design'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Introduction'"
-                           routerLink="./material-design/introduction"
-                           routerLinkActive="true">
+<ave-grid class="container">
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [md]="3">
+      <a href="/demos">
+        <img src="/assets/material-design.svg" alt="material-design">
+      </a>
+      <ave-panelbar class="v-panelbar-default">
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Material design'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Introduction'"
+                             routerLink="./material-design/introduction"
+                             routerLinkActive="true">
+          </ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Environment'"
+                             routerLink="./material-design/environment"
+                             routerLinkActive="true"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Material properties'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Elevation & shadows'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'What’s new'"></ave-panelbar-item>
         </ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Environment'"
-                           routerLink="./material-design/environment"
-                           routerLinkActive="true"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Material properties'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Elevation & shadows'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'What’s new'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Motion'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Material motion'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Duration & easing'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Movement'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Transforming material'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Choreography'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Creative customization'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Style'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Color'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Icons'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Imagery'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Typography'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Writing'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Layout'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Principles'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Units & measurements'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Metrics & keylines'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Structure'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Responsive UI'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Split screen'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Components'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Bottom navigation'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Bottom sheets'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name"
-                           [title]="'Buttons: Floating Action Button'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Cards'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Chips'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Data tables'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Dialogs'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Dividers'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Expansion panels'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Grid lists'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Lists'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Lists: Controls'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Menus'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Pickers'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Progress & activity'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Selection controls'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Sliders'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Snackbars & toasts'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Steppers'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Subheaders'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Tabs'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Text fields'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Toolbars'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Tooltips'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Widgets'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Patterns'">
-        <ave-panelbar-item class="v-panelbar-item-default"
-                           [title]="'Confirmation & acknowledgement'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Data formats'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Empty states'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Errors'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Fingerprint'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Gestures'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Help & feedback'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Launch screens'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Loading images'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Navigation'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Navigation drawer'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Navigational transitions'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Notifications'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Permissions'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Scrolling techniques'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Search'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Selection '"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Settings '"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Swipe to refresh'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Growth & communications'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Introduction'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Onboarding'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Feature discovery'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Gesture education'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Usability'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Accessibility'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Bidirectionality'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Platforms'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Platform adaptation'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Android'"></ave-panelbar-item>
-      </ave-panelbar-item>
-      <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Resources'">
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Color palettes'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Devices'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Layout templates'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Roboto & Noto fonts'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Sticker sheets & icons'"></ave-panelbar-item>
-        <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Shadows'"></ave-panelbar-item>
-      </ave-panelbar-item>
-    </ave-panelbar>
-  </ave-panel>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Motion'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Material motion'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Duration & easing'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Movement'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Transforming material'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Choreography'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Creative customization'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Style'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Color'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Icons'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Imagery'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Typography'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Writing'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Layout'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Principles'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Units & measurements'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Metrics & keylines'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Structure'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Responsive UI'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Split screen'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Components'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Bottom navigation'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Bottom sheets'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Buttons: Floating Action Button'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Cards'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Chips'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Data tables'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Dialogs'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Dividers'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Expansion panels'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Grid lists'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Lists'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Lists: Controls'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Menus'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Pickers'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Progress & activity'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Selection controls'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Sliders'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Snackbars & toasts'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Steppers'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Subheaders'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Tabs'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Text fields'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Toolbars'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Tooltips'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Widgets'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Patterns'">
+          <ave-panelbar-item class="v-panelbar-item-default"
+                             [title]="'Confirmation & acknowledgement'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Data formats'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Empty states'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Errors'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Fingerprint'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Gestures'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Help & feedback'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Launch screens'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Loading images'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Navigation'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Navigation drawer'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Navigational transitions'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Notifications'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Permissions'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Scrolling techniques'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Search'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Selection '"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Settings '"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Swipe to refresh'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Growth & communications'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Introduction'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Onboarding'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Feature discovery'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Gesture education'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Usability'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Accessibility'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Bidirectionality'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Platforms'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Platform adaptation'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Android'"></ave-panelbar-item>
+        </ave-panelbar-item>
+        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Resources'">
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Color palettes'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Devices'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Layout templates'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Roboto & Noto fonts'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name"
+                             [title]="'Sticker sheets & icons'"></ave-panelbar-item>
+          <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Shadows'"></ave-panelbar-item>
+        </ave-panelbar-item>
+      </ave-panelbar>
+    </ave-grid-column>
 
-  <ave-panel class="right-panel">
-    <ave-panel class="toolbar">
+    <ave-grid-column [md]="9">
+      <ave-panel  class="content">
       <h1>Material Design</h1>
-    </ave-panel>
-    <ave-panel class="content">
-      <router-outlet></router-outlet>
-    </ave-panel>
-  </ave-panel>
-</ave-panel>
+        <router-outlet></router-outlet>
+      </ave-panel>
+    </ave-grid-column>
+  </ave-grid-row>
+</ave-grid>
 
 

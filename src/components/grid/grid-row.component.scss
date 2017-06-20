@@ -1,7 +1,7 @@
 .v-grid-row {
   display: flex;
   flex-flow: row;
-  overflow: hidden;
+  overflow: auto;
   flex-wrap: wrap;
   width: 100%;
 }
