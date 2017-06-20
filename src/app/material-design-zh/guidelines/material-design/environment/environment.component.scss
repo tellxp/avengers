@@ -1,0 +1,18 @@
+.vertical {
+  display: flex;
+  flex-flow: column;
+}
+.horizontal {
+  display: flex;
+  flex-flow: row;
+}
+.img {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  display: block;
+  padding: 2em 3em;
+}

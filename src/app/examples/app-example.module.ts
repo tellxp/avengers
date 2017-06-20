@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {MegamenuModule} from '../../components/megamenu/megamenu.module';
 // import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 // import {PanelModule} from '../../components/panel/panel.module';
-import {RoutebarModule} from '../../components/routebar/routebar.module';
+import {RoutebarModule} from '../../components/navbar/routebar.module';
 import {AppExampleRoutingModule} from './app-example-routing.module';
 import {AppExampleComponent} from './app-example.component';
 // import {LoginExampleComponent} from './login/login-example.component';

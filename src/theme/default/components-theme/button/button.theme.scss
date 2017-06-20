@@ -1,4 +1,3 @@
-@import "../../../../components/button/button.component";
 @import "../../../base";
 @import "../../../palette";
 @import "../../../typography";
@@ -48,14 +47,14 @@ $ave-button-content-ingredient-map: (
 
 // Color
 $ave-button-palette: (
-  default: ave-palette($ave-palette-grey),
-  primary: ave-palette($ave-palette-blue),
+  default: ave-palette($ave-palette-light-blue),
+  primary: ave-palette($ave-palette-purple),
   secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
   info: ave-palette($ave-palette-cyan),
   warning: ave-palette($ave-palette-deep-orange),
   danger: ave-palette($ave-palette-red),
-  link: ave-palette($ave-palette-white)
+  link: ave-palette($ave-palette-blue-grey)
 );
 
 // Typography.
@@ -72,7 +71,7 @@ $ave-button-typography: (
 
 // Shape.
 $ave-button-shape: (
-  default: ave-shape($ave-shape-ratio-2),
+  default: ave-shape($ave-shape-ratio-1dot618),
   primary: ave-shape($ave-shape-ratio-1dot618),
   secondary: ave-shape($ave-shape-ratio-1dot618),
   success: ave-shape($ave-shape-ratio-1dot618),

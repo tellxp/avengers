@@ -8,7 +8,6 @@ import {AppComponent} from './app.component';
 import {AppDemoModule} from './demos/app-demo.module';
 import {AppExampleModule} from './examples/app-example.module';
 import {GuidelinesModule} from './material-design-zh/guidelines/guidelines.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
