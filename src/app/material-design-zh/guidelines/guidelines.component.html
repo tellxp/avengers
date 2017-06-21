@@ -1,13 +1,16 @@
 <ave-grid>
   <ave-grid-row [amount]="12" [gutter]="1"  class="container">
     <ave-grid-column [xs.span]="0" [md.span]="3" class="left-panel">
-      <a href="/demos">
+      <a class="brand" href="/demos">
         <img src="/assets/material-design.svg" alt="material-design">
       </a>
       <ave-panelbar class="v-panelbar-default">
-        <ave-panelbar-item class="v-panelbar-item-default category-name" [title]="'Material design'">
+        <ave-panelbar-item class="v-panelbar-item-default category-name"
+                           [title]="'Material design'"
+                           [expanded]="true">
           <ave-panelbar-item class="v-panelbar-item-default article-name"
                              [title]="'Introduction'"
+                             [active]="true"
                              routerLink="./material-design/introduction"
                              routerLinkActive="true">
           </ave-panelbar-item>
@@ -15,7 +18,9 @@
                              routerLink="./material-design/environment"
                              routerLinkActive="true"></ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name"
-                             [title]="'Material properties'"></ave-panelbar-item>
+                             [title]="'Material properties'"
+                             routerLink="./material-design/material-properties"
+                             routerLinkActive="true"></ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name"
                              [title]="'Elevation & shadows'"></ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'What’s new'"></ave-panelbar-item>

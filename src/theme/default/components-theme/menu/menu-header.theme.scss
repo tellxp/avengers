@@ -131,7 +131,7 @@ $ave-menu-header-theme: (
           } @else {
             & > .v-menu-header:#{$state} {
               & > .v-arcylic-light {
-                background-color: rgba($light-color, $golden-ratio);
+                background-color: rgba($ambient-light-color, $ambient-light-ratio);
               }
             }
           }

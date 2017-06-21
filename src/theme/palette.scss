@@ -704,7 +704,8 @@ $ave-palette-black: (
 );
 $dark-theme-text-color: #ffffff;
 $light-theme-text-color: #000000;
-$light-color: rgba(#ffffff, 0.5);
+$ambient-light-color: #fafafa;
+$ambient-light-ratio: 0.4;
 
 @function ave-palette($base-palette, $default: 400, $lighter: 200, $darker: 700, $is-dark: false) {
   $result: ();

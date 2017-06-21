@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
+  <meta charset="UTF-8">
   <title>KendoDemo</title>
-  <link rel="stylesheet" href="./lib/kendo/styles/web/kendo.common.css" />
-  <link rel="stylesheet" href="./lib/kendo/styles/web/kendo.default.css" />
-  <link rel="stylesheet" href="./lib/kendo/styles/web/kendo.default.mobile.css" />
+  <link rel="stylesheet" href="../lib/kendo/styles/web/kendo.common.css" />
+  <link rel="stylesheet" href="../lib/kendo/styles/web/kendo.material.css" />
+  <link rel="stylesheet" href="../lib/kendo/styles/web/kendo.default.mobile.css" />
 
   <script src="../lib/kendo/js/jquery.js"></script>
   <script src="../lib/kendo/js/kendo.all.js"></script>
-  <script src="../lib/kendo/js/cultures/kendo.culture.zh.js"></script>
-  <!--<script src="./lib/kendo/js/cultures/kendo.culture.zh-CHS.js"></script>-->
+  <!--<script src="../lib/kendo/js/cultures/kendo.culture.zh.js"></script>-->
+  <script src="../lib/kendo/js/cultures/kendo.culture.zh-CN.js"></script>
+  <!--<script src="../lib/kendo/js/cultures/kendo.culture.zh-CHS.js"></script>-->
+  <!--<script src="../lib/kendo/js/cultures/kendo.culture.zh-Hans.js"></script>-->
 
   <script src="../lib/kendo/js/messages/kendo.messages.zh-CN.js"></script>
-
-</head>
-<body>
-<div id="example">
   <script type="text/javascript">
     //set current to the "en-GB" culture script
     kendo.culture("zh-CN");
   </script>
+</head>
+<body>
+<script type="text/javascript">
+  //set current to the "en-GB" culture script
+  kendo.culture("zh-CN");
+</script>
+<div id="example">
+
   <div id="grid"></div>
 
   <script>

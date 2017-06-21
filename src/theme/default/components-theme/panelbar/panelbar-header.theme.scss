@@ -47,8 +47,8 @@ $ave-panelbar-header-content-ingredient-map: (
 
 // Color
 $ave-panelbar-header-palette: (
-  default: ave-palette($ave-palette-white),
-  primary: ave-palette($ave-palette-blue),
+  default: ave-palette($ave-palette-blue),
+  primary: ave-palette($ave-palette-purple),
   secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
   info: ave-palette($ave-palette-cyan),
@@ -94,6 +94,9 @@ $ave-panelbar-header-theme: (
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-panelbar-item-#{$scene} {
+
+
+
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
@@ -126,6 +129,11 @@ $ave-panelbar-header-theme: (
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-panelbar-item-#{$scene} {
+        & .v-panelbar-header-active {
+          & > .v-arcylic-light {
+            background-color: rgba($key-light-color, $ambient-light-ratio);
+          }
+        }
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
@@ -137,7 +145,7 @@ $ave-panelbar-header-theme: (
           } @else {
             & > .v-panelbar-header:#{$state} {
               & > .v-arcylic-light {
-                background-color: rgba($light-color, $golden-ratio);
+                background-color: rgba($key-light-color, $ambient-light-ratio);
               }
             }
           }

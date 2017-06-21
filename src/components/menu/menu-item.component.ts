@@ -74,9 +74,7 @@ export class MenuItemComponent extends Widget implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    if (this.title === '2.1') {
-      // console.log(this.contentItems);
-    }
+
   }
 
   ngAfterContentChecked() {
@@ -113,11 +111,7 @@ export class MenuItemComponent extends Widget implements OnChanges,
 
 
   hasChildItem(): boolean {
-    if (this.childItems.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.childItems.length > 0;
   }
 
   activateChildItem(item: MenuItemComponent) {
@@ -142,11 +136,7 @@ export class MenuItemComponent extends Widget implements OnChanges,
   }
 
   isRootItem(): boolean {
-    if (this.rootItem === this) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.rootItem === this;
   }
 
   activate() {

@@ -2,7 +2,7 @@
 
 .v-panelbar-item {
   @extend %v-container;
-
+  outline: none;
   background-color: transparent;
   color: transparent;
   overflow: hidden;

@@ -18,6 +18,7 @@ import {IntroductionComponent} from './material-design/introduction/introduction
 import {CommonModule} from '@angular/common';
 import {RoutebarModule} from '../../../components/navbar/routebar.module';
 import {EnvironmentComponent} from './material-design/environment/environment.component';
+import {MaterialPropertiesComponent} from './material-design/material-properties/material-properties.component';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import {EnvironmentComponent} from './material-design/environment/environment.co
     GuidelinesComponent,
     IntroductionComponent,
     EnvironmentComponent,
+    MaterialPropertiesComponent,
   ],
   providers: [],
 })

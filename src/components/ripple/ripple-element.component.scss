@@ -1,7 +1,8 @@
+@import "../core/widget";
 .v-ripple-element {
   position: absolute;
   display: block;
-  background-color: rgba(#ffffff, 0.618);
+  background-color: rgba($key-light-color, 0.618);
   border-radius: 50%;
 }
 

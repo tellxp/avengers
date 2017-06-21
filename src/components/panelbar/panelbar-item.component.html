@@ -1,4 +1,5 @@
-<ave-panelbar-header (click)="onClick()" [showArrow]="hasChildItem()" [expanded]="expanded">
+<ave-panelbar-header (click)="onHeaderClick()" [showArrow]="hasChildItem()" [expanded]="expanded"
+                     [ngClass]="{'v-panelbar-header-active': active}">
   {{title}}
 </ave-panelbar-header>
 <ave-panel [@expand] *ngIf="expanded">

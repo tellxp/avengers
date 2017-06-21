@@ -136,7 +136,7 @@ $ave-dropdown-header-theme: (
           } @else {
             & > .v-dropdown-header:#{$state} {
               & > .v-arcylic-light {
-                background-color: rgba($light-color, $golden-ratio);
+                background-color: rgba($ambient-light-color, $ambient-light-ratio);
               }
             }
           }

@@ -4,16 +4,19 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  ContentChildren,
   DoCheck,
   ElementRef,
   HostBinding,
   OnChanges,
   OnDestroy,
   OnInit,
+  QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
+import {PanelbarItemComponent} from './panelbar-item.component';
+import {isNullOrUndefined} from 'util';
 
 
 @Component({
@@ -29,7 +32,12 @@ export class PanelbarComponent extends Widget implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
+  activeItem: PanelbarItemComponent;
+
   @HostBinding('class.v-panelbar') panelbarClass = 'true';
+  @ContentChildren(PanelbarItemComponent) contentItems: QueryList<PanelbarItemComponent>;
+
+  rootItems: PanelbarItemComponent[];
 
   constructor(elementRef: ElementRef) {
     super(elementRef);
@@ -49,6 +57,7 @@ export class PanelbarComponent extends Widget implements OnChanges,
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
+    this.loadRootItems();
   }
 
   ngAfterContentChecked() {
@@ -67,4 +76,24 @@ export class PanelbarComponent extends Widget implements OnChanges,
     super.ngOnDestroy();
   }
 
+  activateItem(item: PanelbarItemComponent) {
+    if (!isNullOrUndefined(this.activeItem)) {
+      this.activeItem.deactivate();
+    }
+    this.activeItem = item;
+    this.activeItem.activate();
+  }
+
+  loadRootItems() {
+    this.rootItems = this.contentItems.toArray();
+
+    const length = this.rootItems.length;
+    for (let i = 0; i < length; i++) {
+      this.rootItems[i].setParentPanelbar(this);
+      // if (this.rootItems[i].active) {
+      //   this.activateItem(this.rootItems[i]);
+      // }
+      this.rootItems[i].loadChildItems();
+    }
+  }
 }

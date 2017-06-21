@@ -116,7 +116,7 @@ $ave-dropdown-item-theme: (
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
             .v-arcylic-light {
-              background-color: rgba($light-color, $golden-ratio);
+              background-color: rgba($ambient-light-color, $ambient-light-ratio);
               //@include ave-component-property-style($state-style, $property-map);
             }
           }

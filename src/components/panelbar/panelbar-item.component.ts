@@ -16,11 +16,11 @@ import {
   QueryList,
   ViewChild
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 import {PanelbarContentComponent} from './panelbar-content.component';
 import {PanelbarHeaderComponent} from './panelbar-header.component';
 import {expandAnimations} from '../animation/expand-animations';
+import {PanelbarComponent} from './panelbar.component';
 
 
 @Component({
@@ -41,20 +41,23 @@ export class PanelbarItemComponent extends Widget implements OnChanges,
   @ContentChild(PanelbarContentComponent) container;
   @ViewChild(PanelbarHeaderComponent) viewHeader;
 
+  parentPanelbar: PanelbarComponent;
   header: PanelbarHeaderComponent;
   parentItem: PanelbarItemComponent;
   childItems: PanelbarItemComponent[];
-  expanded: boolean;
+
+  @Input() expanded: boolean;
+  @Input() active: boolean;
 
   @HostBinding('class.v-panelbar-item') panelbarItemClass = 'true';
 
-  onClick() {
-    this.toggleItem();
+  onHeaderClick() {
+    this.toggleItemExpand();
+    this.parentPanelbar.activateItem(this);
   }
 
   constructor(elementRef: ElementRef) {
     super(elementRef);
-    this.expanded = false;
   }
 
   ngOnChanges() {
@@ -63,7 +66,6 @@ export class PanelbarItemComponent extends Widget implements OnChanges,
 
   ngOnInit() {
     super.ngOnInit();
-    this.init();
   }
 
   ngDoCheck() {
@@ -73,7 +75,6 @@ export class PanelbarItemComponent extends Widget implements OnChanges,
   ngAfterContentInit() {
     super.ngAfterContentInit();
 
-    this.initChildItems();
   }
 
   ngAfterContentChecked() {
@@ -82,9 +83,6 @@ export class PanelbarItemComponent extends Widget implements OnChanges,
 
   ngAfterViewInit() {
     super.ngAfterViewInit();
-
-    this.loadHeader();
-
   }
 
   ngAfterViewChecked() {
@@ -96,16 +94,25 @@ export class PanelbarItemComponent extends Widget implements OnChanges,
     super.ngOnDestroy();
   }
 
-  init() {
-    this.expanded = false;
+  setParentPanelbar(panelbar: PanelbarComponent) {
+    this.parentPanelbar = panelbar;
   }
 
-  initChildItems() {
+  loadChildItems() {
     const contentItemsLength = this.contentItems.toArray().length;
     this.childItems = this.contentItems.toArray().slice(1, contentItemsLength);
     const length = this.childItems.length;
-    for (let i = 0; i < length; i++) {
-      this.childItems[i].setParentItem(this);
+    if (this.hasChildItem()) {
+
+      for (let i = 0; i < length; i++) {
+        this.childItems[i].setParentPanelbar(this.parentPanelbar);
+        if (this.childItems[i].active) {
+          this.parentPanelbar.activateItem(this.childItems[i]);
+        }
+        this.childItems[i].setParentItem(this);
+        this.childItems[i].loadChildItems();
+
+      }
     }
   }
 
@@ -114,19 +121,23 @@ export class PanelbarItemComponent extends Widget implements OnChanges,
   }
 
   hasChildItem() {
-    if (this.childItems.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.childItems.length > 0;
   }
 
   loadHeader() {
     this.header = this.viewHeader;
     this.header.setParentItem(this);
   }
-  toggleItem() {
-    this.expanded = !this.expanded;
+
+  activate() {
+    this.active = true;
   }
 
+  deactivate() {
+    this.active = false;
+  }
+
+  toggleItemExpand() {
+    this.expanded = !this.expanded;
+  }
 }

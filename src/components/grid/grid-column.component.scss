@@ -1,6 +1,9 @@
+@import "../core/widget";
 .v-grid-column {
   display: flex;
   flex-flow: column;
   overflow: auto;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 

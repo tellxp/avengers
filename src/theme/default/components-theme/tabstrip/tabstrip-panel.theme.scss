@@ -132,7 +132,7 @@ $ave-tabstrip-panel-theme: (
           } @else {
             & > .v-tabstrip-panel:#{$state} {
               & > .v-arcylic-light {
-                background-color: rgba($light-color, $golden-ratio);
+                background-color: rgba($key-light-color, $ambient-light-ratio);
               }
             }
           }
