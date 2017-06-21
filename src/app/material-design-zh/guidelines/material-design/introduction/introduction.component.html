@@ -1,134 +1,128 @@
-<ave-panel class="container">
-  <section>
-    <h1>Introduction</h1>
-    <h1>简介</h1>
-    <img class="img" alt=""
-         aria-describedby="introduction-figure-caption-1"
-         src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7Y1huOXVQdlFPMmM/materialdesign_introduction.png">
-    <h1> We challenged ourselves to create a visual language for our users that synthesizes the classic
-      principles
-      of good design with the innovation and possibility of technology and science. This is material design.
-      This spec is a living document that will be updated as we continue to develop the tenets and specifics of
-      material design. </h1>
-    <h1> 我们挑战自我，结合技术和科学的可能性，综合经典的设计原则，为我们的用户创造了一种设计语言，这就是Material Design。这一规范是一个具有生命力的文档，我们会不断更新Material
-      Design的细节和规范。 </h1>
-  </section>
-  <section>
-    <nav>
-      <h1>Contents</h1>
-      <h1>目录</h1>
-      <ul>
-        <li><a> Goals </a></li>
-        <li><a> 目标 </a></li>
-        <li><a> Principles </a></li>
-        <li><a> 准则 </a></li>
-      </ul>
-    </nav>
-  </section>
-  <section>
-    <h2>Goals</h2>
-    <h2>目标</h2>
-    <ave-grid-row [amount]="12" [gutter]="1">
-      <ave-grid-column>
-        <p>Create a visual language that synthesizes classic principles of good design with
-          the innovation and possibility of technology and science.</p>
-        <p>结合技术和科学的可能性，综合经典的设计原则，创造一种设计语言。</p>
-      </ave-grid-column>
-      <ave-grid-column>
-        <img class="img" alt=""
-             src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7QTA5cHFBUlV3RTA/materialdesign_goals_language.png">
-      </ave-grid-column>
-    </ave-grid-row>
-    <ave-grid-row [amount]="12" [gutter]="1">
-      <ave-grid-column>
-        <p>Develop a single underlying system that allows for a unified experience across
-          platforms and device sizes. Mobile precepts are fundamental, but touch, voice, mouse, and keyboard
-          are all ﬁrst-class input methods.</p>
-        <p>开发一个单一基础的系统，该系统应该能够在不同平台和不同的设备尺寸上为用户提供一致的体验。移动优先是系统的基础，但是触摸、语音、鼠标和键盘同样是首要的输入方式</p>
-      </ave-grid-column>
-      <ave-grid-column>
-        <img class="img" alt=""
-             src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7c0R4RUtiTkhMZTQ/materialdesign_goals_system.png">
-      </ave-grid-column>
-    </ave-grid-row>
-  </section>
-  <section>
-    <ave-grid class="vertical">
-      <ave-grid-row>
-        <h2> Principles </h2>
-        <h2> 原则 </h2>
-      </ave-grid-row>
-      <ave-grid-row [amount]="3" [gutter]="2">
-        <ave-grid-column>
-          <img class="img" alt=""
-               aria-describedby="principles-figure-caption-1"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7VG9DQVluOFJ4Tnc/materialdesign_principles_metaphor.png">
-          <h1>Material is the metaphor</h1>
-          <h1>Material是设计的隐喻</h1>
-          <p>A material metaphor is the unifying theory of a rationalized space and a system of motion. The
-            material is grounded in tactile reality, inspired by the study of paper and ink, yet
-            technologically advanced and open to imagination and magic.</p>
-          <p>
-            Material这一隐喻是一个统一的系统，包括了空间分步和物体的运动。Material基于人们对于物体真实的感官触觉，同时结合了纸质印刷排版的经验，这一系统同样在技术上是领先的，也允许人们在其中发挥自己的想象力。</p>
-          <p>Surfaces and edges of the material provide visual cues that are grounded in reality. The use of
-            familiar tactile attributes helps users quickly understand affordances. Yet the flexibility of
-            the material creates new affordances that supersede those in the physical world, without
-            breaking the rules of physics.</p>
-          <p>
-            Material的平面和边缘提供对真实世界物体描述的手段。采用人们熟悉的感官触觉元素来描述更快速地引导用户。同时Material也在不违背真实世界规律的条件下，创造了一些新的引导方式来取代真实世界中的交互方式</p>
-          <p>The fundamentals of light, surface, and movement are key to conveying how objects move,
-            interact, and exist in space and in relation to each other. Realistic lighting shows seams,
-            divides space, and indicates moving parts.</p>
-          <p>光线、平面和运动是描述对象运动、交互、与空间中其他对象的关系的关键要素和基础。真实的光照将显示出对象之间的缝隙、划分不同空间，同时也能够反映运动中物体的真实状态</p>
-        </ave-grid-column>
-        <ave-grid-column>
-          <img class="img" alt=""
-               aria-describedby="principles-figure-caption-2"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7NndTQW9VZTlZV2s/materialdesign_principles_bold.png">
-          <h1>Bold, graphic, intentional</h1>
-          <h1>加粗, 图像化, 意图化</h1>
-          <p>The foundational elements of print-based design – typography, grids, space, scale, color, and
-            use of imagery – guide visual treatments. These elements do far more than please the eye. They
-            create hierarchy, meaning, and focus. Deliberate color choices, edge-to-edge imagery,
-            large-scale typography, and intentional white space create a bold and graphic interface that
-            immerse the user in the experience.</p>
-          <p>纸质排版系统的基础元素包括 - 排版、栅格、空间、拉伸、颜色和图片的使用 -
-            视觉引导。这些元素不单单是满足视觉上的感受。它们创建的层次结构、有意义和有终端的系统。用心的颜色选择，端到端的图片指引
-            ，大尺寸的排班以及有专门用途的留白，这些元素一同创建了一个丰满和图像化的交互，使得用户沉浸其中。</p>
-          <p>An emphasis on user actions makes core functionality immediately apparent and provides
-            waypoints for the user.</p>
-          <p>对于用户动作的强调使得核心功能能够显得更加明显同时也为用户的操作提供了指引。</p>
-        </ave-grid-column>
-        <ave-grid-column>
-          <img class="img" alt="" aria-describedby="principles-figure-caption-3"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7dkRYelJkeklqWFU/materialdesign_principles_motion.png">
-          <h1>Motion provides meaning</h1>
-          <h1>动作提供了指引</h1>
-          <p>Motion respects and reinforces the user as the prime mover. Primary user actions are inflection
-            points that initiate motion, transforming the whole design. </p>
-          <p>动作将用户作为主要的发起者。主要的用户操作是触发对象运动的关键因素，这将会转变设计。</p>
-          <p>All action takes place in a single environment. Objects are presented to the user without
-            breaking the continuity of experience even as they transform and reorganize.</p>
-          <p>所有的操作在一个单一的环境内发生。对象即使发生了转换或者重排，也不应该使得用户体验产生明显的停滞。</p>
-          <p>Motion is meaningful and appropriate, serving to focus attention and maintain continuity.
-            Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.</p>
-          <p>运动应该是有意义的运动，它需要维持体验的连续性，同时使得用户能够聚焦重点。反馈应该要微小但是清晰。过渡动画应该有效而连贯</p>
-        </ave-grid-column>
-      </ave-grid-row>
-    </ave-grid>
-  </section>
-  <section>
-    <p>All content and code on this site are licensed under the Apache 2 license unless otherwise specified, the
-      full text of which can be found at
-      <a href="https://www.apache.org/licenses/LICENSE-2.0.html"
-         target="_blank">https://www.apache.org/licenses/LICENSE-2.0.html</a>.
-    </p>
-    <p>除非另有声明，该站点所有内容和代码准寻Apache 2 许可。许可的全文可以在下面这一链接中找到<a
-      href="https://www.apache.org/licenses/LICENSE-2.0.html"
-      target="_blank">https://www.apache.org/licenses/LICENSE-2.0.html</a>.
-      <a href="https://www.apache.org/licenses/LICENSE-2.0.html"
-         target="_blank">https://www.apache.org/licenses/LICENSE-2.0.html</a>.
-    </p>
-  </section>
-</ave-panel>
+<section>
+  <h1>Introduction</h1>
+  <h1>简介</h1>
+  <img class="img" alt=""
+       aria-describedby="introduction-figure-caption-1"
+       src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7Y1huOXVQdlFPMmM/materialdesign_introduction.png">
+  <h1> We challenged ourselves to create a visual language for our users that synthesizes the classic
+    principles
+    of good design with the innovation and possibility of technology and science. This is material design.
+    This spec is a living document that will be updated as we continue to develop the tenets and specifics of
+    material design. </h1>
+  <h1> 我们挑战自我，结合技术和科学的可能性，综合经典的设计原则，为我们的用户创造了一种设计语言，这就是Material Design。这一规范是一个具有生命力的文档，我们会不断更新Material
+    Design的细节和规范。 </h1>
+</section>
+<section>
+  <nav>
+    <h1>Contents</h1>
+    <h1>目录</h1>
+    <ul>
+      <li><a> Goals </a></li>
+      <li><a> 目标 </a></li>
+      <li><a> Principles </a></li>
+      <li><a> 准则 </a></li>
+    </ul>
+  </nav>
+</section>
+<section>
+  <h2>Goals</h2>
+  <h2>目标</h2>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Create a visual language that synthesizes classic principles of good design with
+        the innovation and possibility of technology and science.</p>
+      <p>结合技术和科学的可能性，综合经典的设计原则，创造一种设计语言。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+      <img class="img" alt=""
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7QTA5cHFBUlV3RTA/materialdesign_goals_language.png">
+    </ave-grid-column>
+  </ave-grid-row>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Develop a single underlying system that allows for a unified experience across
+        platforms and device sizes. Mobile precepts are fundamental, but touch, voice, mouse, and keyboard
+        are all ﬁrst-class input methods.</p>
+      <p>开发一个单一基础的系统，该系统应该能够在不同平台和不同的设备尺寸上为用户提供一致的体验。移动优先是系统的基础，但是触摸、语音、鼠标和键盘同样是首要的输入方式</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+      <img class="img" alt=""
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7c0R4RUtiTkhMZTQ/materialdesign_goals_system.png">
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
+<section>
+  <h2> Principles </h2>
+  <h2> 原则 </h2>
+  <ave-grid-row [amount]="12" [gutter]="2">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt=""
+           aria-describedby="principles-figure-caption-1"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7VG9DQVluOFJ4Tnc/materialdesign_principles_metaphor.png">
+      <h1>Material is the metaphor</h1>
+      <h1>Material是设计的隐喻</h1>
+      <p>A material metaphor is the unifying theory of a rationalized space and a system of motion. The
+        material is grounded in tactile reality, inspired by the study of paper and ink, yet
+        technologically advanced and open to imagination and magic.</p>
+      <p>
+        Material这一隐喻是一个统一的系统，包括了空间分步和物体的运动。Material基于人们对于物体真实的感官触觉，同时结合了纸质印刷排版的经验，这一系统同样在技术上是领先的，也允许人们在其中发挥自己的想象力。</p>
+      <p>Surfaces and edges of the material provide visual cues that are grounded in reality. The use of
+        familiar tactile attributes helps users quickly understand affordances. Yet the flexibility of
+        the material creates new affordances that supersede those in the physical world, without
+        breaking the rules of physics.</p>
+      <p>
+        Material的平面和边缘提供对真实世界物体描述的手段。采用人们熟悉的感官触觉元素来描述更快速地引导用户。同时Material也在不违背真实世界规律的条件下，创造了一些新的引导方式来取代真实世界中的交互方式</p>
+      <p>The fundamentals of light, surface, and movement are key to conveying how objects move,
+        interact, and exist in space and in relation to each other. Realistic lighting shows seams,
+        divides space, and indicates moving parts.</p>
+      <p>光线、平面和运动是描述对象运动、交互、与空间中其他对象的关系的关键要素和基础。真实的光照将显示出对象之间的缝隙、划分不同空间，同时也能够反映运动中物体的真实状态</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt=""
+           aria-describedby="principles-figure-caption-2"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7NndTQW9VZTlZV2s/materialdesign_principles_bold.png">
+      <h1>Bold, graphic, intentional</h1>
+      <h1>加粗, 图像化, 意图化</h1>
+      <p>The foundational elements of print-based design – typography, grids, space, scale, color, and
+        use of imagery – guide visual treatments. These elements do far more than please the eye. They
+        create hierarchy, meaning, and focus. Deliberate color choices, edge-to-edge imagery,
+        large-scale typography, and intentional white space create a bold and graphic interface that
+        immerse the user in the experience.</p>
+      <p>纸质排版系统的基础元素包括 - 排版、栅格、空间、拉伸、颜色和图片的使用 -
+        视觉引导。这些元素不单单是满足视觉上的感受。它们创建的层次结构、有意义和有终端的系统。用心的颜色选择，端到端的图片指引
+        ，大尺寸的排班以及有专门用途的留白，这些元素一同创建了一个丰满和图像化的交互，使得用户沉浸其中。</p>
+      <p>An emphasis on user actions makes core functionality immediately apparent and provides
+        waypoints for the user.</p>
+      <p>对于用户动作的强调使得核心功能能够显得更加明显同时也为用户的操作提供了指引。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt="" aria-describedby="principles-figure-caption-3"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7dkRYelJkeklqWFU/materialdesign_principles_motion.png">
+      <h1>Motion provides meaning</h1>
+      <h1>动作提供了指引</h1>
+      <p>Motion respects and reinforces the user as the prime mover. Primary user actions are inflection
+        points that initiate motion, transforming the whole design. </p>
+      <p>动作将用户作为主要的发起者。主要的用户操作是触发对象运动的关键因素，这将会转变设计。</p>
+      <p>All action takes place in a single environment. Objects are presented to the user without
+        breaking the continuity of experience even as they transform and reorganize.</p>
+      <p>所有的操作在一个单一的环境内发生。对象即使发生了转换或者重排，也不应该使得用户体验产生明显的停滞。</p>
+      <p>Motion is meaningful and appropriate, serving to focus attention and maintain continuity.
+        Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.</p>
+      <p>运动应该是有意义的运动，它需要维持体验的连续性，同时使得用户能够聚焦重点。反馈应该要微小但是清晰。过渡动画应该有效而连贯</p>
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
+<section>
+  <p>All content and code on this site are licensed under the Apache 2 license unless otherwise specified, the
+    full text of which can be found at
+    <a href="https://www.apache.org/licenses/LICENSE-2.0.html"
+       target="_blank">https://www.apache.org/licenses/LICENSE-2.0.html</a>.
+  </p>
+  <p>除非另有声明，该站点所有内容和代码准寻Apache 2 许可。许可的全文可以在下面这一链接中找到<a
+    href="https://www.apache.org/licenses/LICENSE-2.0.html"
+    target="_blank">https://www.apache.org/licenses/LICENSE-2.0.html</a>.
+    <a href="https://www.apache.org/licenses/LICENSE-2.0.html"
+       target="_blank">https://www.apache.org/licenses/LICENSE-2.0.html</a>.
+  </p>
+</section>
 

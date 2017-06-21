@@ -1,7 +1,6 @@
 .v-grid-column {
   display: flex;
   flex-flow: column;
-  overflow: visible;
-  height: 100%;
+  overflow: auto;
 }
 

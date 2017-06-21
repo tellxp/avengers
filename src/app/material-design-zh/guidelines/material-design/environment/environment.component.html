@@ -1,130 +1,117 @@
-<ave-panel class="container">
-  <section>
-    <ave-panel class="vertical">
-      <h1>Environment</h1>
-      <h1>环境</h1>
-      <h4> Material design is a three-dimensional environment containing light, material, and cast shadows.</h4>
-      <h4> Material design 是一个三维的环境，包括光照、材质和投射的阴影。</h4>
-    </ave-panel>
-  </section>
-  <section>
-    <ave-grid class="vertical">
-      <ave-grid-row [amount]="12" [gutter]="1">
-        <ave-grid-column>
-          <p>All material objects have x, y, and z dimensions.</p>
-          <p>所有的material对象都具有x, y 和 z 三个方向的轴线分布。</p>
+<section>
+  <h1>Environment</h1>
+  <h1>环境</h1>
+  <h4> Material design is a three-dimensional environment containing light, material, and cast shadows.</h4>
+  <h4> Material design 是一个三维的环境，包括光照、材质和投射的阴影。</h4>
+</section>
+<section>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column>
+      <p>All material objects have x, y, and z dimensions.</p>
+      <p>所有的material对象都具有x, y 和 z 三个方向的轴线分布。</p>
 
-          <p>All material objects have a single z-axis position.</p>
-          <p>所有的material对象只有一个单独的z轴位置</p>
+      <p>All material objects have a single z-axis position.</p>
+      <p>所有的material对象只有一个单独的z轴位置</p>
 
-          <p>Key lights create directional shadows, and ambient light creates soft shadows.</p>
-          <p>主光照生成方向性的阴影，柔和光照产生一些柔和的阴影</p>
+      <p>Key lights create directional shadows, and ambient light creates soft shadows.</p>
+      <p>主光照生成方向性的阴影，柔和光照产生一些柔和的阴影</p>
 
-        </ave-grid-column>
-        <ave-grid-column>
-          <p>Material thickness</p>
-          <p>Material的厚度</p>
+    </ave-grid-column>
+    <ave-grid-column>
+      <p>Material thickness</p>
+      <p>Material的厚度</p>
 
-          <p>1dp </p>
-          <p>1dp </p>
+      <p>1dp </p>
+      <p>1dp </p>
 
-          <p>Shadows</p>
-          <p>阴影</p>
-          <p>Shadows are created by the elevation difference between overlapping material.</p>
-          <p>阴影由互相重叠的material元素之间的高度差别产生</p>
+      <p>Shadows</p>
+      <p>阴影</p>
+      <p>Shadows are created by the elevation difference between overlapping material.</p>
+      <p>阴影由互相重叠的material元素之间的高度差别产生</p>
 
-        </ave-grid-column>
-        <ave-grid-column>
+    </ave-grid-column>
+    <ave-grid-column>
 
-          <img class="img" alt=""
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B7WCemMG6e0VVFpiZ041SmhwY2c/what_is_material_environment.png">
+      <img class="img" alt=""
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B7WCemMG6e0VVFpiZ041SmhwY2c/what_is_material_environment.png">
 
-        </ave-grid-column>
-      </ave-grid-row>
-    </ave-grid>
-  </section>
-  <section>
-    <ave-panel class="vertical">
-      <nav>
-        <h1>Contents</h1>
-        <h1>目录</h1>
-        <ul>
-          <li><a> 3D world </a></li>
-          <li><a> 三维的世界 </a></li>
-          <li><a> Light and shadow </a></li>
-          <li><a> 光照和阴影 </a></li>
-        </ul>
-      </nav>
-    </ave-panel>
-  </section>
-  <section>
-    <ave-grid class="vertical">
-      <ave-grid-row>
-        <h2> 3D world </h2>
-        <h2> 三维的世界 </h2>
-      </ave-grid-row>
-      <ave-grid-row [amount]="2" [gutter]="2">
-        <ave-grid-column>
-          <p>The material environment is a 3D space, which means all objects have x, y, and z dimensions. The z-axis is
-            perpendicularly aligned to the plane of the display, with the positive z-axis extending towards the viewer.
-            Every sheet of material occupies a single position along the z-axis and has a standard 1dp thickness,
-            equivalent to one pixel of thickness on screens with a pixel density of 160.</p>
-          <p>整个material的环境是一个三维的空间，这意味着所有的对象都具有x, y, z三个轴线。z轴表示了相对于显示平面的垂直高度，z轴的值越大表明离观察者越近。</p>
-          <p>On the web, the z-axis is used for layering and not for perspective. The 3D world is emulated by
-            manipulating the y-axis.</p>
-          <p>在web中，z轴用来表示层叠关系而非景深。 Material的三维空间使用y轴来模拟景深。</p>
-        </ave-grid-column>
-        <ave-grid-column>
-          <img class="img" alt=""
-               aria-describedby="principles-figure-caption-2"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7UXpQYWltVjNPWXc/whatismaterial_environment_3d.png">
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
+<section>
+  <nav>
+    <h1>Contents</h1>
+    <h1>目录</h1>
+    <ul>
+      <li><a> 3D world </a></li>
+      <li><a> 三维的世界 </a></li>
+      <li><a> Light and shadow </a></li>
+      <li><a> 光照和阴影 </a></li>
+    </ul>
+  </nav>
+</section>
+<section>
+  <ave-grid-row>
+    <h2> 3D world </h2>
+    <h2> 三维的世界 </h2>
+  </ave-grid-row>
+  <ave-grid-row [amount]="2" [gutter]="2">
+    <ave-grid-column>
+      <p>The material environment is a 3D space, which means all objects have x, y, and z dimensions. The z-axis is
+        perpendicularly aligned to the plane of the display, with the positive z-axis extending towards the viewer.
+        Every sheet of material occupies a single position along the z-axis and has a standard 1dp thickness,
+        equivalent to one pixel of thickness on screens with a pixel density of 160.</p>
+      <p>整个material的环境是一个三维的空间，这意味着所有的对象都具有x, y, z三个轴线。z轴表示了相对于显示平面的垂直高度，z轴的值越大表明离观察者越近。</p>
+      <p>On the web, the z-axis is used for layering and not for perspective. The 3D world is emulated by
+        manipulating the y-axis.</p>
+      <p>在web中，z轴用来表示层叠关系而非景深。 Material的三维空间使用y轴来模拟景深。</p>
+    </ave-grid-column>
+    <ave-grid-column>
+      <img class="img" alt=""
+           aria-describedby="principles-figure-caption-2"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7UXpQYWltVjNPWXc/whatismaterial_environment_3d.png">
 
-          <p>3D space with x, y, and z axes</p>
-          <p>具有x, y, z轴的三维空间</p>
+      <p>3D space with x, y, and z axes</p>
+      <p>具有x, y, z轴的三维空间</p>
 
-        </ave-grid-column>
-      </ave-grid-row>
-    </ave-grid>
-  </section>
-  <section>
-    <h1>Light and shadow </h1>
-    <h1>光照和阴影</h1>
-    <p>Within the material environment, virtual lights illuminate the scene. Key lights create directional shadows,
-      while ambient light creates soft shadows from all angles.
-    </p>
-    <p>在material的环境中， 虚拟的灯光照亮区域。主光线产生方向性的阴影，同时辅助光线从所有的角度创造柔和的阴影。 </p>
-    <p>Shadows in the material environment are cast by these two light sources. In Android development, shadows occur
-      when light sources are blocked by sheets of material at various positions along the z-axis. On the web, shadows
-      are depicted by manipulating the y-axis only. The following example shows the card with a height of 6dp.
-    </p>
-    <p>在material的环境中，阴影由两个光源产生。在Android开发中，阴影在光源被z轴上不同的material元素遮挡时产生。在Web中，阴影由y轴控制。下面的例子显示了个6dp高度的卡片 </p>
-    <ave-grid class="vertical">
-      <ave-grid-row [amount]="12" [gutter]="2">
-        <ave-grid-column>
-          <img class="img" alt=""
-               aria-describedby="principles-figure-caption-2"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsSFZUZ01GTk13T28/whatismaterial_environment_shadow1.png">
-          <p>Shadow cast by key light</p>
-          <p>主光源产生的阴影</p>
-        </ave-grid-column>
-        <ave-grid-column>
-          <img class="img" alt=""
-               aria-describedby="principles-figure-caption-2"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsdDhaaTMwMTFVLTA/whatismaterial_environment_shadow2.png">
-          <p>Shadow cast by ambient light</p>
-          <p>辅光源产生的阴影</p>
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
+<section>
+  <h1>Light and shadow </h1>
+  <h1>光照和阴影</h1>
+  <p>Within the material environment, virtual lights illuminate the scene. Key lights create directional shadows,
+    while ambient light creates soft shadows from all angles.
+  </p>
+  <p>在material的环境中， 虚拟的灯光照亮区域。主光线产生方向性的阴影，同时辅助光线从所有的角度创造柔和的阴影。 </p>
+  <p>Shadows in the material environment are cast by these two light sources. In Android development, shadows occur
+    when light sources are blocked by sheets of material at various positions along the z-axis. On the web, shadows
+    are depicted by manipulating the y-axis only. The following example shows the card with a height of 6dp.
+  </p>
+  <p>在material的环境中，阴影由两个光源产生。在Android开发中，阴影在光源被z轴上不同的material元素遮挡时产生。在Web中，阴影由y轴控制。下面的例子显示了个6dp高度的卡片 </p>
+  <ave-grid-row [amount]="12" [gutter]="2">
+    <ave-grid-column>
+      <img class="img" alt=""
+           aria-describedby="principles-figure-caption-2"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsSFZUZ01GTk13T28/whatismaterial_environment_shadow1.png">
+      <p>Shadow cast by key light</p>
+      <p>主光源产生的阴影</p>
+    </ave-grid-column>
+    <ave-grid-column>
+      <img class="img" alt=""
+           aria-describedby="principles-figure-caption-2"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsdDhaaTMwMTFVLTA/whatismaterial_environment_shadow2.png">
+      <p>Shadow cast by ambient light</p>
+      <p>辅光源产生的阴影</p>
 
-        </ave-grid-column>
-        <ave-grid-column>
-          <img class="img" alt=""
-               aria-describedby="principles-figure-caption-2"
-               src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsNnVmbTNMUF9DR0U/whatismaterial_environment_shadow3.png">
-          <p>Combined shadow from key and ambient lights</p>
-          <p>主光源和辅光源共同产生的阴影</p>
-
-        </ave-grid-column>
-      </ave-grid-row>
-    </ave-grid>
-  </section>
-</ave-panel>
+    </ave-grid-column>
+    <ave-grid-column>
+      <img class="img" alt=""
+           aria-describedby="principles-figure-caption-2"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsNnVmbTNMUF9DR0U/whatismaterial_environment_shadow3.png">
+      <p>Combined shadow from key and ambient lights</p>
+      <p>主光源和辅光源共同产生的阴影</p>
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
 
