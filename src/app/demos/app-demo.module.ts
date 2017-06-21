@@ -35,6 +35,7 @@ import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {MarkdownModule} from '../../components/markdown/markdown.module';
 import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
+import {GridDemoComponent} from './grid/grid-demo.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
     TextboxDemoComponent,
     CheckboxDemoComponent,
     NavbarDemoComponent,
+    GridDemoComponent,
   ],
   providers: [],
 })

@@ -1,6 +1,6 @@
 <ave-grid class="container">
   <ave-grid-row [amount]="12" [gutter]="1">
-    <ave-grid-column [md]="3">
+    <ave-grid-column [xs.span]="0" [md.span]="3">
       <a href="/demos">
         <img src="/assets/material-design.svg" alt="material-design">
       </a>
@@ -145,7 +145,7 @@
       </ave-panelbar>
     </ave-grid-column>
 
-    <ave-grid-column [md]="9">
+    <ave-grid-column [xs.span]="12" [md.span]="9">
       <ave-panel  class="content">
       <h1>Material Design</h1>
         <router-outlet></router-outlet>

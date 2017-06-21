@@ -15,6 +15,7 @@ import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
 import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 
 import {AppDemoComponent} from './app-demo.component';
+import {GridDemoComponent} from './grid/grid-demo.component';
 
 
 const appDemoRoutes: Routes = [
@@ -35,6 +36,7 @@ const appDemoRoutes: Routes = [
       {path: 'textbox-demo', component: TextboxDemoComponent},
       {path: 'checkbox-demo', component: CheckboxDemoComponent},
       {path: 'navbar-demo', component: NavbarDemoComponent},
+      {path: 'grid-demo', component: GridDemoComponent},
     ]
   }
 ];

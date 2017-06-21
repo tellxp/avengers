@@ -10,7 +10,7 @@
   <section>
     <ave-grid class="vertical">
       <ave-grid-row [amount]="12" [gutter]="1">
-        <ave-grid-column [md]="4">
+        <ave-grid-column>
           <p>All material objects have x, y, and z dimensions.</p>
           <p>所有的material对象都具有x, y 和 z 三个方向的轴线分布。</p>
 
@@ -21,7 +21,7 @@
           <p>主光照生成方向性的阴影，柔和光照产生一些柔和的阴影</p>
 
         </ave-grid-column>
-        <ave-grid-column [md]="4">
+        <ave-grid-column>
           <p>Material thickness</p>
           <p>Material的厚度</p>
 
@@ -34,7 +34,7 @@
           <p>阴影由互相重叠的material元素之间的高度差别产生</p>
 
         </ave-grid-column>
-        <ave-grid-column [md]="4">
+        <ave-grid-column>
 
           <img class="img" alt=""
                src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B7WCemMG6e0VVFpiZ041SmhwY2c/what_is_material_environment.png">
@@ -100,14 +100,14 @@
     <p>在material的环境中，阴影由两个光源产生。在Android开发中，阴影在光源被z轴上不同的material元素遮挡时产生。在Web中，阴影由y轴控制。下面的例子显示了个6dp高度的卡片 </p>
     <ave-grid class="vertical">
       <ave-grid-row [amount]="12" [gutter]="2">
-        <ave-grid-column [md]="4">
+        <ave-grid-column>
           <img class="img" alt=""
                aria-describedby="principles-figure-caption-2"
                src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsSFZUZ01GTk13T28/whatismaterial_environment_shadow1.png">
           <p>Shadow cast by key light</p>
           <p>主光源产生的阴影</p>
         </ave-grid-column>
-        <ave-grid-column [md]="4">
+        <ave-grid-column>
           <img class="img" alt=""
                aria-describedby="principles-figure-caption-2"
                src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsdDhaaTMwMTFVLTA/whatismaterial_environment_shadow2.png">
@@ -115,7 +115,7 @@
           <p>辅光源产生的阴影</p>
 
         </ave-grid-column>
-        <ave-grid-column [md]="4">
+        <ave-grid-column>
           <img class="img" alt=""
                aria-describedby="principles-figure-caption-2"
                src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsNnVmbTNMUF9DR0U/whatismaterial_environment_shadow3.png">

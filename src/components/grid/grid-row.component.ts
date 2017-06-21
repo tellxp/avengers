@@ -6,14 +6,15 @@ import {
   Component,
   ContentChildren,
   DoCheck,
-  ElementRef, HostBinding,
+  ElementRef,
+  HostBinding,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  QueryList, ViewEncapsulation
+  QueryList,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 import {GridColumnComponent} from './grid-column.component';
 import {GridRowConfig} from './grid-row.config';
@@ -55,11 +56,10 @@ export class GridRowComponent extends Widget implements OnChanges,
   loadColumns() {
     this.columns = this.contentColumn.toArray();
     const length = this.columns.length;
+    const windowWidth = window.innerWidth;
     for (let i = 0; i < length; i++) {
       this.columns[i].setParentRow(this);
-      this.columns[i].setWidthStyle();
-      this.columns[i].setPaddingStyle();
-      this.columns[i].setMarginStyle();
+      this.columns[i].setStyleByWindowsWidth(windowWidth);
     }
   }
 
@@ -81,6 +81,7 @@ export class GridRowComponent extends Widget implements OnChanges,
     super.ngAfterContentInit();
 
     this.loadColumns();
+
   }
 
   ngAfterContentChecked() {

@@ -17,19 +17,14 @@ import {
 } from '@angular/core';
 import {Widget} from '../core/widget';
 import {GridRowComponent} from './grid-row.component';
-import {isNullOrUndefined} from 'util';
 import {GridComponent} from './grid.component';
-import {BreakPoints, Dom} from '../core/dom';
+import {BreakPoints} from '../core/dom';
+import {flatMap} from 'tslint/lib/utils';
 
 export class GridColumnConfig {
   span: number;
   offset: number;
-  //
-  // xs: number;
-  // sm: number;
-  // md: number;
-  // lg: number;
-  // xl: number;
+
   constructor() {
     this.span = 1;
     this.offset = 0;
@@ -49,9 +44,10 @@ export class GridColumnComponent extends Widget implements OnChanges,
   OnDestroy {
 
   parentRow: GridRowComponent;
+  hidden = false;
 
-  @Input() md: number;
-  @Input() offset: number;
+  effectiveSpan: number;
+  effectiveOffset: number;
 
   xsConfig: GridColumnConfig = new GridColumnConfig();
   smConfig: GridColumnConfig = new GridColumnConfig();
@@ -59,36 +55,75 @@ export class GridColumnComponent extends Widget implements OnChanges,
   lgConfig: GridColumnConfig = new GridColumnConfig();
   xlConfig: GridColumnConfig = new GridColumnConfig();
 
-  @Input('xs.span') set xsSpan(val) {
-    this.xsConfig.span = val
+  @Input('span') set span(val) {
+    this.xsConfig.span = val;
+    this.smConfig.span = val;
+    this.mdConfig.span = val;
+    this.lgConfig.span = val;
+    this.xlConfig.span = val;
   }
 
-  @Input('xs.offset') set xsOffset(val) {
-    this.xsConfig.offset = val
+  @Input('offset') set offset(val) {
+    this.xsConfig.offset = val;
+    this.smConfig.offset = val;
+    this.mdConfig.offset = val;
+    this.lgConfig.offset = val;
+    this.xlConfig.offset = val;
   }
 
-  @Input('sm.span') set smSpan(val) {
-    this.smConfig.span = val
+  @Input('xs.span')
+  set xsSpan(val) {
+    this.xsConfig.span = val;
+    this.smConfig.span = val;
+    this.mdConfig.span = val;
+    this.lgConfig.span = val;
+    this.xlConfig.span = val;
+  }
+
+  @Input('xs.offset')
+  set xsOffset(val) {
+    this.xsConfig.offset = val;
+    this.smConfig.offset = val;
+    this.mdConfig.offset = val;
+    this.lgConfig.offset = val;
+    this.xlConfig.offset = val;
+  }
+
+  @Input('sm.span')
+  set smSpan(val) {
+    this.smConfig.span = val;
+    this.mdConfig.span = val;
+    this.lgConfig.span = val;
+    this.xlConfig.span = val;
   }
 
   @Input('sm.offset') set smOffset(val) {
-    this.smConfig.offset = val
+    this.smConfig.offset = val;
+    this.mdConfig.offset = val;
+    this.lgConfig.offset = val;
+    this.xlConfig.offset = val;
   }
 
   @Input('md.span') set mdSpan(val) {
-    this.mdConfig.span = val
+    this.mdConfig.span = val;
+    this.lgConfig.span = val;
+    this.xlConfig.span = val;
   }
 
   @Input('md.offset') set mdOffset(val) {
-    this.mdConfig.offset = val
+    this.mdConfig.offset = val;
+    this.lgConfig.offset = val;
+    this.xlConfig.offset = val;
   }
 
   @Input('lg.span') set lgSpan(val) {
-    this.lgConfig.span = val
+    this.lgConfig.span = val;
+    this.xlConfig.span = val;
   }
 
   @Input('lg.offset') set lgOffset(val) {
-    this.lgConfig.offset = val
+    this.lgConfig.offset = val;
+    this.xlConfig.offset = val;
   }
 
   @Input('xl.span') set xlSpan(val) {
@@ -101,30 +136,71 @@ export class GridColumnComponent extends Widget implements OnChanges,
 
   @HostBinding('class.v-grid-column') gridColumnClass = 'true';
 
-  @HostListener('window: resize', ['$event']) onWindowResize(e) {
-    console.log(e);
-    console.log(BreakPoints.xl);
+  @HostListener('window: resize') onWindowResize() {
+    const windowWidth = window.innerWidth;
+    this.setStyleByWindowsWidth(windowWidth);
+
+  }
+  hideColumn() {
+      this.render.setStyle(this.elementRef.nativeElement, 'display', 'none');
+  }
+  setStyleByWindowsWidth(windowWidth: number) {
+    switch (true) {
+      case BreakPoints.xs >= windowWidth:
+        this.setEffectiveStyle(this.xsConfig.span, this.xsConfig.offset);
+        break;
+      case BreakPoints.xs < windowWidth && windowWidth <= BreakPoints.sm:
+        this.setEffectiveStyle(this.xsConfig.span, this.xsConfig.offset);
+        break;
+      case BreakPoints.sm < windowWidth && windowWidth <= BreakPoints.md:
+        this.setEffectiveStyle(this.smConfig.span, this.smConfig.offset);
+        break;
+      case BreakPoints.md < windowWidth && windowWidth <= BreakPoints.lg:
+        this.setEffectiveStyle(this.mdConfig.span, this.mdConfig.offset);
+        break;
+      case BreakPoints.lg < windowWidth && windowWidth <= BreakPoints.xl:
+        this.setEffectiveStyle(this.lgConfig.span, this.lgConfig.offset);
+        break;
+      case BreakPoints.xl < windowWidth:
+        this.setEffectiveStyle(this.xlConfig.span, this.xlConfig.offset);
+        break;
+    }
+    if (this.effectiveSpan <= 0) {
+      this.hideColumn();
+    }
+  }
+  setEffectiveStyle(span: number, offset: number) {
+    this.effectiveSpan = span;
+    this.effectiveOffset = offset;
+    this.render.setStyle(this.elementRef.nativeElement, 'display', 'flex');
+    this.setWidthStyle(span);
+    this.setMarginStyle(offset);
+    this.setPaddingStyle();
   }
 
   init() {
-    if (isNullOrUndefined(this.md)) {
-      // this.span = this.config.span;
-    }
-    if (isNullOrUndefined(this.offset)) {
-      // this.offset = this.config.offset;
-    }
+    // if (isNullOrUndefined(this.innerSpan)) {
+    //   // this.span = this.config.span;
+    // }
+    // if (isNullOrUndefined(this.innerOffset)) {
+    //   // this.offset = this.config.offset;
+    // }
   }
 
   setParentRow(row: GridRowComponent) {
     this.parentRow = row;
   }
 
-  setWidthStyle() {
+  setWidthStyle(span: number) {
     const amount = this.parentRow.amount;
     const gutter = this.parentRow.gutter;
-    const span = this.md;
 
     const width = GridComponent.calculateColumnWidth(amount, gutter, span);
+    if (width > 0) {
+      this.hidden = false;
+    } else {
+      this.hidden = true;
+    }
 
     this.render.setStyle(this.elementRef.nativeElement, 'width', width + '%');
   }
@@ -138,11 +214,10 @@ export class GridColumnComponent extends Widget implements OnChanges,
     this.render.setStyle(this.elementRef.nativeElement, 'padding-right', padding + '%');
   }
 
-  setMarginStyle() {
+  setMarginStyle(offset: number) {
 
     const amount = this.parentRow.amount;
     const gutter = this.parentRow.gutter;
-    const offset = this.offset;
 
     const offsetMargin = GridComponent.calculateColumnOffset(amount, gutter, offset);
 
@@ -182,6 +257,7 @@ export class GridColumnComponent extends Widget implements OnChanges,
 
   ngAfterViewChecked() {
     super.ngAfterViewChecked();
+
   }
 
   ngOnDestroy() {

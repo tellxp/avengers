@@ -1,9 +1,9 @@
-<ave-grid-row [amount]="4" [gutter]="0" class="container">
-  <ave-grid-column class="side-menu" [md]="1">
-    <ave-panel class="brand">
+<div class="container">
+  <div class="side-menu">
+    <div class="brand">
     <a routerLink="/"><img src="../../assets/brand.svg" alt="brand"></a>
-    </ave-panel>
-    <ave-panel class="component-list">
+    </div>
+    <div class="component-list">
       <h3>组件</h3>
       <a routerLink="./tabstrip-demo" routerLinkActive="active">Tabstrip</a>
       <a routerLink="./button-demo" routerLinkActive="active">Button</a>
@@ -17,13 +17,14 @@
       <a routerLink="./textbox-demo" routerLinkActive="active">Textbox</a>
       <a routerLink="./checkbox-demo" routerLinkActive="active">Checkbox</a>
       <a routerLink="./navbar-demo" routerLinkActive="active">Navbar</a>
+      <a routerLink="./grid-demo" routerLinkActive="active">Grid</a>
       <h3>示例</h3>
       <a routerLink="/example" routerLinkActive="active" target="_blank">Example</a>
       <a routerLink="/material-design-zh/guidelines" routerLinkActive="active" target="_blank">Material Design</a>
-    </ave-panel>
-  </ave-grid-column>
-  <ave-grid-column class="content" [md]="3">
+    </div>
+  </div>
+  <div class="content">
       <router-outlet></router-outlet>
     <div class="content-ground"></div>
-  </ave-grid-column>
-</ave-grid-row>
+  </div>
+</div>

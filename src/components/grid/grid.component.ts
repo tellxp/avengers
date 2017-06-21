@@ -6,12 +6,12 @@ import {
   Component,
   DoCheck,
   ElementRef,
-  Input,
   OnChanges,
   OnDestroy,
-  OnInit, Renderer2, ViewEncapsulation
+  OnInit,
+  Renderer2,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 
 
@@ -37,14 +37,20 @@ export class GridComponent extends Widget implements OnChanges,
       return true;
     }
   }
+
   static calculateColumnWidth(amount: number, gutter: number, span: number): number {
 
     if (this.isValidGutter(amount, gutter)) {
-      return 100 / amount * span - gutter;
+      if (span <= 0) {
+        return 0;
+      } else {
+        return 100 / amount * span - gutter;
+      }
     } else {
       throw Error('gutter is not valid!');
     }
   }
+
   static calculateColumnOffset(amount: number, gutter: number, offset: number) {
     if (this.isValidGutter(amount, gutter)) {
       return 100 / amount * offset;
@@ -52,9 +58,11 @@ export class GridComponent extends Widget implements OnChanges,
       throw Error('gutter is not valid!');
     }
   }
+
   constructor(elementRef: ElementRef, private render: Renderer2) {
     super(elementRef);
   }
+
   ngOnChanges() {
     super.ngOnChanges();
   }
