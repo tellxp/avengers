@@ -15,15 +15,11 @@
   <!--<script src="../lib/kendo/js/cultures/kendo.culture.zh-Hans.js"></script>-->
 
   <script src="../lib/kendo/js/messages/kendo.messages.zh-CN.js"></script>
-  <script type="text/javascript">
-    //set current to the "en-GB" culture script
-    kendo.culture("zh-CN");
-  </script>
+
 </head>
 <body>
 <script type="text/javascript">
   //set current to the "en-GB" culture script
-  kendo.culture("zh-CN");
 </script>
 <div id="example">
 
@@ -32,6 +28,8 @@
   <script>
 
     $(document).ready(function () {
+      kendo.culture("zh-CN");
+
       var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
         dataSource = new kendo.data.DataSource({
           transport: {
@@ -84,7 +82,7 @@
           { field: "UnitsInStock", title:"Units In Stock", width: "120px" },
           { field: "Discontinued", width: "120px", editor: customBoolEditor },
           { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
-        editable: "inline"
+        editable: "popup"
       });
     });
 

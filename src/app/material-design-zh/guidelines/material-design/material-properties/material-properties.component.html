@@ -51,3 +51,69 @@
 </section>
 
 
+<section>
+  <nav>
+    <h1>Contents</h1>
+    <h1>目录</h1>
+    <ul>
+      <li><a> Physical properties </a></li>
+      <li><a> 物理特性 </a></li>
+      <li><a> Transforming material </a></li>
+      <li><a> 转换material对象 </a></li>
+      <li><a> Movement of material </a></li>
+      <li><a> 移动material对象 </a></li>
+    </ul>
+  </nav>
+</section>
+<section>
+  <h1> Physical properties </h1>
+  <h1>物理特性</h1>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material has varying x & y dimensions (measured in dp) and a uniform thickness (1dp). </p>
+      <p>Material具有不同的x、y轴线（单位为dp）和一个唯一的厚度（1dp）</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt=""
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B8v7jImPsDi-aTBFT1FDVEstenM/whatismaterial_materialproperties_physicalproperties_thickness_01_yes.png">
+      <span>Do.</span>
+      <span>建议的做法</span>
+      <span>The height and width of material can vary.</span>
+      <span>Material对象的长度和宽度可以不同</span>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt=""
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B8v7jImPsDi-Sno0Qy1FY3UtaFk/whatismaterial_materialproperties_physicalproperties_thickness_02_no.png">
+      <span>不建议的做法</span>
+      <span>Material is always 1dp thick.</span>
+      <span>Material对象永远只有1dp的厚度</span>
+    </ave-grid-column>
+  </ave-grid-row>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material casts shadows.</p>
+      <p>Material对象产生阴影</p>
+      <p>Shadows result naturally from the relative elevation (z-position) between material elements.</p>
+      <p>阴影根据相对其他material对象的高度（z轴的位置）生成。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+      <video class="video" controls="controls" aria-describedby="physical-properties-figure-caption-4" loop="" preload="auto" tabindex="0">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsRGhTci1mN2dWUW8/inline whatismaterial-materialprop-physicalprop-PaperShadow_02_xhdpi_008.webm" type="video/webm">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsaVFKVXI0RUFOWTg/inline whatismaterial-materialprop-physicalprop-PaperShadow_02_xhdpi_008.mp4" type="video/mp4">
+      </video>
+      <span>Do.</span>
+      <span>建议的操作方式</span>
+      <span>Shadows depict the relative elevation between material elements.</span>
+      <span>阴影刻画了在不同material元素之间的相对高度</span>
+
+      <video class="video" controls="controls" aria-describedby="physical-properties-figure-caption-4" loop="" preload="auto" tabindex="0">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsRGhTci1mN2dWUW8/inline whatismaterial-materialprop-physicalprop-PaperShadow_02_xhdpi_008.webm" type="video/webm">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsaVFKVXI0RUFOWTg/inline whatismaterial-materialprop-physicalprop-PaperShadow_02_xhdpi_008.mp4" type="video/mp4">
+      </video>
+      <span>Don't.</span>
+      <span>不建议的操作方式</span>
+      <span>Shadows are never approximated by coloring material.</span>
+      <span>阴影永远不要采用与material元素相近的颜色。</span>
+    </ave-grid-column>
+  </ave-grid-row>
+</section>

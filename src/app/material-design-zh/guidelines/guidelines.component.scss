@@ -1,6 +1,8 @@
 .container {
   height: 100%;
   width: 100%;
+  //margin-top: 1rem;
+  //margin-bottom: 1rem;
 }
 
 .left-panel {
@@ -12,6 +14,7 @@
 
 .right-panel {
   overflow: auto;
+
 }
 
 .brand {
@@ -26,11 +29,11 @@
 .article-name {
   & > .v-panelbar-header {
     & > .v-arcylic-content {
-    text-indent: 1em;
-    font-size: 0.8em;
-    font-weight: normal;
-    cursor: pointer;
-  }
+      text-indent: 1em;
+      font-size: 0.8em;
+      font-weight: normal;
+      cursor: pointer;
+    }
   }
 }
 
@@ -54,4 +57,12 @@
 .content {
   display: block;
   margin-top: 2em;
+}
+
+.active-link {
+  & > .v-panelbar-header {
+    & > .v-arcylic-ground {
+      background-color: #bdbdbd;
+    }
+  }
 }

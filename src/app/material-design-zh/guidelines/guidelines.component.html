@@ -10,17 +10,16 @@
                            [expanded]="true">
           <ave-panelbar-item class="v-panelbar-item-default article-name"
                              [title]="'Introduction'"
-                             [active]="true"
                              routerLink="./material-design/introduction"
-                             routerLinkActive="true">
+                             routerLinkActive="active-link">
           </ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'Environment'"
                              routerLink="./material-design/environment"
-                             routerLinkActive="true"></ave-panelbar-item>
+                             routerLinkActive="active-link"></ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name"
                              [title]="'Material properties'"
                              routerLink="./material-design/material-properties"
-                             routerLinkActive="true"></ave-panelbar-item>
+                             routerLinkActive="active-link"></ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name"
                              [title]="'Elevation & shadows'"></ave-panelbar-item>
           <ave-panelbar-item class="v-panelbar-item-default article-name" [title]="'What’s new'"></ave-panelbar-item>
@@ -151,10 +150,9 @@
     </ave-grid-column>
 
     <ave-grid-column [xs.span]="12" [md.span]="9" class="right-panel">
-      <ave-panel  class="content">
       <h1>Material Design</h1>
         <router-outlet></router-outlet>
-      </ave-panel>
+      <p>Copy</p>
     </ave-grid-column>
   </ave-grid-row>
 </ave-grid>
