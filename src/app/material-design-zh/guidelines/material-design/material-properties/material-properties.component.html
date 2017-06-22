@@ -12,35 +12,47 @@
     <ave-grid-column [xs.span]="12" [md.span]="4">
       <h6>Material characteristics</h6>
       <h6>Material的特质</h6>
-      <span>Solid</span>
-      <span>立体的</span>
-      <br>
-      <span>Occupies unique points in space</span>
-      <span>在空间中的位置唯一</span>
-      <br>
-      <span>Impenetrable</span>
-      <span>不可透视</span>
-      <br>
-      <span> Mutable shape</span>
-      <span> 形状可变</span>
-      <br>
-      <span>Changes in size only along its plane</span>
-      <span>仅在自身的平面上改变大小</span>
-      <br>
-      <span>Unbendable</span>
-      <span>不可弯曲</span>
-      <br>
-      <span> Can join to other material</span>
-      <span> 能够合成到其他的material对象中</span>
-      <br>
-      <span> Can separate, split, and heal</span>
-      <span> 可以分离、拆分和恢复</span>
-      <br>
-      <span> Can be created or destroyed</span>
-      <span> 能够创建和删除</span>
-      <br>
-      <span> Moves along any axis</span>
-      <span> 在任意轴上运动</span>
+      <p>Solid
+        <br>
+        Occupies unique points in space
+        <br>
+        Impenetrable
+        <br>
+        Mutable shape
+        <br>
+        Changes in size only along its plane
+        <br>
+        Unbendable
+        <br>
+        Can join to other material
+        <br>
+        Can separate, split, and heal
+        <br>
+        Can be created or destroyed
+        <br>
+        Moves along any axis
+      </p>
+      <p>
+        立体的
+        <br>
+        在空间中的位置唯一
+        <br>
+        不可透视
+        <br>
+        形状可变
+        <br>
+        仅在自身的平面上改变大小
+        <br>
+        不可弯曲
+        <br>
+        能够合成到其他的material对象中
+        <br>
+        可以分离、拆分和恢复
+        <br>
+        能够创建和删除
+        <br>
+        在任意轴上运动
+      </p>
     </ave-grid-column>
     <ave-grid-column [xs.span]="12" [md.span]="4">
       <img class="img" alt=""
@@ -154,7 +166,8 @@
     </ave-grid-column>
     <ave-grid-column [xs.span]="12" [md.span]="8">
 
-      <video aria-describedby="physical-properties-figure-caption-6" loop="" preload="auto" tabindex="0">
+      <video class="video" controls="controls" aria-describedby="physical-properties-figure-caption-6" loop=""
+             preload="auto" tabindex="0">
         <source
           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsdnpyMjVKeFNvVm8/whatismaterial-materialprop-physicalprop-InkBehavior_xhdpi_006.webm"
           type="video/webm">
@@ -196,28 +209,241 @@
   </ave-grid-row>
 
   <ave-grid-row [amount]="12" [gutter]="1">
-      <ave-grid-column [xs.span]="12" [md.span]="4">
-        <p>Multiple material elements cannot occupy the same point in space simultaneously.</p>
-        <p>多个material元素不能同时在控件中占用同样的位置点</p>
-      </ave-grid-column>
-      <ave-grid-column [xs.span]="12" [md.span]="4">
-        <img class="img" alt="" aria-describedby="physical-properties-figure-caption-7"
-             src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7aVhXV0EtZ29OSU0/whatismaterial_properties_physical5.png">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Multiple material elements cannot occupy the same point in space simultaneously.</p>
+      <p>多个material元素不能同时在控件中占用同样的位置点</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt="" aria-describedby="physical-properties-figure-caption-7"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7aVhXV0EtZ29OSU0/whatismaterial_properties_physical5.png">
 
-        <span>Do.</span>
-        <span>建议的操作方式</span>
-        <p>Using elevation to separate material elements is one method of preventing multiple material elements from
-          occupying the same point in space simultaneously.
-        </p>
-        <p>使用统一的高度划分方式来区分不同的material元素，防止多个material元素在空间中同时占用一个点</p>
-      </ave-grid-column>
-      <ave-grid-column [xs.span]="12" [md.span]="4">
-        <img class="img" alt="" aria-describedby="physical-properties-figure-caption-8"
-             src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7UFdUMnRKaW5PSXM/whatismaterial_properties_physical6.png">
-        <span>Don't.</span>
-        <span>不建议的操作方式</span>
-        <span>Multiple material elements cannot occupy the same point in space simultaneously.</span>
-        <span>多个material元素不能同时在空间中占用同一个位置点。</span>
-      </ave-grid-column>
-    </ave-grid-row>
+      <span>Do.</span>
+      <span>建议的操作方式</span>
+      <p>Using elevation to separate material elements is one method of preventing multiple material elements from
+        occupying the same point in space simultaneously.
+      </p>
+      <p>使用统一的高度划分方式来区分不同的material元素，防止多个material元素在空间中同时占用一个点</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt="" aria-describedby="physical-properties-figure-caption-8"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bx4BSt6jniD7UFdUMnRKaW5PSXM/whatismaterial_properties_physical6.png">
+      <span>Don't.</span>
+      <span>不建议的操作方式</span>
+      <span>Multiple material elements cannot occupy the same point in space simultaneously.</span>
+      <span>多个material元素不能同时在空间中占用同一个位置点。</span>
+    </ave-grid-column>
+  </ave-grid-row>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material cannot pass through other material.</p>
+      <p>Material元素不能穿透其他的material元素。</p>
+      <p>For example, one sheet of material cannot pass through another sheet of material when changing elevation.</p>
+      <p>比如：一个material的sheet在改变其高度的时候不能够穿透另外一个material的sheet。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+      <video class="video" controls="controls" aria-describedby="physical-properties-figure-caption-11" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsekRnTGVlVEQzNXc/whatismaterial_properties_physical_07_xhdpi_009.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsc2VZVUJ5bFNscFU/whatismaterial_properties_physical_07_xhdpi_009.mp4"
+          type="video/mp4">
+      </video>
+      <p>Don't.</p>
+      <p>不建议的操作方式</p>
+      <p>Material cannot pass through other material.</p>
+      <p>Material元素不能穿透其他的material元素。</p>
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
+<section>
+  <h1>Transforming material </h1>
+  <h1>转换material元素</h1>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material can change shape.</p>
+      <p>Material元素可以改变形状。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+      <video class="video" controls="controls" aria-describedby="transforming-material-figure-caption-1" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsRjREbXNsZXBrTFU/whatismaterial-materialprop-transformingmaterial-PaperShape_xhdpi_005.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsMndnRld3dl9nVU0/whatismaterial-materialprop-transformingmaterial-PaperShape_xhdpi_005.mp4"
+          type="video/mp4">
+      </video>
+      <p>Material can change shape.</p>
+      <p>Material元素可以改变形状。</p>
+    </ave-grid-column>
+
+  </ave-grid-row>
+
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material grows and shrinks only along its plane.</p>
+      <p>Material沿着自身的平面展开和收缩。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+
+      <video class="video" controls="controls" aria-describedby="transforming-material-figure-caption-2" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsZWtfWjlEQ0RTcXc/whatismaterial-materialprop-transformingmaterial-PaperShapeLinear_xhdpi_005.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsLVpqQ0pBOXY3WDQ/whatismaterial-materialprop-transformingmaterial-PaperShapeLinear_xhdpi_005.mp4"
+          type="video/mp4">
+      </video>
+
+      <p>Do. </p>
+      <p>建议的操作方式。</p>
+      <p>Material grows and shrinks only along its plane.</p>
+      <p>Material沿着自身的平面展开和收缩。</p></ave-grid-column>
+
+  </ave-grid-row>
+
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material never bends or folds.</p>
+      <p>Material元素永远不会弯曲或折叠</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+
+      <video class="video" controls="controls" aria-describedby="transforming-material-figure-caption-3" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsMXhFNUo2WmJrLWc/whatismaterial-materialprop-transformingmaterial-PaperBendFold_xhdpi_006.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsM0s0eE5sODFxcnM/whatismaterial-materialprop-transformingmaterial-PaperBendFold_xhdpi_006.mp4"
+          type="video/mp4">
+      </video>
+
+      <p>Don't. </p>
+      <p>不建议的操作方式。</p>
+      <p>Material never bends or folds.</p>
+      <p>Material元素永远不会弯曲或折叠</p>
+    </ave-grid-column>
+
+  </ave-grid-row>
+
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Sheets of material can join together to become a single sheet of material.</p>
+      <p>多个material sheet可以合成一个material sheet。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+      <video class="video" controls="controls" aria-describedby="transforming-material-figure-caption-4" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsRmdDaEl6aTVGREU/whatismaterial-materialprop-transformingmaterial-PaperHeal_xhdpi_004.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsekNUcDRIaXh1RUU/whatismaterial-materialprop-transformingmaterial-PaperHeal_xhdpi_004.mp4"
+          type="video/mp4">
+      </video>
+      <p>Multiple sheets of material can join together to become a single sheet. </p>
+      <p>多个sheet可以合成一个sheet。</p>
+
+    </ave-grid-column>
+
+
+  </ave-grid-row>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>When split, material can heal. For example, if you remove a portion of material from a sheet of material, the
+        sheet of material will become a whole sheet again. </p>
+      <p>当分离的时候，material元素可以恢复。比如：如果你从复合的material sheets中删除了一个sheet，这个单独的sheet可以另外形成一个material sheet。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+      <video class="video" controls="controls" aria-describedby="transforming-material-figure-caption-5" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsQV9PS2Q0anFoZzg/whatismaterial-materialprop-transformingmaterial-PaperSplitHeal_xhdpi_005.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsNlM0eEhPMDFwMlU/whatismaterial-materialprop-transformingmaterial-PaperSplitHeal_xhdpi_005.mp4"
+          type="video/mp4">
+      </video>
+
+      <p>Material can split and become whole again. </p>
+      <p>Material元素可以分离，并且再次形成一个整体。</p>
+
+    </ave-grid-column>
+
+
+  </ave-grid-row>
+</section>
+<section>
+  <h1> Movement of material </h1>
+  <h1> Material元素的运动</h1>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material can be spontaneously generated or destroyed anywhere in the environment. </p>
+      <p>Material元素可以在空间环境中自然地产生和消除。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+
+      <video class="video" controls="controls" aria-describedby="movement-of-material-figure-caption-1" loop=""
+             preload="auto" tabindex="0">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQseERpUzUxRVRtMGs/whatismaterial-materialprop-movementmaterial-PaperPointExpand_xhdpi_005.webm"
+          type="video/webm">
+        <source
+          src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsTUF0YzJrX0xfWmc/whatismaterial-materialprop-movementmaterial-PaperPointExpand_xhdpi_005.mp4"
+          type="video/mp4">
+      </video>
+
+
+      <p>Material can be spontaneously generated or destroyed anywhere in the environment. </p>
+      <p>Material元素可以在空间环境中自然地产生和消除。</p>
+
+    </ave-grid-column>
+  </ave-grid-row>
+
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Material can move along any axis.</p>
+      <p>Material元素可以在任意轴上移动。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+      <video class="video" controls="controls" aria-describedby="movement-of-material-figure-caption-2" loop="" preload="auto" tabindex="0">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsWkhGeVpPNVdZbE0/whatismaterial-materialprop-movementmaterial-PaperMove_xhdpi_008.webm" type="video/webm">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsYXIyWl9fZURydTA/whatismaterial-materialprop-movementmaterial-PaperMove_xhdpi_008.mp4" type="video/mp4">
+      </video>
+
+      <p>Material can move along various axes. </p>
+      <p>Material元素可以在不同的轴线上移动。</p>
+
+    </ave-grid-column>
+  </ave-grid-row>
+
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Z-axis motion is typically a result of user interaction with material.</p>
+      <p>z轴上的动作是用户与material元素的交互产生的。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+
+      <video class="video" controls="controls" aria-describedby="movement-of-material-figure-caption-3" loop="" preload="auto" tabindex="0">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsYWJoQjFCYmdvU3c/whatismaterial-materialprop-movementmaterial-Material_Response_xhdpi_003.webm" type="video/webm">
+        <source src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsQW1HYnpicTVySG8/whatismaterial-materialprop-movementmaterial-Material_Response_xhdpi_003.mp4" type="video/mp4">
+      </video>
+
+      <p>Z-axis motion prompted by user interaction.</p>
+      <p>z轴上的行为由用户交互产生。</p>
+
+    </ave-grid-column>
+  </ave-grid-row>
 </section>

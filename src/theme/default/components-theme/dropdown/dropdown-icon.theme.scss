@@ -148,7 +148,7 @@ $ave-dropdown-icon-theme: (
 
 @mixin ave-dropdown-icon-content-style($theme) {
   .v-dropdown-icon {
-    &>.content {
+    &>.material-content {
       color: $ave-default-content-color;
     }
   }

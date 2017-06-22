@@ -34,7 +34,7 @@ export class PanelbarComponent extends Widget implements OnChanges,
 
   activeItem: PanelbarItemComponent;
 
-  @HostBinding('class.v-panelbar') panelbarClass = 'true';
+  @HostBinding('class.v-panelbar') 'true';
   @ContentChildren(PanelbarItemComponent) contentItems: QueryList<PanelbarItemComponent>;
 
   rootItems: PanelbarItemComponent[];

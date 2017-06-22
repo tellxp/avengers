@@ -157,7 +157,7 @@ $ave-panelbar-header-theme: (
 
 @mixin ave-panelbar-header-content-style($theme) {
   .v-panelbar-header {
-    &>.content {
+    &>.material-content {
       color: $ave-default-content-color;
     }
   }

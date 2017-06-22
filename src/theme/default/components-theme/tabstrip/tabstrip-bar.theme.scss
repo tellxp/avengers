@@ -144,7 +144,7 @@ $ave-tabstrip-bar-theme: (
 
 @mixin ave-tabstrip-bar-content-style($theme) {
   .v-tabstrip-bar {
-    &>.content {
+    &>.material-content {
       color: $ave-default-content-color;
     }
   }

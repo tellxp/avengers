@@ -10,7 +10,8 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
-  ViewEncapsulation
+  ViewEncapsulation,
+  HostBinding,
 } from '@angular/core';
 import {Widget} from '../core/widget';
 
@@ -28,7 +29,7 @@ export class GridComponent extends Widget implements OnChanges,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
 
-
+  @HostBinding('class.v-grid') 'true';
   static isValidGutter(amount: number, gutter: number): boolean {
     if (100 / amount < gutter) {
       throw Error('gutter must be smaller than 100 / amount! '
