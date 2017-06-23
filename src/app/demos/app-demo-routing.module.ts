@@ -9,10 +9,10 @@ import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
 import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
-import {RoutebarDemoComponent} from './routebar/routebar-demo.component';
+import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 import {TextboxDemoComponent} from './textbox/textbox-demo.component';
 import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
-import {NavbarDemoComponent} from './navbar/navbar-demo.component';
+import {ToolbarDemoComponent} from './toolbar/toolbar-demo.component';
 
 import {AppDemoComponent} from './app-demo.component';
 import {GridDemoComponent} from './grid/grid-demo.component';
@@ -32,10 +32,10 @@ const appDemoRoutes: Routes = [
       {path: 'megamenu-demo', component: MegamenuDemo},
       {path: 'panelbar-demo', component: PanelbarDemoComponent},
       {path: 'panel-demo', component: PanelDemoComponent},
-      {path: 'routebar-demo', component: RoutebarDemoComponent},
+      {path: 'navbar-demo', component: NavbarDemoComponent},
       {path: 'textbox-demo', component: TextboxDemoComponent},
       {path: 'checkbox-demo', component: CheckboxDemoComponent},
-      {path: 'navbar-demo', component: NavbarDemoComponent},
+      {path: 'toolbar-demo', component: ToolbarDemoComponent},
       {path: 'grid-demo', component: GridDemoComponent},
     ]
   }

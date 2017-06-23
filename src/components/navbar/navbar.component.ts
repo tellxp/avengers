@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef, Input,
+  ElementRef,
   OnChanges,
   OnDestroy,
   OnInit, ViewEncapsulation
@@ -15,19 +15,18 @@ import {Widget} from '../core/widget';
 
 
 @Component({
-  selector: 'ave-routebar-item',
-  templateUrl: './routebar-item.component.html',
-  styleUrls: ['./routebar-item.component.scss'],
+  selector: 'ave-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
+
 })
-export class RoutebarItemComponent extends Widget implements OnChanges,
+export class NavbarComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-
-  @Input() title;
 
   constructor(elementRef: ElementRef) {
     super(elementRef);

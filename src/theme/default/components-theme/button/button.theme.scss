@@ -4,6 +4,8 @@
 @import "../../../shape";
 @import "../../../elevation";
 
+$ave-button-elevation: 2;
+
 // Style dictionary
 $ave-button-container-ingredient-map: (
   palette: (
@@ -161,6 +163,8 @@ $ave-button-theme: (
     $state-map: map_get($style-map, state);
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-button {
+      @include ave-elevation(2);
+
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
     }
   }
@@ -175,5 +179,6 @@ $ave-button-theme: (
   @include ave-button-light-style($ave-button-theme);
 
   @include ave-button-content-style($ave-button-theme);
+
 
 }

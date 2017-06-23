@@ -16,10 +16,11 @@ import {TextboxModule} from '../../../components/textbox/textbox.module';
 import {DropdownModule} from '../../../components/dropdown/dropdown.module';
 import {IntroductionComponent} from './material-design/introduction/introduction.component';
 import {CommonModule} from '@angular/common';
-import {RoutebarModule} from '../../../components/navbar/routebar.module';
+import {NavbarModule} from '../../../components/navbar/navbar.module';
 import {EnvironmentComponent} from './material-design/environment/environment.component';
 import {MaterialPropertiesComponent} from './material-design/material-properties/material-properties.component';
 import {ElevationShadowsComponent} from './material-design/elevation-shadows/elevation-shadows.component';
+import {ToolbarModule} from '../../../components/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -38,9 +39,10 @@ import {ElevationShadowsComponent} from './material-design/elevation-shadows/ele
     MegamenuModule,
     PanelbarModule,
     PanelModule,
-    RoutebarModule,
+    NavbarModule,
     TextboxModule,
     CheckboxModule,
+    ToolbarModule,
   ],
   exports: [
     GuidelinesComponent

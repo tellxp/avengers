@@ -6,27 +6,29 @@ import {
   Component,
   DoCheck,
   ElementRef,
+  Input,
   OnChanges,
   OnDestroy,
-  OnInit, ViewEncapsulation
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 
 
-
 @Component({
-  selector: 'ave-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'ave-navbar-item',
+  templateUrl: './navbar-item.component.html',
+  styleUrls: ['./navbar-item.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class NavbarComponent extends Widget implements OnChanges,
+export class NavbarItemComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
+
+  @Input() title;
 
   constructor(elementRef: ElementRef) {
     super(elementRef);

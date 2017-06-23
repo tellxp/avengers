@@ -12,7 +12,7 @@ import {DropdownDemo} from './dropdown/dropdown-demo.component';
 import {MenuDemo} from './menu/menu-demo.component';
 import {MegamenuDemo} from './megamenu/megamenu-demo.component';
 import {PanelDemoComponent} from './panel/panel-demo.component';
-import {RoutebarDemoComponent} from './routebar/routebar-demo.component';
+import {NavbarDemoComponent} from './navbar/navbar-demo.component';
 
 
 import {GridModule} from '../../components/grid/grid.module';
@@ -23,15 +23,15 @@ import {DropdownModule} from '../../components/dropdown/dropdown.module';
 import {MenuModule} from '../../components/menu/menu.module';
 import {MegamenuModule} from '../../components/megamenu/megamenu.module';
 import {PanelModule} from '../../components/panel/panel.module';
-import {RoutebarModule} from '../../components/navbar/routebar.module';
+import {NavbarModule} from '../../components/navbar/navbar.module';
 import {AppDemoRoutingModule} from './app-demo-routing.module';
 import {TreeviewModule} from '../../components/treeview/treeview.module';
 import {TextboxModule} from '../../components/textbox/textbox.module';
 import {TextboxDemoComponent} from './textbox/textbox-demo.component';
 import {CheckboxModule} from '../../components/checkbox/checkbox.module';
 import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
-import {NavbarModule} from '../../components/toolbar/navbar.module';
-import {NavbarDemoComponent} from './navbar/navbar-demo.component';
+import {ToolbarModule} from '../../components/toolbar/toolbar.module';
+import {ToolbarDemoComponent} from './toolbar/toolbar-demo.component';
 import {MarkdownModule} from '../../components/markdown/markdown.module';
 import {PanelbarModule} from '../../components/panelbar/panelbar.module';
 import {PanelbarDemoComponent} from './panelbar/panelbar-demo.component';
@@ -55,10 +55,10 @@ import {GridDemoComponent} from './grid/grid-demo.component';
     MegamenuModule,
     PanelbarModule,
     PanelModule,
-    RoutebarModule,
+    ToolbarModule,
     TextboxModule,
     CheckboxModule,
-    NavbarModule,
+    ToolbarModule,
     MarkdownModule,
     TreeviewModule
   ],
@@ -76,10 +76,10 @@ import {GridDemoComponent} from './grid/grid-demo.component';
     MegamenuDemo,
     PanelbarDemoComponent,
     PanelDemoComponent,
-    RoutebarDemoComponent,
+    NavbarDemoComponent,
     TextboxDemoComponent,
     CheckboxDemoComponent,
-    NavbarDemoComponent,
+    ToolbarDemoComponent,
     GridDemoComponent,
   ],
   providers: [],

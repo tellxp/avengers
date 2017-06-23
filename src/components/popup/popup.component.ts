@@ -15,7 +15,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {Dom} from '../core/dom';
-import {Widget, ElementPosition, ElementStyle} from '../core/widget';
+import {ElementPosition, ElementStyle, Widget} from '../core/widget';
 import {isNullOrUndefined} from 'util';
 
 
@@ -38,6 +38,7 @@ export class PopupComponent extends Widget implements OnChanges,
   @Input() offset: ElementPosition;
 
   position: ElementPosition;
+
   constructor(elementRef: ElementRef, public render: Renderer2) {
     super(elementRef);
     this.position = new ElementPosition();
@@ -80,29 +81,16 @@ export class PopupComponent extends Widget implements OnChanges,
   }
 
   setStyle() {
-    const style = new ElementStyle();
-    style.width = this.elementRef.nativeElement.clientWidth;
-    style.height = this.elementRef.nativeElement.clientHeight;
-    Dom.setElementStyle(style, this.elementRef.nativeElement, this.render);
+    const style = Dom.getElementStyle(this.elementRef.nativeElement);
+    
   }
 
   setPosition() {
-    let anchorPosition: ElementPosition = new ElementPosition();
-    let anchorStyle: ElementStyle = new ElementStyle();
-    if (this.anchor instanceof Widget) {
-      anchorPosition = Dom.getElementPosition(this.anchor.elementRef.nativeElement);
-
-      anchorStyle = Dom.getElementStyle(this.anchor.elementRef.nativeElement);
-
-      this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
-    }
-    if (this.anchor instanceof HTMLElement) {
-      anchorPosition = Dom.getElementPosition(this.anchor);
-      anchorStyle = Dom.getElementStyle(this.anchor);
-      this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
-    }
-    Dom.setElementPosition(this.position, this.elementRef.nativeElement, this.render);
-
+    const anchorPosition: ElementPosition = Dom.getElementPosition(this.anchor);
+    const anchorStyle: ElementStyle = Dom.getElementStyle(this.anchor)
+    this.position = this.calculatePosition(anchorPosition, anchorStyle, this.orientation, this.offset);
+    this.render.setStyle(this.elementRef.nativeElement, 'top', `${this.position.top}px`);
+    this.render.setStyle(this.elementRef.nativeElement, 'left', `${this.position.left}px`);
   }
 
   calculatePosition(anchorPosition: ElementPosition, anchorStyle: ElementStyle,

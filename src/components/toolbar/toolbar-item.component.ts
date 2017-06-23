@@ -8,20 +8,19 @@ import {
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit, ViewEncapsulation
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
 import {Widget} from '../core/widget';
 
 
 @Component({
-  selector: 'ave-routebar',
-  templateUrl: './routebar.component.html',
-  styleUrls: ['./routebar.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-
+  selector: 'ave-toolbar-item',
+  templateUrl: './toolbar-item.component.html',
+  styleUrls: ['./toolbar-item.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class RoutebarComponent extends Widget implements OnChanges,
+export class ToolbarItemComponent extends Widget implements OnChanges,
   OnInit,
   DoCheck,
   AfterContentInit, AfterContentChecked,
