@@ -19,6 +19,7 @@ import {CommonModule} from '@angular/common';
 import {RoutebarModule} from '../../../components/navbar/routebar.module';
 import {EnvironmentComponent} from './material-design/environment/environment.component';
 import {MaterialPropertiesComponent} from './material-design/material-properties/material-properties.component';
+import {ElevationShadowsComponent} from './material-design/elevation-shadows/elevation-shadows.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import {MaterialPropertiesComponent} from './material-design/material-properties
     IntroductionComponent,
     EnvironmentComponent,
     MaterialPropertiesComponent,
+    ElevationShadowsComponent,
   ],
   providers: [],
 })

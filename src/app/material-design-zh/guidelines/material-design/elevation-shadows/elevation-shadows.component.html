@@ -1,0 +1,70 @@
+<section>
+  <h1>Elevation & shadows </h1>
+  <h1>高度和阴影 </h1>
+  <h3>Objects in material design possess similar qualities to objects in the physical world. </h3>
+  <h3>Material design中的对象拥有与物理世界中对象相似的属性。</h3>
+  <ave-grid-row [amount]="12" [gutter]="1">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>In the physical world, objects can be stacked or affixed to one another, but cannot pass through each other.
+        Objects also cast shadows and reflect light.</p>
+      <p>在物理世界中，对象可以堆叠或者贴合到另外一个上面，但是不能互相穿透。</p>
+      <p>Material design reflects these qualities to form a spatial model that is familiar to users and can be applied
+        consistently across apps. </p>
+      <p>Material design从不同的方面模拟了上述的这些特质，用户非常熟悉这些特质，而且能够平滑地在不同的应用之间应用。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <strong>Elevation</strong>
+      <strong>高度</strong>
+      <p>Measured from the front of one surface to the front of another, an element’s elevation indicates the distance
+        between surfaces and the depth of its shadow.</p>
+      <p>从前一个平面到后一个平面，一个material元素的elevation通过它的阴影标识了它在不同平面之间的景深。</p>
+      <strong>Resting elevation</strong>
+      <strong>相对的elevation</strong>
+      <p>All material elements have resting elevations. While components have consistent resting elevations across apps,
+        they may have different resting elevations across platforms and devices.</p>
+      <p>所有的material元素都有相对elevation。组件在不同的应用之间具有一直的相对elevation，而在不同的平台和设备上，相对elevation不同。</p>
+      <strong>Dynamic elevation offsets</strong>
+      <strong>动态elevation偏移</strong>
+      <p>Dynamic elevation offsets are the goal elevation that a component moves towards, relative to its resting
+        state.</p>
+      <p>动态elevation偏移是指当组件向用户靠近时候，其相对位置会发生改变，此时目标的elevation就称为动态elevation。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt=""
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B7WCemMG6e0VR0pkTjhSTldhTGs/what_is_material_elevation_and_shadows.png">
+    </ave-grid-column>
+  </ave-grid-row>
+</section>
+<section>
+  <nav>
+    <h1>Contents</h1>
+    <h1>目录</h1>
+    <ul>
+      <li><a> Elevation (Android) </a></li>
+      <li><a> Elevation (Android) </a></li>
+      <li><a> Shadows </a></li>
+      <li><a> 阴影 </a></li>
+      <li><a> Object relationships </a></li>
+      <li><a> 对象之间的关系 </a></li>
+    </ul>
+  </nav>
+</section>
+<section>
+  <h1>Elevation (Android) </h1>
+  <h1>Elevation (Android) </h1>
+  <ave-grid-row [amount]="12" [gutter]="0">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <p>Elevation is the relative depth, or distance, between two surfaces along the z-axis. </p>
+      <strong>Specifications</strong>
+      <ul>
+        <li>Elevation is measured in the same units as the x and y axes, typically in density-independent pixels (dp).
+          Because material elements have depth (all material is 1dp thick), elevation is measured in distance from the
+          top of one surface to the top of another.
+        </li>
+        <li>A child object's elevation is relative to the parent object's elevation.</li>
+      </ul>
+      <p>The images and values shown are for Android apps.</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8"></ave-grid-column>
+  </ave-grid-row>
+</section>

@@ -4,6 +4,7 @@ import {IntroductionComponent} from './material-design/introduction/introduction
 import {GuidelinesComponent} from './guidelines.component';
 import {EnvironmentComponent} from './material-design/environment/environment.component';
 import {MaterialPropertiesComponent} from './material-design/material-properties/material-properties.component';
+import {ElevationShadowsComponent} from './material-design/elevation-shadows/elevation-shadows.component';
 
 
 const appRoutes: Routes = [
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
       {path: 'material-design/introduction', component: IntroductionComponent},
       {path: 'material-design/environment', component: EnvironmentComponent},
       {path: 'material-design/material-properties', component: MaterialPropertiesComponent},
+      {path: 'material-design/elevation-shadows', component: ElevationShadowsComponent},
     ]
   },
 ];

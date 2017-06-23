@@ -1,10 +1,12 @@
 <div class="material-container">
   <ave-grid-row [amount]="12" [gutter]="0">
-    <ave-grid-column [xs.span]="0" [md.span]="3">
+    <ave-grid-column [xs.span]="0" [md.span]="2">
       <div class="material-left-panel">
-        <a class="material-brand" href="/demos">
-          <img src="/assets/material-design.svg" alt="material-design">
-        </a>
+        <div class="material-brand">
+          <a href="/demos">
+            <img src="/assets/material-design.svg" alt="material-design">
+          </a>
+        </div>
         <ave-panelbar class="v-panelbar-default material-panelbar">
           <ave-panelbar-item class="v-panelbar-item-default material-category-name"
                              [title]="'Material design'"
@@ -22,7 +24,9 @@
                                routerLink="./material-design/material-properties"
                                routerLinkActive="active-link"></ave-panelbar-item>
             <ave-panelbar-item class="v-panelbar-item-default material-article-name"
-                               [title]="'Elevation & shadows'"></ave-panelbar-item>
+                               [title]="'Elevation & shadows'"
+                               routerLink="./material-design/elevation-shadows"
+                               routerLinkActive="active-link"></ave-panelbar-item>
             <ave-panelbar-item class="v-panelbar-item-default material-article-name"
                                [title]="'What’s new'"></ave-panelbar-item>
           </ave-panelbar-item>
@@ -198,17 +202,16 @@
       </div>
     </ave-grid-column>
 
-    <ave-grid-column [xs.span]="12" [md.span]="9">
+    <ave-grid-column [xs.span]="12" [md.span]="10">
 
       <div class="material-right-panel">
         <div class="material-toolbar">
-          <div class="material-toolbar-header">
-            <div class="material-toolbar-header-inner">sadfsadfsa</div>
-          </div>
+          toolbar
         </div>
-        <h1>Material Design</h1>
-        <router-outlet></router-outlet>
-        <p>Copy</p>
+        <div class="material-content">
+          <h1>Material Design</h1>
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </ave-grid-column>
   </ave-grid-row>
