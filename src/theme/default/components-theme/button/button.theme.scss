@@ -49,7 +49,7 @@ $ave-button-content-ingredient-map: (
 
 // Color
 $ave-button-palette: (
-  default: ave-palette($ave-palette-light-blue),
+  default: ave-palette($ave-palette-black,50, 200, 50),
   primary: ave-palette($ave-palette-purple),
   secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
@@ -123,8 +123,8 @@ $ave-button-theme: (
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
             .v-arcylic-light {
-              background-color: rgba($ambient-light-color, $ambient-light-ratio);
-              //@include ave-component-property-style($state-style, $property-map);
+              //background-color: rgba($ambient-light-color, $ambient-light-ratio);
+              @include ave-component-property-style($state-style, $property-map);
             }
           }
         }
@@ -163,7 +163,7 @@ $ave-button-theme: (
     $state-map: map_get($style-map, state);
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-button {
-      @include ave-elevation(2);
+      @include ave-elevation(0);
 
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
     }
