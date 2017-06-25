@@ -72,4 +72,163 @@
       <p>不同对象之间不同的elevation</p>
     </ave-grid-column>
   </ave-grid-row>
+
+  <ave-grid-row [amount]="12" [gutter]="0">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <strong>Resting elevation</strong>>
+      <h1>相对景深</h1>
+      <p>All material objects, regardless of size, have a resting elevation, or default elevation that does not change.
+        If an object changes elevation, it should return to its resting elevation as soon as possible.</p>
+      <p>所有的material对象，无论什么大小，都有不变的相对景深，或者是默认景深。如果一个对象的景深改变了，那么它应该尽快恢复到其应有的相对景深。</p>
+      <p>Desktop resting elevation is 2dp below the listed values to accommodate mouse and non-touch environments.</p>
+      <p>Desktop resting elevation is 2dp below the listed values to accommodate mouse and non-touch environments.</p>
+      <strong>Component elevations:</strong>
+      <strong>组件的景深：</strong>
+      <ul>
+        <li>Components maintain consistent resting elevations across apps. For example, the floating action button’s
+          elevation does not vary from one app to another.
+        </li>
+        <li>组件在不同的应用之间拥有连贯的相对景深。比如，浮动控制按钮的景深在任何应用中都不会改变。</li>
+        <li>Components may have different resting elevations across platforms and devices, depending on the depth of the
+          environment. For instance, TV has a greater depth than desktop as it has a larger screen and is viewed from
+          further away. Similarly, both TV and desktop have a greater depth than mobile.
+        </li>
+        <li>组件在不同的平台和设备之间可以有不同的相对景深，这依赖于整个环境的景深。比如：TV因为有更大的屏幕，用户会从更远的视角来交互，因此比桌面有更深的景深。
+          相似地，电视和桌面设备比移动设备有更深的景深。
+        </li>
+      </ul>
+      <strong>Responsive elevation and dynamic elevation offsets</strong>
+      <strong>响应式景深和动态景深偏移</strong>
+      <p>Some component types have responsive elevation, meaning they change elevation in response to user input (e.g.,
+        normal, focused, and pressed) or system events. These elevation changes are consistently implemented using
+        <strong>dynamic elevation offsets</strong>.</p>
+      <p>一些组件有响应式的景深，这意味着这些组件可以根据用户的输入（比如常规、聚焦、按下按钮）或者其他的系统事件做出响应，改变自身的景深。这些景深的改变就是使用<strong>动态景深偏移</strong>。</p>
+      <p>Dynamic elevation offsets are the goal elevation that a component moves towards, relative to the component’s
+        resting state. They ensure that elevation changes are consistent across actions and component types. For
+        example, all components that lift on press have the same elevation change relative to their resting
+        elevation.</p>
+      <p>动态景深偏移是指组件相对其位置，向用户的视角移动而形成的目标景深。它保证景深的改变在动作和组件类型之间是连贯的。比如：所有的组件在被按下时，有着相对其位置固定的景深偏移。</p>
+      <p>Once the input event is completed or cancelled, the component will return to its resting elevation.</p>
+      <p>一旦当输入事件结束或者取消，组件就回到了其本来的相对景深。</p>
+      <strong>Avoiding elevation interference</strong>
+      <strong>避免景深干扰</strong>
+      <p>Components with responsive elevations may encounter other components as they move between their resting
+        elevations and dynamic elevation offsets. Because material cannot
+        pass through other material, components avoid interfering with one another any number of ways, whether on
+        a per-component basis or using the entire app layout.</p>
+      <p>具有响应式高度的组件在不同的高度层上移动的时候，可能会和其他组件产生碰撞。因为material元素不能穿透，所以组件通过为每个组件定义一个高度值或者使用整体应用布局的方式来避免高度层冲突。</p>
+      <p>On a component level, components can move or be removed before they cause interference. For example, a floating
+        action button (FAB) can disappear or move off-screen before a user picks up a card, or it can move if a snackbar
+        appears.</p>
+      <p>在一个组件层上，组件可以在其会产生干扰的时候被移动或者被删除。比如，浮动命令按钮（FAB）可以在用户点击一个卡片之前隐藏或者移动，或者当snackbar出现之前。</p>
+      <p>On the layout level, design your app layout to minimize opportunities for interference. For example, position
+        the FAB to one side of a stream of cards so the FAB won’t interfere when a user tries to pick up one of
+        cards.</p>
+      <p>在布局层，应该认真规划你的布局使得最大化地避免产生高度串扰。比如：将FAB固定到卡片流的一侧，这样在用户试图点击FAB的时候将不会影响卡片。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="8">
+      <table border="1" rules="all">
+        <tr>
+          <th>
+            <p>Elevation (dp)</p>
+            <p>高度值 (dp)</p>
+          </th>
+          <th>
+            <p>Component</p>
+            <p>组件</p>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <p>24</p>
+          </td>
+          <td>
+            <p>Dialog</p>
+            <p>Picker</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>16</p>
+          </td>
+          <td>
+            <p>Nav drawer </p>
+            <p>Right drawer</p>
+            <p>Modal bottom Sheet</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>12</p>
+          </td>
+          <td>
+            <p>Floating action button (FAB - pressed)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>9</p>
+          </td>
+          <td>
+            <p>Sub menu (+1dp for each sub menu)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>8</p>
+          </td>
+          <td>
+            <p>Bottom navigation bar</p>
+            <p>Menu</p>
+            <p>Card (when picked up) </p>
+            <p>Raised button (pressed state)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>6</p>
+          </td>
+          <td>
+            <p>Floating action button (FAB - resting elevation)</p>
+            <p>Snackbar</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>4</p>
+          </td>
+          <td>
+            <p>App Bar</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>3</p>
+          </td>
+          <td>
+            <p>Refresh indicator</p>
+            <p>Quick entry / Search bar (scrolled state)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>2</p>
+          </td>
+          <td>
+            <p>Card (resting elevation) *</p>
+            <p>Raised button (resting elevation)*</p>
+            <p>Quick entry / Search bar (resting elevation)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>1</p>
+          </td>
+          <td>
+            <p>Switch</p>
+          </td>
+        </tr>
+      </table>
+    </ave-grid-column>
+  </ave-grid-row>
 </section>
