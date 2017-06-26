@@ -255,30 +255,72 @@
 
 <section>
   <h1> Shadows </h1>
+  <h1> 阴影 </h1>
   <p>Shadows provide important visual cues about objects’ depth and directional movement. They are the only visual cue
     indicating the amount of separation between surfaces. An object’s elevation determines the appearance of its
     shadow.</p>
+  <p>阴影为对象提供了视觉上的指引，包括其景深和方向性的移动。这是在不同的平面之间移动的时候唯一的提示。一个对象的高度决定了它的阴影展现方式。</p>
   <ave-grid-row [amount]="12" [gutter]="0">
     <ave-grid-column [xs.span]="12" [md.span]="4">
-      <img alt="" aria-describedby="shadows-figure-caption-1"
+      <img class="img" alt="" aria-describedby="shadows-figure-caption-1"
            src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsYUJ6a1luU1ZtUWs/whatismaterial_3d_elevation_shadow1.png">
       <p>Don't.</p>
+      <p>不建议的做法。</p>
       <p>Without a shadow, nothing indicates that the floating action button is separate from the background
         surfaces.</p>
+      <p>没有阴影，就无法提示浮动命令按钮是与背景的平面分离的。</p>
     </ave-grid-column>
     <ave-grid-column [xs.span]="12" [md.span]="4">
-      <img alt="" aria-describedby="shadows-figure-caption-2"
+      <img class="img" alt="" aria-describedby="shadows-figure-caption-2"
            src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3ZDc2TUNPMEdNSkE/whatismaterial_3d_elevation_shadow2.png">
       <p>Don't.</p>
+      <p>不建议的操作方式。</p>
       <p>Crisp shadows indicate the floating action button and the blue sheet are separate elements. However, their
         shadows are so similar that they imply they are both at the same elevation.</p>
+      <p>松散的阴影说明FAB和蓝色的页面是分离的元素。但是，它们之间的阴影太相似了，因此用户会认为它们位于同一高度层。</p>
     </ave-grid-column>
     <ave-grid-column [xs.span]="12" [md.span]="4">
-      <img alt="" aria-describedby="shadows-figure-caption-3"
+      <img class="img" alt="" aria-describedby="shadows-figure-caption-3"
            src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3U1JzN0ltV1ViUWs/whatismaterial_3d_elevation_shadow3.png">
       <p>Do.</p>
+      <p>建议的操作方式。</p>
       <p>Softer, larger shadows indicate the floating action button is at a higher elevation than the blue sheet, which
         has a crisper shadow.</p>
+      <p>柔软的，更大的阴影表明浮动命令按钮有着比只有松散的阴影的蓝色页面更高的高度。</p>
+    </ave-grid-column>
+  </ave-grid-row>
+
+  <p>In motion, shadows provide useful cues about an object’s direction of movement and whether the distance between
+    surfaces is increasing or decreasing.</p>
+  <p>在动画中，阴影为对象的移动方向提供了有效的提示，无论对象是与平面之间的距离是增加还是减少。</p>
+  <ave-grid-row [amount]="12" [gutter]="2">
+
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt="" aria-describedby="shadows-figure-caption-4"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsRlUtdkk1c2xwUkU/whatismaterial_3d_elevation_shadow4.png">
+      <p>Don't.</p>
+      <p>不建议的做法</p>
+      <p>Without a shadow to indicate elevation, it’s unclear whether this square is increasing in size or increasing
+        its elevation.</p>
+      <p>不使用阴影来提示高度，这样就不知道长方形到底是大小改变了还是高度改变了。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt="" aria-describedby="shadows-figure-caption-5"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsMlg5UmlWV2FnQ3M/whatismaterial_3d_elevation_shadow5.png">
+      <p>Do.</p>
+      <p>建议的做法。</p>
+      <p>The shadow grows softer and larger as the object’s elevation increases and grows crisper and smaller as the
+        elevation decreases.</p>
+      <p>阴影慢慢变得柔软和更大，同时对象的高度不断增加，对象高度减少，阴影变得更小、更锐化。</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img class="img" alt="" aria-describedby="shadows-figure-caption-6"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsY1hrcHlOdEJuU1k/whatismaterial_3d_elevation_shadow6.png">
+      <p>Do.</p>
+      <p>建议的做法。</p>
+      <p>In this case, the consistent shadow helps the user understand that the object is changing shape as opposed to
+        changing elevation.</p>
+      <p>在这一案例中，连贯的阴影帮助用户理解对象正在改变其形状而不是改变高度。</p>
     </ave-grid-column>
   </ave-grid-row>
 </section>
