@@ -657,12 +657,12 @@ $ave-palette-white: (
     100: $black-87-opacity,
     200: $black-87-opacity,
     300: $black-87-opacity,
-    400: white,
-    500: white,
+    400: $black-87-opacity,
+    500: $white-87-opacity,
     600: $white-87-opacity,
     700: $white-87-opacity,
     800: $white-87-opacity,
-    900: $white-87-opacity,
+    900: white,
     A100: $black-87-opacity,
     A200: $black-87-opacity,
     A400: white,
@@ -714,7 +714,7 @@ $ambient-light-ratio: 0.4;
     $result: (
       base:(
         background-color: map-get($base-palette, $default),
-        color: $dark-theme-text-color,
+        color: map-get(map-get($base-palette, contrast),$default),
       ),
       active:(
         background-color: map-get($base-palette, $darker),
@@ -737,28 +737,28 @@ $ambient-light-ratio: 0.4;
     $result: (
       base:(
         background-color: map-get($base-palette, $default),
-        color: $light-theme-text-color,
+        color: map-get(map-get($base-palette, contrast), $default),
         outline-color: transparent,
       ),
       active:(
-        background-color: map-get($base-palette, $lighter),
-        color: $light-theme-text-color,
+        background-color: map-get($base-palette, $darker),
+        color: map-get(map-get($base-palette, contrast),$darker),
         outline-color: map-get($base-palette, $darker),
 
       ),
       hover:(
-        background-color: map-get($base-palette, $lighter),
-        color: $light-theme-text-color,
+        background-color: map-get($base-palette, $darker),
+        color: map-get(map-get($base-palette, contrast),$darker),
         outline-color: map-get($base-palette, $darker),
       ),
       focus:(
-        background-color: map-get($base-palette, $lighter),
-        color: $light-theme-text-color,
+        background-color: map-get($base-palette, $darker),
+        color: map-get(map-get($base-palette, contrast),$darker),
         outline-color: map-get($base-palette, $darker),
       ),
       visited:(
-        background-color: map-get($base-palette, $lighter),
-        color: $light-theme-text-color,
+        background-color: map-get($base-palette, $darker),
+        color: map-get(map-get($base-palette, contrast),$darker),
         outline-color: map-get($base-palette, $darker),
       )
     );
