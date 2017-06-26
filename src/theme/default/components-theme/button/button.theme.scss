@@ -4,19 +4,14 @@
 @import "../../../shape";
 @import "../../../elevation";
 
-$ave-button-elevation: 2;
+$ave-button-elevation: 0;
 
 // Style dictionary
 $ave-button-container-ingredient-map: (
-  palette: (
-    scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
-    property: (outline-color,),
-  ),
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
-    property: (padding, outline-style, outline-width,),
+    state: (base, focus, ),
+    property: (padding, ),
   ),
 );
 
@@ -49,12 +44,12 @@ $ave-button-content-ingredient-map: (
 
 // Color
 $ave-button-palette: (
-  default: ave-palette($ave-palette-black,50, 200, 50),
-  primary: ave-palette($ave-palette-purple),
+  default: ave-palette($ave-palette-white, 50, 50),
+  primary: ave-palette($ave-palette-indigo),
   secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
-  info: ave-palette($ave-palette-cyan),
-  warning: ave-palette($ave-palette-deep-orange),
+  info: ave-palette($ave-palette-blue),
+  warning: ave-palette($ave-palette-orange),
   danger: ave-palette($ave-palette-red),
   link: ave-palette($ave-palette-blue-grey)
 );
@@ -123,8 +118,10 @@ $ave-button-theme: (
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
             .v-arcylic-light {
-              //background-color: rgba($ambient-light-color, $ambient-light-ratio);
-              @include ave-component-property-style($state-style, $property-map);
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.12);
+            }
+            .v-ripple-element {
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.2);
             }
           }
         }
@@ -163,7 +160,7 @@ $ave-button-theme: (
     $state-map: map_get($style-map, state);
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-button {
-      @include ave-elevation(0);
+      @include ave-elevation($ave-button-elevation);
 
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
     }
