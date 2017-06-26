@@ -231,4 +231,54 @@
       </table>
     </ave-grid-column>
   </ave-grid-row>
+  <h3>Component elevation comparisons</h3>
+  <h3>组件高度层的比较</h3>
+  <p>The following diagram compares component resting elevations and dynamic elevation offsets. </p>
+  <p>下面的图片比较了不同组件之间的相对高度层和动态高度偏移。</p>
+  <img class="img" alt="" aria-describedby="elevation-android-figure-caption-2"
+       src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3VG9SaVpNbkpHb2s/whatismaterial_3d_elevation2.png">
+  <p>In this diagram, only the elevation dimensions and layout for components are accurate. Other dimensions and overall
+    layout of components are for illustration only.</p>
+  <p>在这张图片中，只有高度层这一维度和组件的布局是精确的。其他维度只是示例。</p>
+
+  <img class="img" alt="" aria-describedby="elevation-android-figure-caption-3"
+       src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B8v7jImPsDi-cUtqZzE0REdJdnc/whatismaterial_3d_elevation3.png">
+  <p>An example app layout with cards and a floating action button, along with a cross-section diagram of its component
+    elevations along its z-axis</p>
+  <p>一个应用的例子，包含卡片和FAB，同时也有跨section的组件高度层示意图。</p>
+  <img class="img" alt="" aria-describedby="elevation-android-figure-caption-4"
+       src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B8v7jImPsDi-eV81TDFrR2ZPU1E/whatismaterial_3d_elevation4.png">
+  <p>An example app layout with an open navigation drawer, along with a cross-section diagram of its component
+    elevations along its z-axis.</p>
+  <p>具有一个打开的导航栏的例子，包括组件z轴上高度层示意图。</p>
+</section>
+
+<section>
+  <h1> Shadows </h1>
+  <p>Shadows provide important visual cues about objects’ depth and directional movement. They are the only visual cue
+    indicating the amount of separation between surfaces. An object’s elevation determines the appearance of its
+    shadow.</p>
+  <ave-grid-row [amount]="12" [gutter]="0">
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img alt="" aria-describedby="shadows-figure-caption-1"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0B6Okdz75tqQsYUJ6a1luU1ZtUWs/whatismaterial_3d_elevation_shadow1.png">
+      <p>Don't.</p>
+      <p>Without a shadow, nothing indicates that the floating action button is separate from the background
+        surfaces.</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img alt="" aria-describedby="shadows-figure-caption-2"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3ZDc2TUNPMEdNSkE/whatismaterial_3d_elevation_shadow2.png">
+      <p>Don't.</p>
+      <p>Crisp shadows indicate the floating action button and the blue sheet are separate elements. However, their
+        shadows are so similar that they imply they are both at the same elevation.</p>
+    </ave-grid-column>
+    <ave-grid-column [xs.span]="12" [md.span]="4">
+      <img alt="" aria-describedby="shadows-figure-caption-3"
+           src="https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3U1JzN0ltV1ViUWs/whatismaterial_3d_elevation_shadow3.png">
+      <p>Do.</p>
+      <p>Softer, larger shadows indicate the floating action button is at a higher elevation than the blue sheet, which
+        has a crisper shadow.</p>
+    </ave-grid-column>
+  </ave-grid-row>
 </section>
