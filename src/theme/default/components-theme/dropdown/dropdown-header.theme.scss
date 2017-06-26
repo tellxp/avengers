@@ -2,17 +2,13 @@
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
+@import "dropdown.theme";
 
 // State dictionary
 $ave-dropdown-header-container-ingredient-map: (
-  //palette: (
-  //  scene: (default, primary, secondary, success, info, warning, danger, link,),
-  //  state: (base, active, hover, focus),
-  //  property: (outline-color,),
-  //),
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
+    state: (base,),
     property: (padding),
   ),
 );
@@ -95,17 +91,11 @@ $ave-dropdown-header-theme: (
       .#{$ave-prefix}-dropdown-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
-          @if ($state == base) {
-            & > .v-dropdown-header {
-              & > .v-arcylic-ground {
-                @include ave-component-property-style($state-style, $property-map);
-              }
-            }
-          } @else {
-            & > .v-dropdown-header:#{$state} {
-              & > .v-arcylic-ground {
-                @include ave-component-property-style($state-style, $property-map);
-              }
+
+          & > .v-dropdown-header {
+            & > .v-arcylic-ground {
+              z-index: $ave-dropdown-elevation - 3;
+              @include ave-component-property-style($state-style, $property-map);
             }
           }
         }
@@ -127,17 +117,14 @@ $ave-dropdown-header-theme: (
       .#{$ave-prefix}-dropdown-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
-          @if ($state == base) {
-            & > .v-dropdown-header {
-              & > .v-arcylic-light {
-                background-color: transparent;
-              }
+          & > .v-dropdown-header {
+            .v-arcylic-light {
+              z-index: $ave-dropdown-elevation - 2;
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.12);
             }
-          } @else {
-            & > .v-dropdown-header:#{$state} {
-              & > .v-arcylic-light {
-                background-color: rgba($ambient-light-color, $ambient-light-ratio);
-              }
+            .v-ripple-element {
+              z-index: $ave-dropdown-elevation - 1;
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.2);
             }
           }
         }
@@ -161,12 +148,14 @@ $ave-dropdown-header-theme: (
           @if ($state == base) {
             & > .v-dropdown-header {
               & > .v-arcylic-content {
+                z-index: $ave-dropdown-elevation;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
             & > .v-dropdown-header:#{$state} {
               & > .v-arcylic-content {
+                z-index: $ave-dropdown-elevation;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
@@ -191,10 +180,13 @@ $ave-dropdown-header-theme: (
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
             & > .v-dropdown-header {
+              z-index: $ave-dropdown-elevation;
               @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
             & > .v-dropdown-header:#{$state} {
+              z-index: $ave-dropdown-elevation;
+
               @include ave-component-property-style($state-style, $property-map);
             }
           }

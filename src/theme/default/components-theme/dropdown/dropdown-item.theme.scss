@@ -3,6 +3,7 @@
 @import "../../../typography";
 @import "../../../shape";
 @import "../../../elevation";
+@import "dropdown.theme";
 
 // Style dictionary
 $ave-dropdown-item-container-ingredient-map: (
@@ -94,6 +95,8 @@ $ave-dropdown-item-theme: (
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-dropdown-item-#{$scene} {
         .v-arcylic-ground {
+          z-index: $ave-dropdown-elevation - 3;
+
           @include ave-component-state-style($scene-style, $state-map, $property-map);
         }
       }
@@ -116,6 +119,8 @@ $ave-dropdown-item-theme: (
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
             .v-arcylic-light {
+              z-index: $ave-dropdown-elevation - 2;
+
               background-color: rgba($ambient-light-color, $ambient-light-ratio);
               //@include ave-component-property-style($state-style, $property-map);
             }
@@ -142,6 +147,8 @@ $ave-dropdown-item-theme: (
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-dropdown-item-#{$scene} {
         .v-arcylic-content {
+          z-index: $ave-dropdown-elevation;
+
           @include ave-component-state-style($scene-style, $state-map, $property-map);
         }
       }
@@ -156,6 +163,7 @@ $ave-dropdown-item-theme: (
     $state-map: map_get($style-map, state);
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-dropdown-item {
+      z-index: $ave-dropdown-elevation;
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
     }
   }

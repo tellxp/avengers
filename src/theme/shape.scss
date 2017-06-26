@@ -67,30 +67,30 @@ $ave-shape-ratio-2: (
     base: (
       padding: map_get($base-sizing, $default),
       outline-style: none,
-      outline-width: 2px,
+      outline-width: 1rem,
     ),
     active: (
       padding: map_get($base-sizing, $default),
       outline-style: solid,
-      outline-width: 2px,
+      outline-width: 1rem,
 
     ),
     hover: (
       padding: map_get($base-sizing, $default),
       outline-style: solid,
-      outline-width: 2px,
+      outline-width: 1rem,
 
     ),
     focus: (
       padding: map_get($base-sizing, $default),
       outline-style: solid,
-      outline-width: 2px,
+      outline-width: 1rem,
 
     ),
     visited:(
       padding: map_get($base-sizing, $default),
       outline-style: solid,
-      outline-width: 2px,
+      outline-width: 1rem,
 
     )
   );

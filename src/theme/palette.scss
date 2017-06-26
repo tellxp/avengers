@@ -738,7 +738,7 @@ $ambient-light-ratio: 0.2;
       base:(
         background-color: map-get($base-palette, $default),
         color: map-get(map-get($base-palette, contrast), $default),
-        outline-color: transparent,
+        outline-color: map-get($base-palette, $darker),
       ),
       active:(
         background-color: map-get(map-get($base-palette, contrast),$default),

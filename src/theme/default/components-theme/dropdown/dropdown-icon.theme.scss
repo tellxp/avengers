@@ -2,6 +2,7 @@
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
+@import "dropdown.theme";
 
 // State dictionary
 $ave-dropdown-icon-container-ingredient-map: (
@@ -98,12 +99,14 @@ $ave-dropdown-icon-theme: (
           @if ($state == base) {
             & > .v-dropdown-icon {
               & > .v-arcylic-ground {
+                z-index: $ave-dropdown-elevation - 3;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
             & > .v-dropdown-icon:#{$state} {
               & > .v-arcylic-ground {
+                z-index: $ave-dropdown-elevation - 3;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
@@ -130,12 +133,14 @@ $ave-dropdown-icon-theme: (
           @if ($state == base) {
             & > .v-dropdown-icon {
               & > .v-arcylic-light {
+                z-index: $ave-dropdown-elevation - 2;
                 background-color: transparent;
               }
             }
           } @else {
             & > .v-dropdown-icon:#{$state} {
               & > .v-arcylic-light {
+                z-index: $ave-dropdown-elevation - 2;
                 background-color: rgba($ambient-light-color, $ambient-light-ratio);
               }
             }
@@ -166,12 +171,14 @@ $ave-dropdown-icon-theme: (
           @if ($state == base) {
             & > .v-dropdown-icon {
               & > .v-arcylic-content {
+                z-index: $ave-dropdown-elevation;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
           } @else {
             & > .v-dropdown-icon:#{$state} {
               & > .v-arcylic-content {
+                z-index: $ave-dropdown-elevation;
                 @include ave-component-property-style($state-style, $property-map);
               }
             }
@@ -196,10 +203,14 @@ $ave-dropdown-icon-theme: (
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
             & > .v-dropdown-icon {
+              z-index: $ave-dropdown-elevation;
+
               @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
             & > .v-dropdown-icon:#{$state} {
+              z-index: $ave-dropdown-elevation;
+
               @include ave-component-property-style($state-style, $property-map);
             }
           }

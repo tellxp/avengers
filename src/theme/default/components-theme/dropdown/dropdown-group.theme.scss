@@ -2,6 +2,7 @@
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
+@import "dropdown.theme";
 
 // State dictionary
 $ave-dropdown-group-container-ingredient-map: (
@@ -55,6 +56,8 @@ $ave-dropdown-group-theme: (
     $state-map: map_get($style-map, state);
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-dropdown-group {
+      z-index: $ave-dropdown-elevation;
+
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
     }
   }
@@ -74,12 +77,13 @@ $ave-dropdown-group-theme: (
           $state-style: map_get($scene-style, $state);
           @if ($state == base) {
             & > .v-arcylic-ground {
-              z-index: -1;
+              z-index: $ave-dropdown-elevation - 1;
+
               @include ave-component-property-style($state-style, $property-map);
             }
           } @else {
             & > .v-arcylic-ground:#{$state} {
-              z-index: -1;
+              z-index: $ave-dropdown-elevation - 1;
               @include ave-component-property-style($state-style, $property-map);
             }
           }
