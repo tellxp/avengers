@@ -3,6 +3,7 @@
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
+@import "panelbar.theme";
 
 // State dictionary
 $ave-panelbar-page-container-ingredient-map: (
@@ -41,6 +42,7 @@ $ave-panelbar-page-theme: (
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-panelbar-page {
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
+      z-index: $ave-panelbar-elevation;
     }
   }
 }

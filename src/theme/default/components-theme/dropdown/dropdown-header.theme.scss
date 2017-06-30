@@ -42,14 +42,14 @@ $ave-dropdown-header-content-ingredient-map: (
 
 // Color
 $ave-dropdown-header-palette: (
-  default: ave-palette($ave-palette-grey),
-  primary: ave-palette($ave-palette-blue),
+  default: ave-palette($ave-palette-white, 50, 50),
+  primary: ave-palette($ave-palette-indigo),
   secondary: ave-palette($ave-palette-pink),
   success: ave-palette($ave-palette-green),
-  info: ave-palette($ave-palette-cyan),
-  warning: ave-palette($ave-palette-deep-orange),
+  info: ave-palette($ave-palette-blue),
+  warning: ave-palette($ave-palette-orange),
   danger: ave-palette($ave-palette-red),
-  link: ave-palette($ave-palette-white)
+  link: ave-palette($ave-palette-blue-grey)
 );
 // Typography.
 $ave-dropdown-header-typography: (

@@ -1,19 +1,14 @@
-@import "../../../../components/panelbar/panelbar-header.component";
 @import "../../../base";
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
+@import "panelbar.theme";
 
 // State dictionary
 $ave-panelbar-header-container-ingredient-map: (
-  //palette: (
-  //  scene: (default, primary, secondary, success, info, warning, danger, link,),
-  //  state: (base, active, hover, focus),
-  //  property: (outline-color,),
-  //),
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, active, hover, focus),
+    state: (base,),
     property: (padding),
   ),
 );
@@ -21,7 +16,7 @@ $ave-panelbar-header-container-ingredient-map: (
 $ave-panelbar-header-ground-ingredient-map: (
   palette: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base),
+    state: (base, ),
     property: (background-color),
   ),
 );
@@ -40,7 +35,7 @@ $ave-panelbar-header-content-ingredient-map: (
   ),
   typography: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base,),
+    state: (base, active, hover, focus),
     property: (font,),
   ),
 );
@@ -95,21 +90,12 @@ $ave-panelbar-header-theme: (
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-panelbar-item-#{$scene} {
 
-
-
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
-          @if ($state == base) {
-            & > .v-panelbar-header {
-              & > .v-arcylic-ground {
-                @include ave-component-property-style($state-style, $property-map);
-              }
-            }
-          } @else {
-            & > .v-panelbar-header:#{$state} {
-              & > .v-arcylic-ground {
-                @include ave-component-property-style($state-style, $property-map);
-              }
+          & > .v-panelbar-header {
+            & > .v-arcylic-ground {
+              z-index: $ave-panelbar-elevation - 3;
+              @include ave-component-property-style($state-style, $property-map);
             }
           }
         }
@@ -130,23 +116,21 @@ $ave-panelbar-header-theme: (
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-panelbar-item-#{$scene} {
         & .v-panelbar-header-active {
-          & > .v-arcylic-light {
-            background-color: rgba($key-light-color, $ambient-light-ratio);
+          .v-arcylic-light {
+            background-color: rgba(ave-property($ingredient-style, $scene, active, background-color), 0.12);
+            z-index: $ave-panelbar-elevation - 2;
           }
         }
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
-          @if ($state == base) {
-            & > .v-panelbar-header {
-              & > .v-arcylic-light {
-                background-color: transparent;
-              }
+          & > .v-panelbar-header:#{$state} {
+            .v-ripple-element {
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.2);
+              z-index: $ave-panelbar-elevation - 1;
             }
-          } @else {
-            & > .v-panelbar-header:#{$state} {
-              & > .v-arcylic-light {
-                background-color: rgba($key-light-color, $ambient-light-ratio);
-              }
+            .v-arcylic-light {
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.12);
+              z-index: $ave-panelbar-elevation - 2;
             }
           }
         }
@@ -156,11 +140,6 @@ $ave-panelbar-header-theme: (
 }
 
 @mixin ave-panelbar-header-content-style($theme) {
-  .v-panelbar-header {
-    &>.material-content {
-      color: $ave-default-content-color;
-    }
-  }
   @each $ingredient, $style-map in $ave-panelbar-header-content-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
     $scene-map: map_get($style-map, scene);
@@ -172,17 +151,10 @@ $ave-panelbar-header-theme: (
       .#{$ave-prefix}-panelbar-item-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
-          @if ($state == base) {
-            & > .v-panelbar-header {
-              & > .v-arcylic-content {
-                @include ave-component-property-style($state-style, $property-map);
-              }
-            }
-          } @else {
-            & > .v-panelbar-header:#{$state} {
-              & > .v-arcylic-content {
-                @include ave-component-property-style($state-style, $property-map);
-              }
+          & > .v-panelbar-header {
+            & > .v-arcylic-content {
+              @include ave-component-property-style($state-style, $property-map);
+              z-index: $ave-panelbar-elevation;
             }
           }
         }
@@ -203,14 +175,9 @@ $ave-panelbar-header-theme: (
       .#{$ave-prefix}-panelbar-item-#{$scene} {
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
-          @if ($state == base) {
-            & > .v-panelbar-header {
-              @include ave-component-property-style($state-style, $property-map);
-            }
-          } @else {
-            & > .v-panelbar-header:#{$state} {
-              @include ave-component-property-style($state-style, $property-map);
-            }
+          & > .v-panelbar-header {
+            @include ave-component-property-style($state-style, $property-map);
+            z-index: $ave-panelbar-elevation;
           }
         }
       }

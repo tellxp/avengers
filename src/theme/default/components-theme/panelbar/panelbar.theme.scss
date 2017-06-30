@@ -1,9 +1,10 @@
-@import "../../../../components/panelbar/panelbar.component";
 @import "../../../base";
 @import "../../../palette";
 @import "../../../typography";
 @import "../../../shape";
+@import "../../../elevation";
 
+$ave-panelbar-elevation: 6;
 // State dictionary
 $ave-panelbar-container-ingredient-map: (
   shape: (
@@ -40,7 +41,9 @@ $ave-panelbar-theme: (
     $state-map: map_get($style-map, state);
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-panelbar {
+      @include ave-elevation($ave-panelbar-elevation);
       @include ave-component-scene-style($ingredient-style, $scene-map, $state-map, $property-map);
+      z-index: $ave-panelbar-elevation;
     }
   }
 }
