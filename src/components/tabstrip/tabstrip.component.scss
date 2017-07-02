@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-tabstrip {
+.#{$ave-prefix}-tabstrip {
   @extend %v-container;
   background-color: transparent;
   outline: none;

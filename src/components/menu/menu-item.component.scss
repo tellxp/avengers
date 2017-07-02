@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-menu-item {
+.#{$ave-prefix}-menu-item {
   display: block;
   position: relative;
   min-width: 6rem;

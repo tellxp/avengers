@@ -1,4 +1,6 @@
-.v-grid-row {
+@import "../../theme/base";
+
+.#{$ave-prefix}-grid-row {
   display: flex;
   flex-flow: row;
   overflow: auto;

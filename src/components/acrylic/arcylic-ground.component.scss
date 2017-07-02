@@ -1,7 +1,8 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-arcylic-ground {
-  @extend %v-acrylic;
+.#{$ave-prefix}-arcylic-ground {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;

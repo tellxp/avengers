@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-tabstrip-page {
+.#{$ave-prefix}-tabstrip-page {
   display: block;
   position: absolute;
   top: 0;

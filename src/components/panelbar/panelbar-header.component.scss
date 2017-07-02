@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-panelbar-header {
+.#{$ave-prefix}-panelbar-header {
   @extend %v-container;
 
   box-sizing: border-box;
@@ -8,8 +9,8 @@
   outline: none;
   background-color: transparent;
   border-bottom: black solid 1px;
-  .v-arcylic-content {
-    .v-icon {
+  .#{$ave-prefix}-arcylic-content {
+    .#{$ave-prefix}-icon {
       position: absolute;
       right: 0;
     }

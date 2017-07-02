@@ -10,8 +10,8 @@ $ave-button-elevation: 0;
 $ave-button-container-ingredient-map: (
   shape: (
     scene: (default, primary, secondary, success, info, warning, danger, link,),
-    state: (base, focus, ),
-    property: (padding, ),
+    state: (base, focus,),
+    property: (padding,),
   ),
 );
 
@@ -51,7 +51,7 @@ $ave-button-palette: (
   info: ave-palette($ave-palette-blue),
   warning: ave-palette($ave-palette-orange),
   danger: ave-palette($ave-palette-red),
-  link: ave-palette($ave-palette-blue-grey)
+  link: ave-palette($ave-palette-light-blue)
 );
 
 // Typography.
@@ -119,11 +119,11 @@ $ave-button-theme: (
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
             .v-ripple-element {
-              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.2);
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), $ave-ripple-opacity);
               z-index: $ave-button-elevation - 1;
             }
             .v-arcylic-light {
-              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.12);
+              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), $ave-light-opacity);
               z-index: $ave-button-elevation - 2;
             }
 
@@ -179,6 +179,5 @@ $ave-button-theme: (
   @include ave-button-light-style($ave-button-theme);
 
   @include ave-button-content-style($ave-button-theme);
-
 
 }

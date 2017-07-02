@@ -1,7 +1,8 @@
 @import "../core/widget";
 @import "../utils/utils";
+@import "../../theme/base";
 
-.v-dropdown-icon {
+.#{$ave-prefix}-dropdown-icon {
   @extend %v-control;
   @include user-select(none);
 

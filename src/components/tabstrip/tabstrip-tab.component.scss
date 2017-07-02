@@ -1,7 +1,8 @@
 @import "../core/widget";
 @import "../utils/utils";
+@import "../../theme/base";
 
-.v-tabstrip-tab {
+.#{$ave-prefix}-tabstrip-tab {
   @extend %v-control;
   @include user-select(none);
   vertical-align: bottom;

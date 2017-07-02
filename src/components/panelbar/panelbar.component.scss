@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-panelbar {
+.#{$ave-prefix}-panelbar {
   @extend %v-container;
 
   background-color: transparent;

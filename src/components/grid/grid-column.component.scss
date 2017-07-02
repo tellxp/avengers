@@ -1,5 +1,7 @@
 @import "../core/widget";
-.v-grid-column {
+@import "../../theme/base";
+
+.#{$ave-prefix}-grid-column {
   display: flex;
   flex-flow: column;
   overflow: auto;

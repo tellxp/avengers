@@ -1,3 +1,5 @@
-.v-toolbar {
+@import "../../theme/base";
+
+.#{$ave-prefix}-toolbar {
   display: block;
 }

@@ -1,12 +1,13 @@
 ﻿@import "../core/widget";
+@import "../../theme/base";
 
-.v-menu {
+.#{$ave-prefix}-menu {
   @extend %v-container;
   //outline: none;
-  .v-menu-entry {
+  .#{$ave-prefix}-menu-entry {
     margin-left: -0.3rem;
   }
-  .v-menu-entry:first-of-type {
+  .#{$ave-prefix}-menu-entry:first-of-type {
     margin-left: 0;
   }
 }

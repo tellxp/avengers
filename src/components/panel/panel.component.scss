@@ -1,5 +1,6 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-panel {
+.#{$ave-prefix}-panel {
   @extend %v-container;
 }

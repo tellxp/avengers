@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-tabstrip-toggle {
+.#{$ave-prefix}-tabstrip-toggle {
   @extend %v-control;
   position: absolute;
   right: 0;

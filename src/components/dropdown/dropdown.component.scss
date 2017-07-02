@@ -1,17 +1,18 @@
 @import "../core/widget";
 @import "../utils/utils";
+@import "../../theme/base";
 
-.v-dropdown {
+.#{$ave-prefix}-dropdown {
   @include user-select(none);
   cursor: pointer;
   display: inline-block;
   position: static;
 }
-.v-dropdown {
-  .v-dropdown-group {
+.#{$ave-prefix}-dropdown {
+  .#{$ave-prefix}-dropdown-group {
     margin-left: -0.3rem;
   }
-  .v-dropdown-group:first-of-type {
+  .#{$ave-prefix}-dropdown-group:first-of-type {
     margin-left: 0;
   }
 }

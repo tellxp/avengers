@@ -1,7 +1,8 @@
 @import "../core/widget";
 @import "../utils/utils";
+@import "../../theme/base";
 
-.v-dropdown-header {
+.#{$ave-prefix}-dropdown-header {
   @extend %v-control;
   @include user-select(none);
   cursor: pointer;

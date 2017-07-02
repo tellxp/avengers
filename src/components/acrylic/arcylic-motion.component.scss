@@ -1,7 +1,8 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-arcylic-motion {
-  @extend %v-acrylic;
+.#{$ave-prefix}-arcylic-motion {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;

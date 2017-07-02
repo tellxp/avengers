@@ -1,4 +1,6 @@
-.v-ripple {
+@import "../../theme/base";
+
+.#{$ave-prefix}-ripple {
   display: block;
   position: absolute;
   top: 0;

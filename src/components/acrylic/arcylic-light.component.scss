@@ -1,7 +1,8 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-arcylic-light {
-  @extend %v-acrylic;
+.#{$ave-prefix}-arcylic-light {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;

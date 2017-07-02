@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-popup {
+.#{$ave-prefix}-popup {
   @extend %v-popover;
   background-color: transparent;
   overflow: visible;

@@ -1,3 +1,5 @@
+@import "../../theme/base";
+
 %v-container {
   display: block;
   position: relative;
@@ -12,7 +14,7 @@
   position: absolute;
 }
 
-%v-acrylic {
+%#{$ave-prefix}-acrylic {
   display: block;
 }
 $key-light-color: #ffffff;

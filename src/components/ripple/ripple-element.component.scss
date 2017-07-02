@@ -1,5 +1,7 @@
 @import "../core/widget";
-.v-ripple-element {
+@import "../../theme/base";
+
+.#{$ave-prefix}-ripple-element {
   position: absolute;
   display: block;
   border-radius: 50%;

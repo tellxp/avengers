@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-dropdown-item {
+.#{$ave-prefix}-dropdown-item {
   @extend %v-container;
   background-color: transparent;
   color: transparent;

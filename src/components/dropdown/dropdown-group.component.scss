@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-dropdown-group {
+.#{$ave-prefix}-dropdown-group {
   @extend %v-control;
   vertical-align: top;
 }

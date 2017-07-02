@@ -1,4 +1,6 @@
-.v-grid {
+@import "../../theme/base";
+
+.#{$ave-prefix}-grid {
   display: flex;
   overflow: auto;
 }

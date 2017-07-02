@@ -1,7 +1,8 @@
 @import "../core/widget";
 @import "../utils/utils";
+@import "../../theme/base";
 
-.v-menu-header {
+.#{$ave-prefix}-menu-header {
   display: block;
   position: relative;
   box-sizing: border-box;
@@ -13,16 +14,16 @@
   i {
 
   }
-  .v-arcylic-ground {
+  .#{$ave-prefix}-arcylic-ground {
     z-index: 1;
   }
-  .v-arcylic-light {
+  .#{$ave-prefix}-arcylic-light {
     z-index: 2;
   }
-  .v-ripple {
+  .#{$ave-prefix}-ripple {
     z-index: 3;
   }
-  .v-arcylic-content {
+  .#{$ave-prefix}-arcylic-content {
     z-index: 4;
   }
 }

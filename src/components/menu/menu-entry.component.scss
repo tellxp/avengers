@@ -1,6 +1,7 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-menu-entry {
+.#{$ave-prefix}-menu-entry {
   display: inline-block;
   position: relative;
   cursor: pointer;

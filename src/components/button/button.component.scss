@@ -1,5 +1,6 @@
 @import "../core/widget";
 @import "../utils/utils";
+@import "../../theme/base";
 
 
 // Mixin overriding default button styles like the gray background, the border, and the outline.
@@ -10,8 +11,9 @@
   border: none;
 }
 
-.v-button {
-  @extend %v-control;
+.#{$ave-prefix}-button {
+  display: inline-block;
+  position: relative;
 
   // Reset browser <button> styles.
   @include ave-button-reset();

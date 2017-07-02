@@ -1,5 +1,6 @@
 @import "../core/widget";
+@import "../../theme/base";
 
-.v-tabstrip-bar {
+.#{$ave-prefix}-tabstrip-bar {
   @extend %v-container;
 }
