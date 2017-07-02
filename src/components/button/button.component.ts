@@ -7,7 +7,6 @@ import {
   DoCheck,
   ElementRef,
   HostBinding,
-  HostListener,
   Input,
   OnChanges,
   OnDestroy,
@@ -15,8 +14,7 @@ import {
   Renderer2,
   ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
-import {ElementPosition, ElementStyle, Widget} from '../core/widget';
+import {Widget} from '../core/widget';
 
 @Component({
   selector: 'ave-button',
@@ -36,6 +34,10 @@ export class ButtonComponent extends Widget implements OnChanges,
   @HostBinding('attr.tabindex') '-1';
   @HostBinding('class.v-button') 'true';
 
+
+  @Input('class.primary') set CssClass(val: boolean) {
+
+  }
 
   constructor(elementRef: ElementRef, private render: Renderer2) {
     super(elementRef);

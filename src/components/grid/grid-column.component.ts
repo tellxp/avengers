@@ -19,7 +19,6 @@ import {Widget} from '../core/widget';
 import {GridRowComponent} from './grid-row.component';
 import {GridComponent} from './grid.component';
 import {BreakPoints} from '../core/dom';
-import {flatMap} from 'tslint/lib/utils';
 
 export class GridColumnConfig {
   span: number;
@@ -30,6 +29,7 @@ export class GridColumnConfig {
     this.offset = 0;
   }
 }
+
 @Component({
   selector: 'ave-grid-column',
   templateUrl: './grid-column.component.html',
@@ -55,7 +55,7 @@ export class GridColumnComponent extends Widget implements OnChanges,
   lgConfig: GridColumnConfig = new GridColumnConfig();
   xlConfig: GridColumnConfig = new GridColumnConfig();
 
-  @Input('span') set span(val) {
+  @Input('span') set span(val: number) {
     this.xsConfig.span = val;
     this.smConfig.span = val;
     this.mdConfig.span = val;
