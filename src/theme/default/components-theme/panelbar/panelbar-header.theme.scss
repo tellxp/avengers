@@ -79,6 +79,7 @@ $ave-panelbar-header-theme: (
   typography: $ave-panelbar-header-typography,
   shape: $ave-panelbar-header-shape
 );
+
 @mixin ave-panelbar-header-ground-style($theme) {
   @each $ingredient, $style-map in $ave-panelbar-header-ground-ingredient-map {
     $ingredient-style: map_get($theme, $ingredient);
@@ -117,7 +118,7 @@ $ave-panelbar-header-theme: (
       .#{$ave-prefix}-panelbar-item-#{$scene} {
         & .v-panelbar-header-active {
           .v-arcylic-light {
-            background-color: rgba(ave-property($ingredient-style, $scene, active, background-color), 0.12);
+            background-color: rgba(ave-property($ingredient-style, primary, active, background-color), 0.12);
             z-index: $ave-panelbar-elevation - 2;
           }
         }
@@ -129,7 +130,7 @@ $ave-panelbar-header-theme: (
               z-index: $ave-panelbar-elevation - 1;
             }
             .v-arcylic-light {
-              background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), 0.12);
+              background-color: rgba(ave-property($ingredient-style, primary, base, background-color), 0.12);
               z-index: $ave-panelbar-elevation - 2;
             }
           }
