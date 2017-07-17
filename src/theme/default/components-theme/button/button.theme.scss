@@ -46,7 +46,7 @@ $ave-button-content-ingredient-map: (
 $ave-button-palette: (
   default: ave-palette($ave-palette-white, 50, 50),
   primary: ave-palette($ave-palette-indigo),
-  secondary: ave-palette($ave-palette-pink),
+  secondary: ave-palette($ave-palette-pink, A200),
   success: ave-palette($ave-palette-green),
   info: ave-palette($ave-palette-blue),
   warning: ave-palette($ave-palette-orange),

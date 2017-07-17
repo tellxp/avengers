@@ -1,9 +1,5 @@
-import {
-  Component, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2,
-  ViewEncapsulation
-} from '@angular/core';
-import {Dom} from '../core/dom';
-import {AnimationPlayer, transition, trigger, useAnimation} from '@angular/animations';
+import {Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
+import {transition, trigger, useAnimation} from '@angular/animations';
 import {ElementPosition, ElementStyle} from '../core/widget';
 import {scaleIn} from '../animation/scale-animations';
 import {fadeout} from '../animation/fade-animations';
@@ -55,6 +51,7 @@ export class RippleElementComponent implements OnInit, OnDestroy {
     this.render.setStyle(this.elementRef.nativeElement, 'width', `${this.rippleStyle.width}px`);
     this.render.setStyle(this.elementRef.nativeElement, 'height', `${this.rippleStyle.height}px`);
   }
+
   ngOnDestroy() {
 
   }
