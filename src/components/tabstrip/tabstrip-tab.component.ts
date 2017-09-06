@@ -17,6 +17,7 @@ import {
 import {Widget} from '../core/widget';
 import {TabstripPageComponent} from './tabstrip-page.component';
 import {TabstripComponent} from './tabstrip.component';
+
 @Component({
   selector: 'ave-tabstrip-tab',
   templateUrl: './tabstrip-tab.component.html',
@@ -38,7 +39,8 @@ export class TabstripTabComponent extends Widget implements OnChanges,
   @Input() parentTabstrip: TabstripComponent;
 
 
-  @HostListener('click') onClick() {
+  @HostListener('click')
+  onClick() {
     this.parentTabstrip.activatePage(this.bindedPage);
   }
 
