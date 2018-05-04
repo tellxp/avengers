@@ -20,7 +20,6 @@ import {Widget} from '../core/widget';
   selector: 'ave-button',
   templateUrl: 'button.component.html',
   styleUrls: ['button.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent extends Widget implements OnChanges,
   OnInit,

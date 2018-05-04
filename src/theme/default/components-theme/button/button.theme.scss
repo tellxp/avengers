@@ -3,8 +3,39 @@
 @import "../../../typography";
 @import "../../../shape";
 @import "../../../elevation";
+@import "../../../utils";
 
-$ave-button-elevation: 0;
+
+// Mixin overriding default button styles like the gray background, the border, and the outline.
+@mixin ave-button-reset {
+  @include user-select(none);
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.#{$ave-prefix}-button {
+  display: inline-block;
+  position: relative;
+
+  // Reset browser <button> styles.
+  @include ave-button-reset();
+  background-color: transparent;
+  color: transparent;
+
+  box-sizing: border-box;
+  outline: none;
+
+  // Make anchors render like buttons.
+  white-space: nowrap;
+  text-decoration: none;
+
+  overflow: hidden;
+  border-radius: 0.1rem;
+}
+
+
+$ave-button-elevation: 2;
 
 // Style dictionary
 $ave-button-container-ingredient-map: (
@@ -95,7 +126,8 @@ $ave-button-theme: (
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-button-#{$scene} {
-        .v-arcylic-ground {
+        .#{$ave-prefix}-arcylic-ground {
+
           z-index: $ave-button-elevation - 3;
           @include ave-component-state-style($scene-style, $state-map, $property-map);
         }
@@ -118,11 +150,11 @@ $ave-button-theme: (
         @each $state in $state-map {
           $state-style: map_get($scene-style, $state);
           &:#{$state} {
-            .v-ripple-element {
+            .#{$ave-prefix}-ripple-element {
               background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), $ave-ripple-opacity);
               z-index: $ave-button-elevation - 1;
             }
-            .v-arcylic-light {
+            .#{$ave-prefix}-arcylic-light {
               background-color: rgba(ave-property($ingredient-style, $scene, $state, background-color), $ave-light-opacity);
               z-index: $ave-button-elevation - 2;
             }
@@ -144,7 +176,7 @@ $ave-button-theme: (
     @each $scene in $scene-map {
       $scene-style: map_get($ingredient-style, $scene);
       .#{$ave-prefix}-button-#{$scene} {
-        .v-arcylic-content {
+        .#{$ave-prefix}-arcylic-content {
           z-index: $ave-button-elevation - 1;
           @include ave-component-state-style($scene-style, $state-map, $property-map);
         }
@@ -161,7 +193,7 @@ $ave-button-theme: (
     $property-map: map_get($style-map, property);
     .#{$ave-prefix}-button {
       z-index: $ave-button-elevation;
-      border-radius: 0.1rem;
+
 
       @include ave-elevation($ave-button-elevation);
 

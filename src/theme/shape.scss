@@ -36,6 +36,7 @@ $ave-shape-ratio-1: (
   900: 2.25rem
 );
 
+
 $ave-shape-ratio-1dot618: (
   50: 0,
   100: 0.125rem 0.125rem*1.618,
@@ -62,7 +63,7 @@ $ave-shape-ratio-2: (
   900: 1.125rem 1.125rem*2
 );
 
-@function ave-shape($base-sizing, $default: 400, $tighter: 200, $looser: 700) {
+@function ave-shape($base-sizing, $default: 500, $tighter: 200, $looser: 800) {
   $result: (
     base: (
       padding: map_get($base-sizing, $default),
