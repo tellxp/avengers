@@ -10,8 +10,8 @@ import {
   OnDestroy,
   OnInit, ViewEncapsulation
 } from '@angular/core';
-import {Dom} from '../core/dom';
-import {Widget} from '../core/widget';
+import { Dom } from '../core/dom';
+import { Widget } from '../core/widget';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class DropdownItemComponent extends Widget implements OnChanges,
 
   @HostBinding('class.v-dropdown-item') 'true';
   constructor(elementRef: ElementRef) {
-    super(elementRef);
+  super();
   }
 
   ngOnChanges() {

@@ -7,7 +7,8 @@ import {
   ElementRef,
   OnChanges,
   OnDestroy,
-  OnInit
+  OnInit,
+  Renderer2
 } from '@angular/core';
 import {isNullOrUndefined} from 'util';
 
@@ -17,7 +18,6 @@ export class Widget implements OnChanges,
   AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked,
   OnDestroy {
-  public elementRef: ElementRef;
 
   static getValidValue<T>(field: T, value: T): T {
     if (isNullOrUndefined(field)) {
@@ -112,7 +112,7 @@ export class Widget implements OnChanges,
     return {top, left};
   }
 
-  constructor(elementRef?: ElementRef) {
+  constructor(public elementRef: ElementRef) {
     this.elementRef = elementRef;
   }
 
